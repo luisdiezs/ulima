@@ -1,0 +1,9 @@
+name = Personalidado del sitio
+description = <strong><em>Personalizacion de la web</em></strong>
+core = 7.x
+package = WEB crissanis
+
+version = 7.1
+
+
+

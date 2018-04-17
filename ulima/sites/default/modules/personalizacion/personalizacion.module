@@ -1,0 +1,263 @@
+<?php
+
+
+/**
+ * Implements hook_block_info().
+ */
+function personalizacion_block_info() {
+  $blocks = array();
+  $blocks['listado_arbol_carreras'] = array(
+    'info' => t('Listado de carreras by facultad'),
+  );
+
+   $blocks['select_listado_carreras'] = array(
+    'info' => t('Listado de carreras by select - HOME'),
+  );
+
+  /*   $blocks['malla_table'] = array(
+    'info' => t('malla curricular'),
+  );*/
+  
+  return $blocks;
+}
+function personalizacion_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'listado_arbol_carreras':
+      $block['subject'] = '';
+      $block['content'] = get_data_facultades();
+      break;
+
+/*
+    case 'malla_table':
+      $block['subject'] = '';
+      $block['content'] = get_malla();
+      break;
+  */
+
+    case 'select_listado_carreras':
+      $block['subject'] = '';
+      $block['content'] = drupal_get_form('select_facultades');
+      break;
+  }
+  return $block;
+}
+
+function select_facultades($form, &$form_submit){
+
+
+$options = get_carreras_select();
+
+ $form['selected'] = array(
+    
+    '#type' => 'select',
+    '#title' => t('Select Subject'),
+    '#options' => $options,
+    '#default_value' => 'Select Subject',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit', 
+    '#value' => t('Conocer'));  
+
+  return $form;
+}   
+
+
+function get_carreras_select(){
+
+$response = array();
+ 
+$query = new EntityFieldQuery();
+$query->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', 'carrera')
+  ->propertyCondition('status', NODE_PUBLISHED)
+   ->propertyOrderBy('title', 'ASC')
+// Run the query as user 1.
+  ->addMetaData('account', user_load(1));
+$result = $query->execute(); 
+//$result = $query->execute();
+  
+
+if (isset($result['node'])) {
+  $news_items_nids = array_keys($result['node']);
+  $news_items = entity_load('node', $news_items_nids);
+  $data = array();
+  $data[0] =" - Elige tu carrera - ";
+  foreach ($news_items as $key => $value) {
+    $data[$value->nid] = $value->title;
+
+  }
+
+ return $data;
+
+}
+
+
+}
+
+function select_facultades_submit($form, &$form_state) {
+
+$nid = $form_state['values']['selected'];
+
+$form_state['redirect'] = 'node/'.$nid;
+}
+
+
+
+function get_carreras($parent){
+$response = array();
+ 
+$query = new EntityFieldQuery();
+$query->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', 'carrera')
+  ->propertyCondition('status', NODE_PUBLISHED)
+  
+  ->fieldCondition('field_facultad', 'tid', $parent)
+  
+  // Run the query as user 1.
+  ->addMetaData('account', user_load(1));
+$result = $query->execute(); 
+//$result = $query->execute();
+
+
+if (isset($result['node'])) {
+  $news_items_nids = array_keys($result['node']);
+  $news_items = entity_load('node', $news_items_nids);
+  $data = array();
+  foreach ($news_items as $key => $value) {
+  	$data[$key]['title'] = $value->title;
+  	$data[$key]['nid'] = $value->nid;
+  }
+  $resp = '<ul>';
+  foreach ($data  as $key => $value) {
+    
+  	$resp.= '<li>'.l($value['title'],'node/'.$value['nid']).'</li>';
+  }
+  $resp .= '</ul>';
+
+  return $resp;
+  
+} 
+
+
+
+
+
+//return $result;
+
+
+}
+
+
+function get_data_facultades(){
+
+
+
+ $texto = taxonomy_get_tree($vid =2, $parent = 0, $max_depth = NULL, $load_entities = FALSE);
+
+ $data = '';
+ foreach ($texto as $key => $value) {
+  $facutad = taxonomy_term_load($value->tid);
+   $key = $key +1 ;
+ 
+   $color =  $facutad ->field_color_nombre_facultad['und'][0]['rgb'];
+   $data .= '<div  class="item_carre carr'.$key.'"><h2 style ="color:'.$color.'">'.$value->name.'</h2>'.get_carreras($value->tid).'</div>';
+ }
+
+
+ return $data;
+}
+
+function get_malla($header,$uno,$dos,$tres,$cuatro,$cinco,$seis,$siete,$ocho,$nueve,$diez){
+$mayor = 0;
+
+
+if($mayor < count($uno)){
+  $mayor = count($uno);
+}
+if($mayor < count($dos)){
+  $mayor = count($dos);
+}
+if($mayor < count($tres)){
+  $mayor = count($tres);
+}
+if($mayor < count($cuatro)){
+  $mayor = count($cuatro);
+}
+if($mayor < count($cinco)){
+  $mayor = count($cinco);
+}
+if($mayor < count($seis)){
+  $mayor = count($seis);
+}
+if($mayor < count($siete)){
+  $mayor = count($siete);
+}
+if($mayor < count($ocho)){
+  $mayor = count($ocho);
+}
+if($mayor < count($nueve)){
+  $mayor = count($nueve);
+}
+if($mayor < count($diez)){
+  $mayor = count($diez);
+}
+    
+    $tabla = '<div class="table-responsive"><table  class="table" ><thead><tr>';
+   foreach ($header as $key => $value) {
+        
+     $tabla .= '<td class="space">&nbsp;</td><th>'.$value['value'].'</th>';
+    }
+    $tabla .= '</tr></thead>';
+     
+for ($i=0; $i < $mayor ; $i++) { 
+  $tabla .= '<tr>'.get_data_malla($uno[$i]['target_id']).get_data_malla($dos[$i]['target_id']).get_data_malla($tres[$i]['target_id']).get_data_malla($cuatro[$i]['target_id']).get_data_malla($cinco[$i]['target_id']).get_data_malla($seis[$i]['target_id']).get_data_malla($siete[$i]['target_id']).get_data_malla($ocho[$i]['target_id']).get_data_malla($nueve[$i]['target_id']).get_data_malla($diez[$i]['target_id']).' </tr>';
+}
+$tabla .= '</table></div>';
+
+return $tabla;
+}
+
+
+function get_data_malla($id){
+    
+  if($id>0 || (!empty($id))){
+  $html = '';
+   $curso = node_load($id);
+   $tid = $curso->field_area['und'][0]['tid'];
+   $area = taxonomy_term_load($tid);
+   $color = $area->field_color['und'][0]['rgb'];
+    $html .= '<td class="space">&nbsp;</td>';
+   $html .= '<td class="dataa" style="border-bottom: 2px solid'.$color.'">';
+   $html .= '<h3> '.$curso->title.'</h3>';
+   $html .= '<h4> '.$curso->field_n_de_cr_ditos['und'][0]['value'].' créditos </h4>';
+   $html .= '</td>';
+   return $html;
+  }else {
+
+
+    return '<td class="space">&nbsp;</td><td></td>';
+  }
+
+
+
+
+
+}
+
+
+function personalizacion_node_presave($node) {
+
+  if($node->type=='slider') {
+  
+     if(empty($node->field_activar_countdown['und']) || count($node->field_activar_countdown) == 0 || $node->field_activar_countdown['und'] == NULL) {
+        
+
+      $node->field_countdown['und'][0]['countdown_timer'] = NULL;
+      unset($node->field_countdown['und']);
+     }
+
+   
+  }
+}
