@@ -1,0 +1,683 @@
+<?php
+
+
+/**
+ * Implements hook_block_info().
+ */
+function personalizacion_block_info() {
+  $blocks = array();
+  $blocks['listado_arbol_carreras'] = array(
+    'info' => t('Listado de carreras by facultad'),
+  );
+
+   $blocks['select_listado_carreras'] = array(
+    'info' => t('Listado de carreras by select - HOME'),
+  );
+
+    $blocks['ulima_listado1'] = array(
+    'info' => t('Posicion 1'),
+  );
+
+      $blocks['ulima_listado2'] = array(
+    'info' => t('Posicion 2'),
+  );
+          $blocks['ulima_listado3'] = array(
+    'info' => t('Posicion 3'),
+  );
+  
+  return $blocks;
+}
+function personalizacion_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'listado_arbol_carreras':
+      $block['subject'] = '';
+      $block['content'] = get_data_facultades();
+      break;
+
+
+    case 'ulima_listado1':
+      $block['subject'] = '';
+      $block['content'] = get_html_listadouno(1);
+      break;
+
+    case 'ulima_listado2':
+      $block['subject'] = '';
+      $block['content'] = get_html_listados(2);
+      break;
+
+    case 'ulima_listado3':
+      $block['subject'] = '';
+      $block['content'] = get_html_listados(3);
+      break;
+  
+  
+  
+
+    case 'select_listado_carreras':
+      $block['subject'] = '';
+      $block['content'] = drupal_get_form('select_facultades');
+      break;
+  }
+  return $block;
+}
+
+function select_facultades($form, &$form_submit){
+
+
+$options = get_carreras_select();
+
+ $form['selected'] = array(
+    
+    '#type' => 'select',
+    '#title' => t('Select Subject'),
+    '#options' => $options,
+    '#default_value' => 'Select Subject',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit', 
+    '#value' => t('Conocer'));  
+
+  return $form;
+}   
+
+
+function get_carreras_select(){
+
+$response = array();
+ 
+$query = new EntityFieldQuery();
+$query->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', 'carrera')
+  ->propertyCondition('status', NODE_PUBLISHED)
+   ->propertyOrderBy('title', 'ASC')
+// Run the query as user 1.
+  ->addMetaData('account', user_load(1));
+$result = $query->execute(); 
+//$result = $query->execute();
+  
+
+if (isset($result['node'])) {
+  $news_items_nids = array_keys($result['node']);
+  $news_items = entity_load('node', $news_items_nids);
+  $data = array();
+  $data[0] =" - Elige tu carrera - ";
+  foreach ($news_items as $key => $value) {
+    $data[$value->nid] = $value->title;
+
+  }
+
+ return $data;
+
+}
+
+
+}
+
+function select_facultades_submit($form, &$form_state) {
+
+$nid = $form_state['values']['selected'];
+
+$form_state['redirect'] = 'node/'.$nid;
+}
+
+
+
+function get_carreras($parent){
+$response = array();
+ 
+$query = new EntityFieldQuery();
+$query->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', 'carrera')
+  ->propertyCondition('status', NODE_PUBLISHED)
+  
+  ->fieldCondition('field_facultad', 'tid', $parent)
+  
+  // Run the query as user 1.
+  ->addMetaData('account', user_load(1));
+$result = $query->execute(); 
+//$result = $query->execute();
+
+
+if (isset($result['node'])) {
+  $news_items_nids = array_keys($result['node']);
+  $news_items = entity_load('node', $news_items_nids);
+  $data = array();
+  foreach ($news_items as $key => $value) {
+  	$data[$key]['title'] = $value->title;
+  	$data[$key]['nid'] = $value->nid;
+  }
+  $resp = '<ul>';
+  foreach ($data  as $key => $value) {
+    
+  	$resp.= '<li>'.l($value['title'],'node/'.$value['nid']).'</li>';
+  }
+  $resp .= '</ul>';
+
+  return $resp;
+  
+} 
+
+
+
+
+
+//return $result;
+
+
+}
+
+
+function get_data_facultades(){
+
+
+
+ $texto = taxonomy_get_tree($vid =2, $parent = 0, $max_depth = NULL, $load_entities = FALSE);
+
+ $data = '';
+ foreach ($texto as $key => $value) {
+  $facutad = taxonomy_term_load($value->tid);
+   $key = $key +1 ;
+ 
+   $color =  $facutad ->field_color_nombre_facultad['und'][0]['rgb'];
+   $data .= '<div  class="item_carre carr'.$key.'"><h2 style ="color:'.$color.'">'.$value->name.'</h2>'.get_carreras($value->tid).'</div>';
+ }
+
+
+ return $data;
+}
+
+function get_malla($header,$uno,$dos,$tres,$cuatro,$cinco,$seis,$siete,$ocho,$nueve,$diez){
+$mayor = 0;
+
+
+if($mayor < count($uno)){
+  $mayor = count($uno);
+}
+if($mayor < count($dos)){
+  $mayor = count($dos);
+}
+if($mayor < count($tres)){
+  $mayor = count($tres);
+}
+if($mayor < count($cuatro)){
+  $mayor = count($cuatro);
+}
+if($mayor < count($cinco)){
+  $mayor = count($cinco);
+}
+if($mayor < count($seis)){
+  $mayor = count($seis);
+}
+if($mayor < count($siete)){
+  $mayor = count($siete);
+}
+if($mayor < count($ocho)){
+  $mayor = count($ocho);
+}
+if($mayor < count($nueve)){
+  $mayor = count($nueve);
+}
+if($mayor < count($diez)){
+  $mayor = count($diez);
+}
+    
+    $tabla = '<div class="table-responsive"><table  class="table" ><thead><tr>';
+   foreach ($header as $key => $value) {
+        
+     $tabla .= '<td class="space">&nbsp;</td><th>'.$value['value'].'</th>';
+    }
+    $tabla .= '</tr></thead>';
+     
+for ($i=0; $i < $mayor ; $i++) { 
+  $tabla .= '<tr>'.get_data_malla($uno[$i]['target_id']).get_data_malla($dos[$i]['target_id']).get_data_malla($tres[$i]['target_id']).get_data_malla($cuatro[$i]['target_id']).get_data_malla($cinco[$i]['target_id']).get_data_malla($seis[$i]['target_id']).get_data_malla($siete[$i]['target_id']).get_data_malla($ocho[$i]['target_id']).get_data_malla($nueve[$i]['target_id']).get_data_malla($diez[$i]['target_id']).' </tr>';
+}
+$tabla .= '</table></div>';
+
+return $tabla;
+}
+
+
+function get_data_malla($id){
+    
+  if($id>0 || (!empty($id))){
+  $html = '';
+   $curso = node_load($id);
+   $tid = $curso->field_area['und'][0]['tid'];
+   $area = taxonomy_term_load($tid);
+   $color = $area->field_color['und'][0]['rgb'];
+    $html .= '<td class="space">&nbsp;</td>';
+   $html .= '<td class="dataa" style="border-bottom: 2px solid'.$color.'">';
+   $html .= '<h3> '.$curso->title.'</h3>';
+   $html .= '<h4> '.$curso->field_n_de_cr_ditos['und'][0]['value'].' créditos </h4>';
+   $html .= '</td>';
+   return $html;
+  }else {
+
+
+    return '<td class="space">&nbsp;</td><td></td>';
+  }
+
+
+
+
+
+}
+
+
+function personalizacion_node_presave($node) {
+
+  if($node->type=='slider') {
+  
+     if(empty($node->field_activar_countdown['und']) || count($node->field_activar_countdown) == 0 || $node->field_activar_countdown['und'] == NULL) {
+        
+
+      $node->field_countdown['und'][0]['countdown_timer'] = NULL;
+      unset($node->field_countdown['und']);
+     }
+
+   
+  }
+}
+function get_html_listadouno($position){
+$data = array();
+$response = array();
+ 
+$query = new EntityFieldQuery();
+$query->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', 'charlas')
+  ->propertyCondition('status', NODE_PUBLISHED)
+->propertyOrderBy('title', 'ASC')
+  
+  ->fieldCondition('field_posicion', 'value', $position)
+  
+  // Run the query as user 1.
+  ->addMetaData('account', user_load(1));
+$result = $query->execute(); 
+
+
+if (isset($result['node'])) {
+  $news_items_nids = array_keys($result['node']);
+  $news_items = entity_load('node', $news_items_nids);
+  
+ foreach ($news_items as $key => $value) {
+    $data[$key]['facultad'] = $value->field_facultad['und'][0]['tid'] ; 
+    $data[$key]['carrera'] = $value->field_carrera['und'][0]['target_id'];
+    $data[$key]['fechas'] = $value->field_fecha['und'];
+  }
+  
+  $resp = '<div class="carreras">';
+  foreach ($data  as $key => $value) {
+    $resp .= '<div class="escuela">';
+    $tid = $value['facultad'];
+    $termino = taxonomy_term_load($tid);
+    $color =$termino->field_color_nombre_facultad['und'][0]['rgb'];
+    $charla = node_load($key);
+    $carreraid = $charla->field_carrera['und'][0]['target_id'];
+    $carrera = node_load($carreraid);
+    $resp .='<h2 style="color:'.$color.'">'.str_replace("Facultad de", " ", $termino->name). '</h2>';
+    $resp .='<div class="cont-escuela"><div  class="esc_lugar "> <h3>'.$carrera->title.' </h3><h4>'.$charla->field_lugar['und'][0]['value'].'</h4></div>';
+    $resp .= '<ul>';
+    $count = 0;
+    foreach ($value['fechas'] as $key2 => $value2) {
+     
+     $resp.= '<li data-id="'.$charla->nid.'-'.$count.'"><a ><h4>'.t(date("l", $value2['value'])).' '.date("d", $value2['value']).'</h4><h3>'.t(date("g", $value2['value'])).' - '.date("g:i", $value2['value2']).'</h3></a></li>';
+
+     $count =  $count + 1;
+    }
+    $resp .= '</ul>';
+    
+
+    $resp .= '</div>';
+
+  }
+  $resp .= '</div></div>';
+  return $resp ;
+ // dsm($data);
+
+
+
+
+
+}
+
+
+}
+
+function get_html_listados($position){
+$data = array();
+$response = array();
+ 
+$query = new EntityFieldQuery();
+$query->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', 'charlas')
+  ->propertyCondition('status', NODE_PUBLISHED)
+->propertyOrderBy('title', 'ASC')
+  
+  ->fieldCondition('field_posicion', 'value', $position)
+  
+  // Run the query as user 1.
+  ->addMetaData('account', user_load(1));
+$result = $query->execute(); 
+
+
+if (isset($result['node'])) {
+  $news_items_nids = array_keys($result['node']);
+  $news_items = entity_load('node', $news_items_nids);
+  
+ foreach ($news_items as $key => $value) {
+    $data[$key]['facultad'] = $value->field_facultad['und'][0]['tid'] ; 
+    $data[$key]['carrera'] = $value->field_carrera['und'][0]['target_id'];
+    $data[$key]['fechas'] = $value->field_fecha['und'];
+  }
+  
+  $resp = '<div class="carreras ">';
+   $counter = 0;
+  foreach ($data  as $key => $value) {
+
+    $resp .= '<div class="escuela">';
+    $tid = $value['facultad'];
+    $termino = taxonomy_term_load($tid);
+    $color =$termino->field_color_nombre_facultad['und'][0]['rgb'];
+    $charla = node_load($key);
+    $carreraid = $charla->field_carrera['und'][0]['target_id'];
+    $carrera = node_load($carreraid);
+    if($counter == 0){ 
+    $resp .='<h2 style="color:'.$color.'">'. str_replace("Facultad de", " ", $termino->name). '</h2>';
+    }
+    $resp .='<div class="cont-escuela"><div class="esc_lugar"> <h3>'.$carrera->title.' </h3><h4>'.$charla->field_lugar['und'][0]['value'].'</h4></div>';
+    $resp .= '<ul>';
+    $count = 0;
+    foreach ($value['fechas'] as $key2 => $value2) {
+
+     $resp.= '<li data-id="'.$charla->nid.'-'.$count.'"><a ><h4>'.t(date("l", $value2['value'])).' '.date("d", $value2['value']).'</h4><h3>'.t(date("g", $value2['value'])).' - '.date("g:i", $value2['value2']).'</h3></a></li>';
+    $count =  $count + 1;
+    }
+    $resp .= '</ul>';
+    
+
+    $resp .= '</div></div>';
+
+    $counter = $counter + 1;
+
+  }
+  $resp .= '</div>';
+  return $resp ;
+ // dsm($data);
+
+
+
+
+
+}
+
+
+}
+
+
+function get_tables_modalidades_admision($data,$headertitle){
+
+$descripcion = array();
+$descripcion[] = $headertitle;
+$dataget   = array();
+ $fecdate = strtotime( 'now');
+$now = date('Y-m-d',$fecdate);
+
+foreach ($data as $key => $value) {
+  
+ 
+    $entity = entity_load('paragraphs_item', array($value['value']));
+     foreach ($entity as $key => $value) {
+       //$descripcion[] = field_get_items('paragraphs_item', $entity, 'field_descripcion');
+      $dataget[$key]['texto'] = $value->field_descripcion['und'][0]['value'];
+      $dataget[$key]['inicio'] = date('Y-m-d',$value->field_fecha_modalidade['und'][0]['value']);
+      if($value->field_fecha_modalidade['und'][0]['value'] != $value->field_fecha_modalidade['und'][0]['value2']){
+          $dataget[$key]['final'] = date('Y-m-d',$value->field_fecha_modalidade['und'][0]['value2']);
+      }
+      
+     }
+   
+  
+
+
+}
+
+
+
+   
+     $header = array();
+     $header[]  =  $now;
+    foreach ($dataget as $key => $value) {
+     
+      $header[] = $value['inicio'];
+      if (array_key_exists('final', $value)) {
+        $header[] =  $value['final'];
+       }
+    }
+        
+    asort($header);
+    $header = array_unique($header) ;
+    array_unshift($header, $headertitle);
+    
+   
+
+    $tablafechas = '<div class="linea1 forma2"><div class="table-responsive"><table id="alldata" class="table " >';
+    $tablafechas .= '<thead><tr>';
+   foreach ($header as $key => $value) {
+
+      if($key == 0) {
+        $tablafechas .= '<th class="descta "><strong>'. $value.'</strong></th>';
+      } else {
+
+         if($now < $value){
+          $tablafechas .= '<th class="white">'.t(date("F", strtotime($value))).'<br> '.date("d", strtotime($value)).'</th>';
+        }else {
+
+          if($now == $value) {
+            
+          $tablafechas .= '<th class="hoy"><span>Hoy<br>'.date("d", strtotime($value)).'</span></th>';
+          }else {
+          $tablafechas .= '<th>'.t(date("F", strtotime($value))).'<br> '.date("d", strtotime($value)).'</th>';
+          }
+          
+      }
+    }
+  }
+
+    $tablafechas .= '</tr></thead>';
+
+    foreach ($dataget as $key => $value2) {
+      $tablafechas .= '<tr>';
+   //   dsm($value);
+      //$clasee="crissanis";
+      $val = 0;
+      $roe = count($value2) - 1 ;
+      
+
+      foreach ($header as $key2 => $value) { 
+
+      if($key2==0){
+
+      $tablafechas .= '<td class="descta">'.$value2['texto'].'</td>';
+     }
+
+       elseif($value2['inicio']==$value){
+          $val = 1;
+            if($now < $value){
+               //$tablafechas .= '<td clase="'.$clasee.'">'.date("F d", $value2['inicio']).'</td>';
+           $tablafechas .= '<td id="v'.$roe.'"  class="white '.$val.'" ><span class="ball_o"></span><span class="line_o1"></span></td>';
+
+            }else {
+                //$tablafechas .= '<td clase="'.$clasee.'">'.date("F d", $value2['inicio']).'</td>';
+           $tablafechas .= '<td id="v'.$roe.'"  class="'.$val.'" ><span class="ball_o"></span><span class="line_o1"></span></td>';
+
+            }
+          
+        }
+
+         elseif (array_key_exists('final', $value2)) {
+           if($value2['final']==$value){ 
+           //$tablafechas .= '<td clase="'.$clasee.'">'.date("F d", $value2['final']).'</td>';
+              if($now < $value){
+              $tablafechas .= '<td class="white '.$val.'" ><span class="line_o3"></span><span class="ball_o"></span></td>';
+              $val = 0;
+              } 
+              else{
+              $tablafechas .= '<td class="'.$val.'" ><span class="line_o3"></span><span class="ball_o"></span></td>';
+              $val = 0;}
+           
+            }else{
+              if($val == 1){
+                if($now < $value){
+                  $tablafechas .= '<td class="white '.$val.'"><span class="line_o2"></span></td>';  }
+                 else {
+                  $tablafechas .= '<td class="'.$val.'"><span class="line_o2"></span></td>';  }  
+                
+              } else{
+                 if($now < $value) {
+                  $tablafechas .= '<td class="white '.$val.'"></td>';} 
+                  else {
+                  $tablafechas .= '<td class="'.$val.'"></td>';}
+                
+
+              }
+              
+            }
+         }else {
+          if($now < $value) {$tablafechas .= '<td class="white "></td>';} else {$tablafechas .= '<td></td>';}
+          
+         }
+        
+
+      }
+
+      $tablafechas .= '</tr>';
+    }
+ 
+
+     
+    $tablafechas .= '</table></div></div>';
+
+
+
+
+
+
+  return $tablafechas;
+
+
+
+}
+
+
+
+function get_tables_modalidades_otras_modalidades($data,$headertitle){
+
+$descripcion = array();
+$descripcion[] = $headertitle;
+ $fechas   =array();
+foreach ($data as $key => $value) {
+  
+ 
+    $entity = entity_load('paragraphs_item', array($value['value']));
+     foreach ($entity as $key => $value) {
+       //$descripcion[] = field_get_items('paragraphs_item', $entity, 'field_descripcion');
+      $descripcion[] = $value->field_descripcion['und'][0]['value'];
+      $fechas[$key]['inicio'] = $value->field_fecha_modalidade['und'][0]['value'];
+      if($fechas[$key]['inicio'] != $value->field_fecha_modalidade['und'][0]['value2']){
+             $fechas[$key]['final'] = $value->field_fecha_modalidade['und'][0]['value2'];
+      }
+      
+     }
+   
+  
+
+
+}
+    $counter = 0;
+     $header = array();
+    foreach ($fechas as $key => $value) {
+      $counter =$counter + count($value); 
+      $header[] = $value['inicio'];
+      if (array_key_exists('final', $value)) {
+        $header[] = $value['final'];
+       }
+    }
+        
+    asort($header);
+    $header = array_unique($header) ;
+
+
+    $tablafechas = '<div class="linea2"><div class="table-responsive"><table  class="table" >';
+    $tablafechas .= '<thead><tr>';
+   foreach ($header as $key => $value) {
+        
+     $tablafechas .= '<th>'.t(date("F", $value)).'<br> '.date("d", $value).'</th>';
+    }
+    $tablafechas .= '</tr></thead>';
+
+    foreach ($fechas as $key => $value2) {
+      $tablafechas .= '<tr>';
+   //   dsm($value);
+      //$clasee="crissanis";
+      $val = 0;
+      $roe = count($value2);
+      foreach ($header as $key2 => $value) { 
+         
+         if($value2['inicio']==$value){
+          $val = 1;
+
+           //$tablafechas .= '<td clase="'.$clasee.'">'.date("F d", $value2['inicio']).'</td>';
+           $tablafechas .= '<td id="v'.$roe.'"  class="'.$val.'" ><span class="ball_o"></span><span class="line_o1"></span></td>';
+        }
+
+         elseif (array_key_exists('final', $value2)) {
+           if($value2['final']==$value){ 
+           //$tablafechas .= '<td clase="'.$clasee.'">'.date("F d", $value2['final']).'</td>';
+
+           $tablafechas .= '<td class="'.$val.'" ><span class="line_o3"></span><span class="ball_o"></span></td>';
+              $val = 0;
+            }else{
+              if($val == 1){
+                $tablafechas .= '<td class="'.$val.'"><span class="line_o2"></span></td>';  
+                
+              } else{
+                $tablafechas .= '<td class="'.$val.'"></td>';
+
+              }
+              
+            }
+         }else {
+          $tablafechas .= '<td></td>';
+         }
+        
+
+      }
+
+      $tablafechas .= '</tr>';
+    }
+ 
+
+     
+    $tablafechas .= '</table></div></div>';
+
+
+
+    $tabla = '<div class="linea1"><div class="table-responsive"><table  class="table descripcion" >';
+   foreach ($descripcion as $key => $value) {
+        if($key == 0) {
+          $tabla .= '<tr><td class="xxxfirst"><strong>'.$value.'</strong></td></tr>';
+        }else {
+           $tabla .= '<tr><td class="xxx">'.$value.'</td></tr>';
+        }
+    
+    }
+    $tabla .= '</table></div></div>';
+
+
+
+  return $tabla.$tablafechas;
+
+
+}
