@@ -260,29 +260,31 @@ footer .fsociales h4 { margin-bottom: 10px; font-size: 12px; }
 .header3 { min-height: 314px; background-size: cover!important; }
 .c_ingresar { margin: 0 auto; max-width: 1260px; padding: 3% 0 0; }
 .c_ingresar .c_modalidades { display: inline-block; width: 100%; margin-bottom: 90px; }
-.cont_modulos { width: 23.50%; float: left; margin-right: 2%; background: #F4F4F4; padding-top: 30px; min-height: 269px; position: relative; border-radius: 3px; }
+.cont_modulos {  background: #F4F4F4; padding-top: 30px; min-height: 350px; position: relative; border-radius: 3px; }
 .cont_modulos h2 { margin: 0 5%; font-size: 20px; line-height: 100%; margin-bottom: 20px; color: #F36E23!important; text-transform: uppercase; font-family: 'montserratextrabold'; }
 .cont_modulos p { margin: 0 5% 20px; line-height: 180%; color: #888; }
-.cont_modulos span { position: absolute; left: 0; bottom: -52px; width: 100%; text-align: center; padding: 20px 0; background: #E6E6E6; z-index: 10; }
-.cont_modulos span a { color: #2C8DC0; }
-.m_modalidades { display: inline-block; width: 100%; }
-.m_modalidades h2 { margin-bottom: 40px; font-size: 20px; color: #999; text-align: center; }
-.m_modalidades>h2 { }
-.m_modalidades>h2 span { }
-.m_modalidades .cont_modulos { width: 23.5%; }
-.m_modalidades .cont_modulos h2 { text-align: left; margin-bottom: 20px; }
-.m_modalidades .cont_modulos { width: 23.5%; min-height: 170px; }
-.m_modalidades .cont_modulos h2 { text-align: left; margin-bottom: 20px; font-size: 30px; margin-bottom: 0; }
+.cont_modulos span a{ color: #2C8DC0;  width: 100%; text-align: center; padding: 20px 0; position: absolute; bottom: 0;background: #E6E6E6; z-index: 10; display: inline-block; }
+
+
+.othermodalidades h2 { margin-top:20px;margin-bottom: 40px; font-size: 25px; color: #717171; text-align: center; }
+.rerete {padding-bottom:25px;}
+.othermodalidades .cont_modulos {background-size: cover;background-repeat: no-repeat; background-position: 0 0 ; background-color: #f4f4f4;    padding-top: 0;
+    margin-top: 0}
+.othermodalidades .cont_modulos h2 { text-align: left; margin-bottom: 20px; }
+.othermodalidades .cont_modulos {  min-height: 260px; }
+.othermodalidades .cont_modulos p { margin-top:15px;}
+.othermodalidades .cont_modulos h2 { text-align: left; margin-bottom: 20px; font-size: 30px; margin-bottom: 0; }
+.othermodalidades  .f1_container {    position: relative;   height: 160px;}
+.othermodalidades .shadow {   width: 100%; height: 100%; transform-style: preserve-3d;    transition: all 0.5s ease; }
 .cont_mdoa { display: inline-block; width: 100%; margin-bottom: 70px; }
 .cingresar .header { background: url(../img/slide1.jpg) no-repeat 0 0; }
 .cont_msnh { position: absolute; left: 50%; top: 148px; color: #fff; margin-left: -616px; }
 .cont_msnh h1 { font-size: 45px; font-family: 'montserratextrabold'; margin-bottom: 25px; text-transform: uppercase;}
 .cont_msnh h1 span { color: #F36E23; }
-.cont_msnh h3 { font-size: 18px; padding-left: 60px; background: url(../img/ico_i.png) no-repeat 0 0; height: 60px; 160%;
-max-width: 621px; }
-.m_modalidades .cont_modulos:hover h2 { display: none; }
+.cont_msnh h3 { font-size: 18px; padding-left: 60px; background: url(../img/ico_i.png) no-repeat 0 0; height: 60px;max-width: 621px; }
+.othermodalidades .cont_modulos:hover h2 { display: none; }
 .cont_mdoa .cont_modulos p { display: none; padding-right: 20px; }
-.m_modalidades .cont_modulos:hover p { display: block; overflow: overlay; max-height: 145px; }
+.othermodalidades .cont_modulos:hover p { display: block; overflow: overlay; max-height: 145px; }
 .cont_ecuotas h2 span { left: 38%; }
 .cont_mdoa .cont_modulos #f1_card p { color: #333; }
 /*-------------------------------*/
@@ -295,9 +297,10 @@ max-width: 621px; }
 .cont_inscr ul li, .cont_obs ul li { list-style-type: disc; color: #999; line-height: 145%; margin-bottom: 5px; font-size: 13px; font-family: 'robotomedium'; }
 .contdesc { }
 .contdesc h3 { text-transform: uppercase; color: #F36E23; margin-bottom: 10px; }
-.zdescarga { display: inline-block; width: 74%; margin-bottom: 15px; }
-.zdescarga .dpdf { display: inline-block; float: left; margin-right: 10px; }
+.zdescarga { display: inline-block; margin-bottom: 15px; }
+.zdescarga .dpdf { display: inline-block; float: left; margin-right: 10px; background: url(../img/pdf.jpg) no-repeat 0 0;    height: 60px;padding-left: 60px;}
 .zdescarga .dwn { float: right; margin-top: 11px; }
+ .zdescarga .dwn  a {background: url(../img/dwn.jpg) no-repeat right 1px; padding-left: 17px;color: transparent;    display: inline-block;    height: 52px;}
 .dtxt { color: #666; margin-top: 24px; display: inline-block; font-size: 12px; }
 .contdesc .smas { margin-top: 10px; }
 .contdesc .smas span a { padding: 11px 75px 9px 65px; font-size: 18px; ; font-size: 18px; }
@@ -309,13 +312,9 @@ max-width: 621px; }
 .cont_obs ul li { }
 .cont_obs h4 { font-weight: bold; color: #999; margin-bottom: 3px; margin-left: 18px; }
 .cont_obs p { color: #666; margin-left: 18px; }
-.examen_ad .cont_modulos { background: #F4F4F4; }
-.examen_ad .cont_modulos.moda1 { background: url(../img/thumbs/moda1.jpg) no-repeat 0 0 #f4f4f4; background-size: cover; }
-.examen_ad .cont_modulos.moda2 { background: url(../img/thumbs/moda2.jpg) no-repeat 0 0 #f4f4f4; background-size: cover; }
-.examen_ad .cont_modulos.moda3 { background: url(../img/thumbs/moda3.jpg) no-repeat 0 0 #f4f4f4; background-size: cover; }
-.examen_ad .cont_modulos.moda4 { background: url(../img/thumbs/moda4.jpg) no-repeat 0 0 #f4f4f4; background-size: cover; }
-.examen_ad .cont_modulos.moda5 { background: url(../img/thumbs/moda5.jpg) no-repeat 0 0 #f4f4f4; background-size: cover; }
-.examen_ad .cont_modulos.moda6 { background: url(../img/thumbs/moda6.jpg) no-repeat 0 0 #f4f4f4; background-size: cover; }
+.examen_ad .cont_modulos { background: #F4F4F4;background-size: cover; }
+
+
 .examen_ad .cont_modulos span { background: #E6E6E6; }
 .omoda { text-align: center; margin-bottom: 40px; font-size: 30px; color: #999; }
 .mediosup .cont_inscr ul li, .mediosup .cont_obs ul li { margin-bottom: 15px; }
@@ -342,6 +341,7 @@ max-width: 621px; }
 .cont_inversion .cont_concepto h2 span { width: 165px; }
 .concetop { display: inline-block; width: 100%; }
 .cont_concepto { margin: 0 auto; max-width: 890px; padding: 40px 0; text-align: center; }
+.node-type-modalidades .omoda {margin-top: 40px;}
 .cont_concepto h2, .ofer h2, .m_modalidades>h2, .omoda { font-size: 25px; color: #717171; padding-bottom: 20px; margin-bottom: 40px; position: relative; }
 /*.ofer h2::after{background: #F36E23; content: ""; height: 1px;  left: 0;  margin: auto;  position: absolute; right: 0;bottom: 0;  width: 205px;}*/
 .cont_concepto h2::after, .cont_ecuotas h2::after, .ofer h2::after, .m_modalidades>h2::after, .omoda span::after{background: #F36E23; content: ""; height: 1px;  left: 0;  margin: auto;  position: absolute; right: 0;bottom: 0;  width: 205px;}
@@ -489,7 +489,8 @@ max-width: 621px; }
 .curri2 { }
 .curri2 h3 { color: #6f6f6f; margin-bottom: 30px; }
 .curri2 ul { }
-.curri2 ul li { display: inli	 	 	 	 	 	 ne-block; width: 100%; margin-bottom: 20px; }
+.curri2 ul li { display: inline-block; width: 100%; margin-bottom: 20px; }
+
 .curri2 ul li a { color: #0190eb; background: url(../img/dwn.jpg) no-repeat right 1px; padding-left: 17px; min-width: 610px; display: inline-block; padding: 11px 0; }
 .con_pregu { display: inline-block; /*width: 85%;*/ margin-bottom: 60px; padding-left: 15%; }
 .con_pregu h3 { color: #f36d25; margin-bottom: 15px; font-size: 16px; line-height: 133%; font-family: 'robotolight'; font-weight: bold; }
@@ -597,10 +598,7 @@ span.file img {display: none;}
 .cont_api_maps { margin-bottom: 30px; }
 .cont_contc2 { margin: 0 auto 60px; max-width: 1130px; width: 100%; }
 .text_cont { float: left; width: 45%; margin-bottom: 40px; }
-570. .text_cont {
-float: left;
-width: 49%;
-}
+
 .text_cont h3 { margin-bottom: 10px; font-weight: bold; color: #333; font-size: 17px; font-family: 'montserratextrabold'; }
 .text_cont h3 { margin-bottom: 10px; }
 .text_cont h4 { margin-bottom: 10px; color: #5c5c5c; line-height: 150%; padding-right: 40px; }
@@ -619,6 +617,8 @@ width: 49%;
 .inf_cont { margin-bottom: 40px; }
 .inf_cont>div { margin-bottom: 5px; }
 /*----------------*/
+.otras_modalidades .notaconditional,
+.admision .nota_medsup{display: none;}
 
 .somosulima { }
 .somosulima .header { background: url(../img/slide_somos_u.jpg) no-repeat 0 0; background-size: cover; min-height: 477px; }
@@ -711,7 +711,7 @@ font-size: 15px; width: 94%; padding: 20px 3%; position: absolute; }
     padding-bottom: 15px !important;}
 .linea1 .table{margin-bottom: 15px;}
 .linea2 table tr td span { }
-.ball_o { background: #F36E23; width: 15px; height: 15px; display: inline-block; border-radius: 20px; position: relative; /*top: 5px;*/ z-index: 10; }
+.ball_o { background: #F36E23; width: 15px; height: 15px; display: inline-block; border-radius: 20px; position: relative; /*top: 5px;*/ z-index: 6; }
 .hoy { position: relative }
 .hoy span {    position: absolute;
     background: #fff;
@@ -735,7 +735,58 @@ font-size: 15px; width: 94%; padding: 20px 3%; position: absolute; }
 .cont_shadow { background-color: rgba(0, 0, 0, 0.7); width: 100%; height: 100%; position: absolute; left: 0; top: 0; }
 .elecole {/* display: inline-block; */ width: 96%; background: #F4F4F4; padding: 20px 2%; max-width: 1366px; margin: 0 auto; }
 .cont_shadow { background-color: rgba(0, 0, 0, 0.7); width: 100%; height: 100%; position: absolute; left: 0; top: 0; }
-.elecole1 { float: left; width: 35%; }
+.buscador-colegio .view-filters {width: 65%; float: right;background: #F4F4F4;padding-top: 15px;min-height: 78px;}
+.buscador-colegio .view-header { float: left;   width: 35%; background: #F4F4F4; padding-top: 15px; padding-bottom: 15px;
+    min-height: 78px;      padding-left: 30px;}
+
+.buscador-colegio label[for=edit-field-tipo-value-all] { 
+   display: none;
+}
+#edit-field-tipo-value-wrapper label {background: #DEDEDE;
+    color: #999;
+    font-size: 11px;
+    padding: 10px 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+.buscador-colegio  input#edit-title {
+    border: 1px solid #E6E6E6;
+    border-radius: 15px;
+    height: 33px;
+    padding: 3px 10px;
+    margin-top: 6px;
+    max-width: 460px;
+    width: 100%;
+    color: #ccc;
+}
+#edit-field-tipo-value-wrapper label.active {
+       background: #009CFD;
+    color: #fff; 
+}
+#block-block-3 {
+    min-height: 200px;
+    padding-top: 60px;
+    font-size: 18px;
+}
+
+#edit-field-tipo-value-wrapper {  width: 27%;}
+#edit-title-wrapper {    width: 52%;float: left; padding-top: 3px;}
+.buscador-colegio .radio input[type="radio"] {z-index: -8;}
+.buscador-colegio .views-exposed-widget.views-submit-button {float: left;width: 16%;}
+.buscador-colegio .form-item.form-item-field-tipo-value.form-type-radio.radio {display: inline-block;    padding: 5px;}
+.buscador-colegio  .view-content { clear: both;}
+.buscador-colegio .views-exposed-form .views-exposed-widget .btn {margin-top: 0;    background: url(../img/filtrar.jpg) no-repeat center #009CFD;
+    width: 146px;
+    border: none;
+    padding: 10px 0;
+    border-radius: 20px;
+    cursor: pointer;
+    text-indent: 999999px;
+}
+.contendidomain .c_ingresar,
+.contendidomain .examen_ad {padding-top: 0;}
+.elecole1 { float: left; }
 .elecole1 h3 { font-size: 25px; margin-bottom: 5px; }
 .elecole1 h4 { color: #333; }
 .elecole2 { float: right; width: 64%; }
@@ -747,7 +798,7 @@ font-size: 15px; width: 94%; padding: 20px 3%; position: absolute; }
 .elecole2 input.search { border: 1px solid #E6E6E6; border-radius: 15px; height: 25px; padding: 3px 10px; margin-top: 6px; max-width: 460px; width: 100%; color: #ccc; }
 .elecole2 input.btn { background: url(../img/filtrar.jpg) no-repeat center #009CFD; width: 146px; border: none; padding: 10px 0; border-radius: 20px; cursor: pointer; }
 .linea1.forma2  .table{margin-bottom: 0;}
-.linea1.forma2 { width: 100% !important; background-color: #f4f4f4 !important; }
+.linea1.forma2 { width: 100% !important; background-color: #f4f4f4 !important;     margin-bottom: 30px;}
 .forma2 td.descta {  width: 20%;}
 .forma2 th.white ,td.white {background: white; }
 .forma2 th.hoy {
@@ -765,12 +816,11 @@ font-size: 15px; width: 94%; padding: 20px 3%; position: absolute; }
 .temp2 .linea2 .tr5 .line_o .line_o2 { left: 19px; width: 211px; }
 .cont_elecole { background: #F4F4F4; display: inline-block; width: 100%; padding-bottom: 15px; }
 /*-----------------------*/
-#f1_container { position: relative; margin: 10px auto; height: 140px; z-index: 1; }
-#f1_container { perspective: 1000; }
-#f1_card { width: 100%; height: 100%; transform-style: preserve-3d; transition: all 0.5s ease; }
-#f1_container:hover #f1_card { transform: rotateY(180deg); }
+.f1_container { perspective: 1000; }
+
+.f1_container:hover .shadow { transform: rotateY(180deg); }
 .face { position: absolute; width: 100%; backface-visibility: hidden; bottom: 0; }
-.face.back { display: block; transform: rotateY(180deg); box-sizing: border-box; padding: 10px; color: #888; text-align: left; position: relative; top: -30px; }
+.face.back { display: block; transform: rotateY(180deg); box-sizing: border-box; padding: 10px; color: #888; text-align: left; position: relative; }
 .cont_carreras .list-thumbs-slider.fixed { top: 0; z-index: 100; margin: 5px 0; position: fixed }
 
 footer {width: 100%;}
@@ -785,6 +835,7 @@ footer {width: 100%;}
 
 .field-name-calendario-modalidades-otras  .table > thead > tr > th,
 .field-name-calendario-modalidades-otras  .table > tbody > tr > td {text-align: center; position: relative;}
+#alldata tr { border-bottom: 1px solid #ddd;}
 #alldata tr > th.descta,
 #alldata tr > td.descta {text-align: left !important;}
 
@@ -861,7 +912,7 @@ footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
 .carrera_olima { width: 96%; padding-left: 2%; }
 .e_admi .header3 { min-height: 320px; background-size: cover; }
 .examen_ad { width: 94%; }
-.cont_modulos { width: 46%; min-height: inherit; margin-bottom: 30px; margin-left: 2%; min-height: 240px; }
+.cont_modulos {      min-height: 340px; margin-bottom: 30px; margin-left: 2%; }
 .contdesc .smas span a { font-size: 16px; }
 .cont_msnh { left: 44px; top: 112px; margin-left: 0; }
 .e_admi .header3 .smas { top: 250px; }

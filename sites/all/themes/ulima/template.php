@@ -3,14 +3,22 @@
  * @file
  * The primary PHP file for this theme.
  */
+function ulima_preprocess_html(&$variables) {
 
+ $node = menu_get_object();
 
+ 
+  if ($node && isset($node->nid) && $node->type =='modalidades' ) {
+
+    $tipo = $node->field_tipo_de_calendario['und'][0]['value'];
+  $variables['classes_array'][] = $tipo;
+}
+
+}
 
 function ulima_preprocess_page(&$variables) {
 
- 
-
-  if (drupal_is_front_page()) {
+   if (drupal_is_front_page()) {
     $variables['theme_hook_suggestions'][] = 'page__front';
 
     /*
@@ -53,6 +61,10 @@ if((isset($variables['node'])) && $variables['node']->type =='modalidades'){
   $variables['theme_hook_suggestions'][] = 'page__modalidades';
 }
   
+  if(arg(0)== 'admision'){
+    
+   $variables['theme_hook_suggestions'][] = 'page__admision';
+  }
 
 
       

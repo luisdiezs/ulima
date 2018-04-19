@@ -40,6 +40,21 @@ Drupal.behaviors.ulima = {
      $('#edit-submitted-charlas').val(stte);
    
 });
+    jQuery("input[name='field_tipo_value']:checked").parent().addClass("active"); 
+    $('#edit-field-tipo-value-wrapper .form-item-field-tipo-value label').on('click', function(){
+          
+              $('#edit-field-tipo-value-wrapper .form-item-field-tipo-value label').removeClass('active');
+                 
+                   $(this).addClass('active');
+                
+      });
+
+    //$('#edit-field-tipo-value-wrapper .form-item-field-tipo-value:nth-child(2) label').addClass('active');
+    //$('#edit-field-tipo-value-particular').attr('checked', true);
+    $("#edit-field-tipo-value-wrapper input:radio:checked").next('label').addClass("checked");
+     $('.buscador-colegio input#edit-title').attr("placeholder", "Escribe el nombre de tu colegio");
+
+    $('.buscador-colegio .view-content').addClass("c_ingresar");
 
 // Load WOW.js on non-touch devices
 var isPhoneDevice = "ontouchstart" in document.documentElement;
