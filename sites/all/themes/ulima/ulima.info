@@ -30,7 +30,7 @@ regions[inscribete]     = 'Inscribete'
 regions[post_content]   = 'Post Content'
 regions[post_content2]  = 'Post Content 2'
 regions[comentarios]    = 'Comentarios'
-regions[materiales] 	= 'Materiales'
+
 
 regions[admision]		= 'Admision'
 regions[pre_footer]     = 'Pre Footer'

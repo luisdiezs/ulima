@@ -42,12 +42,23 @@ function ulima_preprocess_page(&$variables) {
 if((isset($variables['node'])) && $variables['node']->type =='carrera'){
 
 	$variables['theme_hook_suggestions'][] = 'page__carrera';
+  $mensaje_introductorio = $variables['node']->field_mensaje_introductorio['und'][0]['value'];
+    $variables['mensaje_introductorio'] = $mensaje_introductorio;
+
 }
   
-
 if((isset($variables['node'])) && $variables['node']->type =='perfil'){
 
   $variables['theme_hook_suggestions'][] = 'page__perfil';
+   $mensaje_introductorio = $variables['node']->field_mensaje_introductorio['und'][0]['value'];
+    $variables['mensaje_introductorio'] = $mensaje_introductorio;
+}
+
+if((isset($variables['node'])) && $variables['node']->type =='malla_curricular'){
+
+  $variables['theme_hook_suggestions'][] = 'page__malla';
+   $mensaje_introductorio = $variables['node']->field_mensaje_introductorio['und'][0]['value'];
+    $variables['mensaje_introductorio'] = $mensaje_introductorio;
 }
   
 if((isset($variables['node'])) && $variables['node']->type =='modalidades'){
@@ -66,6 +77,12 @@ if((isset($variables['node'])) && $variables['node']->type =='modalidades'){
    $variables['theme_hook_suggestions'][] = 'page__admision';
   }
 
+
+if(arg(0)== 'inversion'){
+
+$variables['title'] = NULL;
+
+}
 
       
    

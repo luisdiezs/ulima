@@ -231,7 +231,18 @@ if($mayor < count($diez)){
     $tabla .= '</tr></thead>';
      
 for ($i=0; $i < $mayor ; $i++) { 
-  $tabla .= '<tr>'.get_data_malla($uno[$i]['target_id']).get_data_malla($dos[$i]['target_id']).get_data_malla($tres[$i]['target_id']).get_data_malla($cuatro[$i]['target_id']).get_data_malla($cinco[$i]['target_id']).get_data_malla($seis[$i]['target_id']).get_data_malla($siete[$i]['target_id']).get_data_malla($ocho[$i]['target_id']).get_data_malla($nueve[$i]['target_id']).get_data_malla($diez[$i]['target_id']).' </tr>';
+  $tabla .= '<tr>';
+  $tabla .= isset($uno[$i]['target_id']) ? get_data_malla($uno[$i]['target_id']) : '<td class="space">&nbsp;</td><td></td>';
+  $tabla .= isset($dos[$i]['target_id']) ? get_data_malla($dos[$i]['target_id']) : '<td class="space">&nbsp;</td><td></td>';
+  $tabla .= isset($tres[$i]['target_id']) ? get_data_malla($tres[$i]['target_id']) : '<td class="space">&nbsp;</td><td></td>';
+  $tabla .= isset($cuatro[$i]['target_id']) ? get_data_malla($cuatro[$i]['target_id']) : '<td class="space">&nbsp;</td><td></td>';
+  $tabla .= isset($cinco[$i]['target_id']) ? get_data_malla($cinco[$i]['target_id']) : '<td class="space">&nbsp;</td><td></td>';
+  $tabla .= isset($seis[$i]['target_id']) ? get_data_malla($seis[$i]['target_id']) : '<td class="space">&nbsp;</td><td></td>';
+  $tabla .= isset($siete[$i]['target_id']) ? get_data_malla($siete[$i]['target_id']) : '<td class="space">&nbsp;</td><td></td>';
+  $tabla .= isset($ocho[$i]['target_id']) ? get_data_malla($ocho[$i]['target_id']) : '<td class="space">&nbsp;</td><td></td>';
+  $tabla .= isset($nueve[$i]['target_id']) ? get_data_malla($nueve[$i]['target_id']) : '<td class="space">&nbsp;</td><td></td>';
+  $tabla .= isset($diez[$i]['target_id']) ? get_data_malla($diez[$i]['target_id']) : '<td class="space">&nbsp;</td><td></td>';
+  $tabla .= '</tr>';
 }
 $tabla .= '</table></div>';
 
@@ -253,10 +264,6 @@ function get_data_malla($id){
    $html .= '<h4> '.$curso->field_n_de_cr_ditos['und'][0]['value'].' créditos </h4>';
    $html .= '</td>';
    return $html;
-  }else {
-
-
-    return '<td class="space">&nbsp;</td><td></td>';
   }
 
 

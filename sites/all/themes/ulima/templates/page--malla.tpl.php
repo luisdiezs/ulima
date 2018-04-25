@@ -80,7 +80,7 @@
         <figure class="logo" >
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
           <picture>
-            <source srcset="sites/all/themes/ulima/img/escudoulima.png" media="(max-width: 770px)">
+           <source srcset="sites/all/themes/ulima/img/escudoulima.png" media="(max-width: 770px)">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
 
           </picture>
@@ -88,7 +88,8 @@
         </figure>
      
 
-      <span class="hamb" style="z-index :10">
+      
+        <span class="hamb" style="z-index :10">
                   <span></span>
                 <span></span>
                 <span></span>
@@ -106,22 +107,23 @@
   
   
     <?php print render($page['header']); ?>
-     <div class="cont_msnh">
+        <div class="cont_msnh">
      <h4> Carrreras > <?php print $title; ?></h4>
     <h1 ><?php print $title; ?></h1>
     <h3><?php print $mensaje_introductorio; ?></h3>
     </div>
+  
 
    
   </div>
-     
+
    <?php if (!empty($page['precontent'])): ?>
         <div class="cont_inversion">
         <?php print render($page['precontent']); ?>
         </div>
       <?php endif; ?>
 
-<div class="main-container perfil-main">
+<div class="main-container <?php print $container_class; ?>">
 
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>
@@ -131,18 +133,24 @@
     
   </header> <!-- /#page-header -->
 
+  <div class="row">
 
-
-   
+    <?php if (!empty($page['sidebar_first'])): ?>
+      <aside class="col-sm-3" role="complementary">
+        <?php print render($page['sidebar_first']); ?>
+      </aside>  <!-- /#sidebar-first -->
+    <?php endif; ?>
 
     <section<?php print $content_column_class; ?>>
       <?php if (!empty($page['highlighted'])): ?>
         <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
       <?php endif; ?>
-      
+      <?php if (!empty($breadcrumb)): print $breadcrumb;
+      endif;?>
       <a id="main-content"></a>
-  
-      
+      <?php print render($title_prefix); ?>
+     
+      <?php print render($title_suffix); ?>
       <?php print $messages; ?>
       <?php if (!empty($tabs)): ?>
         <?php print render($tabs); ?>
@@ -154,16 +162,14 @@
       <?php print render($page['content']); ?>
     </section>
 
- 
+    <?php if (!empty($page['sidebar_second'])): ?>
+      <aside class="col-sm-3" role="complementary">
+        <?php print render($page['sidebar_second']); ?>
+      </aside>  <!-- /#sidebar-second -->
+    <?php endif; ?>
 
-
-</div>
-
-<?php if (!empty($page['post_content2'])): ?>
-  <div class="post_content2">
-    <?php print render($page['post_content2']); ?>
   </div>
-<?php endif; ?>
+</div>
 <?php if (!empty($page['admision'])): ?>
   <div class="madmision">
     <?php print render($page['admision']); ?>

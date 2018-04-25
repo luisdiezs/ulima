@@ -107,13 +107,23 @@
   
   
     <?php print render($page['header']); ?>
+
+      <div class="cont_msnh">
+     <h4> Carrreras > <?php print $title; ?></h4>
+    <h1 ><?php print $title; ?></h1>
+    <h3><?php print $mensaje_introductorio; ?></h3>
+    </div>
+  
   
 
    
   </div>
 
   
-
+  <?php print $messages; ?>
+      <?php if (!empty($tabs)): ?>
+        <?php print render($tabs); ?>
+      <?php endif; ?>
 
 
 <div class="main-container  item-carrera item_carr">
@@ -128,10 +138,7 @@
       <a id="main-content"></a>
      
   
-      <?php print $messages; ?>
-      <?php if (!empty($tabs)): ?>
-        <?php print render($tabs); ?>
-      <?php endif; ?>
+    
 
       <?php if (!empty($action_links)): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
@@ -164,7 +171,11 @@
 
  
 </div>
-
+ <?php if (!empty($page['comentarios'])): ?>
+      <div class="lab">
+      <?php print render($page['comentarios']); ?>
+         </div>
+    <?php endif; ?>
 
    <?php if (!empty($page['post_content2'])): ?>
     	<div class="list_carr">
