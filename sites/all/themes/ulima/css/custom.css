@@ -1,6 +1,39 @@
 @charset "utf-8";
 
 /* CSS Document */
+
+.lab_u span {
+    float: left;
+    display: block;
+    width: 75px;
+}
+
+.lab_u .contenidope {
+    float: right;
+    width: calc(100% - 75px);
+    display: block;
+}
+.contenidoimg {position: relative;}
+.somosulima iframe {
+    min-height: 530px;
+    height: 100% ;
+} 
+.somosulima .modal-dialog {
+    margin: 0;
+}
+a.video {
+    position: absolute;
+    top: 35%;
+    left: 45%;
+}
+.somosulima .modal.fade.in,
+.somosulima .modal {padding-left: 0 !important;}
+.somosulima .modal-dialog,
+.somosulima .modal-content {
+width: 100%;
+}
+.prese_ulima img {margin:auto;}
+.view-buscador-colegio .view-content.c_ingresar{display: none;}
 .lab .slick-arrow,
 .empleabilidad .slick-arrow,
 .item-carrera .slick-arrow {
@@ -144,7 +177,7 @@
 .item-carrera  .cont_msnh {
     top: 104px;
 }
-.item-carrera  h4 {margin-bottom: 20px; font-size: 17px;}
+.item-carrera  h4 {margin-bottom: 5px; font-size: 17px;}
 .item-carrera  h3{max-width: 765px;   background: none;    padding-left: 0;    line-height: 140%;}
 .node-type-carrera .view-testimonios-slider{
     display: inline-block;
@@ -549,6 +582,7 @@ input#edit-submitted-charlas {
     border: transparent;
     display: none;
 }
+.cont_msnh h4 a {color: #fff;}
 
 @media screen and (min-width: 1026px) and (max-width: 1273px){
 
@@ -601,7 +635,10 @@ input#edit-submitted-charlas {
 
 
 @media screen and (max-width: 650px) {
-
+.somosulima iframe {
+    min-height: 350px;
+    height: 100% ;
+}
 .front .slick-slide img {
     width: 100vw;
     height: 100vh;

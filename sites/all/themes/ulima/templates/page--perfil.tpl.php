@@ -107,9 +107,11 @@
   
     <?php print render($page['header']); ?>
      <div class="cont_msnh">
-     <h4> Carrreras > <?php print $title; ?></h4>
+     <h4> <a href="/carreras"> Carrreras </a> > <?php print $title; ?></h4>
     <h1 ><?php print $title; ?></h1>
+    <?php if($mensaje_introductorio != NULL) : ?>
     <h3><?php print $mensaje_introductorio; ?></h3>
+     <?php endif; ?>
     </div>
 
    

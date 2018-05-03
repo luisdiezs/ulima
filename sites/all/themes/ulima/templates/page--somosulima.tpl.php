@@ -107,71 +107,52 @@
   
   
     <?php print render($page['header']); ?>
-        <div class="cont_msnh">
-    <h4> <a href="/carreras"> Carrreras </a> > <?php print $title; ?></h4>
-    <h1 ><?php print $title; ?></h1>
-    <?php if($mensaje_introductorio != NULL) : ?>
-    <h3><?php print $mensaje_introductorio; ?></h3>
-     <?php endif; ?>
-    </div>
   
 
    
   </div>
 
    <?php if (!empty($page['precontent'])): ?>
-        <div class="cont_inversion">
+        <div class="cont-social_somos">
         <?php print render($page['precontent']); ?>
         </div>
       <?php endif; ?>
 
-<div class="main-container <?php print $container_class; ?>">
-
-  <header role="banner" id="page-header">
-    <?php if (!empty($site_slogan)): ?>
-      <p class="lead"><?php print $site_slogan; ?></p>
-    <?php endif; ?>
-
-    
-  </header> <!-- /#page-header -->
-
-  <div class="row">
-
-    <?php if (!empty($page['sidebar_first'])): ?>
-      <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_first']); ?>
-      </aside>  <!-- /#sidebar-first -->
-    <?php endif; ?>
-
-    <section<?php print $content_column_class; ?>>
-      <?php if (!empty($page['highlighted'])): ?>
-        <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
-      <?php endif; ?>
-      <?php if (!empty($breadcrumb)): print $breadcrumb;
-      endif;?>
-      <a id="main-content"></a>
-      <?php print render($title_prefix); ?>
-     
-      <?php print render($title_suffix); ?>
-      <?php print $messages; ?>
-      <?php if (!empty($tabs)): ?>
-        <?php print render($tabs); ?>
+   <?php if (!empty($page['precontent2'])): ?>
+        <div class="precontennt2">
+        <?php print render($page['precontent2']); ?>
+        </div>
       <?php endif; ?>
 
-      <?php if (!empty($action_links)): ?>
-        <ul class="action-links"><?php print render($action_links); ?></ul>
+   <?php if (!empty($page['precontent3'])): ?>
+        <div class="conoce_mas">
+        <?php print render($page['precontent3']); ?>
+        </div>
       <?php endif; ?>
+
+
+ 
+
+  
+
+    <div class="conoce_mas comunidad">
+ 
       <?php print render($page['content']); ?>
-    </section>
-
-    <?php if (!empty($page['sidebar_second'])): ?>
-      <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_second']); ?>
-      </aside>  <!-- /#sidebar-second -->
-    <?php endif; ?>
-
+    </div >
+<?php if (!empty($page['post_content'])): ?>
+  <div class="post_content_videos">
+    <?php print render($page['post_content']); ?>
   </div>
-</div>
+<?php endif; ?>
+
+<?php if (!empty($page['post_content2'])): ?>
+  <div class="evento_somosu">
+    <?php print render($page['post_content2']); ?>
+  </div>
+<?php endif; ?>
+    
+
+
 <?php if (!empty($page['admision'])): ?>
   <div class="madmision">
     <?php print render($page['admision']); ?>
@@ -182,3 +163,22 @@
     <?php print render($page['footer']); ?>
   </footer>
 <?php endif; ?>
+
+<?php 
+drupal_add_js('jQuery(function() {
+    jQuery(".video").click(function () {
+
+     var theModal = jQuery(this).data("target");
+      var videoSRC = jQuery(this).attr("data-video");
+      var videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
+    
+       jQuery(theModal + " iframe").attr("src", videoSRCauto);
+        
+      jQuery(theModal + " button.close").click(function () {
+        jQuery(theModal + " iframe").attr("src","");
+      });
+    });
+  });',
+    array('type' => 'inline', 'scope' => 'footer', 'weight' => 25)
+  );
+?>

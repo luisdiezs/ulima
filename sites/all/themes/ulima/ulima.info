@@ -20,6 +20,8 @@ regions[ingresa] 		= 'Ingresa'
 regions[modalidades] 	= 'Admision y otras modalidades'
 
 regions[precontent]     = 'Pre Content'
+regions[precontent2]     = 'Pre Content2'
+regions[precontent3]     = 'Pre Content3'
 regions[datoscarrera]   = 'Datos carrera'
 regions[content]        = 'Content'
 regions[sidebar_first]  = 'Primary'
