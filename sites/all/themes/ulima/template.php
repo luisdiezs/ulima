@@ -79,7 +79,7 @@ if((isset($variables['node'])) && $variables['node']->type =='modalidades'){
   }
 
 
-if(arg(0)== 'inversion' || arg(0)== 'openlima'  || arg(0)== 'somosulima' ){
+if(arg(0)== 'inversion' || arg(0)== 'openlima'  || arg(0)== 'somosulima' || arg(0) =='convenios' ){
 
 $variables['title'] = NULL;
 
@@ -92,8 +92,53 @@ $variables['title'] = NULL;
   if(arg(0)== 'somosulima'){
     
   $variables['theme_hook_suggestions'][] = 'page__somosulima';
+  }  
+
+ if(arg(0)== 'convenios'){
+      drupal_add_js(drupal_get_path('theme', 'ulima') .'/js/mapamundi.js', 'file');
+      drupal_add_css(drupal_get_path('theme', 'ulima') .'/css/mapamundi.css');
+  $variables['theme_hook_suggestions'][] = 'page__convenios';
   }    
    
+  if((isset($variables['node'])) && $variables['node']->type =='page') {
+
+    $mensaje_introductorio = isset($variables['node']->field_mensaje_introductorio['und']) ? $variables['node']->field_mensaje_introductorio['und'][0]['value'] : NULL;
+    $variables['mensaje_introductorio'] = $mensaje_introductorio;
+    
+  $variables['theme_hook_suggestions'][] = 'page__basica';
+  
+  }
+
+    if((isset($variables['node'])) && $variables['node']->type =='empleabilidad') {
+
+    $mensaje_introductorio = isset($variables['node']->field_mensaje_introductorio['und']) ? $variables['node']->field_mensaje_introductorio['und'][0]['value'] : NULL;
+    $variables['mensaje_introductorio'] = $mensaje_introductorio;
+
+    $new_title = isset($variables['node']->field_titulo_color_node['und']) ? $variables['node']->field_titulo_color_node['und'][0]['value'] : NULL;
+    $new_title = strip_tags($new_title, '<strong>');
+    $variables['title'] = $new_title;
+
+  $variables['theme_hook_suggestions'][] = 'page__empleabilidad';
+  
+  }
+
+     if((isset($variables['node'])) && $variables['node']->type =='infraestructura') {
+
+    $mensaje_introductorio = isset($variables['node']->field_mensaje_introductorio['und']) ? $variables['node']->field_mensaje_introductorio['und'][0]['value'] : NULL;
+    $variables['mensaje_introductorio'] = $mensaje_introductorio;
+
+    $new_title = isset($variables['node']->field_titulo_color_node['und']) ? $variables['node']->field_titulo_color_node['und'][0]['value'] : NULL;
+    $new_title = strip_tags($new_title, '<strong>');
+    $variables['title'] = $new_title;
+
+  $variables['theme_hook_suggestions'][] = 'page__infraestructura';
+   drupal_add_js(drupal_get_path('theme', 'ulima') .'/js/jquery.fancybox.min.js', 'file');
+ drupal_add_css(drupal_get_path('theme', 'ulima') .'/css/jquery.fancybox.min.css');
+  
+  }
+
+
+
 
 
 

@@ -13,6 +13,37 @@ Drupal.behaviors.ulima = {
 
 $(document).ready(function() {
 
+
+   // $(".fancybox").fancybox();
+
+
+jQuery('#slick-views-carrusel-videos-infraestrcutura-2 a').attr('data-fancybox', 'comunicacion');
+jQuery('#slick-views-carrusel-videos-infraestrcutura-3 a').attr('data-fancybox', 'derecho');
+jQuery('#slick-views-carrusel-videos-infraestrcutura-4 a').attr('data-fancybox', 'psicologia');  
+jQuery('#slick-views-carrusel-videos-infraestrcutura-5 a').attr('data-fancybox', 'economia');
+jQuery('#slick-views-carrusel-videos-infraestrcutura-6 a').attr('data-fancybox', 'ingenieria');
+
+$('#quicktabs-galerias_imagenes_videos_por_fac ul li a').on('click', function(){ 
+
+  jQuery('#slick-views-carrusel-videos-infraestrcutura-2 a').attr('data-fancybox', 'comunicacion');
+jQuery('#slick-views-carrusel-videos-infraestrcutura-3 a').attr('data-fancybox', 'derecho');
+jQuery('#slick-views-carrusel-videos-infraestrcutura-4 a').attr('data-fancybox', 'psicologia');  
+jQuery('#slick-views-carrusel-videos-infraestrcutura-5 a').attr('data-fancybox', 'economia');
+jQuery('#slick-views-carrusel-videos-infraestrcutura-6 a').attr('data-fancybox', 'ingenieria');
+
+$('.slick-arrow').trigger("click");
+
+});
+
+$('#block-views-carrusel-carreras-block-1 span.li a').on('click', function(){ 
+
+
+$('.tererererere .slick-arrow').trigger("click");
+
+});
+
+
+
 var url = window.location.href;
 if(url.indexOf('?field_tipo_value=') > 0){
   
@@ -64,6 +95,7 @@ jQuery('.modal').appendTo("body");
      $('.buscador-colegio input#edit-title').attr("placeholder", "Escribe el nombre de tu colegio");
 
     $('.buscador-colegio .view-content').addClass("c_ingresar");
+    $('.page-node-73 #block-system-main').addClass("col-md-6 col-lg-6");
 
 // Load WOW.js on non-touch devices
 var isPhoneDevice = "ontouchstart" in document.documentElement;

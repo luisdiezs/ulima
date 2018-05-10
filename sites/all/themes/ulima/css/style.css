@@ -346,7 +346,8 @@ footer .fsociales h4 { margin-bottom: 10px; font-size: 12px; }
 .cont_concepto h2, .ofer h2, .m_modalidades>h2, .omoda { font-size: 25px; color: #717171; padding-bottom: 20px; margin-bottom: 40px; position: relative; }
 /*.ofer h2::after{background: #F36E23; content: ""; height: 1px;  left: 0;  margin: auto;  position: absolute; right: 0;bottom: 0;  width: 205px;}*/
 
-.cont_labores h2::after,.cont_concepto h2::after, .cont_ecuotas h2::after, .ofer h2::after, .m_modalidades>h2::after, .omoda span::after{background: #F36E23; content: ""; height: 1px;  left: 0;  margin: auto;  position: absolute; right: 0;bottom: 0;  width: 205px;}
+.cont_mapa_convenios > h2::after,.cont_labores h2::after,.cont_concepto h2::after, .cont_ecuotas h2::after, .ofer h2::after, .tvirtual h2::after,
+ .m_modalidades>h2::after, .omoda span::after{background: #F36E23; content: ""; height: 1px;  left: 0;  margin: auto;  position: absolute; right: 0;bottom: 0;  width: 205px;}
 /*.cont_concepto h2 span, .cont_ecuotas h2 span, .ofer h2 span, .m_modalidades>h2 span, .omoda span { border-bottom: 1px solid #F36E23; width: 205px; display: inline-block; position: absolute; left: 41%; bottom: 0px; }*/
 .cont_ecuotas h2 span { left: 38%; }
 .cont_concepto p { color: #666; line-height: 160%; }
@@ -541,7 +542,7 @@ span.file img {display: none;}
 .conv_list { margin-right: 2%; float: left; width: 23.5%; text-align: left; }
 .list_pais { display: inline-block; width: 96%; margin-bottom: 40px; padding-left: 4%; text-align: left; }
 .list_pais h2 { color: #f36c24; margin-bottom: 20px; font-weight: bold; font-size: 16px; text-transform: capitalize; }
-.list_pais h3 { color: #f36c24; margin-bottom: 20px; }
+.list_pais h3 { color: #f36c24; margin-bottom: 20px;text-transform: uppercase; }
 .list_pais ul { }
 .list_pais ul li { margin-left: 0; margin-bottom: 15px; }
 .list_pais ul li a { color: #666; }
@@ -552,29 +553,35 @@ span.file img {display: none;}
 .cont_emple_a { max-width: 950px; width: 100%; margin: 0 auto; }
 .cont_emple_a h2 { text-align: center; font-size: 22px; color: #666; position: relative; margin-bottom: 30px; }
 .cont_emple_a h2 span { }
-.alumnos { float: left; width: 29.3%; text-align: center; padding: 2%; }
+.alumnos { text-align: center;}
 .alumnos figure { margin-bottom: 15px; }
 .alumnos h2 { color: #F36E23; font-weight: bold; font-size: 20px; margin-bottom: 10px; }
 .alumnos h3 { margin-bottom: 10px; color: #666; font-weight: bold; }
 .alumnos p { line-height: 150%; }
 .alumnos p span { color: #F36E23; }
-.dpotencial { display: inline-block; width: 100%; position: relative; }
-.dpotencial figure img { width: 100% }
-.dpotencial h2 { color: #fff; position: absolute; left: 50px; top: 100px; font-family: 'montserratextrabold'; font-size: 75px; }
-.dpotencial h2 span { color: #F36E23; }
+.dpotencial ,.dpotencial2{ display: inline-block; width: 100%; position: relative; }
+.dpotencial figure img,.dpotencial2 figure img { width: 100% }
+.dpotencial h2,.dpotencial2 h2 { color: #fff; position: absolute; left: 50px; top: 100px; font-family: 'montserratextrabold'; font-size: 75px; }
+
+.tetetete {padding: 0;}
 .cont_concepto p { margin-bottom: 30px; }
 .cont_empr { display: inline-block; width: 100%; }
 .cont_fila { display: inline-block; width: 100%; border-bottom: 3px solid #fff; }
-.empre { float: left; width: 24.43%; background: #eaf7fc; border-right: 5px solid #FFF; }
+.empre {  background: #eaf7fc;     border: 3px solid #FFF; }
+.view-empresas .pager li.pager-show-more-next {
+    display: inline-block;
+    width: 100%;
+    padding-top: 3px;
+}
+.view-empresas .pager li.pager-show-more-next  a {    color: #009cfd;width: 100%;display: block;background-color: #eaf7fc;border-radius: 0;border:1px solid transparent;padding: 30px 0;}
 .empre figure { text-align: center; border: none; }
-.empre figure a { display: inline-block; width: 100%; padding: 20px 0; }
+.empre span img {margin: auto;}
+.empre figure a, .empre span   { display: inline-block; width: 100%; padding: 20px 0; }
 .vmas a { display: inline-block; width: 100%; padding: 30px 0; background: #eaf7fc; color: #009cfd; }
 /*----------------*/
-.infraestructura .header { background: url(../img/slide_infraestructura.jpg) no-repeat 0 0; background-size: 100% }
-.item_infra { display: inline-block; width: 100%; margin-top: 20px; }
-.infraestructura .slide_frases { padding: 0; margin-bottom: 40px; }
-.infraestructura .slide_frases img { width: 100%; }
-.infraestructura .slide_frases h3 { color: #666; text-align: left; padding-left: 20px; padding-top: 15px; font-size: 12px; }
+
+.item_infra { display: inline-block; width: 100%; margin-top: 20px;margin-bottom: 40px; }
+.item_infra  h3 { color: #666; text-align: left; padding-left: 20px; padding-top: 15px; font-size: 12px; }
 .areas_u { max-width: 1000px; margin: 0 auto; margin-bottom: 40px; }
 .areas_u figure { float: left; width: 40%; margin-bottom: 30px; }
 .cont_areas { float: right; width: 58%; }
@@ -583,7 +590,7 @@ span.file img {display: none;}
 .cont_areas p { margin-bottom: 20px; line-height: 150%; color: #999; font-size: 16px; }
 .cont_areas ul { display: inline-block; width: 100%; }
 .cont_areas ul li { margin: 0 6px 0 0; display: inline-block; position: relative; }
-.cont_areas ul li a span { background: url(../img/ico_video.png) no-repeat 0 0; width: 66px; height: 66px; display: inline-block; position: absolute; left: 50%; margin-left: -33px; top: 50%; margin-top: -33px; }
+.asade .contentimg a span { background: url(../img/ico_video.png) no-repeat 0 0; width: 66px; height: 66px; display: inline-block; position: absolute; left: 50%; margin-left: -33px; top: 50%; margin-top: -33px; }
 .tvirtual { display: inline-block; width: 100%; margin-bottom: 30px; text-align: center; }
 .cont_video.tvirtual { }
 .tvirtual h2 { font-size: 25px; color: #717171; padding-bottom: 20px; margin-bottom: 40px; position: relative; }
@@ -591,6 +598,8 @@ span.file img {display: none;}
 .infraestructura .cont_concepto { max-width: 1346px; }
 .infraestructura .cont_concepto h3 { padding: 2% 4%; line-height: 150%; font-size: 16px; }
 .infraestructura .cont_concepto h3 strong { font-weight: bold; }
+.tererererere  h3 { padding: 2% 4%; line-height: 150%; font-size: 16px; }
+.tererererere h3 strong { font-weight: bold; }
 .cont_labores { margin: 60px auto 80px; max-width: 1020px; }
 .lab_u { display: inline-block; }
 .lab_u h3 { color: #F36E23; margin-bottom: 5px; }
@@ -599,7 +608,8 @@ span.file img {display: none;}
 /*----------------*/
 .cont_api_maps { margin-bottom: 30px; }
 .cont_contc2 { margin: 0 auto 60px; max-width: 1130px; width: 100%; }
-.text_cont { float: left; width: 45%; margin-bottom: 40px; }
+.text_cont {  margin-bottom: 40px; }
+.node-type-page .main-container {padding-top: 60px;}
 
 .text_cont h3 { margin-bottom: 10px; font-weight: bold; color: #333; font-size: 17px; font-family: 'montserratextrabold'; }
 .text_cont h3 { margin-bottom: 10px; }
@@ -608,9 +618,8 @@ span.file img {display: none;}
 .cont_contc2 .txt2 { float: right; margin-bottom: 60px; width: 55%; }
 .text_cont figure { margin-top: 15px; }
 .contac_fb { }
-.contac_fb a { background: #4267b1; color: #fff; width: 165px; display: inline-block; padding: 15px 20px 11px; font-weight: bold; font-size: 16px; border-radius: 30px; }
-.contac_fb a span { background: url(../img/ico_fb.jpg) no-repeat 0 0; width: 20px; height: 20px; display: inline-block; float: right; position: relative; top: -1px; }
-.contacto { }
+.contac_fb a { background: #4267b1; color: #fff;  display: inline-block; padding: 15px 20px 11px; font-weight: bold; font-size: 16px; border-radius: 30px; }
+
 .contacto .header { background: url(../img/slide_infraestructura.jpg) no-repeat 0 0; background-size: 100% }
 .contacto .cont_msnh { top: 120px; }
 .contacto .cont_msnh h1 { margin-bottom: 5px; }
@@ -689,21 +698,17 @@ font-size: 15px; width: 100%; padding: 20px 3%; position: absolute; }
 .cont_slide_p { position: absolute; z-index: 10; top: 190px; left: 175px; color: #fff; }
 .cont_slide_p h3 { margin-bottom: 15px; border: 2px solid #f36c24; padding: 10px 20px;  max-width: 170px; border-radius: 30px;text-transform: uppercase; }
 .cont_slide_p h2 { margin-bottom: 15px; font-size: 65px; font-family: 'montserratextrabold'; text-transform: uppercase; }
-.cont_slide_p h2 span    /* background: url(../img/somosulima7.jpg) no-repeat 0 0; */
-    background-size: cover;
-    display: inline-block;
-    width: 100%;
-    padding: 60px 0 0;
-    color: #fff;
-    /* min-height: 872px; */ { color: #F26C23; }
+
 .cont_slide_p h4 { margin-bottom: 25px; font-size: 25px; }
 .cont_conmas .smas { float: left; }
 .cont_conmas .smas span { }
 .cont_conmas .smas2 { margin-left: 25px; }
 .cont_conmas .smas2 span a span { background: none; border-left: 1px solid #009EFC; }
 .cont_conmas .smas2 span a { background: none; border: 1px solid #009EFC; }
-.front .slick-arrow { position: absolute; z-index: 1; top: 50%; /*text-indent: -99999px; */background-image: url(../img/arrows2.png); background-color: rgb(87, 88, 85 ); border: none; width: 55px; height: 55px; margin-top: -23px; border-radius: 35px; cursor: pointer; background-repeat: no-repeat; }
+.front .slick-arrow,.carruvideosimg .slick-arrow { position: absolute; z-index: 1; top: 50%; /*text-indent: -99999px; */background-image: url(../img/arrows2.png); background-color: rgb(87, 88, 85 ); border: none; width: 55px; height: 55px; margin-top: -23px; border-radius: 35px; cursor: pointer; background-repeat: no-repeat; }
 .front .slick-prev { left: 50px; background-position: 14px 12px; }
+.carruvideosimg  .slick-next { right: -54px;  background-color: #FFF;background-position: -82px 12px; color: transparent;}
+.carruvideosimg .slick-prev {     left: -54px;  background-color: #FFF; background-position: 14px 12px; color: transparent;}
 .slick-next { right: 50px; background-position: -82px 12px; }
 .slick-dots { position: absolute; left: 50%; bottom: 10px; }
 .slick-dots li { float: left; margin-left: 10px; }
@@ -909,8 +914,18 @@ background-color: rgba(243, 108, 36 ,.5 );
 
 /*--------------------media querie----------*/
 @media screen and (max-width: 1359px) {
+.dpotencial h2,.dpotencial2 h2 {
+      top: 10%;
+ }
+
 }
 @media screen and (max-width: 1025px) {
+	.dpotencial h2,.dpotencial2 h2 {
+      top: 5%;
+      font-size: 50px;
+
+	}
+
 footer .logofooter { width: 100%; text-align: center; margin-bottom: 20px; }
 footer .dfooter { width: 100%; padding: 0 0 30px; text-align: center; border: none; }
 footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
@@ -986,6 +1001,12 @@ footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
 .elecole2 input.search { max-width: 130px; }
 }
 @media screen and (max-width: 770px) {
+
+	.dpotencial h2,.dpotencial2 h2 {
+      top: 5%;
+      font-size: 3em;
+
+	}
 .cont_nav figure.logo img { max-width: 60px; }
 .slick-arrow { display: none!important; }
 .cont_slide_p { top: 18%; left: 17%; }
@@ -1024,6 +1045,12 @@ footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
 .slick-dots { display: none!important }
 }
 @media screen and (max-width: 650px) {
+
+	.dpotencial h2,.dpotencial2 h2 {
+      top: 5%;
+      font-size: 2.2em;
+
+	}
 .slick-slider { }
 /*.slick-slider .slick-track, .slick-slider .slick-list { min-height: 500px; }*/
 .cont_slide_p { top: 20%; left: 17%; }
@@ -1080,6 +1107,16 @@ footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
 .cont_mapa_convenios h2 span { left: 14%; }
 .conv_list { width: 100%; margin-right: 0; }
 .cont_carreras .slick-slider .slick-track, .cont_carreras .slick-slider .slick-list { min-height: inherit; }
+}
+
+
+@media screen and (max-width: 550px) {
+
+	.dpotencial h2,.dpotencial2 h2 {
+      top: 3%;
+      font-size: 2em;
+
+	}
 }
  @media screen and (max-width:370px) {
      .somosulima .cont_msnh {
