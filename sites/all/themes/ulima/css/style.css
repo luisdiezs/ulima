@@ -29,6 +29,9 @@ figure { margin: 0; }
 @font-face { font-family: 'robotolight'; src: url('../fonts/roboto-light-webfont.woff2') format('woff2'), url('../fonts/roboto-light-webfont.woff') format('woff'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'robotomedium'; src: url('../fonts/roboto-medium-webfont.woff2') format('woff2'), url('../fonts/roboto-medium-webfont.woff') format('woff'); font-weight: normal; font-style: normal; }
 /*-------------------------------*/
+section#block-views-testimonios-slider-block-1 {
+    position: relative;
+}
 .wrapper { max-width: 100%; margin: 0 auto; background: #fff; }
 .front .header { position: relative; background: #666; /*min-height: 550px;*/ }
 .header { min-height: 314px; background-size: cover;}
@@ -56,20 +59,23 @@ ul.menu.nav.navbar-nav { padding-top: 5px;}
 .nav > li > a:hover {background-color: transparent;}
 .cont_nav nav ul li.contacto a { border: 2px solid #fff; padding:4px 15px; border-radius: 15px; position: relative; top: 6px; }
 .cont_nav nav ul li.active a, .cont_nav nav ul li:hover a { color: #F36E23; text-decoration: none; }
+
+.cont_nav nav > li > a:hover, .nav > li > a:focus {background-color: transparent;}
 .cont_nav nav ul li.contacto a:hover { border: 2px solid #F36E23 }
 .cont_nav nav ul li.active a { text-decoration: underline; }
 .header2 .cont_nav nav { margin-top: 10px; }
+.secondary-active .cont_nav { background-color: rgba(0,0,0,0.9);}
 .sticker-1 .cont_nav { background-color: rgba(0,0,0,0.9); width:100%;padding: 10px 1%; width: 100%; left: 0; margin-left: 0; position: fixed; top: 0;  max-width: 100% }
 
-.sticker-1 .cont_nav nav {  left: 50%;  position: relative; margin-left: -683px;}
-.secondary-active .cont_nav nav {    height: 100%;    overflow-y: auto;    width: 100%;    left: 0px;    top: 0px;    position: fixed;    display: block;    }
-.secondary-active.sticker-1 .cont_nav  {background-color: transparent;}
+.sticker-1 .cont_nav nav {  position: relative; /* left: 50%;  margin-left: -683px;*/}
+.secondary-active .cont_nav nav {    height: 100%;    overflow-y: auto;    width: 100%;    left: 0px;    top: 85px;    position: fixed;    display: block;    }
+
 .secondary-active.sticker-1 .cont_nav nav {margin-left: 0;}
 .sticker-3.page-carreras .cont_nav {display: none;}
 
 .sticker-3 #block-views-carrusel-carreras-block{position: fixed; margin: auto; top: 0; left: 4%; width: 83%;right: 4%; }
 .secondary-active .cont_nav nav ul li.contacto {width: 140px;}
-.secondary-active .cont_nav nav ul li.contacto a{margin: auto;}
+.secondary-active .cont_nav nav ul li.contacto a{margin: 12px;}
 .secondary-active .cont_nav nav ul li {margin-bottom: 0;}
 .nav_fix nav { left: 50%; position: relative; margin-left: -683px; }
 .nav_fix .hamb { right: 25px; top: 26px; }
@@ -109,6 +115,7 @@ ul.menu.nav.navbar-nav { padding-top: 5px;}
     right: 0;
     top: 0;
     padding: 10px;  }
+.smas2 span > a::after {background-color: transparent;border-left-style: solid;border-left-width: 1px;  border-left-color: #0080D3;}
 /*/.smas span span { padding-left: 13px; padding-right: 10px; background: #0080D3; position: absolute; top: 0; right: 0; padding: 11px 10px; -webkit-border-top-right-radius: 20px; -webkit-border-bottom-right-radius: 20px; -moz-border-radius-topright: 20px; -moz-border-radius-bottomright: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 10px; margin-right: 0; }
 /*-------------------------------*/
 .cont_ingresa { display: inline-block; width: 100%; }
@@ -263,7 +270,7 @@ footer .fsociales h4 { margin-bottom: 10px; font-size: 12px; }
 .cont_modulos {  background: #F4F4F4; padding-top: 30px; min-height: 350px; position: relative; border-radius: 3px; }
 .cont_modulos h2 { margin: 0 5%; font-size: 20px; line-height: 100%; margin-bottom: 20px; color: #F36E23!important; text-transform: uppercase; font-family: 'montserratextrabold'; }
 .cont_modulos p { margin: 0 5% 20px; line-height: 180%; color: #888; }
-.cont_modulos span a{ color: #2C8DC0;  width: 100%; text-align: center; padding: 20px 0; position: absolute; bottom: 0;background: #E6E6E6; z-index: 10; display: inline-block; }
+.cont_modulos span a{ color: #2C8DC0;  width: 100%; text-align: center; padding: 20px 0; position: absolute; bottom: 0;background: #E6E6E6; z-index: 3; display: inline-block; }
 
 
 .othermodalidades h2 { margin-top:20px;margin-bottom: 40px; font-size: 25px; color: #717171; text-align: center; }
@@ -271,7 +278,7 @@ footer .fsociales h4 { margin-bottom: 10px; font-size: 12px; }
 .othermodalidades .cont_modulos {background-size: cover;background-repeat: no-repeat; background-position: 0 0 ; background-color: #f4f4f4;    padding-top: 0;
     margin-top: 0}
 .othermodalidades .cont_modulos h2 { text-align: left; margin-bottom: 20px; }
-.othermodalidades .cont_modulos {  min-height: 260px; }
+.othermodalidades .cont_modulos {  min-height: 240px; }
 .othermodalidades .cont_modulos p { margin-top:15px;}
 .othermodalidades .cont_modulos h2 { text-align: left; margin-bottom: 20px; font-size: 30px; margin-bottom: 0; }
 .othermodalidades  .f1_container {    position: relative;   height: 160px;}
@@ -312,7 +319,8 @@ footer .fsociales h4 { margin-bottom: 10px; font-size: 12px; }
 .cont_obs ul li { }
 .cont_obs h4 { font-weight: bold; color: #999; margin-bottom: 3px; margin-left: 18px; }
 .cont_obs p { color: #666; margin-left: 18px; }
-.examen_ad .cont_modulos { background: #F4F4F4;background-size: cover; }
+.examen_ad .cont_modulos { background: #F4F4F4;background-repeat: no-repeat;
+    background-position: top center;   }
 
 
 .examen_ad .cont_modulos span { background: #E6E6E6; }
@@ -753,8 +761,8 @@ font-size: 15px; width: 100%; padding: 20px 3%; position: absolute; }
 .cont_shadow { background-color: rgba(0, 0, 0, 0.7); width: 100%; height: 100%; position: absolute; left: 0; top: 0; }
 .elecole {/* display: inline-block; */ width: 96%; background: #F4F4F4; padding: 20px 2%; max-width: 1366px; margin: 0 auto; }
 .cont_shadow { background-color: rgba(0, 0, 0, 0.7); width: 100%; height: 100%; position: absolute; left: 0; top: 0; }
-.buscador-colegio .view-filters {width: 65%; float: right;background: #F4F4F4;padding-top: 15px;min-height: 78px;}
-.buscador-colegio .view-header { float: left;   width: 35%; background: #F4F4F4; padding-top: 15px; padding-bottom: 15px;
+.buscador-colegio .view-filters {width: 64%; float: right;background: #F4F4F4;padding-top: 15px;min-height: 78px;}
+.buscador-colegio .view-header { float: left;   width: 36%; background: #F4F4F4; padding-top: 15px; padding-bottom: 15px;
     min-height: 78px;      padding-left: 30px;}
 
 .buscador-colegio label[for=edit-field-tipo-value-all] { 
@@ -787,20 +795,20 @@ font-size: 15px; width: 100%; padding: 20px 3%; position: absolute; }
     padding-top: 60px;
     font-size: 18px;
 }
-
+#edit-field-tipo-value .form-type-radio:nth-child(1){display: none;}
 #edit-field-tipo-value-wrapper {  width: 27%;}
 #edit-title-wrapper {    width: 52%;float: left; padding-top: 3px;}
 .buscador-colegio .radio input[type="radio"] {z-index: -8;}
 .buscador-colegio .views-exposed-widget.views-submit-button {float: left;width: 16%;}
-.buscador-colegio .form-item.form-item-field-tipo-value.form-type-radio.radio {display: inline-block;    padding: 5px;}
+.buscador-colegio .form-item.form-item-field-tipo-value.form-type-radio.radio {display: inline-block;    padding: 5px;float: left; width: 49%;}
 .buscador-colegio  .view-content { clear: both;}
 .buscador-colegio .views-exposed-form .views-exposed-widget .btn {margin-top: 0;    background: url(../img/filtrar.jpg) no-repeat center #009CFD;
-    width: 146px;
+    width: 130px;
     border: none;
     padding: 10px 0;
     border-radius: 20px;
     cursor: pointer;
-    text-indent: 999999px;
+    color: #40b3fb;
 }
 .contendidomain .c_ingresar,
 .contendidomain .examen_ad {padding-top: 0;}
@@ -939,11 +947,21 @@ footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
 
 
 .cont_nav nav ul li { margin-left: 25px; float: none; margin-bottom: 30px; }
+
+.secondary-active .cont_nav nav ul li {
+        float: none;
+    margin-bottom: 13px;
+    background: url(../img/line-m.jpg) no-repeat left 6px;
+    padding-left: 16px;
+        margin-left: 16px;
+     }
+.secondary-active .cont_nav nav ul li a {padding-top: 0;top:-5px;}
+
 .hamb { display: block }
 .cont_slide_p { top: 30%; }
 .carrera_olima { width: 96%; padding-left: 2%; }
 .e_admi .header3 { min-height: 320px; background-size: cover; }
-.examen_ad { width: 94%; }
+.page-admision .cont_modulos {   margin-left: 0;}
 .cont_modulos {      min-height: 340px; margin-bottom: 30px; margin-left: 2%; }
 .contdesc .smas span a { font-size: 16px; }
 .cont_msnh { left: 44px; top: 112px; margin-left: 0; }
@@ -1045,6 +1063,20 @@ footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
 .slick-dots { display: none!important }
 }
 @media screen and (max-width: 650px) {
+
+    #block-bean-somos-lima .texto-align h3 {padding-top: 80px;}
+   #block-bean-somos-lima figure img {
+    width: 100vw;
+    height: 50vh;  
+    object-fit: cover;
+}
+   #block-bean-open-lima-colores  figure img {
+    width: 100vw;
+    height: 60vh;
+  
+    object-fit: cover;
+    object-position: 0 0;
+}
 
 	.dpotencial h2,.dpotencial2 h2 {
       top: 5%;

@@ -693,6 +693,9 @@ input#edit-submitted-charlas {
 }
 .cont_msnh h4 a {color: #fff;}
 
+@media screen and (min-width: 1273px){
+.examen_ad .cont_modulos {    background-size: contain; }
+}
 @media screen and (min-width: 1026px) and (max-width: 1273px){
 
 .cont_nav {
@@ -713,6 +716,16 @@ input#edit-submitted-charlas {
 }
 }
 @media screen and (max-width: 992px) {
+
+
+
+.page-admision .othermodalidades .cont_modulos {
+    min-height: 260px;
+    background-size: cover;
+    margin-bottom: 0;
+}
+
+
 .texto-align h3 {
     padding-top: 3%;
     font-size: 46px;
@@ -722,7 +735,23 @@ input#edit-submitted-charlas {
 .carruvideosimg .slick-prev {left: 0;    opacity: 0.5;}
 
 }
+
+@media screen and (max-width: 1025px) {
+    .cont_nav .hamb {
+        display: block;
+    }
+ 
+    .cont_nav .hamb.active span {
+        border-bottom: 5px solid #fff;
+    }
+}
+@media screen and (max-width: 991px) {
+    .view-buscador-colegio .view-header {display: none;}
+    .buscador-colegio .view-filters {width: 100%;}
+
+}
 @media screen and (min-width: 991px) {
+   
  .youtube-video,
  .youtube-video .youtube-container--responsive iframe {
     height: 435px !important;
@@ -736,16 +765,17 @@ input#edit-submitted-charlas {
 
 }
 
-@media screen and (max-width: 1025px) {
-    .cont_nav .hamb {
-        display: block;
-    }
- 
-    .cont_nav .hamb.active span {
-        border-bottom: 5px solid yellow;
-    }
+
+@media screen and (max-width: 771px) {
+
+.buscador-colegio .view-filters {
+    width: 100%;
+
 }
 
+.buscador-colegio .form-item.form-item-field-tipo-value.form-type-radio.radio {display: block;}
+
+}
 
 @media screen and (max-width: 650px) {
 .somosulima iframe {

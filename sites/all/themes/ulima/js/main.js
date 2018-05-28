@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 
    // $(".fancybox").fancybox();
-
+$("#block-bean-asume-el-reto a").removeAttr("href");
 
 jQuery('#slick-views-carrusel-videos-infraestrcutura-2 a').attr('data-fancybox', 'comunicacion');
 jQuery('#slick-views-carrusel-videos-infraestrcutura-3 a').attr('data-fancybox', 'derecho');
