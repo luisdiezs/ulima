@@ -920,6 +920,10 @@ footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
 .cont_mapa_convenios h2 span { left: 14%; }
 .conv_list { width: 100%; margin-right: 0; }
 .cont_carreras .slick-slider .slick-track, .cont_carreras .slick-slider .slick-list { min-height: inherit; }
+.tucarrera {
+  
+    text-align: center;
+}
 .tucarrera select { width: 90%; margin-bottom: 20px; }
 tucarrera .smas { float: none; text-align: center; }
 .tucarrera form{margin-bottom: 20px;}
