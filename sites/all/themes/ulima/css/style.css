@@ -855,7 +855,7 @@ footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
 .slick-dots { display: none!important }
 }
 @media screen and (max-width: 650px) {
-#block-bean-somos-lima .texto-align h3 { padding-top: 80px; }
+#block-bean-somos-lima .texto-align h3 { padding-top: 80px; font-size: 60px; }
 #block-bean-somos-lima figure img { width: 100vw; height: 50vh; object-fit: cover; }
 #block-bean-open-lima-colores figure img { width: 100vw; height: 60vh; object-fit: cover; object-position: 0 0; }
 .dpotencial h2, .dpotencial2 h2 { top: 5%; font-size: 2.2em; }
