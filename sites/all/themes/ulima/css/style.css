@@ -34,8 +34,7 @@ section#block-views-testimonios-slider-block-1 { position: relative; }
 .front .header { position: relative; background: #666; /*min-height: 550px;*/ }
 .header { min-height: 314px; background-size: cover; }
 .cont_nav { position: absolute; left: 50%; top: 10px; width: 100%; margin-left: -627px; z-index: 9; max-width: 1260px; }
-.negro .cont_nav { position: absolute; background-color: rgba(0,0,0,0.9); width: 100%; padding: 10px 1%; width: 100%; left: 0; margin-left: 0; /* position: fixed; */
-top: 0; max-width: 100%; }
+.negro .cont_nav { position: absolute; background-color: rgba(0,0,0,0.9); width: 100%; padding: 10px 1%; width: 100%; left: 0; margin-left: 0; /* position: fixed; */ top: 0; max-width: 100%; }
 .cont_nav figure { float: left; width: 170px; }
 .cont_nav figure.logo img { width: 100%; }
 .cont_nav nav { float: left; margin-left: 50px; }
@@ -300,7 +299,7 @@ footer .fsociales h4 { margin-bottom: 10px; font-size: 12px; }
 .cont_concepto h2, .ofer h2, .m_modalidades>h2, .omoda { font-size: 25px; color: #717171; padding-bottom: 20px; margin-bottom: 40px; position: relative; }
 /*.ofer h2::after{background: #F36E23; content: ""; height: 1px;  left: 0;  margin: auto;  position: absolute; right: 0;bottom: 0;  width: 205px;}*/
 
-.cont_mapa_convenios > h2::after, .cont_labores h2::after, .cont_concepto h2::after, .cont_ecuotas h2::after, .ofer h2::after, .tvirtual h2::after,  .m_modalidades>h2::after, .omoda span::after { background: #F36E23; content: ""; height: 1px; left: 0; margin: auto; position: absolute; right: 0; bottom: 0; width: 205px; }
+.cont_mapa_convenios > h2::after, .cont_labores h2::after, .cont_concepto h2::after, .cont_ecuotas h2::after, .ofer h2::after, .tvirtual h2::after, .m_modalidades>h2::after, .omoda span::after { background: #F36E23; content: ""; height: 1px; left: 0; margin: auto; position: absolute; right: 0; bottom: 0; width: 205px; }
 /*.cont_concepto h2 span, .cont_ecuotas h2 span, .ofer h2 span, .m_modalidades>h2 span, .omoda span { border-bottom: 1px solid #F36E23; width: 205px; display: inline-block; position: absolute; left: 41%; bottom: 0px; }*/
 .cont_ecuotas h2 span { left: 38%; }
 .cont_concepto p { color: #666; line-height: 160%; }
@@ -722,14 +721,10 @@ footer { width: 100%; }
 .field-name-calendario-modalidades-otras .table > thead > tr > th, .field-name-calendario-modalidades-otras .table > tbody > tr > td { text-align: center; position: relative; }
 #alldata tr { border-bottom: 1px solid #ddd; }
 #alldata tr > th.descta, #alldata tr > td.descta { text-align: left !important; }
-.line_o3 { background-color: rgba(243, 108, 36 ,.5 ); width: calc(57% - 6px); position: absolute; height: 15px; left: 0;/*top: 33%;*/
-}
-.line_o2 { background-color: rgba(243, 108, 36 ,.5 ); width: 100%; height: 15px; display: block; position: absolute; right: 0; left: 0;/*top: 33%;*/
-    
-}
+.line_o3 { background-color: rgba(243, 108, 36 ,.5 ); width: calc(57% - 6px); position: absolute; height: 15px; left: 0;/*top: 33%;*/ }
+.line_o2 { background-color: rgba(243, 108, 36 ,.5 ); width: 100%; height: 15px; display: block; position: absolute; right: 0; left: 0;/*top: 33%;*/ }
 #v1 span.line_o1 { display: none !important; }
-.line_o1 { height: 15px; background-color: rgba(243, 108, 36 ,.5 ); display: inline-block; width: calc(57% - 6px); position: absolute; right: 0;/*top: 33%;*/
-}
+.line_o1 { height: 15px; background-color: rgba(243, 108, 36 ,.5 ); display: inline-block; width: calc(57% - 6px); position: absolute; right: 0;/*top: 33%;*/ }
 /*curricula*/
 
 .cont_curri table tr td { padding: 10px 15px;/*border-bottom: 1px solid #ccc;*/ color: #999; height: 40px; vertical-align: top; }
@@ -755,7 +750,7 @@ footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
 .cont_nav { width: 100%; left: 0; margin-left: 0; }
 .cont_nav figure { margin-left: 2%; }
 .cont_nav figure.logo img { }
-.cont_nav nav { margin: 0; background: #000; background-color: rgba(0, 0, 0, 0.8); width: 100%; float: right; position: absolute; top: -10px; }
+.cont_nav nav { margin: 0; background: #000; background-color: rgba(0, 0, 0, 0.9); width: 100%; float: right; position: absolute; top: -10px; }
 .cont_nav nav { display: none; }
 .cont_nav nav ul { display: inline-block; width: 100%; margin-bottom: 20px; }
 .cont_nav nav ul li { margin-left: 25px; float: none; margin-bottom: 30px; }
@@ -920,21 +915,15 @@ footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
 .cont_mapa_convenios h2 span { left: 14%; }
 .conv_list { width: 100%; margin-right: 0; }
 .cont_carreras .slick-slider .slick-track, .cont_carreras .slick-slider .slick-list { min-height: inherit; }
-.tucarrera {
-  
-    text-align: center;
-}
+.tucarrera { text-align: center; }
 .tucarrera select { width: 90%; margin-bottom: 20px; }
 tucarrera .smas { float: none; text-align: center; }
-.tucarrera form{margin-bottom: 20px;}
+.tucarrera form { margin-bottom: 20px; }
 #select-facultades .btn-default.form-submit { margin-left: -35px; }
-.digit {
-  
-    width: 50px;}
-	.position {
-  
-    width: 50px;
-}
+.digit { width: 50px; }
+.position { width: 50px; }
+.msn .mesj { margin-top: 0; }
+section#block-bean-bloque-izuierdo { padding-top: 0; }
 }
  @media screen and (max-width: 550px) {
 .dpotencial h2, .dpotencial2 h2 { top: 3%; font-size: 2em; }
