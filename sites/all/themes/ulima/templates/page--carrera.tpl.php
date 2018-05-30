@@ -76,31 +76,28 @@
 ?>
 <div class="header">
     <div class="cont_nav">
-      
+      <div class="center-nav">
         <figure class="logo" >
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
           <picture>
-           <source srcset="/sites/all/themes/ulima/img/escudoulima.png" media="(max-width: 770px)">
+           <source srcset="sites/all/themes/ulima/img/escudoulima.png" media="(max-width: 770px)">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
 
           </picture>
         </a>
         </figure>
-     
-
-      
-          <span class="hamb" style="z-index :10">
+        <span class="hamb" style="z-index :10">
                   <span></span>
                 <span></span>
                 <span></span>
           </span>
-         
         <nav >
           <?php if (!empty($primary_nav)): ?>
             <?php print render($primary_nav); ?>
           <?php endif; ?>
         
         </nav>
+       </div>
       
     </div>
 
