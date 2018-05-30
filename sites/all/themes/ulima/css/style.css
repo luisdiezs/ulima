@@ -736,11 +736,11 @@ footer { width: 100%; }
 /*ajustes a pro*/
 .block-system{ background:#f4f4f4}
 .view-buscador-colegio{    margin: 0 auto;    max-width: 1366px;}
-/*.view-content{ margin: 0 auto;    max-width: 1260px;}
+.examen_ad .view-content{ margin: 0 auto;    max-width: 1260px;}
 
 
 
-/*/
+
 
 /*--------------------media querie----------*/
 @media screen and (max-width: 1359px) {
