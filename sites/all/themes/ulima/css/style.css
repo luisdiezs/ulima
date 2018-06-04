@@ -930,6 +930,16 @@ tucarrera .smas { float: none; text-align: center; }
 section#block-bean-bloque-izuierdo { padding-top: 0; }
 .slick-media .slick__image { height: auto!important; }
 .sticker-3 #block-views-carrusel-carreras-block { position: fixed; margin: auto; top: 0; left: 0%; width: 100%; right: 0%; }
+ 
+#edit-field-tipo-value-wrapper {
+    padding: 0;
+    max-width: 200px;
+    margin: 0 auto;
+    float: none;
+}
+.views-exposed-widgets {
+    margin-bottom: 20px;
+}
 }
  @media screen and (max-width: 550px) {
 .dpotencial h2, .dpotencial2 h2 { top: 3%; font-size: 2em; }
