@@ -55,9 +55,7 @@ ul.menu.nav.navbar-nav { padding-top: 5px; }
 .secondary-active .cont_nav nav { height: 100%; overflow-y: auto; width: 100%; left: 0px; top: 85px; position: fixed; display: block; }
 .secondary-active.sticker-1 .cont_nav nav { margin-left: 0; }
 .sticker-3.page-carreras .cont_nav { display: none; }
-.sticker-3 #block-views-carrusel-carreras-block { max-width: 1140px;
-    position: fixed;
-    top: 0;}
+.sticker-3 #block-views-carrusel-carreras-block { max-width: 1140px; position: fixed; top: 0; margin-top: 0; }
 .secondary-active .cont_nav nav ul li.contacto { width: 140px; }
 .secondary-active .cont_nav nav ul li.contacto a { margin: 12px; }
 .secondary-active .cont_nav nav ul li { margin-bottom: 0; }
@@ -734,11 +732,10 @@ footer { width: 100%; }
 .cont_curri table tr td h4 { color: #575757; font-size: 12px; }
 .cont_curri table tr td.dataa { width: 9% }
 .cont_curri table tr td.space { width: 1% }
-
 /*ajustes a pro*/
-.block-system{ background:#f4f4f4}
-.view-buscador-colegio{    margin: 0 auto;    max-width: 1366px;}
-.examen_ad .view-content{ margin: 0 auto;    max-width: 1260px;}
+.block-system { background: #f4f4f4 }
+.view-buscador-colegio { margin: 0 auto; max-width: 1366px; }
+.examen_ad .view-content { margin: 0 auto; max-width: 1260px; }
 
 
 
@@ -931,7 +928,7 @@ tucarrera .smas { float: none; text-align: center; }
 .position { width: 50px; }
 .msn .mesj { margin-top: 0; }
 section#block-bean-bloque-izuierdo { padding-top: 0; }
-.slick-media .slick__image{    height: auto!important;}
+.slick-media .slick__image { height: auto!important; }
 .sticker-3 #block-views-carrusel-carreras-block { position: fixed; margin: auto; top: 0; left: 0%; width: 100%; right: 0%; }
 }
  @media screen and (max-width: 550px) {
