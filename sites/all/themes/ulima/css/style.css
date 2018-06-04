@@ -929,6 +929,7 @@ tucarrera .smas { float: none; text-align: center; }
 .position { width: 50px; }
 .msn .mesj { margin-top: 0; }
 section#block-bean-bloque-izuierdo { padding-top: 0; }
+.slick-media .slick__image{    height: auto!important;}
 }
  @media screen and (max-width: 550px) {
 .dpotencial h2, .dpotencial2 h2 { top: 3%; font-size: 2em; }

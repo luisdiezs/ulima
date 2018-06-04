@@ -284,7 +284,7 @@ width: 100%;
     top: 104px;
 }
 .item-carrera  h4 {margin-bottom: 5px; font-size: 17px;}
-.item-carrera  h3{max-width: 765px;   background: none;    padding-left: 0;    line-height: 140%;}
+.item-carrera  h3{max-width: 960px;   background: none;    padding-left: 0;    line-height: 140%;     margin: 0 auto;}
 .node-type-empleabilidad .view-testimonios-slider,
 .node-type-carrera .view-testimonios-slider{
     display: inline-block;
