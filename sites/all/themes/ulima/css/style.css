@@ -55,7 +55,9 @@ ul.menu.nav.navbar-nav { padding-top: 5px; }
 .secondary-active .cont_nav nav { height: 100%; overflow-y: auto; width: 100%; left: 0px; top: 85px; position: fixed; display: block; }
 .secondary-active.sticker-1 .cont_nav nav { margin-left: 0; }
 .sticker-3.page-carreras .cont_nav { display: none; }
-.sticker-3 #block-views-carrusel-carreras-block { position: fixed; margin: auto; top: 0; left: 0%; width: 100%; right: 0%; }
+.sticker-3 #block-views-carrusel-carreras-block { max-width: 1140px;
+    position: fixed;
+    top: 0;}
 .secondary-active .cont_nav nav ul li.contacto { width: 140px; }
 .secondary-active .cont_nav nav ul li.contacto a { margin: 12px; }
 .secondary-active .cont_nav nav ul li { margin-bottom: 0; }
@@ -930,6 +932,7 @@ tucarrera .smas { float: none; text-align: center; }
 .msn .mesj { margin-top: 0; }
 section#block-bean-bloque-izuierdo { padding-top: 0; }
 .slick-media .slick__image{    height: auto!important;}
+.sticker-3 #block-views-carrusel-carreras-block { position: fixed; margin: auto; top: 0; left: 0%; width: 100%; right: 0%; }
 }
  @media screen and (max-width: 550px) {
 .dpotencial h2, .dpotencial2 h2 { top: 3%; font-size: 2em; }
