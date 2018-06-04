@@ -737,7 +737,7 @@ footer { width: 100%; }
 .view-buscador-colegio { margin: 0 auto; max-width: 1366px; }
 .examen_ad .view-content { margin: 0 auto; max-width: 1260px; }
  
-.slick--view--carrusel-carreras .slick-track .slick-cloned{ width:auto!important}
+.slick--view--carrusel-carreras .slick-initialized .slick-slide{ width:auto!important}
 
 
 
