@@ -102,10 +102,10 @@
     </div>
 
   
-  
+    <?php print_r($page); ?>
     <?php print render($page['header']); ?>
      <div class="cont_msnh">
-     <h4> <a href="/carreras"> Carrreras </a> > <?php print $title; ?></h4>
+     <h4> <a href="/carreras"> Carreras </a> > <a href="/carreras/"><?php print $title; ?></a></h4>
     <h1 ><?php print $title; ?></h1>
     <?php if($mensaje_introductorio != NULL) : ?>
     <h3><?php print $mensaje_introductorio; ?></h3>
