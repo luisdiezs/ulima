@@ -102,7 +102,6 @@
     </div>
 
   
-    <?php print_r($page); ?>
     <?php print render($page['header']); ?>
      <div class="cont_msnh">
      <h4> <a href="/carreras"> Carreras </a> > <a href="/carreras/"><?php print $title; ?></a></h4>
