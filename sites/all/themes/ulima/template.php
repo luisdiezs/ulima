@@ -53,6 +53,9 @@ if((isset($variables['node'])) && $variables['node']->type =='perfil'){
   $variables['theme_hook_suggestions'][] = 'page__perfil';
   $mensaje_introductorio = isset($variables['node']->field_mensaje_introductorio['und']) ? $variables['node']->field_mensaje_introductorio['und'][0]['value'] : NULL;
     $variables['mensaje_introductorio'] = $mensaje_introductorio;
+    $nodoid = $variables['node']->field_carrera['und'][0]['target_id'];
+    $variables['idcarrera'] = $variables['node']->field_carrera['und'][0]['target_id'];
+    $variables['carrera'] = node_load($nodoid)->title;
 }
 
 if((isset($variables['node'])) && $variables['node']->type =='malla_curricular'){
