@@ -824,7 +824,7 @@ footer .fsociales { margin: 0 auto; max-width: 190px; float: none; }
 @media screen and (max-width: 770px) {
 .dpotencial h2, .dpotencial2 h2 { top: 5%; font-size: 3em; }
 .cont_nav figure.logo img { max-width: 60px; }
-.slick-arrow { display: none!important; }
+ 
 .cont_slide_p { top: 18%; left: 17%; }
 .cont_mens .item_msn { width: 100%; margin-bottom: 3%; }
 .cont_ofertas .ofer_item { width: 94%; margin-bottom: 7%; }
