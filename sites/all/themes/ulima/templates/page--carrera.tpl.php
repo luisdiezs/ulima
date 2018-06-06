@@ -76,7 +76,7 @@
 ?>
 <div class="header">
     <div class="cont_nav">
-      <div class="center-nav">
+      
         <figure class="logo" >
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
           <picture>
@@ -86,18 +86,21 @@
           </picture>
         </a>
         </figure>
-        <span class="hamb" style="z-index :10">
+     
+
+      
+          <span class="hamb" style="z-index :10">
                   <span></span>
                 <span></span>
                 <span></span>
           </span>
+         
         <nav >
           <?php if (!empty($primary_nav)): ?>
             <?php print render($primary_nav); ?>
           <?php endif; ?>
         
         </nav>
-       </div>
       
     </div>
 
@@ -106,7 +109,7 @@
     <?php print render($page['header']); ?>
 
       <div class="cont_msnh">
-     <h4> <a href="/carreras"> Carrreras </a> > <?php print $title; ?></h4>
+    
     <h1 ><?php print $title; ?></h1>
     <?php if($mensaje_introductorio != NULL) : ?>
     <h3><?php print $mensaje_introductorio; ?></h3>
@@ -126,6 +129,8 @@
 
 
 <div class="main-container  item-carrera item_carr">
+   <h4> <a href="/carreras"> Carrreras </a> > <?php print $title; ?></h4>
+
      <?php if (!empty($page['precontent'])): ?>
      
         <?php print render($page['precontent']); ?>
