@@ -76,35 +76,38 @@
 ?>
 <div class="header">
     <div class="cont_nav">
-      <div class="center-nav">
+      
         <figure class="logo" >
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
           <picture>
-           <source srcset="sites/all/themes/ulima/img/escudoulima.png" media="(max-width: 770px)">
+            <source srcset="sites/all/themes/ulima/img/escudoulima.png" media="(max-width: 770px)">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
 
           </picture>
         </a>
         </figure>
-        <span class="hamb" style="z-index :10">
+     
+
+      <span class="hamb" style="z-index :10">
                   <span></span>
                 <span></span>
                 <span></span>
           </span>
+         
         <nav >
           <?php if (!empty($primary_nav)): ?>
             <?php print render($primary_nav); ?>
           <?php endif; ?>
         
         </nav>
-       </div>
       
     </div>
 
   
+  
     <?php print render($page['header']); ?>
      <div class="cont_msnh">
-     <h4> <a href="/carreras"> Carreras </a> > <a href="/carreras/"><?php print $title; ?></a></h4>
+     <h4> <a href="/carreras"> Carrreras </a> > <a href="<?php print url(drupal_get_path_alias('node/' . $idcarrera)); ?>"> <?php print $carrera; ?></a> > Perfil </h4>
     <h1 ><?php print $title; ?></h1>
     <?php if($mensaje_introductorio != NULL) : ?>
     <h3><?php print $mensaje_introductorio; ?></h3>
