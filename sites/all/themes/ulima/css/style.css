@@ -734,11 +734,10 @@ footer { width: 100%; }
 .cont_curri table tr td.space { width: 1% }
 /*ajustes a pro*/
 .block-system { background: #f4f4f4 }
-.region-content .block-system{background: #fff;}
+.region-content .block-system { background: #fff; }
 .view-buscador-colegio { margin: 0 auto; max-width: 1366px; }
 .examen_ad .view-content { margin: 0 auto; max-width: 1260px; }
- 
-.slick--view--carrusel-carreras .slick-initialized .slick-slide{ width:auto!important}
+.slick--view--carrusel-carreras .slick-initialized .slick-slide { width: auto!important }
 
 
 
@@ -934,9 +933,11 @@ section#block-bean-bloque-izuierdo { padding-top: 0; }
 .sticker-3 #block-views-carrusel-carreras-block { position: fixed; margin: auto; top: 0; left: 0%; width: 78%; right: 0%; }
 #edit-field-tipo-value-wrapper { padding: 0; max-width: 185px; margin: 0 auto; float: none; width: 100%; }
 .views-exposed-widgets { margin-bottom: 20px; }
+ 
+.slick-arrow { display: inline-block!important; }
 .list .slick-arrow {
  
-    top: 26%;}
+    top: 25%!important;}
 }
  @media screen and (max-width: 550px) {
 .dpotencial h2, .dpotencial2 h2 { top: 3%; font-size: 2em; }
