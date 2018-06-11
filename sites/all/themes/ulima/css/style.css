@@ -664,6 +664,7 @@ font-size: 15px; width: 100%; padding: 20px 3%; position: absolute; }
 .cont_shadow { background-color: rgba(0, 0, 0, 0.7); width: 100%; height: 100%; position: absolute; left: 0; top: 0; }
 .buscador-colegio .view-filters { width: 64%; float: right; background: #F4F4F4; padding-top: 15px; min-height: 78px; }
 .buscador-colegio .view-header { float: left; width: 36%; background: #F4F4F4; padding-top: 15px; padding-bottom: 15px; min-height: 78px; padding-left: 30px; }
+.page-admision .region-content .block-system{    background: #F4F4F4;}
 .buscador-colegio label[for=edit-field-tipo-value-all] { display: none; }
 #edit-field-tipo-value-wrapper label { background: #DEDEDE; color: #999; font-size: 11px; padding: 10px 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; border-radius: 15px; }
 .buscador-colegio input#edit-title { border: 1px solid #E6E6E6; border-radius: 15px; height: 33px; padding: 3px 10px; margin-top: 6px; max-width: 460px; width: 100%; color: #ccc; }
@@ -934,7 +935,7 @@ section#block-bean-bloque-izuierdo { padding-top: 0; }
 #edit-field-tipo-value-wrapper { padding: 0; max-width: 185px; margin: 0 auto; float: none; width: 100%; }
 .views-exposed-widgets { margin-bottom: 20px; }
  
-.slick-arrow { display: inline-block!important; }
+.slick-arrow { display: none!important; }
 .list .slick-arrow {
  
     top: 25%!important;}
@@ -967,4 +968,4 @@ section#block-bean-bloque-izuierdo { padding-top: 0; }
 .digit.static { background-image: unset; background-color: transparent; top: -6px !important; box-shadow: none; }
 .countDays .position:nth-child(2) { right: 15px; }
 .countDays .position:nth-child(1) { left: -4px; }
-.position { height: 50px; }
+.position { height: 50px;     width: 53px; }
