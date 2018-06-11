@@ -105,7 +105,6 @@
   
     <?php print render($page['header']); ?>
         <div class="cont_msnh">
-    <h4> <a href="/carreras"> Carreras </a> > <a href="/carreras/"><?php print $title; ?></a> > Malla Curricular</h4>
     <h1 ><?php print $title; ?></h1>
     <?php if($mensaje_introductorio != NULL) : ?>
     <h3><?php print $mensaje_introductorio; ?></h3>
@@ -123,7 +122,7 @@
       <?php endif; ?>
 
 <div class="main-container <?php print $container_class; ?>">
-
+  <h4> <a href="/carreras"> Carreras </a> > <a href="/carreras/"><?php print $title; ?></a> > Malla Curricular</h4>
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>
       <p class="lead"><?php print $site_slogan; ?></p>

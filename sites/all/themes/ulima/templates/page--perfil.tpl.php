@@ -107,7 +107,6 @@
   
     <?php print render($page['header']); ?>
      <div class="cont_msnh">
-     <h4> <a href="/carreras"> Carrreras </a> > <a href="<?php print url(drupal_get_path_alias('node/' . $idcarrera)); ?>"> <?php print $carrera; ?></a> > Perfil </h4>
     <h1 ><?php print $title; ?></h1>
     <?php if($mensaje_introductorio != NULL) : ?>
     <h3><?php print $mensaje_introductorio; ?></h3>
@@ -124,7 +123,7 @@
       <?php endif; ?>
 
 <div class="main-container perfil-main">
-
+  <h4> <a href="/carreras"> Carrreras </a> > <a href="<?php print url(drupal_get_path_alias('node/' . $idcarrera)); ?>"> <?php print $carrera; ?></a> > Perfil </h4>
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>
       <p class="lead"><?php print $site_slogan; ?></p>
