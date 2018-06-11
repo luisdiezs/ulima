@@ -696,7 +696,7 @@ function personalizacion_node_view($node, $view_mode, $langcode) {
        $grupos = $node->content['#groups'];
 
        foreach ($grupos as $key => $value) {
-            
+            print_r($value);
         if($value->id ==  125) { ///group_contet
          
          
