@@ -688,3 +688,26 @@ foreach ($data as $key => $value) {
 
 
 }
+
+function personalizacion_node_view($node, $view_mode, $langcode) {  
+
+
+  if($view_mode == 'teaser' && $node->type == 'slider') {
+       $grupos = $node->content['#groups'];
+
+       foreach ($grupos as $key => $value) {
+            
+        if($value->id ==  125) { ///group_contet
+         
+         
+
+          $value->format_settings['instance_settings']['id'] = "count".$node->nid;
+         
+       
+        
+     }
+
+
+  }
+}
+}
