@@ -98,7 +98,8 @@ function field_countdown_field_validate($entity_type, $entity, $field, $instance
         if ($entered_time <= time()) {
           $errors[$field['field_name']][$langcode][$delta][] = array(
             'error' => 'value',
-            'message' => t("la fecha y hora deben ser mayores a la fecha actual."),
+            'message' => t("The date and time should greater than current 
+            date and time."),
           );
         }
       }
@@ -260,16 +261,17 @@ function _field_countdown_display_timer($time, $font_size, $countdown_field_coun
  * Returns HTML for the timer container.
  */
 function theme_field_countdown_timer($variables) {
+  
   $output = '<h2>Faltan';
-  $output .= "<span id='field-countdown-timer-" . $variables['suffix'] . "'>
+  $output .= "<span style='display:none;' id='field-countdown-timer-" . $variables['suffix'] . "'>
     </span>";
   if ($variables['text_timer']) {
-    $output .= "<div id='field-countdown-timer-note-" . $variables['suffix'] .
-        "'></div>";
+    $output .= "<span  style='display:none;' id='field-countdown-timer-note-" . $variables['suffix'] .
+        "'></span>";
   }
   else {
-    $output .= "<div style='display:none;' id='field-countdown-timer-note-" .
-        $variables['suffix'] . "'></div>";
+    $output .= " <span class='diac' id='field-countdown-timer-note-" .
+        $variables['suffix'] . "'></span>";
   }
   $output .='días </h2>';
   return $output;

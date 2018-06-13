@@ -15,9 +15,9 @@
           callback: function(days, hours, minutes, seconds) {
             var date_time_str = new Array();
             date_time_str['@days'] = Drupal.formatPlural(
-                    days, '1 day', '@count days'
+                    days, '1 ', '@count '
                     );
-            date_time_str['@hours'] = Drupal.formatPlural(
+           /* date_time_str['@hours'] = Drupal.formatPlural(
                     hours, '1 hour', '@count hours'
                     );
             date_time_str['@minutes'] = Drupal.formatPlural(
@@ -25,9 +25,9 @@
                     );
             date_time_str['@seconds'] = Drupal.formatPlural(
                     seconds, '1 second', '@count seconds'
-                    );
+                    );*/
             var message = Drupal.t(
-                    '@days, @hours, @minutes and @seconds left',
+                    '@days',
                     date_time_str
                     );
             note.html(message);
