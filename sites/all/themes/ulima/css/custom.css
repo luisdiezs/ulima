@@ -1,5 +1,9 @@
 @charset "utf-8";
-
+.cont-escuela ul li:hover{cursor: pointer;}
+.node-type-gracias .wrapper{ background-color: #ff4f00;}
+.node-type-gracias .contenido-resultado { background-color: #ff4f00; padding: 40px; }
+.node-type-gracias .contenido-resultado p {color:#fff;}
+.node-type-gracias .contenido-resultado img {margin:auto;}
 /* CSS Document */
 #quicktabs-convenios .nav-tabs {    border-bottom: 1px solid transparent;margin: 0 auto 40px;}
 #quicktabs-convenios > ul  li:nth-child(2) a {
@@ -685,6 +689,7 @@ section#btn-block-webform-client-block-15 {
     padding: 35px;
 }
 #block-bean-openlimatitle  img {margin: auto;}
+input#edit-submitted-date,
 input#edit-submitted-charlas {
     color: transparent;
     background: transparent;

@@ -1,0 +1,226 @@
+<?php
+
+
+
+ 
+function simulador_menu() {
+ 
+
+ $items['colegios_autocomplete'] = array(
+   
+    'page callback' => '_autocomplete',
+    'access arguments' =>array('access content'),
+    'type' => MENU_CALLBACK,
+  );  
+  return $items;
+}
+
+
+/**
+ * Implements hook_block_info().
+ */
+function simulador_block_info() {
+  $blocks = array();
+  $blocks['simulador'] = array(
+    'info' => t('Simulador step'),
+  );
+
+
+  return $blocks;
+}
+
+
+
+function simulador_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'simulador':
+      $block['subject'] = '';
+      $block['content'] = get_data_html_modal();
+      break;
+
+
+  }
+  return $block;
+}
+
+
+function _autocomplete($string = '') {
+  //$string = $_POST["data"];
+  $string = $_GET['term'];
+  $matches = array();
+  if ($string) {
+    $result =  db_select('node', 'n')
+  ->fields('n', array('nid', 'title'))
+  ->condition('n.title', '%' . db_like($string) . '%', 'LIKE')
+  ->condition('n.type', 'colegio')
+  ->range(0, 10)
+  ->execute()
+  ->fetchAll();
+    foreach ($result as $node) {
+      //$matches[$node->nid] = check_plain($node->title);
+       $matches[$node->nid]['label'] = check_plain($node->title);
+       $matches[$node->nid]['value'] = $node->nid;
+    }
+  }
+
+echo drupal_json_output($matches);
+
+exit();
+}
+
+function get_data_html_modal() {
+
+
+  drupal_add_js(drupal_get_path('module', 'simulador') . '/modal-steps.min.js');
+drupal_add_css(drupal_get_path('module', 'simulador') . '/simulador.css',array('group' => CSS_DEFAULT, 'every_page' => TRUE));
+
+
+$modal1 ='<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">Launch demo modal </button>';
+$modal1 .= '<div class="modal fade simulador" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        
+      </div>
+      <div class="modal-body">';
+   $modal1 .= '<div class="menu" >
+    
+
+         <div class="calculadora">
+              <ul>
+                <li>Inversión &gt;  </li>
+                    <li>Simulador de pensiones &gt;  </li>
+                     <li>Elige tus colegios  </li>
+              </ul>
+              <div class="cont_calculadora cal1">
+                    <h2>¿Cuál es tu caso?</h2>
+                        <div class="cont_casos_cal">
+                          <div class="casoCole ">
+                            <span class="uncolegio">
+                              <figure>
+                                  <img src="/sites/all/themes/ulima/img/colegio1.jpg">
+                                </figure>
+                                <h4>
+                                  Estudié de tercero a quinto año de secundaria 
+                                    <strong>en un mismo colegio</strong>
+                                </h4>
+                            </span>
+                                     
+                            
+                            </div>
+                            <div class="casoCole cole2 ">
+                            <a href="">
+                              <figure>
+                                  <img src="/sites/all/themes/ulima/img/colegio2.jpg">
+                                </figure>
+                                <h4>
+                                  Estudié de tercero a quinto año de secundaria 
+                                    <strong>en un mismo colegio</strong>
+                                </h4>
+                            </a>                      
+                                                        
+                            </div>                       
+                        </div>
+                         
+                       
+                        <h3>
+                           La información que obtenga este simulador es referencial. Su categoria de pago será asignada al momento de su inscripción al concurso de admisión.
+                        </h3>
+              </div>
+            </div>
+     
+    </div>';
+ $modal1 .='</div> </div> </div></div>';
+
+//$modal ='<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Launch demo modal </button>';
+$modal ='';
+$modal .= '<div class="modal fade simulador" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="js-title-step"></h4>
+      </div>
+      <div class="modal-body">';
+
+
+
+$modal .= '<div class="row hide" data-step="1">
+
+            <div class="calculadora">
+          <ul>
+            <li>Inversión &gt;  </li>
+                <li>Simulador de pensiones &gt;  </li>
+                <li>Elige tu colegio  </li>
+          </ul>
+          <div class="cont_calculadora">
+                <h2>Elige tu colegio</h2>
+                    
+                    <div class="select_cal">
+                       
+                      <div class="ui-widget">
+                        <input type="text" id="search-box" class="form-control autocomplete ui-autocomplete-input" placeholder="Selecciona tu colegio" />
+                        <label id="selectID"></label>
+                      </div>
+                    </div>
+                    
+                     
+                    <h3>
+                      Los nombres de los colegios serán verificados por la Universidad de Lima al momento de su inscripción al concurso de admisión
+                    </h3>
+                    
+                    <div class="cont_botones_cal">
+                      <div class="cont_conmas">
+                            <div class="smas">
+                                <span><a href="" tabindex="0">Volver </a>
+                                </span>
+                            </div>
+                            <div class="smas smas2">
+                                <span><a href="" tabindex="0">Siguiente</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+
+        </div>';
+
+
+
+ $modal .='<div class="row hide" data-step="2" data-title="This is the last step!">
+    <div class="jumbotron">This is the last step!</div>
+  </div>
+
+   <div class="row hide" data-step="3" data-title="This is the last step!">
+    <div class="jumbotron">This is the last step!</div>
+  </div>
+
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default js-btn-step pull-left" data-orientation="cancel" data-dismiss="modal"></button>
+    <button type="button" class="btn btn-warning js-btn-step" data-orientation="previous"></button>
+    <button type="button" class="btn btn-success js-btn-step" data-orientation="next"></button>
+      </div>
+    </div>
+  </div>
+</div>';
+
+$modal .= '<script>jQuery("#myModal").modalSteps();</script>';
+
+
+ return $modal.$modal1 ;
+
+}
+
+
+
+
+
+
+
+
+

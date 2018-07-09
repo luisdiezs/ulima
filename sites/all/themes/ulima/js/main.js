@@ -43,6 +43,35 @@ $('.tererererere .slick-arrow').trigger("click");
 });
 
 
+$('.uncolegio').on('click', function(){ 
+
+$('#myModal1').modal('hide');
+$('#myModal').modal();
+
+});
+
+/*simulador autocompeltado*/
+
+ 
+  
+   $("#search-box").autocomplete({
+      source: "colegios_autocomplete",
+      minLength: 2,
+      select: function (event, ui) {
+      console.log(ui.item.label);
+      console.log(ui.item.value);
+      $("#search-box").val(ui.item.label); // display the selected text
+      $("#selectID").html(ui.item.value); // save selected id to hidden input
+    }
+    });
+ 
+
+ 
+
+
+/*simulador */
+  
+
 
 var url = window.location.href;
 if(url.indexOf('?field_tipo_value=') > 0){
@@ -68,18 +97,76 @@ jQuery('.modal').appendTo("body");
                 }
           
         });
+  
+
+  $('#webform-client-form-15 button').on('click', function(){
+  var count = $('#edit-submitted-charlas').val().length;
+
+
+   var valuesdates = $('#edit-submitted-date').val();
+   var resdates = valuesdates.split("|"); 
+   
+   var text = "";
+   var i;
+   var valor = 0;
+  if(count===0) {
+    
+    $('.mensajeerror').text("Debe escoger al menos una charla");
+    return false;
+  }
+  else {
+         for (i = 0; i < resdates.length; i++) {
+          var newi = resdates.length - (i + 1) ;
+          var p;
+
+          for (p = 1; p <= newi; p++) {
+
+          text += resdates[i] + '-'+resdates[i + p] + '<br/>';
+
+          if(resdates[i] === resdates[i + p]) {
+              valor = 1;
+           
+
+          } 
+       }
+      }
+
+        if(valor == 1 ) {
+            $('.mensajeerror').text("Por favor verificar, no puedes inscribirte a más de una charla a la misma hora en el mismo día");
+             return false;
+           }else {
+
+            return true;
+           }
+
+  }
+
+  
+
+});
+
 
     $('#btn-block-webform-client-block-15 button').on('click', function(){
 
        var tab_attribs = [];
+        var dates = [];
        $('.carreras ul li.active').each(function () {
        tab_attribs.push( jQuery(this).attr("data-id") );
+        dates.push(jQuery(this).attr("data-date"));
          });
      var stte = tab_attribs.join("|");
-
+     var fechas = dates.join("|");
      $('#edit-submitted-charlas').val(stte);
+     $('#edit-submitted-date').val(fechas);
    
 });
+
+
+
+
+
+    
+
     jQuery("input[name='field_tipo_value']:checked").parent().addClass("active"); 
     $('#edit-field-tipo-value-wrapper .form-item-field-tipo-value label').on('click', function(){
           

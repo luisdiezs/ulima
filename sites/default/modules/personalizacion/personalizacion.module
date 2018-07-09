@@ -329,7 +329,7 @@ if (isset($result['node'])) {
     $count = 0;
     foreach ($value['fechas'] as $key2 => $value2) {
      
-     $resp.= '<li data-id="'.$charla->nid.'-'.$count.'"><a ><h4>'.t(date("l", $value2['value'])).' '.date("d", $value2['value']).'</h4><h3>'.t(date("g", $value2['value'])).' - '.date("g:i", $value2['value2']).'</h3></a></li>';
+     $resp.= '<li data-date="'.$value2['value'].'" data-id="'.$charla->nid.'-'.$count.'-'.$value2['value'].'"><a ><h4>'.t(date("l", $value2['value'])).' '.date("d", $value2['value']).'</h4><h3>'.t(date("g", $value2['value'])).' - '.date("g:i", $value2['value2']).'</h3></a></li>';
 
      $count =  $count + 1;
     }
@@ -398,7 +398,7 @@ if (isset($result['node'])) {
     $count = 0;
     foreach ($value['fechas'] as $key2 => $value2) {
 
-     $resp.= '<li data-id="'.$charla->nid.'-'.$count.'"><a ><h4>'.t(date("l", $value2['value'])).' '.date("d", $value2['value']).'</h4><h3>'.t(date("g", $value2['value'])).' - '.date("g:i", $value2['value2']).'</h3></a></li>';
+     $resp.= '<li data-date="'.$value2['value'].'" data-id="'.$charla->nid.'-'.$count.'-'.$value2['value'].'"><a ><h4>'.t(date("l", $value2['value'])).' '.date("d", $value2['value']).'</h4><h3>'.t(date("g", $value2['value'])).' - '.date("g:i", $value2['value2']).'</h3></a></li>';
     $count =  $count + 1;
     }
     $resp .= '</ul>';
@@ -710,4 +710,223 @@ function personalizacion_node_view($node, $view_mode, $langcode) {
 
   }
 }
+}
+
+function personalizacion_form_alter(&$form, &$form_state, $form_id) {
+// Check the form id finaliza tu inscripcion 
+if($form_id == 'webform_client_form_15') {
+ $form['#submit'][] = 'save_node_registro_charlas';
+//$form['#validate'][] = 'only_unique_date_validate';
+}
+}
+
+
+
+
+
+function save_node_registro_charlas($form, &$form_state) {
+  global $user;
+  // Ingresamos el código para el submit.
+
+  // Obtenemos los valores ingresados por el usuario.
+$valores = $form_state['input']['submitted'];
+
+
+  $newNode = (object) NULL;
+  $newNode->type = 'registro_charla';
+  $newNode->uid = $user->uid;
+  $newNode->created = strtotime("now");
+  $newNode->changed = strtotime("now");
+  $newNode->status = 1;
+  $newNode->comment = 0;
+  $newNode->promote = 0;
+  $newNode->moderate = 0;
+  $newNode->sticky = 0;
+  $newNode->language = 'es';
+//  $newNode->title = $registro[1];
+  $newNode->field_charlas_nombres = array('und' => array('0' => array('value' => $valores['nombres'],'safe_value' => check_plain($valores['nombres']))));
+  $newNode->field_charlas_apellidos = array('und' => array('0' => array('value' => $valores['apellidos'],'safe_value' => check_plain($valores['apellidos']))));
+  $newNode->field_charlas_dni = array('und' => array('0' => array('value' => $valores['dni'],'safe_value' => check_plain($valores['dni']))));
+  $newNode->field_charlas_correo_electronico = array('und' => array('0' => array('value' => $valores['correo_electronico'],'safe_value' => check_plain($valores['correo_electronico']))));
+  if(!empty($valores['colegio'])) { 
+  $newNode->field_charlas_colegio = array('und' => array('0' => array('value' => $valores['colegio'],'safe_value' => check_plain($valores['colegio']))));
+  }
+    if(!empty($valores['colegio_alternativo'])) { 
+  $newNode->field_charlas_colegio_no_lista = array('und' => array('0' => array('value' => $valores['colegio_alternativo'],'safe_value' => check_plain($valores['colegio_alternativo']))));
+   }
+
+  $anio = date("Y", strtotime("now"));
+  $newNode->field_charlas_anio_tax = array('und' => array('0' => array('tid' => _getanio_look_tid($anio))));
+
+  $mes =  date("n", strtotime("now"));
+  $newNode->field_convocatoria = array('und' => array('0' => array('tid' => get_value_periodo($mes))));
+
+
+
+  
+/*****charlas*/
+$porciones = explode("|", $valores['charlas']);
+$data = array();
+
+ foreach ($porciones as $key => $value) {
+   $porciones2 = explode("-", $value);
+    $data[$porciones2[0]][]=$porciones2[1];
+    //$b[]=$porciones2[1];
+}
+
+  $nids = array_keys($data);
+
+  foreach ($nids as $key => $value) {
+
+    $charlas = node_load($value);
+    $newNode->field_charlas_carrera['und'][$key]['target_id'] = $charlas->field_carrera['und'][0]['target_id'];
+  }
+  
+/*****end charlas*/
+ $texto = '';
+foreach ($data as $key => $value) {
+
+     $charladata = node_load($key);
+
+      foreach ($value as $key => $value2) {
+        $texto .= "<strong>". node_load($charladata->field_carrera['und'][0]['target_id'])->title ."</strong>"." - ";
+        $texto .=  " Fecha: ". date("d.m.Y",$charladata ->field_fecha['und'][$value2]['value']);
+        $texto .=  " Hora: ". date("H:i",$charladata ->field_fecha['und'][$value2]['value']). "- ". date("H:i",$charladata ->field_fecha['und'][$value2]['value2']);
+        $texto .=  " - Lugar: ".$charladata->field_lugar['und'][0]['value']. "<br/>";
+      }
+  # code...
+
+}
+
+
+$newNode->field_charlas_detalle = array('und' => array('0' => array('value' => $texto,'safe_value' => check_plain($texto),'format'=>'full_html')));
+
+ node_save($newNode);
+
+
+
+
+
+
+
+ /* update del detalle en webform */
+/*
+ module_load_include('inc', 'webform', 'includes/webform.submissions');
+$node = node_load(15);  // cambiar por el nid del webform
+$submission = webform_get_submission($node->nid, $form_state['storage']['details']['sid']);
+
+foreach ($form['#node']->webform['components'] as $key => $component) {
+  if ( $component['form_key'] == 'detalle_registro' ){
+    $submission->data[$key][0] = $texto;
+  }
+ 
+}
+webform_submission_update($node, $submission);
+
+*/
+
+ /********************/
+  
+}
+
+function personalizacion_webform_submission_presave($node, &$submission) {
+  // Get the submission user object.
+  $charlasstring = $submission->data[9][0];
+  $porciones = explode("|", $charlasstring);
+$data = array();
+
+ foreach ($porciones as $key => $value) {
+   $porciones2 = explode("-", $value);
+    $data[$porciones2[0]][]=$porciones2[1];
+    //$b[]=$porciones2[1];
+}
+
+
+ $texto = '';
+foreach ($data as $key => $value) {
+
+     $charladata = node_load($key);
+
+      foreach ($value as $key => $value2) {
+        $texto .=  node_load($charladata->field_carrera['und'][0]['target_id'])->title ." - ";
+        $texto .=  " Fecha: ". date("d.m.Y",$charladata ->field_fecha['und'][$value2]['value']);
+        $texto .=  " Hora: ". date("H:i",$charladata ->field_fecha['und'][$value2]['value']). "- ". date("H:i",$charladata ->field_fecha['und'][$value2]['value2']);
+        $texto .=  " - Lugar: ".$charladata->field_lugar['und'][0]['value'];
+        $texto .= "\n";
+      }
+    
+ 
+}
+
+ $submission->data[16][0] = $texto;
+
+
+}
+
+
+function _getanio_look_tid($term_name){
+    if($term_name == NULL){
+        $tid = NULL;
+      }
+      else {
+        $terms = taxonomy_get_term_by_name($term_name,'charlas_periodo_anual');
+      
+        foreach($terms as $term){
+          $tid = $term->tid;
+            break;
+        }
+      }
+     return $tid;
+}
+
+function _getperiodo_look_tid($term_name){
+    if($term_name == NULL){
+        $tid = NULL;
+      }
+      else {
+        $terms = taxonomy_get_term_by_name($term_name,'convocatoria_periodo');
+      
+        foreach($terms as $term){
+          $tid = $term->tid;
+            break;
+        }
+      }
+     return $tid;
+}
+
+function get_value_periodo($mes){
+$textomes = '';
+
+switch ($mes) {
+
+
+
+  case 10:
+  case 11:
+  case 12:
+  case 1:
+  case 2:
+      $textomes = "Febrero";
+    
+    break;
+
+  case 3:
+  case 4:
+  case 5:
+      $textomes = "Mayo";
+    
+    break;
+  
+  case 6:
+  case 7:
+  case 8:
+  case 9:
+    $textomes = "Setiembre";
+  break;
+}
+
+$tid =_getperiodo_look_tid($textomes);
+
+return $tid;
+
 }

@@ -1,0 +1,81 @@
+.modal.in.simulador .modal-dialog  {background-color: #fff;}
+.modal.in.simulador .modal-header ,
+.modal.in.simulador .modal-body{padding: 0;}
+.modal.in.simulador .modal-header {border-bottom:1px solid transparent;}
+
+@media (min-width: 902px){  
+.modal.in.simulador .modal-dialog {
+width: 	900px;
+}
+
+}
+
+
+.calculadora ul {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: inline-block;
+    width: 100%;
+}
+.calculadora ul li {
+    color: #363636;
+    float: left;
+    margin-right: 3px;
+ }
+
+.cal1 {
+    max-width: 720px;
+}
+
+.cont_calculadora h2 {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 40px;
+}
+
+.cont_calculadora h3 {
+    text-align: left;
+    color: #8C8C8C;
+    line-height: 133%;
+    margin-bottom: 40px;
+    display: inline-block;
+    width: 100%;
+}
+
+.cont_casos_cal {
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+.cont_calculadora {
+    
+    margin: 0 auto;
+    text-align: center;
+    /* margin-bottom: 40px; */
+}
+
+.casoCole {
+    max-width: 49%;
+    width: 100%;
+    float: left;
+    background: #fff;
+    height: 280px;
+    box-shadow: 0px 0px 12px #ccc;
+}
+
+.casoCole h4 {
+    font-size: 16px;
+    padding: 0 55px;
+    line-height: 150%;
+    color: #333;
+}
+
+.casoCole.cole2 {
+    float: right;
+}
+.casoCole figure img {
+    padding-top: 49px;
+}
+
+.page-inversion .ui-autocomplete {z-index: 9999;}
