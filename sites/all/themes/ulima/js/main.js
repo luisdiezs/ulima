@@ -50,26 +50,13 @@ $('#myModal').modal();
 
 });
 
-/*simulador autocompeltado*/
+$('.varioscolegio').on('click', function(){ 
 
- 
-  
-   $("#search-box").autocomplete({
-      source: "colegios_autocomplete",
-      minLength: 2,
-      select: function (event, ui) {
-      console.log(ui.item.label);
-      console.log(ui.item.value);
-      $("#search-box").val(ui.item.label); // display the selected text
-      $("#selectID").html(ui.item.value); // save selected id to hidden input
-    }
-    });
- 
+$('#myModal1').modal('hide');
+$('#myModal2').modal();
 
- 
+});
 
-
-/*simulador */
   
 
 
