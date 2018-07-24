@@ -74,131 +74,74 @@
  * @ingroup templates
  */
 ?>
-
-
-
-
-
-
-
-<div class="wrapper convenios">
-
-
- 
-  <div class="cont_section section1">
-
+<div class="header">
     <div class="cont_nav">
+		<div class="center-nav">
+        <figure class="logo" >
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+          <picture>
+           <source srcset="/sites/all/themes/ulima/img/escudoulima.png" media="(max-width: 770px)">
+            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
 
-                <div class="center-nav">
-                    <a href=""><img src="/sites/all/themes/ulima/img/svg/logo_ulima.svg"></a>
-                </div>
-
-                <div id="mainmenu" class="nav menudo">
-                    <!--menu_on para prender el menu-->
-
-                    <div class="cont_close"><span class="inscrib"><a href="">inscribete aquí<i> </i></a></span><span class="hmb"><a href=""></a></span></div>
-
-                    <div class="menu_nav">
-
-                      <?php print render($primary_nav); ?>
-
-                        <span class="sulima"><a href="">
-
-          <h3><span>#</span>SOMOS</h3>
-
-                        <h2>ULIMA</h2>
-
-                        </a>
-                        </span>
-
-
-
-                    </div>
-
-                    <span class="line5">  <img src="/sites/all/themes/ulima/img/svg/line3.svg"> </span>
-
-                    <span class="line6"> <img src="/sites/all/themes/ulima/img/svg/line3.svg"> </span>
-
-          
-
+          </picture>
+        </a>
+        </figure>
+        <span class="hamb" style="z-index :10">
+                  <span></span>
+                <span></span>
+                <span></span>
           </span>
-
-                </div>
-
-            </div>
-
-  <?php print render($page['header']); ?>
-   <div class="slider_inter">
-      <div class="cont_slide_i">
-        <div class="mod_slide slide_c">
-          <h3><?php print $title; ?></h3>
-          <h2><?php print $subtitle; ?></h2>
-        </div>
-      </div>
-      <span class="line_int"><img src="/sites/all/themes/ulima/img/svg/line.svg"></span>
+        <nav >
+          <?php if (!empty($primary_nav)): ?>
+            <?php print render($primary_nav); ?>
+          <?php endif; ?>
+        
+        </nav>
+       </div>
+      
+       
     </div>
-  </div>
 
-
-
-   
+  
+  
+    <?php print render($page['header']); ?>
+    <div class="cont_msnh">
+    
+    <h1 ><?php print $title; ?></h1>
+    <?php if($mensaje_introductorio != NULL) : ?>
+    <h3><?php print $mensaje_introductorio; ?></h3>
+     <?php endif; ?>
+    </div>
   
 
-
-
-
-
-<?php if (!empty($page['postslider'])): ?>
-  <div class="section_convenios">
-    <?php print render($page['postslider']); ?>
+   
   </div>
-<?php endif; ?>
+   <?php if (!empty($tabs)): ?>
+        <?php print render($tabs); ?>
+      <?php endif; ?>
+
+   <?php if (!empty($page['precontent'])): ?>
+        <div class="testimonios">
+        <?php print render($page['precontent']); ?>
+        </div>
+      <?php endif; ?>
+
+
+
+    <div class="maincontenido">
+
+      <?php print render($page['content']); ?>
+    </div>
  
-<?php if (!empty($page['mensajes'])): ?>
-  <div class="cont_v_empleabilidad">
-    <?php print render($page['mensajes']); ?>
-  </div>
-<?php endif; ?>
-
-<?php if (!empty($page['ofer'])): ?>
-   <div class="section3u">
-    <?php print render($page['ofer']); ?>
-
-  </div>
-<?php endif; ?>
-
-
-<?php if (!empty($page['ingresa'])): ?>
-  <div class="simulador_p">
-    <?php print render($page['ingresa']); ?>
-  </div>
-  <div class="cont_line"><div class="line_o"></div></div>
-<?php endif; ?>
 
 
 <?php if (!empty($page['admision'])): ?>
-  <div class="cont_section section6">
-
+  <div class="madmision">
     <?php print render($page['admision']); ?>
   </div>
-<?php endif; ?>   
-
-
-
-<?php if (!empty($page['doble_block'])): ?>
-  <div class="cont_section section7">
-    <?php print render($page['doble_block']); ?>
-  </div>
 <?php endif; ?>
-
-
-
 <?php if (!empty($page['footer'])): ?>
-  <footer >
-    <div class="cont-footer">
+  <footer>
     <?php print render($page['footer']); ?>
-    <div>
   </footer>
 <?php endif; ?>
-
- </div>

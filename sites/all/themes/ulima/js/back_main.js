@@ -14,23 +14,6 @@ Drupal.behaviors.ulima = {
 $(document).ready(function() {
 
 
-      $(".hmb").click(function(event) {
-          event.preventDefault();
-        $(".nav.menudo").toggleClass("menu_on");
-        });
-     
-
-     $( ".menu_nav ul li" ).prepend( "<span></span>" );
-
-
-    
-      
-     
-   
- 
-
-
-
    // $(".fancybox").fancybox();
 $("#block-bean-asume-el-reto a").removeAttr("href");
 

@@ -75,16 +75,9 @@
  */
 ?>
 
+<div class="wrapper inversion">
 
-
-
-
-
-
-<div class="wrapper convenios">
-
-
- 
+<?php if (!empty($page['header'])): ?>
   <div class="cont_section section1">
 
     <div class="cont_nav">
@@ -127,35 +120,23 @@
 
             </div>
 
+  <div class="slider_inter">
   <?php print render($page['header']); ?>
-   <div class="slider_inter">
-      <div class="cont_slide_i">
-        <div class="mod_slide slide_c">
-          <h3><?php print $title; ?></h3>
-          <h2><?php print $subtitle; ?></h2>
-        </div>
-      </div>
-      <span class="line_int"><img src="/sites/all/themes/ulima/img/svg/line.svg"></span>
-    </div>
+</div>
   </div>
-
-
-
-   
-  
-
+<?php endif; ?>
 
 
 
 
 <?php if (!empty($page['postslider'])): ?>
-  <div class="section_convenios">
+  <div class="section1u">
     <?php print render($page['postslider']); ?>
   </div>
 <?php endif; ?>
- 
+
 <?php if (!empty($page['mensajes'])): ?>
-  <div class="cont_v_empleabilidad">
+  <div class=" cont_facultad f_com f_psi">
     <?php print render($page['mensajes']); ?>
   </div>
 <?php endif; ?>

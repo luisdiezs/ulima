@@ -81,6 +81,12 @@ if((isset($variables['node'])) && $variables['node']->type =='modalidades'){
    $variables['theme_hook_suggestions'][] = 'page__admision';
   }
 
+  if(arg(0)== 'inversion' && arg(1) == NULL){
+    
+   $variables['theme_hook_suggestions'][] = 'page__inversion';
+  }
+
+
 
 if(arg(0)== 'inversion' || arg(0)== 'openlima'  || arg(0)== 'somosulima' || arg(0) =='convenios' ){
 
@@ -114,12 +120,12 @@ $variables['title'] = NULL;
 
     if((isset($variables['node'])) && $variables['node']->type =='empleabilidad') {
 
-    $mensaje_introductorio = isset($variables['node']->field_mensaje_introductorio['und']) ? $variables['node']->field_mensaje_introductorio['und'][0]['value'] : NULL;
-    $variables['mensaje_introductorio'] = $mensaje_introductorio;
+    
 
-    $new_title = isset($variables['node']->field_titulo_color_node['und']) ? $variables['node']->field_titulo_color_node['und'][0]['value'] : NULL;
-    $new_title = strip_tags($new_title, '<strong>');
-    $variables['title'] = $new_title;
+    $sub_title = isset($variables['node']->field_subtitulo_nodo['und']) ? $variables['node']->field_subtitulo_nodo['und'][0]['value'] : NULL;
+    
+    $variables['subtitle'] = $sub_title;
+     //$variables['title'] = $variables['title'] .''.$sub_title;
 
   $variables['theme_hook_suggestions'][] = 'page__empleabilidad';
   

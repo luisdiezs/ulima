@@ -70,7 +70,7 @@ $options = get_carreras_select();
  $form['selected'] = array(
     
     '#type' => 'select',
-    '#title' => t('Select Subject'),
+    '#title' => '',
     '#options' => $options,
     '#default_value' => 'Select Subject',
   );
