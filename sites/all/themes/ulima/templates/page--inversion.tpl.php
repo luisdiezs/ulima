@@ -83,7 +83,7 @@
     <div class="cont_nav">
 
                 <div class="center-nav">
-                    <a href=""><img src="sites/all/themes/ulima/img/svg/logo_ulima.svg"></a>
+                    <a href=""><img src="/ulima/sites/all/themes/ulima/img/svg/logo_ulima.svg"></a>
                 </div>
 
                 <div id="mainmenu" class="nav menudo">
@@ -108,9 +108,9 @@
 
                     </div>
 
-                    <span class="line5">  <img src="sites/all/themes/ulima/img/svg/line3.svg"> </span>
+                    <span class="line5">  <img src="/ulima/sites/all/themes/ulima/img/svg/line3.svg"> </span>
 
-                    <span class="line6"> <img src="sites/all/themes/ulima/img/svg/line3.svg"> </span>
+                    <span class="line6"> <img src="/ulima/sites/all/themes/ulima/img/svg/line3.svg"> </span>
 
           
 
