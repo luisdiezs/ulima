@@ -42,10 +42,10 @@ regions[footer]         = 'Footer'
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Stylesheets
 ;;;;;;;;;;;;;;;;;;;;;
-stylesheets[all][] = css/custom.css
+
 stylesheets[all][] = css/style2.css
 stylesheets[all][] = css/animate.css
-
+stylesheets[all][] = css/custom.css
 
 ;stylesheets[all][] = css/module-slider.css
 ;stylesheets[all][] = css/module-special.css

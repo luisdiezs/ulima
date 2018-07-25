@@ -1,3 +1,64 @@
+.convenios button.slick-prev.slick-arrow {
+    display: none !important;
+    color: red;
+    /* color: transparent; */
+}
+
+.slider_inter {
+  
+    padding-bottom: 50px;
+}
+.txtx1 {width: 100%;max-width: 100%;}
+.col-md-4.ver {
+    padding-bottom: 13%;
+    padding-left: 0;
+}
+.page-admision .item_modalid {width: 100%;}
+.page-admision .mod a {min-height: 85px;padding: 10px 8px; width: calc(100% - 20px);}
+.o_modalidades {
+  
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.cont_cuadro .borde {
+    
+    width: 300px;
+    height: 300px;
+    
+}
+
+.cont_cuadro {
+  
+    top: 55px;
+    left: 55px;
+}
+
+.color>h2 { font-family: 'exoblack'; font-size: 24px; color: #ff6903; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ff6903; padding-left: 20px; }
+.txt2x1 {
+    position: absolute;
+    top: -22px;
+    right: 0;
+    background: #575a60;
+    max-width: 343px;
+    width: 92%;
+    padding: 4%;
+    min-height: 385px;
+    height: 105%;
+}
+.txt2x1.cmod1x1 {
+     background: #575a60;
+    position: absolute;
+    max-width: 100%;
+    width: 100%;
+    padding: 4%;
+    min-height: 120px;
+    bottom: -22px;
+    height: 0;
+    top: initial
+}
+.txt2x1.cmod1x1:hover {    background: #ff6903;}
+.convenios .slick-slider .slick-prev { left: -13%; top: 50%; margin-top: -30px; background: url(../img/arrow_l.png) no-repeat 0 0 !important }
 .front .mod4, .front .mod5 {
     width: 100%;
     /* background: url(../img/s5.jpg) no-repeat 0 0; */
@@ -33,7 +94,25 @@
     height: 100%;
         padding-top: 15px;
 }
-
+.node-type-empleabilidad .slick-media.media.media--image {
+    /* padding: 30px; */
+    text-align: center;
+    margin: 50px;
+        height: 66px;
+    width: 91px;
+}
+.videosss {display: none;}
+.v_ulima .paragraphs-item-empleabilidad-exalumnos{position: relative;}
+a.video {
+     position: absolute;
+    top: 20%;
+    width: 80px;
+    height: 70px;
+    display: block;
+    /* background: red; */
+    right: 40%;
+    color: transparent;
+}
 @media screen and (max-width: 1369px) {
 .section1 .smas span a {padding:15px 30px 14px 0px;font-size: 28px;max-width: 295px}
 .section1 .nav .inscrib a {height: 70px;}

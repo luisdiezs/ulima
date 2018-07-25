@@ -160,8 +160,16 @@
   </div>
 <?php endif; ?>
 
+<?php if (!empty($page['content'])): ?>
+   <div class="p_destacados">
+     <?php print $messages; ?>
+    <?php print render($page['content']); ?>
+
+  </div>
+<?php endif; ?>
+
 <?php if (!empty($page['ofer'])): ?>
-   <div class="section3u">
+   <div class=" cont_facultad  emple_d">
     <?php print render($page['ofer']); ?>
 
   </div>
@@ -169,10 +177,10 @@
 
 
 <?php if (!empty($page['ingresa'])): ?>
-  <div class="simulador_p">
+  <div class="cont_slide_emple">
     <?php print render($page['ingresa']); ?>
   </div>
-  <div class="cont_line"><div class="line_o"></div></div>
+ 
 <?php endif; ?>
 
 
@@ -202,3 +210,21 @@
 <?php endif; ?>
 
  </div>
+ <?php 
+drupal_add_js('jQuery(function() {
+    jQuery(".video").click(function () {
+
+     var theModal = jQuery(this).data("target");
+      var videoSRC = jQuery(this).attr("data-video");
+      var videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
+    
+       jQuery(theModal + " iframe").attr("src", videoSRCauto);
+        
+      jQuery(theModal + " button.close").click(function () {
+        jQuery(theModal + " iframe").attr("src","");
+      });
+    });
+  });',
+    array('type' => 'inline', 'scope' => 'footer', 'weight' => 25)
+  );
+?>

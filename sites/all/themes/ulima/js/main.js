@@ -22,13 +22,18 @@ $(document).ready(function() {
 
      $( ".menu_nav ul li" ).prepend( "<span></span>" );
 
+    $("#play-video").on('click', function(ev) { 
+      $('.videosss').css('display','block');
+      $('.cont_vi_emple').css('display','none');
 
-    
-      
-     
+       $("#youtube-field-player")[0].src += "&autoplay=1";
+       
+       
+    ev.preventDefault();
+ 
    
  
-
+  });
 
 
    // $(".fancybox").fancybox();
@@ -215,38 +220,7 @@ $('span.hamb').click(function (e) {
 
 
 
-/* sticky */
-$(document).ready(function() {sticker();});
-$(document).scroll(function() {sticker();});
 
-function sticker() {
-var header =  jQuery('body');
-var distancia_limit_1 = 100;
-var distancia_limit_2 = 200;
-var distancia_limit_3 = 600;
-  
-if (!jQuery('.ltie9').length) {
-var distancia_scroll = jQuery(document).scrollTop();
-} else {
-var distancia_scroll = jQuery('html, body').scrollTop();
-}
-  
-if ( distancia_scroll > distancia_limit_1 ) {
-header.addClass('sticker-1');
-} else {
-header.removeClass('sticker-1'); 
-}
-if ( distancia_scroll > distancia_limit_2 ) {
-header.addClass('sticker-2');
-} else {
-header.removeClass('sticker-2'); 
-}
-if ( distancia_scroll > distancia_limit_3 ) {
-header.addClass('sticker-3');
-} else {
-header.removeClass('sticker-3'); 
-}
-};
 
 
     
