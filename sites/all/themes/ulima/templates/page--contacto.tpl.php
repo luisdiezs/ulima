@@ -75,7 +75,7 @@
  */
 ?>
 
-<div class="wrapper ">
+<div class="wrapper contact">
 
 
   <div class="cont_section section1">
@@ -121,25 +121,17 @@
             </div>
 
   <?php print render($page['header']); ?>
-    <div class="slider_inter">
+     <div class="slider_inter">
       <div class="cont_slide_i">
         <div class="mod_slide">
-          
+          <?php print $direccion; ?>
           
         </div>
-        
-      </div>
-      <div class="bread_crum">
-        <ul>
-          <li><a href="/">Inicio</a>/</li>
-          <li><a href="/admision">Admisión</a>/</li>
-          <li class="mayuscula"><?php print drupal_get_title(); ?></li>
-        </ul>
+        <figure>  <img src="<?php print $imagen; ?>"><span></span></figure>
       </div>
       <span class="line_int"><img src="/sites/all/themes/ulima/img/svg/line.svg"></span>
     </div>
   </div>
-
 
 
 
@@ -154,27 +146,9 @@
   </div>
 <?php endif; ?>
 
-<?php if (!empty($page['mensajes'])): ?>
-  <div class="cont_section section3">
-    <?php print render($page['mensajes']); ?>
-  </div>
-<?php endif; ?>
+<div class="f_mapa"> </div>
 
-<?php if (!empty($page['ofer'])): ?>
-   <div class="cont_section section4">
-    <?php print render($page['ofer']); ?>
-
-  </div>
-<?php endif; ?>
-
-
-<?php if (!empty($page['ingresa'])): ?>
-  <div class="cont_section section3 section5">
-    <?php print render($page['ingresa']); ?>
-  </div>
-<?php endif; ?>
-
-<div class="inter_admin">
+   <div class="cont_contac">
      
    
       <a id="main-content"></a>
@@ -196,10 +170,9 @@
 
 
 <?php if (!empty($page['admision'])): ?>
-  <div class="section_inter2">
-     <div class="cont_omod">
+  <div class="cont_section section6">
+
     <?php print render($page['admision']); ?>
-  </div>
   </div>
 <?php endif; ?>   
 

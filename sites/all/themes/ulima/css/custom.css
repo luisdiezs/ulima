@@ -1,3 +1,55 @@
+ul.tabs--primary.nav.nav-tabs {
+    display: block;
+    width: 100%;
+    z-index: 999999;
+    position: relative;
+}
+
+.node-type-modalidades  .mod_tipo {
+    width: 24%;
+    float: left;
+    margin-right: 1%;
+    margin-bottom: 10px;
+}
+
+.node-type-modalidades .mod_tipo a {
+   
+    width: 100%;
+   
+    min-height: 103px;
+}
+.node-type-modalidades .mod_tipo h3 {
+    
+    min-height: 35px;
+}
+
+
+.node-type-modalidades .p_ins:last-child h3 ,.node-type-modalidades .p_ins:last-child h4 {color: #ff0036;   }
+ .node-type-modalidades .item_request ul.listap li  h3{ float: right; width: calc(99% - 85px); }
+
+ .node-type-modalidades .p_ins figure {float: left; width:60px;}
+
+ ul.listap figure {float: left; width:85px;}
+#webform-client-form-125 .form-actions .btn {
+    width: 49%;
+    background: #ff6903;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+        border-radius: 60px;
+}
+.mayuscula {text-transform: uppercase;}
+.grippie {display: none !important;}
+#webform-client-form-125 .form-control {    
+    border-radius: 60px;
+    border: 1px solid #ccc;
+    padding: 15px 5%;
+    color: #7d7d7d;
+}
+#webform-client-form-125  .form-actions {
+    text-align: right;
+}
 .convenios button.slick-prev.slick-arrow {
     display: none !important;
     color: red;
@@ -5,15 +57,15 @@
 }
 
 .slider_inter {
-  
+      min-height: 490px;
     padding-bottom: 50px;
 }
 .txtx1 {width: 100%;max-width: 100%;}
 .col-md-4.ver {
-    padding-bottom: 13%;
+    padding-bottom: 20%;
     padding-left: 0;
 }
-.page-admision .item_modalid {width: 100%;}
+.page-admision .item_modalid {width: 91%;}
 .page-admision .mod a {min-height: 85px;padding: 10px 8px; width: calc(100% - 20px);}
 .o_modalidades {
   
@@ -21,17 +73,12 @@
     padding-left: 0;
 }
 
-.cont_cuadro .borde {
-    
-    width: 300px;
-    height: 300px;
-    
-}
+
 
 .cont_cuadro {
   
-    top: 55px;
-    left: 55px;
+    top: 37px;
+    left: 35px;
 }
 
 .color>h2 { font-family: 'exoblack'; font-size: 24px; color: #ff6903; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ff6903; padding-left: 20px; }
@@ -117,4 +164,18 @@ a.video {
 .section1 .smas span a {padding:15px 30px 14px 0px;font-size: 28px;max-width: 295px}
 .section1 .nav .inscrib a {height: 70px;}
 
+
+.txt2x1 {
+    min-height: 324px;
+    height: 100%;
+    max-width:252px;
+}
+
+}
+
+
+@media screen and (max-width: 769px) {
+
+.node-type-modalidades .mod_tipo {width: 98%;margin-right: 1%;margin-left: 1%;}
+.node-type-modalidades .mod_tipo a {min-height: auto;}
 }

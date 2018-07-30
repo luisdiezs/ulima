@@ -3,18 +3,7 @@
  * @file
  * The primary PHP file for this theme.
  */
-function ulima_preprocess_html(&$variables) {
 
- $node = menu_get_object();
-
- 
-  if ($node && isset($node->nid) && $node->type =='modalidades' ) {
-
-    $tipo = $node->field_tipo_de_calendario['und'][0]['value'];
-  $variables['classes_array'][] = $tipo;
-}
-
-}
 
 function ulima_preprocess_page(&$variables) {
 
@@ -79,6 +68,18 @@ if((isset($variables['node'])) && $variables['node']->type =='modalidades'){
   if(arg(0)== 'admision' && arg(1) == NULL){
     
    $variables['theme_hook_suggestions'][] = 'page__admision';
+  }
+
+  if( arg(1) == 125){ // contacto
+    
+
+$direccion = isset($variables['node']->field_direccion['und']) ? $variables['node']->field_direccion['und'][0]['value'] : NULL;
+
+$imagene = isset($variables['node']->field_imagen_peque_a_cabecera['und']) ? $variables['node']->field_imagen_peque_a_cabecera['und'][0]['uri'] : NULL;
+ $imagene =  file_create_url($imagene); 
+  $variables['direccion'] = $direccion;
+   $variables['imagen'] = $imagene;
+   $variables['theme_hook_suggestions'][] = 'page__contacto';
   }
 
   if(arg(0)== 'inversion' && arg(1) == NULL){

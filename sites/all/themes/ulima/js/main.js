@@ -21,6 +21,7 @@ $(document).ready(function() {
      
 
      $( ".menu_nav ul li" ).prepend( "<span></span>" );
+     $( "ul.fila li" ).prepend( "<i></i>" );
 
     $("#play-video").on('click', function(ev) { 
       $('.videosss').css('display','block');

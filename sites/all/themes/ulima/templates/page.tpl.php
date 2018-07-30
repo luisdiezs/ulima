@@ -75,9 +75,9 @@
  */
 ?>
 
-<div class="wrapper portada" style="overflow:hidden;">
+<div class="wrapper ">
 
-<?php if (!empty($page['header'])): ?>
+
   <div class="cont_section section1">
 
     <div class="cont_nav">
@@ -121,8 +121,18 @@
             </div>
 
   <?php print render($page['header']); ?>
+    <div class="slider_inter">
+      <div class="cont_slide_i">
+        <div class="mod_slide">
+          
+          
+        </div>
+        <figure>  <img src="<?php print $imagen; ?>"><span></span></figure>
+      </div>
+      <span class="line_int"><img src="/sites/all/themes/ulima/img/svg/line.svg"></span>
+    </div>
   </div>
-<?php endif; ?>
+
 
 
 
@@ -156,6 +166,26 @@
     <?php print render($page['ingresa']); ?>
   </div>
 <?php endif; ?>
+
+<div class="manicontaineer">
+     
+   
+      <a id="main-content"></a>
+      <?php print render($title_prefix); ?>
+      <?php if (!empty($title)): ?>
+       
+      <?php endif; ?>
+      <?php print render($title_suffix); ?>
+      <?php print $messages; ?>
+      <?php if (!empty($tabs)): ?>
+        <?php print render($tabs); ?>
+      <?php endif; ?>
+
+      <?php if (!empty($action_links)): ?>
+        <ul class="action-links"><?php print render($action_links); ?></ul>
+      <?php endif; ?>
+      <?php print render($page['content']); ?>
+    </div>
 
 
 <?php if (!empty($page['admision'])): ?>
