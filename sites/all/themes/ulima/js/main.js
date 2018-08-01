@@ -21,6 +21,7 @@ $(document).ready(function() {
      
 
      $( ".menu_nav ul li" ).prepend( "<span></span>" );
+     $( ".cont_fechas" ).prepend('<span class="circle"></span>');
      $( "ul.fila li" ).prepend( "<i></i>" );
 
     $("#play-video").on('click', function(ev) { 

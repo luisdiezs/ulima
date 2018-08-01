@@ -148,12 +148,12 @@ if (isset($result['node'])) {
   	$data[$key]['title'] = $value->title;
   	$data[$key]['nid'] = $value->nid;
   }
-  $resp = '<ul>';
+  $resp = '<div class="smas carrera">';
   foreach ($data  as $key => $value) {
     
-  	$resp.= '<li>'.l($value['title'],'node/'.$value['nid']).'</li>';
+  	$resp.= '<span>'.l($value['title'],'node/'.$value['nid']).'</span>';
   }
-  $resp .= '</ul>';
+  $resp .= '</div>';
 
   return $resp;
   

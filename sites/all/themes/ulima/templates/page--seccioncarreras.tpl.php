@@ -120,8 +120,12 @@
 
             </div>
 
-  <?php print render($page['header']); ?>
+            <div class="slider_inter">
 
+  <?php print render($page['header']); ?>
+    
+      
+    </div>
   </div>
 
 
@@ -133,58 +137,40 @@
 
 
 <?php if (!empty($page['postslider'])): ?>
-  <div class="cont_section section2">
+  <div id="carreras2" class="">
     <?php print render($page['postslider']); ?>
   </div>
 <?php endif; ?>
 
 <?php if (!empty($page['mensajes'])): ?>
-  <div class="cont_section section3">
+  <div id="carreras3">
     <?php print render($page['mensajes']); ?>
   </div>
 <?php endif; ?>
 
 <?php if (!empty($page['ofer'])): ?>
-   <div class="cont_section section4">
+    <div id="carreras4">
     <?php print render($page['ofer']); ?>
-
   </div>
 <?php endif; ?>
 
 
 <?php if (!empty($page['ingresa'])): ?>
-  <div class="cont_section section3 section5">
+  <div id="carreras5">
     <?php print render($page['ingresa']); ?>
   </div>
 <?php endif; ?>
 
-<div class="manicontaineer">
-     
-   
-      <a id="main-content"></a>
-      <?php print render($title_prefix); ?>
-      <?php if (!empty($title)): ?>
-       
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
-      <?php print $messages; ?>
-      <?php if (!empty($tabs)): ?>
-        <?php print render($tabs); ?>
-      <?php endif; ?>
-
-      <?php if (!empty($action_links)): ?>
-        <ul class="action-links"><?php print render($action_links); ?></ul>
-      <?php endif; ?>
-      <?php print render($page['content']); ?>
-    </div>
-
 
 <?php if (!empty($page['admision'])): ?>
-  <div class="cont_section section6">
-
+ <div id="carreras6">
     <?php print render($page['admision']); ?>
   </div>
-<?php endif; ?>   
+<?php endif; ?> 
+
+<div class="cont_line">
+    <div class="line_o"></div>
+  </div>  
 
 
 

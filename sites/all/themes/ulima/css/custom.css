@@ -5,6 +5,32 @@ ul.tabs--primary.nav.nav-tabs {
     position: relative;
 }
 
+ .page-somosulima .smas span > a::after {
+content: " > ";
+font-size: 32px;
+  position: absolute;
+    right: 10px;
+    top: 3px;
+    padding: 10px;
+ }
+ .carrera.smas span > a::after { 
+content: ">";
+    background: #fff;
+    -webkit-border-top-right-radius: 40px;
+    -webkit-border-bottom-right-radius: 40px;
+    -moz-border-radius-topright: 40px;
+    -moz-border-radius-bottomright: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    margin-right: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    height: 100%;
+    padding-top: 15px;
+}
+
 .node-type-modalidades  .mod_tipo {
     width: 24%;
     float: left;
@@ -169,6 +195,11 @@ a.video {
     min-height: 324px;
     height: 100%;
     max-width:252px;
+}
+
+
+.slider_inter {
+    min-height: 220px;
 }
 
 }

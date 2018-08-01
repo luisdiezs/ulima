@@ -70,6 +70,11 @@ if((isset($variables['node'])) && $variables['node']->type =='modalidades'){
    $variables['theme_hook_suggestions'][] = 'page__admision';
   }
 
+  if(arg(0)== 'carreras' && arg(1) == NULL){
+    
+   $variables['theme_hook_suggestions'][] = 'page__seccioncarreras';
+  }
+
   if( arg(1) == 125){ // contacto
     
 
@@ -100,6 +105,16 @@ $variables['title'] = NULL;
 
   
   if(arg(0)== 'somosulima'){
+     drupal_add_css(drupal_get_path('theme', 'ulima') .'/css/jquery.fancybox.min.css');
+
+    drupal_add_js(drupal_get_path('theme', 'ulima') .'/js/jquery.fancybox.min.js', 'file');
+    drupal_add_js('
+jQuery(document).ready(function () {
+   
+        jQuery(".cont_video .view-content a").fancybox({
+             type: "iframe",
+          });
+  });', 'inline');
     
   $variables['theme_hook_suggestions'][] = 'page__somosulima';
   }  

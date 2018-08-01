@@ -74,110 +74,123 @@
  * @ingroup templates
  */
 ?>
-<div class="header">
+
+<div class="wrapper ">
+
+<?php if (!empty($page['header'])): ?>
+  <div class="cont_section section1 somosu">
+
     <div class="cont_nav">
-		<div class="center-nav">
-        <figure class="logo" >
-        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-          <picture>
-           <source srcset="/sites/all/themes/ulima/img/escudoulima.png" media="(max-width: 770px)">
-            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
 
-          </picture>
-        </a>
-        </figure>
-        <span class="hamb" style="z-index :10">
-                  <span></span>
-                <span></span>
-                <span></span>
+                <div class="center-nav">
+                    <a href=""><img src="/sites/all/themes/ulima/img/svg/logo_ulima.svg"></a>
+                </div>
+
+                <div id="mainmenu" class="nav menudo">
+                    <!--menu_on para prender el menu-->
+
+                    <div class="cont_close"><span class="inscrib"><a href="">inscribete aquí<i> </i></a></span><span class="hmb"><a href=""></a></span></div>
+
+                    <div class="menu_nav">
+
+                      <?php print render($primary_nav); ?>
+
+                        <span class="sulima"><a href="">
+
+          <h3><span>#</span>SOMOS</h3>
+
+                        <h2>ULIMA</h2>
+
+                        </a>
+                        </span>
+
+
+
+                    </div>
+
+                    <span class="line5">  <img src="/sites/all/themes/ulima/img/svg/line3.svg"> </span>
+
+                    <span class="line6"> <img src="/sites/all/themes/ulima/img/svg/line3.svg"> </span>
+
+          
+
           </span>
-        <nav >
-          <?php if (!empty($primary_nav)): ?>
-            <?php print render($primary_nav); ?>
-          <?php endif; ?>
-        
-        </nav>
-       </div>
-      
-      
-      
+
+                </div>
+
+            </div>
+
+  <div class="slider_inter">
+  <?php print render($page['header']); ?>
+</div>
+  </div>
+<?php endif; ?>
+
+
+
+
+<?php if (!empty($page['postslider'])): ?>
+  <div class="section1u">
+    <?php print render($page['postslider']); ?>
+  </div>
+<?php endif; ?>
+
+<?php if (!empty($page['mensajes'])): ?>
+  <div class="section2u">
+    <div class="cont_section2">
+    <?php print render($page['mensajes']); ?>
     </div>
-
-  
-  
-    <?php print render($page['header']); ?>
-  
-
-   
-  </div>
-
-   <?php if (!empty($page['precontent'])): ?>
-        <div class="cont-social_somos">
-        <?php print render($page['precontent']); ?>
-        </div>
-      <?php endif; ?>
-
-   <?php if (!empty($page['precontent2'])): ?>
-        <div class="precontennt2">
-        <?php print render($page['precontent2']); ?>
-        </div>
-      <?php endif; ?>
-
-   <?php if (!empty($page['precontent3'])): ?>
-        <div class="conoce_mas">
-        <?php print render($page['precontent3']); ?>
-        </div>
-      <?php endif; ?>
-
-
- 
-
-  
-
-    <div class="conoce_mas comunidad">
- 
-      <?php print render($page['content']); ?>
-    </div >
-<?php if (!empty($page['post_content'])): ?>
-  <div class="post_content_videos">
-    <?php print render($page['post_content']); ?>
   </div>
 <?php endif; ?>
 
-<?php if (!empty($page['post_content2'])): ?>
-  <div class="evento_somosu">
-    <?php print render($page['post_content2']); ?>
+<?php if (!empty($page['ofer'])): ?>
+   <div class="section3u">
+    <div class="cont_sect3">
+    <?php print render($page['ofer']); ?>
+</div>
   </div>
 <?php endif; ?>
-    
+
+
+<?php if (!empty($page['ingresa'])): ?>
+  <div class="section4u">
+    <div class="cont_video">
+    <?php print render($page['ingresa']); ?>
+  </div>
+</div>
+  
+<?php endif; ?>
 
 
 <?php if (!empty($page['admision'])): ?>
-  <div class="madmision">
+  <div class="section5u">
+<div class="cont_eventos">
     <?php print render($page['admision']); ?>
   </div>
+</div>
+<div class="cont_line">
+      <div class="line_o"></div>
+   </div>
+<?php endif; ?>   
+
+
+
+<?php if (!empty($page['doble_block'])): ?>
+  <div class="cont_section section7">
+    <?php print render($page['doble_block']); ?>
+  </div>
 <?php endif; ?>
+
+
+
 <?php if (!empty($page['footer'])): ?>
-  <footer>
+  <footer >
+    <div class="cont-footer">
     <?php print render($page['footer']); ?>
+    <div>
   </footer>
 <?php endif; ?>
 
-<?php 
-drupal_add_js('jQuery(function() {
-    jQuery(".video").click(function () {
+ </div>
 
-     var theModal = jQuery(this).data("target");
-      var videoSRC = jQuery(this).attr("data-video");
-      var videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
-    
-       jQuery(theModal + " iframe").attr("src", videoSRCauto);
-        
-      jQuery(theModal + " button.close").click(function () {
-        jQuery(theModal + " iframe").attr("src","");
-      });
-    });
-  });',
-    array('type' => 'inline', 'scope' => 'footer', 'weight' => 25)
-  );
-?>
+<?php 
