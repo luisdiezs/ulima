@@ -329,7 +329,7 @@ if (isset($result['node'])) {
     $count = 0;
     foreach ($value['fechas'] as $key2 => $value2) {
      
-     $resp.= '<li data-date="'.$value2['value'].'" data-id="'.$charla->nid.'-'.$count.'-'.$value2['value'].'"><a ><h4>'.t(date("l", $value2['value'])).' '.date("d", $value2['value']).'</h4><h3>'.t(date("g", $value2['value'])).' - '.date("g:i", $value2['value2']).'</h3></a></li>';
+     $resp.= '<li data-date="'.$value2['value'].'" data-id="'.$charla->nid.'-'.$count.'-'.$value2['value'].'"><a ><h4>'.t(date("l", $value2['value'])).' '.date("d", $value2['value']).' de '.t(date("F", $value2['value'])).'</h4><h3>'.t(date("G:i", $value2['value'])).' - '.date("G:i", $value2['value2']).' horas</h3></a></li>';
 
      $count =  $count + 1;
     }
@@ -391,14 +391,14 @@ if (isset($result['node'])) {
     $carreraid = $charla->field_carrera['und'][0]['target_id'];
     $carrera = node_load($carreraid);
     if($counter == 0){ 
-    $resp .='<h2 style="color:'.$color.'">'. str_replace("Facultad de", " ", $termino->name). '</h2>';
+      $nombre =  str_replace("Facultad de", " ", $termino->name);
+    $resp .='<h2 style="color:'.$color.'">'. str_replace(" y Económicas", " ", $nombre). '</h2>';
     }
     $resp .='<div class="cont-escuela"><div class="esc_lugar"> <h3>'.$carrera->title.' </h3><h4>'.$charla->field_lugar['und'][0]['value'].'</h4></div>';
     $resp .= '<ul>';
     $count = 0;
     foreach ($value['fechas'] as $key2 => $value2) {
-
-     $resp.= '<li data-date="'.$value2['value'].'" data-id="'.$charla->nid.'-'.$count.'-'.$value2['value'].'"><a ><h4>'.t(date("l", $value2['value'])).' '.date("d", $value2['value']).'</h4><h3>'.t(date("g", $value2['value'])).' - '.date("g:i", $value2['value2']).'</h3></a></li>';
+     $resp.= '<li data-date="'.$value2['value'].'" data-id="'.$charla->nid.'-'.$count.'-'.$value2['value'].'"><a ><h4>'.t(date("l", $value2['value'])).' '.date("d", $value2['value']).' de '.t(date("F", $value2['value'])).'</h4><h3>'.t(date("G:i", $value2['value'])).' - '.date("G:i", $value2['value2']).' horas </h3></a></li>';
     $count =  $count + 1;
     }
     $resp .= '</ul>';

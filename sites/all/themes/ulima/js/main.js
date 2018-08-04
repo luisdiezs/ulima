@@ -14,14 +14,37 @@ Drupal.behaviors.ulima = {
 $(document).ready(function() {
 
 
+
+    //jQuery("#slick-views-carrusel-carreras-14").prepend('<span class="left-arrow slick-prev slick-arrow" style="display: block;"><img src="/sites/all/themes/ulima/img/svg/arrow_r.svg"></span>');
+
       $(".hmb").click(function(event) {
           event.preventDefault();
         $(".nav.menudo").toggleClass("menu_on");
         });
      
 
+     $('#block-views-carrusel-carreras-block-1 .left-arrow.slick-prev.slick-arrow').each(function(){
+      $(this).insertBefore($(this).parent());
+    });
+
+      $('#block-views-carrusel-carreras-block-1 .right-arrow.slick-next.slick-arrow').each(function(){
+      $(this).insertBefore($(this).parent());
+    });
+
      $( ".menu_nav ul li" ).prepend( "<span></span>" );
      $( ".cont_fechas" ).prepend('<span class="circle"></span>');
+
+     $( ".left-arrow.slick-arrow" ).prepend('<img src="/sites/all/themes/ulima/img/svg/arrow_l.svg">');
+     $( ".right-arrow.slick-arrow" ).prepend('<img src="/sites/all/themes/ulima/img/svg/arrow_r.svg">');
+
+     $(".webform-component--cerrar").appendTo(".modal-dialog");
+     $('.close').on('click', function(){ 
+
+      $('#block-webform-client-block-15').modal('hide');
+      
+
+      });
+
      $( "ul.fila li" ).prepend( "<i></i>" );
 
     $("#play-video").on('click', function(ev) { 
@@ -38,8 +61,34 @@ $(document).ready(function() {
   });
 
 
-   // $(".fancybox").fancybox();
-$("#block-bean-asume-el-reto a").removeAttr("href");
+    $('.select_pais select').change(function () {
+         var tid = $(this).val();
+      $.ajax({
+        type: 'POST',
+        url: 'info_pais',
+        data: {
+            'tid': tid
+        },
+        success: function (data) {
+            
+
+            var sede = data.sede;
+            var imagen = data.imagen;
+          $(".mod_univ h2").text(sede);
+          $(".fac figure img").attr("src", imagen);
+           console.log(data);
+           var convenios = data.convenios;
+           var tmpl = "";
+           for (var i = 0; i < convenios.length; i++) {
+            tmpl += "<li><a href='" + convenios[i]['url'] + "'>" + convenios[i]['universidad'] + "</a></li>";
+          }
+          $(".mod_univ ul").empty();
+          $(".mod_univ ul").append(tmpl);
+            
+        }
+    });
+
+    });
 
 jQuery('#slick-views-carrusel-videos-infraestrcutura-2 a').attr('data-fancybox', 'comunicacion');
 jQuery('#slick-views-carrusel-videos-infraestrcutura-3 a').attr('data-fancybox', 'derecho');
@@ -59,10 +108,14 @@ $('.slick-arrow').trigger("click");
 
 });
 
+
+$('#block-views-carrusel-carreras-block-1 .slick__slide.slide.slide--0.slick-slide').addClass('crisito');
 $('#block-views-carrusel-carreras-block-1 span.li a').on('click', function(){ 
 
-
+$('#block-views-carrusel-carreras-block-1 .view-content .slick__slide').removeClass('crisito');
+$(this).parent().parent().parent().addClass("crisito");
 $('.tererererere .slick-arrow').trigger("click");
+$('.paragraphs-item-infraestructura-talleres-laborat').trigger("click");
 
 });
 
@@ -96,8 +149,7 @@ jQuery('.modal').appendTo("body");
   $("#webform-client-form-15").appendTo(".block-content.modal-body");
 
 
-
-          var selector = '.main-container  .carreras  li';
+          var selector = '.cont_olima .carreras  li';
 
             $(selector).on('click', function(){
                   if (jQuery(this).hasClass('active')) {

@@ -21,6 +21,14 @@ function simulador_menu() {
     'type' => MENU_CALLBACK,
   );  
 
+
+ $items['info_pais'] = array(
+   
+    'page callback' => 'trae_data_pais',
+    'access arguments' =>array('access content'),
+    'type' => MENU_CALLBACK,
+  );  
+
  $items['info_colegios'] = array(
    
     'page callback' => 'trae_data_colegios',
@@ -58,6 +66,40 @@ function simulador_block_view($delta = '') {
 
   }
   return $block;
+}
+function trae_data_pais() {
+$nombres = array();
+$categorias = array();
+  $tid = $_POST['tid'];
+
+  $pais = taxonomy_term_load($tid);
+
+  $imagen =  file_create_url($pais->field_image['und'][0]['uri']);
+ $sede =$pais->field_sede['und'][0]['value'];
+ $universidades = $pais->field_universidades['und'];
+
+  foreach ($universidades as $key => $value) {
+    
+     $nombres[$key]['url'] = $value['url'];
+    $nombres[$key]['universidad'] = $value['title'];
+   
+   
+  }
+
+
+
+
+    $respuesta = new stdClass();
+    $respuesta->id = $tid;
+   $respuesta->imagen = $imagen;
+    $respuesta->sede =  $sede;
+    //$respuesta->categoria = $termino->name;
+    //$respuesta->valorcredito = $termino->field_valor_credito_term['und'][0]['value'];
+    //$respuesta->derechomatricula = $terminoglobal->field_valor['und'][0]['value'];
+    $respuesta->convenios = $nombres;
+echo drupal_json_output($respuesta);
+
+exit();
 }
 
 
@@ -154,6 +196,8 @@ echo drupal_json_output($respuesta);
 
 exit();
 }
+
+
 function get_nid($categorias){
 $pe = null;
 $qu = null;

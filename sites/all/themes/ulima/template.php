@@ -30,30 +30,32 @@ function ulima_preprocess_page(&$variables) {
 
 if((isset($variables['node'])) && $variables['node']->type =='carrera'){
 
+  $texto1 = isset($variables['node']->field_texto_1['und']) ? $variables['node']->field_texto_1['und'][0]['value'] : NULL;
+  $texto2 = isset($variables['node']->field_texto_2['und']) ? $variables['node']->field_texto_2['und'][0]['value'] : NULL;
+  $variables['texto1'] = $texto1;
+  $variables['texto2'] = $texto2;
 	$variables['theme_hook_suggestions'][] = 'page__carrera';
-  $mensaje_introductorio = isset($variables['node']->field_mensaje_introductorio['und']) ? $variables['node']->field_mensaje_introductorio['und'][0]['value'] : NULL;
-
-    $variables['mensaje_introductorio'] = $mensaje_introductorio;
+ 
 
 }
   
 if((isset($variables['node'])) && $variables['node']->type =='perfil'){
 
   $variables['theme_hook_suggestions'][] = 'page__perfil';
-  $mensaje_introductorio = isset($variables['node']->field_mensaje_introductorio['und']) ? $variables['node']->field_mensaje_introductorio['und'][0]['value'] : NULL;
-    $variables['mensaje_introductorio'] = $mensaje_introductorio;
     $nodoid = $variables['node']->field_carrera['und'][0]['target_id'];
     $variables['idcarrera'] = $variables['node']->field_carrera['und'][0]['target_id'];
     $variables['carrera'] = node_load($nodoid)->title;
 }
 
 if((isset($variables['node'])) && $variables['node']->type =='malla_curricular'){
-
-  $variables['theme_hook_suggestions'][] = 'page__malla';
-  $mensaje_introductorio = isset($variables['node']->field_mensaje_introductorio['und']) ? $variables['node']->field_mensaje_introductorio['und'][0]['value'] : NULL;
-    $variables['mensaje_introductorio'] = $mensaje_introductorio;
+   $nodoid = $variables['node']->field_carrera['und'][0]['target_id'];
+    $variables['idcarrera'] = $variables['node']->field_carrera['und'][0]['target_id'];
+    $variables['carrera'] = node_load($nodoid)->title;
+    $variables['theme_hook_suggestions'][] = 'page__malla';
 }
   
+
+
 if((isset($variables['node'])) && $variables['node']->type =='modalidades'){
 
   
@@ -68,6 +70,10 @@ if((isset($variables['node'])) && $variables['node']->type =='modalidades'){
   if(arg(0)== 'admision' && arg(1) == NULL){
     
    $variables['theme_hook_suggestions'][] = 'page__admision';
+  }
+    if(arg(0)== 'openlima' && arg(1) == NULL){
+    
+   $variables['theme_hook_suggestions'][] = 'page__openlima';
   }
 
   if(arg(0)== 'carreras' && arg(1) == NULL){
@@ -149,20 +155,24 @@ jQuery(document).ready(function () {
 
      if((isset($variables['node'])) && $variables['node']->type =='infraestructura') {
 
-    $mensaje_introductorio = isset($variables['node']->field_mensaje_introductorio['und']) ? $variables['node']->field_mensaje_introductorio['und'][0]['value'] : NULL;
-    $variables['mensaje_introductorio'] = $mensaje_introductorio;
-
-    $new_title = isset($variables['node']->field_titulo_color_node['und']) ? $variables['node']->field_titulo_color_node['und'][0]['value'] : NULL;
-    $new_title = strip_tags($new_title, '<strong>');
-    $variables['title'] = $new_title;
+  $texto1 = isset($variables['node']->field_texto_1['und']) ? $variables['node']->field_texto_1['und'][0]['value'] : NULL;
+  $texto2 = isset($variables['node']->field_texto_2['und']) ? $variables['node']->field_texto_2['und'][0]['value'] : NULL;
+  $variables['texto1'] = $texto1;
+  $variables['texto2'] = $texto2;
 
   $variables['theme_hook_suggestions'][] = 'page__infraestructura';
    drupal_add_js(drupal_get_path('theme', 'ulima') .'/js/jquery.fancybox.min.js', 'file');
  drupal_add_css(drupal_get_path('theme', 'ulima') .'/css/jquery.fancybox.min.css');
+     drupal_add_js('
+jQuery(document).ready(function () {
+   
+        jQuery(".cont_v_ulima .view-content a").fancybox({
+             type: "iframe",
+          });
+  });', 'inline');
+    
   
   }
-
-
 
 
 

@@ -74,126 +74,144 @@
  * @ingroup templates
  */
 ?>
-<div class="header">
+
+<div class="wrapper item_carrera">
+
+
+  <div class="cont_section section1">
+
     <div class="cont_nav">
-      
-        <figure class="logo" >
-        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-          <picture>
-           <source srcset="/sites/all/themes/ulima/img/escudoulima.png" media="(max-width: 770px)">
-            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
 
-          </picture>
-        </a>
-        </figure>
-     
+                <div class="center-nav">
+                    <a href=""><img src="/sites/all/themes/ulima/img/svg/logo_ulima.svg"></a>
+                </div>
 
-      
-          <span class="hamb" style="z-index :10">
-                  <span></span>
-                <span></span>
-                <span></span>
+                <div id="mainmenu" class="nav menudo">
+                    <!--menu_on para prender el menu-->
+
+                    <div class="cont_close"><span class="inscrib"><a href="">inscribete aquí<i> </i></a></span><span class="hmb"><a href=""></a></span></div>
+
+                    <div class="menu_nav">
+
+                      <?php print render($primary_nav); ?>
+
+                        <span class="sulima"><a href="">
+
+          <h3><span>#</span>SOMOS</h3>
+
+                        <h2>ULIMA</h2>
+
+                        </a>
+                        </span>
+
+
+
+                    </div>
+
+                    <span class="line5">  <img src="/sites/all/themes/ulima/img/svg/line3.svg"> </span>
+
+                    <span class="line6"> <img src="/sites/all/themes/ulima/img/svg/line3.svg"> </span>
+
+          
+
           </span>
-         
-        <nav >
-          <?php if (!empty($primary_nav)): ?>
-            <?php print render($primary_nav); ?>
-          <?php endif; ?>
-        
-        </nav>
-      
-    </div>
 
-  
-  
-    <?php print render($page['header']); ?>
+                </div>
 
-      <div class="cont_msnh">
-    
-    <h1 ><?php print $title; ?></h1>
-    <?php if($mensaje_introductorio != NULL) : ?>
-    <h3><?php print $mensaje_introductorio; ?></h3>
-     <?php endif; ?>
-    </div>
-  
-  
-
-   
+            </div>
+<div class="slider_inter">
+  <?php print render($page['header']); ?>
+           <div class="cont_h">
+          <h3><?php print $texto1;?></h3>
+          <h2><?php print $texto2;?></h2>
+         </div>
+      <span class="line_int"><img src="/sites/all/themes/ulima/img/svg/line.svg"></span></div>
+</div>
   </div>
 
-  
-  <?php print $messages; ?>
+
+
+<div class="container">
+
+  <?php print render($title_suffix); ?>
+      <?php print $messages; ?>
       <?php if (!empty($tabs)): ?>
         <?php print render($tabs); ?>
       <?php endif; ?>
-
-
-<div class="main-container  item-carrera item_carr">
-   <h4> <a href="/carreras"> Carrreras </a> > <?php print $title; ?></h4>
-
-     <?php if (!empty($page['precontent'])): ?>
-     
-        <?php print render($page['precontent']); ?>
-      
-      <?php endif; ?>
-
-     <section>
-     
-      <a id="main-content"></a>
-     
-  
-    
-
-      <?php if (!empty($action_links)): ?>
+ <?php if (!empty($action_links)): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
 
-      <?php if (!empty($page['datoscarrera'])): ?>
-    	<div class="datos_carrera">
-    	 <div class="cont_dcarrera">
-
-         <?php print render($page['datoscarrera']); ?>
-         </div>
-         </div>
-      <?php endif; ?>
-
-         <?php if (!empty($page['post_content'])): ?>
-    	<div class="testimonios">
-    	
-
-         <?php print render($page['post_content']); ?>
-         </div>
-         <?php endif; ?>
-      <?php print render($page['content']); ?>
-
-   
-     
-     
-    </section>
-
-
-
- 
 </div>
- <?php if (!empty($page['comentarios'])): ?>
-      <div class="lab">
-      <?php print render($page['comentarios']); ?>
-         </div>
-    <?php endif; ?>
 
-   <?php if (!empty($page['post_content2'])): ?>
-    	<div class="list_carr">
-    	<?php print render($page['post_content2']); ?>
-         </div>
-    <?php endif; ?>
-
-<?php if (!empty($page['admision'])): ?>
-  <div class="madmision">
-    <?php print render($page['admision']); ?>
+<?php if (!empty($page['postslider'])): ?>
+  <div class="cont-slider_infra" style="overflow:hidden;">
+    <?php print render($page['postslider']); ?>
   </div>
 <?php endif; ?>
+
+<?php if (!empty($page['mensajes'])): ?>
+  <div class="section3u">
+    <?php print render($page['mensajes']); ?>
+  </div>
+<?php endif; ?>
+
+<?php if (!empty($page['ofer'])): ?>
+   <div class="section4itc">
+    <div class="cont_itc"> 
+    <?php print render($page['ofer']); ?>
+    </div>
+  </div>
+<?php endif; ?>
+
+
+<?php if (!empty($page['ingresa'])): ?>
+  <div class="cont_section section3 section5">
+    <?php print render($page['ingresa']); ?>
+  </div>
+<?php endif; ?>
+
+<div class="manicontaineer">
+     
+   
+      <a id="main-content"></a>
+      <?php print render($title_prefix); ?>
+      <?php if (!empty($title)): ?>
+       
+      <?php endif; ?>
+    
+     
+      <div class="section-testi">
+        <div class="cont_testi">
+      <?php print render($page['content']); ?>
+        </div>
+    </div>
+    </div>
+
+
+<?php if (!empty($page['admision'])): ?>
+  <div class="tourvirtual">
+
+    <?php print render($page['admision']); ?>
+  </div>
+<?php endif; ?>   
+
+
+
+<?php if (!empty($page['doble_block'])): ?>
+  <div class="cont_section section7">
+    <?php print render($page['doble_block']); ?>
+  </div>
+<?php endif; ?>
+
+
+
 <?php if (!empty($page['footer'])): ?>
-  <footer>
+  <footer >
+    <div class="cont-footer">
     <?php print render($page['footer']); ?>
+    <div>
   </footer>
 <?php endif; ?>
+
+ </div>

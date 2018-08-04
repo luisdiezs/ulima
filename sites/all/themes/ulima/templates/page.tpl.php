@@ -119,9 +119,9 @@
                 </div>
 
             </div>
-
+<div class="slider_inter">
   <?php print render($page['header']); ?>
-
+</div>
   </div>
 
 
