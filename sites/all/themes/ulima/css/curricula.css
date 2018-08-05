@@ -1,0 +1,48 @@
+html { color: #000; background: #FFF; }
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; }
+table { border-collapse: collapse; border-spacing: 0; }
+fieldset, img { border: 0; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal; }
+li { list-style: none; margin-left: 5px; }
+caption, th { text-align: left; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+q:before, q:after { content: ''; }
+abbr, acronym { border: 0; font-variant: normal; }
+sup { vertical-align: text-top; }
+sub { vertical-align: text-bottom; }
+input, textarea, select { font-family: inherit; font-size: inherit; font-weight: inherit; }
+input, textarea, select { *font-size:100%;
+}
+body { font-family: 'arial'; color: #333; font-size: 14px; background: #fff; position: relative; }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+figure { margin: 0; }
+/*---------------------------------------*/
+.cont_curri {width: 2366px;display: inline-block;}
+.cont_curri table { width: 100%; }
+.cont_curri table tr { }
+.cont_curri table tr td {padding: 10px 15px;border-bottom: 1px solid #ccc;color: #999;width: 9%;height: 60px;vertical-align: top;}
+.cont_curri table tr td h3{
+    color: #333;
+    font-size:  12px;
+    font-weight: bold;
+}
+.cont_curri table tr td h4{
+    color: #575757;
+    font-size: 12px;
+}
+.cont_curri table tr.tr0  td {font-weight:bold;height: inherit;padding: 15px;}
+.cont_curri table tr  td.n1{
+    border-bottom: 2px solid #7EAFFE;
+}
+.cont_curri table tr  td.n2{}
+.cont_curri table tr  td.n3{ border-bottom: 2px solid #B0D70A;}
+.cont_curri table tr  td.n4{border-bottom: 2px solid #FFC208;}
+.cont_curri table tr  td.n5{border-bottom: 2px solid #FD0B84;}
+.cont_curri table tr  td.n6{}
+.cont_curri table tr  td.n7{}
+.cont_curri table tr  td.n8{}
+.cont_curri table tr  td.n9{}
+.cont_curri table tr  td.n10{}
+.cont_curri table tr  td.space{ width:1%}
+ 
