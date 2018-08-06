@@ -41,14 +41,15 @@ figure { margin: 0; }
 .main-slider { position: relative; display: inline-block; width: 100%; float: left; }
 .main-slider picture { display: inline-block; width: 100%; float: left; margin-bottom: -3px; }
 .main-slider picture img { height: 100%; }
-.cont_conmas .smas { float: left; }
-.cont_slide_p { position: absolute; z-index: 3; top: 27%; right: 16%; color: #fff; max-width: 440px; }
+.cont_conmas .smas { float: left;     float: left;
+    width: 100%; }
+.cont_slide_p { position: absolute; z-index: 3; top: 27%; right: 16%; color: #fff; max-width: 470px; }
 .cont_slide_p h3 { background: #262626; font-size: 38px; font-weight: bold; padding: 15px 20px 10px; margin-bottom: 15px; }
 .fd { }
-.fd .faltan { font-size: 62px; font-family: 'exoblack'; }
+.fd .faltan { font-size: 62px; font-family: 'exoblack';     line-height: 100%; }
 .faltan span { margin-right: 20px; float: left; }
 .faltan span img { width: 195px }
-.cont_dias { font-family: 'exoblack'; font-size: 115px; }
+.cont_dias { font-family: 'exoblack'; font-size: 115px;     line-height: 100%; }
 .cont_dias span { font-size: 145px; margin-right: 4px; }
 .smas { text-align: right }
 .smas span { }
@@ -74,7 +75,7 @@ figure { margin: 0; }
 .line6 { position: absolute; right: -4%; bottom: 12%; }
 .menu_on .menu_nav, .menu_on .line5, .menu_on .line6 { display: block }
 .line5, .line6 { display: none }
-.main-slider .slick-dots { position: absolute; bottom: 1px; left: 42%; }
+.main-slider .slick-dots { position: absolute; bottom: 1px; left:50%; }
 .main-slider .slick-dots li { float: left; }
 .main-slider .slick-dots li { float: left; }
 .main-slider .slick-dots li button { border: none; text-indent: -9999px; background: url(../img/svg/inactive.svg) no-repeat 0 0; width: 30px; height: 30px; cursor: pointer; }
@@ -816,8 +817,8 @@ display: inline-block; width: 100%; }
 .item_compe { width: 27.3%; float: left; padding: 0 3%; }
 .item_compe figure { /* text-align: center; */ margin-bottom: 30px; min-height: 160px; position: relative; display: inline-block; width: 100%; }
 .item_compe figure img { position: absolute; left: 50%; bottom: 0; margin-left: -54px; }
-.item_compe figure img.cp2 { margin-left: -68px; }
-.item_compe figure img.cp3 { margin-left: -65px; }
+.item_compe figure img.cp2 { margin-left: -95px; }
+.item_compe figure img.cp3 { margin-left: -82px; }
 .item_compe h3 { margin-bottom: 25px; font-size: 16px; font-weight: bold; color: #333; }
 .item_compe ul { margin-left: 12px; }
 .item_compe ul li { margin: 0 0px 15px 0; font-size: 13px; list-style-type: disc; }
@@ -885,9 +886,18 @@ display: inline-block; width: 100%; }
 .list_catego { float: right; width: 46%; max-width: 582px; position: relative; z-index: 2; }
 .item_categoria { /* display: inline-block; */ width: 100%; background: #fff; float: left; margin-bottom: 20px; }
 .item_categoria figure { float: left; margin-right: 25px; }
-.item_categoria h3 { font-size: 24px; color: #959595; font-weight: bold; margin-top: 18%; margin-bottom: 10px; }
-.item_categoria>span { float: left; width: 38%; }
-.item_categoria h2 { color: #000000; font-size: 48px; font-weight: bold; }
+.cate_pre{
+    background: #959595;
+    float: left;
+    width: 295px;
+    text-align: center;
+    height: 190px;
+    display: table;
+}
+.cate_pre h3{}
+.item_categoria h3 {font-size: 24px;color: #fff;font-weight: bold;display: table-cell;vertical-align: middle;}
+.item_categoria>span {float: left;width: 45%;display: table;text-align: center;height: 190px;}
+.item_categoria h2 {color: #000000;font-size: 48px;font-weight: bold;display: table-cell;vertical-align: middle;}
 .list_catego h4 { font-size: 18px; text-align: right; }
 .inversion .fac figure span { border-color: #1b1b1b; }
 .inversion .groups_txt h3, .inversion .groups_txt h2 { font-size: 84px; text-transform: uppercase; color: #ff6903 }
@@ -979,8 +989,11 @@ a .cont_txt_v h2 { color: #fff; font-size: 84px; font-family: 'exoblack'; }
 .cont_txt_emple h2 { color: #ff6903; font-size: 54px; text-transform: uppercase; font-family: 'exoblack'; }
 .cont_txt_emple p { font-size: 24px; line-height: 133%; }
 .list_egre { display: inline-block; width: 100%; padding-bottom: 40px; margin-bottom: 20px; }
-.list_egre ul { }
-.list_egre ul li { margin: 0 1% 0 0; float: left; }
+.list_egre .slick-slider .slick-list { width: 94%; margin-left: 3%; }
+.list_egre .slick-slider .slick-next { background-position: -101px 9px; }
+.list_egre .slick-slider .slick-prev { background-position: 0px 9px; }
+.list_egre ul {width: 92%;margin-left: 4%;}
+.list_egre ul li {margin: 0 0.7% 0 0;float: left;}
 .list_egre ul li figure { }
 .section_convenios .slick-slider .slick-arrow { background: url(../img/svg/arrow_l.svg) no-repeat 0 0; left: 5%; width: 45px; height: 77px; z-index: 5; }
 .section_convenios .slick-slider .slick-next { background: url(../img/svg/arrow_r.svg) no-repeat 0 0; right: 5%; left: inherit; }
@@ -1150,6 +1163,7 @@ a .cont_txt_v h2 { color: #fff; font-size: 84px; font-family: 'exoblack'; }
 .inversion .groups_txt h3, .inversion .groups_txt h2 { font-size: 64px; }
 .f-convenios .cont_facu { margin-top: 2%; }
 .p_destacados { width: 96%; padding: 0 2%; }
+
 .emple_d .cont_facu h3 { font-size: 32px; }
 .emple_d .cont_facu h2 { font-size: 42px; }
 .emple_d .cont_facu p { font-size: 16px }
@@ -1162,7 +1176,7 @@ a .cont_txt_v h2 { color: #fff; font-size: 84px; font-family: 'exoblack'; }
 .stadistic_itc figure { text-align: center; width: 100%; }
 .stadistic_itc figure img { max-width: 350px }
 .cont_dias span { font-size: 84px; }
-.cont_dias { font-size: 64px; }
+.cont_dias { font-size: 64px; line-height: 100%; }
 .cont_txt_concep { width: 96%; padding: 0 2% }
 }
  @media screen and (max-width: 769px) {
@@ -1436,6 +1450,9 @@ display: inline-block; height: 56px; font-size: 25px; padding-top: 15px; text-tr
 .facultades .cont_facultades .slick-slider .slick-prev { left: -12%; }
 .facultades .cont_facultades .slick-slider .slick-next { right: -12%; }
 .cont_facultades ul li { font-size: 22px; }
+.list_egre .slick-slider .slick-arrow{display: none!important;}
+.list_egre .slick-slider .slick-list{    margin-left: 0;
+    width: 100%;}
 }
  @media screen and (max-width: 370px) {
 .section3 .center_section { min-height: 300px; }
