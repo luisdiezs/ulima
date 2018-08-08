@@ -159,9 +159,45 @@ if (isset($result['node'])) {
   
 } 
 
+//return $result;
 
 
+}
 
+function get_carreras_ul($parent){
+$response = array();
+ 
+$query = new EntityFieldQuery();
+$query->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', 'carrera')
+  ->propertyCondition('status', NODE_PUBLISHED)
+  
+  ->fieldCondition('field_facultad', 'tid', $parent)
+  
+  // Run the query as user 1.
+  ->addMetaData('account', user_load(1));
+$result = $query->execute(); 
+//$result = $query->execute();
+
+
+if (isset($result['node'])) {
+  $news_items_nids = array_keys($result['node']);
+  $news_items = entity_load('node', $news_items_nids);
+  $data = array();
+  foreach ($news_items as $key => $value) {
+    $data[$key]['title'] = $value->title;
+    $data[$key]['nid'] = $value->nid;
+  }
+  $resp = '<ul>';
+  foreach ($data  as $key => $value) {
+    
+    $resp.= '<li>'.l($value['title'],'node/'.$value['nid']).'</li>';
+  }
+  $resp .= '</ul>';
+
+  return $resp;
+  
+} 
 
 //return $result;
 

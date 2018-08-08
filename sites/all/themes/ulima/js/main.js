@@ -21,6 +21,22 @@ $(document).ready(function() {
           event.preventDefault();
         $(".nav.menudo").toggleClass("menu_on");
         });
+
+
+      $(".mod5 .cont_mod4 .smas a").click(function (event) {
+      event.preventDefault();
+      $(".mod5 .cont_mod4").hide();
+      $(".mod5 .facultades").show();
+      $('#block-views-slickcarereras-block-1 .slick-arrow').trigger("click");
+      
+    });
+
+      $(".mod5 .close-it").click(function (event) {
+      event.preventDefault();
+      $(".mod5 .cont_mod4").show();
+      $(".mod5 .facultades").hide();
+      
+    });
      
 
      $('#block-views-carrusel-carreras-block-1 .left-arrow.slick-prev.slick-arrow').each(function(){
