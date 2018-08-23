@@ -27,7 +27,7 @@ figure { margin: 0; }
 .wrapper { display: inline-block; width: 100%; position: relative; }
 .cont_section { display: inline-block; width: 100%; position: relative; float: left; color: #fff; }
 .section1 { }
-.cont_nav { display: inline-block; width: 100%; max-width: 1920px; position: absolute; z-index: 5; left: 0; top: 0; }
+.cont_nav { display: inline-block; width: 100%; max-width: 1920px; position: absolute; z-index: 10; left: 0; top: 0; }
 .cont_nav .center-nav { float: left; margin-left: 2%; margin-top: 1%; }
 .center-nav a { }
 .center-nav a img { width: 135px; }
@@ -1428,8 +1428,8 @@ display: inline-block; height: 56px; font-size: 25px; padding-top: 15px; text-tr
 .item_testi figure { max-width: 100%; width: 100%; }
 .cont_h { margin-top: 25%; }
 .menu_on .line5, .menu_on .line6 { display: none; }
-.menu_nav ul li a { font-size: 22px; padding-top: 15px; padding-bottom: 0px; }
-.menu_on .hmb { position: absolute; right: 0; top: 0; }
+.menu_nav ul li a { font-size: 22px; padding-top: 8px; padding-bottom: 0px; }
+.menu_on .hmb { position: absolute; right: 0; top: 0; z-index:10 }
 .sulima a h2, .sulima a h3 span { font-size: 30px; }
 .sulima a h3 { font-size: 22px; }
 .sulima a h3 span { position: absolute; left: 21%; }
@@ -1453,6 +1453,8 @@ display: inline-block; height: 56px; font-size: 25px; padding-top: 15px; text-tr
 .list_egre .slick-slider .slick-arrow{display: none!important;}
 .list_egre .slick-slider .slick-list{    margin-left: 0;
     width: 100%;}
+	 
+	#mainmenu .navbar-nav > li{ margin-bottom:0}
 }
  @media screen and (max-width: 370px) {
 .section3 .center_section { min-height: 300px; }
