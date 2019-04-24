@@ -41,7 +41,6 @@ class TwigExtension extends \Twig_Extension {
             new \Twig_SimpleFunction('getClassVideoLista', array($this, 'getClassVideoLista'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('getOpenUlima', array($this, 'getOpenUlima'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('validarUrl', array($this, 'validarUrl'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('phatUrl', array($this, 'phatUrl'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('getInfraestructura', array($this, 'getInfraestructura'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('depure', array($this, 'depure'), array('is_safe' => array('html'))),
         );
@@ -53,7 +52,7 @@ class TwigExtension extends \Twig_Extension {
      * Set image title as alt.
      */
     public function getImageAlt($content) {
-        $content = preg_replace('#{(.*)?}#', '<span class="$1"></span><div></div>', $content);
+        $content = preg_replace('#{(.*)?}#', '<span class="$1"></span>', $content);
         $content = str_replace('<ul>', '<ul class="list-items" infinite onlyone with-buttons with-dots countitem-mob="1" countitem-desk="5">', $content);
         $content = str_replace('<li>', '<li class="item-note ">', $content);
         return $content['#text'];
@@ -79,12 +78,8 @@ class TwigExtension extends \Twig_Extension {
         $count = count($items);
         if ($item % 3 == 0 ) {
             return;
-        }elseif ( $item % 2 == 0  and $item !='4') {
-           return 'vl3' ;
-        }elseif ( $item % 4 == 0 ) {
-            return 'vl2';
-        }elseif ( $item % 5 == 0 ) {
-            return 'vl3';
+        }elseif ( $item % 2 == 0) {
+           return 'vl3';
         }else{
             return 'vl2';
         }
@@ -206,7 +201,7 @@ class TwigExtension extends \Twig_Extension {
 
     protected function fechaCastellano($fecha) {
         $fecha = substr($fecha, 0, 10);
-        $numeroDia = str_replace(0,'', date('d', strtotime($fecha)));
+        $numeroDia = date('d', strtotime($fecha));
         $dia = date('l', strtotime($fecha));
         $mes = date('F', strtotime($fecha));
         $anio = date('Y', strtotime($fecha));
@@ -215,8 +210,8 @@ class TwigExtension extends \Twig_Extension {
         $nombredia = str_replace($dias_EN, $dias_ES, $dia);
         $meses_ES = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
         $meses_EN = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-        $nombreMes = strtolower(str_replace($meses_EN, $meses_ES, $mes));
-        return $nombredia." ".$numeroDia." de ".$nombreMes; //." de "; //.$anio;
+        $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
+        return $nombredia." ".$numeroDia." de ".$nombreMes." de ".$anio;
     }
 
     public function getArticlePortada() {
@@ -227,11 +222,10 @@ class TwigExtension extends \Twig_Extension {
         $nids = $result;
         $nodes = Node::loadMultiple($nids);
         foreach ($nodes as $contentType) {
-            $contentTypesList[$this->sluggify($contentType->label())] = $contentType->label();
+            $contentTypesList[$contentType->id()] = strtoupper($contentType->label());
         }
         return $contentTypesList;
     }
-
 
     public function validarUrl() {
         $id =  \Drupal::request()->getPathInfo();
@@ -241,13 +235,6 @@ class TwigExtension extends \Twig_Extension {
         }
         return false;
     }
-
-    public function phatUrl($key) {
-        $id =  \Drupal::request()->getPathInfo();
-        $id = explode('/', $id);
-        return $id[$key];
-    }
-
     public function depure($com) {
 
 
@@ -257,8 +244,8 @@ class TwigExtension extends \Twig_Extension {
             if($key == '#type'){
                // print_r($value);
             }
-            print_r($value); exit;
-            print_r($value);
+
+           // print_r($value);
     foreach ($value as $key1 =>$value1){
         print_r($value1);
         echo '=====';
@@ -354,26 +341,5 @@ print_r($plugin_collections);
         $this->{$property_name} = $value;
 print_r($this);
         return $this;
-    }
-
-public function sluggify($url)
-    {
-        # Prep string with some basic normalization
-        $url = strtolower($url);
-        $url = strip_tags($url);
-        $url = stripslashes($url);
-        $url = html_entity_decode($url);
-
-        # Remove quotes (can't, etc.)
-        $url = str_replace('\'', '', $url);
-
-        # Replace non-alpha numeric with hyphens
-        $match = '/[^a-z0-9áÁÉÍÓÚéíóú]+/';
-        $replace = '-';
-        $url = preg_replace($match, $replace, $url);
-
-        $url = trim($url, '-');
-
-        return $url;
     }
 }

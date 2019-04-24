@@ -9,11 +9,10 @@
     <link href="css/slick.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.0/tiny-slider.css">
-    <link href="css/animate.css" rel="stylesheet" type="text/css">
 
 </head>
 
-<body class="test">
+<body>
     <div class="wrapper">
         <div class="header">
             <div class="cont_nav">
@@ -139,11 +138,10 @@
 
                         <div class="custom-select ">
                             <select id="select_country_convenios" name="">
-                                <option value="">¿En qué universidad estás interesado?</option>
-                                <option value="Alemania">Alemania</option>
-                                <option value="Argentina">Argentina</option>
-                                <option value="Brasil">Brasil</option>
-					        </select>
+						 <option value="Alemania">Alemania</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Brasil">Brasil</option>
+					  </select>
                         </div>
 
                     </div>
@@ -164,9 +162,19 @@
                     </div>
                 </div>
                 <div class="lit_paises">
-                    <h3></h3>
                     <ul>
+                        <li><a href=""> Hochschule Bremen - University of Applied Sciences </a></li>
+                        <li><a href="">Bergische Universität Wuppertal </a></li>
+                        <li><a href="">European University Viadrina Frankfurt (Oder)</a></li>
+                        <li><a href="">Bauhaus Universitat Weimar</a></li>
+                        <li><a href="">Fachhochschule Dusseldorf - University of Applied Sciences </a></li>
                     </ul>
+
+
+
+
+
+
                 </div>
             </div>
         </div>
@@ -338,7 +346,6 @@
             <span class="cerrar"><a href="#"> <img src="img/png/cerrar.png"/> </a></span>
         </div>
     </div>
-
     <div class="modal_incrip msn_galery modal-img modal-img-conv">
         <div class="layer_dark"></div>
         <div>
@@ -383,15 +390,15 @@
             <span class="cerrar"><a href=""> <img src="img/png/cerrar.png" /></a></span>
         </div>
     </div>
-    <div class="modal_incrip modal-img">
-        <div class="layer_dark"></div>
-        <div>
+    <!--<div class="modal_incrip modal-img">
+         <div class="layer_dark"></div>
+         <div>
             <figure>
-                <img id="img-box" src="" alt="" style="width:100%">
+               <img id="img-box" src="" alt="" style="width:100%">
             </figure>
             <span class="cerrar"><a href=""> <img src="img/png/cerrar.png"/> </a></span>
-        </div>
-    </div>
+         </div>
+      </div>-->
     <script src="./js/main.bundle.js"></script>
 
     <script>
@@ -411,8 +418,6 @@
             for (j = 1; j < selElmnt.length; j++) {
 
                 c = document.createElement("DIV");
-                var dataurl = selElmnt[j].getAttribute("value"); //añadir
-                c.setAttribute("value", dataurl); //añadir
                 c.innerHTML = selElmnt.options[j].innerHTML;
                 c.addEventListener("click", function(e) {
 

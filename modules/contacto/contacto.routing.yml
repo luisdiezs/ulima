@@ -23,9 +23,9 @@ contacto.api.colegio:
     _permission: 'access content'
 
 openulima.openulima:
-  path: '/carreras/open-ulima'
+  path: '/open-ulima'
   defaults:
-    _form: '\Drupal\contacto\Form\MultiStepFormOpen'
+    _form: '\Drupal\contacto\Form\MultiStepForm'
     _title: 'Open Ulima'
   requirements:
     _permission: 'contacto access'
@@ -62,6 +62,7 @@ contacto.admin.descargar:
   requirements:
     _permission: 'administer contacto block'
 
+
 contacto.api.convenio:
   path: '/convenio'
   defaults:
@@ -75,15 +76,6 @@ contacto.api.galeria:
   path: '/galeria'
   defaults:
     _controller: '\Drupal\contacto\Controller\JsonController::galeria'
-    _title: 'galeria'
-  requirements:
-    _permission: 'access content'
-
-
-contacto.api.service:
-  path: '/service'
-  defaults:
-    _controller: '\Drupal\contacto\Controller\JsonController::service'
     _title: 'galeria'
   requirements:
     _permission: 'access content'

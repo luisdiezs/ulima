@@ -4,11 +4,6 @@
 /*# sourceMappingURL=sourcemaps/tiny-slider.css.map */
 
 
-.user-login-form .js-form-required, .user-login-form .description {
-    color: #fff;
-    padding: 0px;
-}
-
 
 .user-login-form .js-form-item {
     width: 390px;
@@ -28,43 +23,25 @@
 
 }
 #my-account a{
-color: #fff;
-    text-transform: uppercase;
-    font-size: 20px;
+    color: #fff;
 }
 
 .user-login-form .form-text {
     background: #DBDBDB;
     border: none;
-    padding: 15px 3px;
-    float: right;
-    width: 55%;
-	position: relative;
-    top: 6px;
+    padding: 7px 3px;
 }
 
 .user-login-form  .button{
- background: #5E5E60;
+    background: #5E5E60;
     border: none;
     color: #fff;
     width: 170px;
     height: 56px;
     cursor: pointer;
-    text-transform: uppercase;
 }
 
 .user-login-form .js-form-required, .user-login-form .description {
     color: #fff;
     padding: 0px;
-    width: 35%;
-    float: left;
-    font-size: 20px;
 }
-#edit-name--description, .user-login-form .description{    font-size: 15px;    color: #999;}
-.form-actions.js-form-wrapper {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-    }
-

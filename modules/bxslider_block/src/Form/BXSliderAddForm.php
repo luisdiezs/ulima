@@ -111,7 +111,6 @@ class BXSliderAddForm extends ConfigFormBase {
       '#type' => 'select',
       '#options' => [
         'video' => $this->t('Video'),
-        'horarios' => $this->t('Horarios'),
         'imagen' => $this->t('Imagen'),
         'imagen_texto' => $this->t('Imagen con Texto'),
         'texto' => $this->t('Texto'),
@@ -156,20 +155,6 @@ class BXSliderAddForm extends ConfigFormBase {
           '#default_value' => isset($settings['type']) ? $settings['type'] : 'imagen',
           '#title' => $this->t('Mode'),
           '#description' => $this->t('Type of transition between slides'),
-      ];
-      $form['principal']['horarios'] = [
-          '#type' => 'textarea',
-          '#title' => $this->t('Horarios'),
-          '#default_value' => isset($settings['horarios']) ? $settings['horarios'] : '',
-          '#maxlength' => 255,
-          '#description' => $this->t(''),
-      ];
-      $form['principal']['carreras'] = [
-          '#type' => 'textarea',
-          '#title' => $this->t('Carreras'),
-          '#default_value' => isset($settings['carreras']) ? $settings['carreras'] : '',
-          '#maxlength' => 255,
-          '#description' => $this->t(''),
       ];
     $form['submit'] = [
       '#type' => 'submit',

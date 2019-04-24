@@ -412,10 +412,4 @@
        left: -18px;
 }
 	}
-	@media screen and (max-width: 700px) and (orientation: landscape)  {
-		.msn_galery .cont_galery_pu.carousel .tns-controls button[data-controls="next"] {
-     
-    top: 14px;  
-}
-		}
 

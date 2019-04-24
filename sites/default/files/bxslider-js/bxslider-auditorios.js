@@ -1,1 +1,0 @@
-(function($){$('#bx-slider-auditorios-block .bxslider').bxSlider({mode:'imagen',titulo1:'auditorios',titulo2:false,type:'galeria_default',horarios:false,carreras:false,});})(jQuery, Drupal, drupalSettings);

@@ -1,1 +1,0 @@
-(function($){$('#bx-slider-palestra-block .bxslider').bxSlider({mode:'imagen',titulo1:'Palestra',titulo2:false,type:'slider_popup',horarios:false,carreras:false,});})(jQuery, Drupal, drupalSettings);

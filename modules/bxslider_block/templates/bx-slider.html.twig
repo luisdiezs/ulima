@@ -1,71 +1,66 @@
-
-{% if settings['mode'] =='video' and settings['type'] != 'galeria_lista'  %}
+{% if settings['mode'] =='video' and settings['type'] != 'galeria_lista' %}
 <!--dondetrabajar-->
 <div class="dondetrabajar">
     <div class="cont_donde">
-
-        {% if items|length > 0  %}
-
-
-            <div class="video_donde">
-                <h2>{{ settings['titulo1'] }} </h2>
-                <div class="cont_video">
-                    <iframe class="" width="685" height="385" src="{{ items[0]['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+        {% if items|length > 0 %}
+        <div class="video_donde">
+            <h2>{{ settings['titulo1'] }} </h2>
+            <div class="cont_video">
+                <iframe class="" width="685" height="385" src="{{ items[0]['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
-
-            <div class="test_egre">
-                <h2> {{ settings['titulo2'] }}</h2>
-                <div class="carousel">
-                    <ul class="list-items" infinite with-buttons countitem-mob="1" countitem-desk="3">
-                        {% for item in items %}
-                            {% if loop.index == 1 %}
-                        {% else %}
-                            <li class="item-note">
-                                <figure class="vyt">
-                                    <iframe width="310" height="174" src="{{ item['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </figure>
-                            </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
+        </div>
+        <div class="test_egre">
+            <h2> {{ settings['titulo2'] }}</h2>
+            <div class="carousel">
+                <ul class="list-items" infinite with-buttons countitem-mob="1" countitem-desk="3">
+                    {% for item in items %}
+                    {% if loop.index == 1 %}
+                    {% else %}
+                    <li class="item-note">
+                        <figure class="vyt">
+                            <iframe width="310" height="174" src="{{ item['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </figure>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
             </div>
-        
-
+        </div>
         {% endif %}
-
     </div>
 </div>
-
-
-
 
 <div class="modal_incrip msn_galery ">
     <div class="layer_dark"></div>
     <div>
         <div class="cont_galery_pu_modal cont_galery_pu carousel">
             <div class="gale_pu list-items" with-dots with-buttons countitem-mob="1" countitem-desk="1" infinite="1">
-                {% if items|length > 0  %}
-                    {% for item in items %}
-                        <li class="item-note">
-                            <figure class="vyt">
-                                <iframe class="video-iframe" width="310" height="174" src="{{ item['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><strong></strong>
-                            </figure>
-                        </li>
-                    {% endfor %}
+                {% if items|length > 0 %}
+                {% for item in items %}
+                <li class="item-note">
+                    <figure class="vyt">
+                        <iframe class="video-iframe" width="310" height="174" src="{{ item['video'] }}" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe><strong></strong>
+                    </figure>
+                </li>
+                {% endfor %}
                 {% endif %}
             </div>
             <div class="custom-dots-container">
                 <ul class="custom-dots">
-                    {% if items|length > 0  %}
-                        {% for item in items %}
-                            <li>
-                                <figure class="vyt">
-                                    <iframe class="video-iframe" width="310" height="174" src="{{ item['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><strong></strong>
-                                </figure>
-                            </li>
-                        {% endfor %}
+                    {% if items|length > 0 %}
+                    {% for item in items %}
+                    <li>
+                        <figure class="vyt">
+                            <iframe class="video-iframe" width="310" height="174" src="{{ item['video'] }}" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe><strong></strong>
+                        </figure>
+                    </li>
+                    {% endfor %}
                     {% endif %}
                 </ul>
             </div>
@@ -80,17 +75,18 @@
 <!--mod_egrenotable-->
 <div class="mod_egrenotable carousel">
     <div class="list-items" infinite with-buttons countitem-mob="1" countitem-desk="1">
-    {% if items|length > 0  %}
+        {% if items|length > 0 %}
         {% for item in items %}
         <div class="cont_notable item-note">
-            <figure> <img src="{{ item['url'] }}"/> </figure>
+            <figure> <img src="{{ item['url'] }}" /> </figure>
             <div class="txt_notable">
                 <h2>{{ item['tituloh2'] }}</h2>
                 <div class="perfil_egresado">
                     <div class="datos_egre">
                         <h3>{{ item['tituloh3'] }}</h3>
                         <h4>{{ item['tituloh4'] }}</h4>
-                        <span></span> </div>
+                        <span></span>
+                    </div>
                     <p>{{ item['titulop'] }}</p>
                     <div class="conocemas">
                         <h4>{{ item['tituloh5'] }}</h4>
@@ -107,63 +103,57 @@
 
 
 {% if settings['mode'] =='texto' %}
-    <!--somosulima-->
-    <div class="somosulima">
-        <div class="cont_slima">
-            <div class="slima1">
-                <h2>{{ settings['titulo1']|raw  }}</h2>
-                <h3>{{ settings['titulo2']|raw }}</h3>
-            </div>
-            <div class="carousel">
-                 <div class="slima2 list-items" infinite with-dots countitem-mob="1" countitem-desk="3">
-                    {% if items|length > 0  %}
-                        {% for item in items %}
-                        <div class="item-note valoresulima {{ getSidebarClass(items, loop.index0) }}">
-                            <h2>{{ item['tituloh2']|raw }}</h2>
-                            <h4>{{ item['tituloh3']|raw }}</h4>
-                        </div>
-
-                        {% endfor %}
-                    {% endif %}
-
-                </div>
-            </div>
-            <h4 class="m_encuesta">*Antes de cumplir un año de egreso. Fuente: Encuesta de satisfacción de Egresados 2018 (Oficina de Planificación y Acreditación de la Universidad de Lima)</h4>
+<!--somosulima-->
+<div class="somosulima">
+    <div class="cont_slima">
+        <div class="slima1">
+            <h2>{{ settings['titulo1']|raw }}</h2>
+            <h3>{{ settings['titulo2']|raw }}</h3>
         </div>
-    </div>
-
-
-{% endif %}
-
-
-
-
-{% if settings['type'] == 'galeria_lista' %}
- <!--section7-->
- <div class="areas_ul comunidad_ul">
-    <div class="cont_areas_ul">
-       <div class="cont_sedes">
-          <h2>{{ settings['titulo1']|raw  }}</h2>
-       </div>
-        {% if items|length > 0  %}
-            {% for item in items %}
-                {% if getClassVideoLista(loop.index0) == 'vl3' %}
-                   <div class="campusdeportivos cont-video">
-                {% endif %}
-                  <div class="area_ul1 {% if getClassVideoLista(loop.index0) != 'vl3' %} fr{% endif %}">
-                     <figure class="vyt">
-                    <iframe class="video-iframe" src="{{ item['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                      </figure>
-                      <h2>{{ item['tituloh2']|raw }}</h2>
-                      <h3>{{ item['tituloh3']|raw }}</h3>
-                  </div>
-                {% if getClassVideoLista(loop.index0) != 'vl3' %}
+        <div class="carousel">
+            <div class="slima2 list-items" infinite with-dots countitem-mob="1" countitem-desk="3">
+                {% if items|length > 0 %}
+                {% for item in items %}
+                <div class="item-note valoresulima {{ getSidebarClass(items, loop.index0) }}">
+                    <h2>{{ item['tituloh2']|raw }}</h2>
+                    <h4>{{ item['tituloh3']|raw }}</h4>
                 </div>
-                {% endif %}
-            {% endfor %}
-            <div class="btn_ir"> <span> <a href="https://www.youtube.com/channel/UCI3ZakE5Ya1i9Xdm6TbJjJA/featured" target="_blank">VER MÁS </a> </span> </div>
 
+                {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+        <h4 class="m_encuesta">*Antes de cumplir un año de egreso. Fuente: Encuesta de satisfacción de Egresados 2018
+            (Oficina de Planificación y Acreditación de la Universidad de Lima)</h4>
+    </div>
+</div>
+{% endif %}
+{% if settings['type'] == 'galeria_lista' %}
+<!--section7-->
+<div class="areas_ul comunidad_ul">
+    <div class="cont_areas_ul">
+        <div class="cont_sedes">
+            <h2>{{ settings['titulo1']|raw }}</h2>
+        </div>
+        {% if items|length > 0 %}
+        {% for item in items %}
+        {% if getClassVideoLista(loop.index0) == 'vl3' %}
+        <div class="campusdeportivos cont-video">
+            {% endif %}
+            <div class="area_ul1 {% if getClassVideoLista(loop.index0) != 'vl3' %} fr{% endif %}">
+                <figure class="vyt">
+                    <iframe class="video-iframe" src="{{ item['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                </figure>
+                <h2>{{ item['tituloh2']|raw }}</h2>
+                <h3>{{ item['tituloh3']|raw }}</h3>
+            </div>
+            {% if getClassVideoLista(loop.index0) != 'vl3' %}
+        </div>
+        {% endif %}
+        {% endfor %}
         {% endif %}
     </div>
 </div>
@@ -174,31 +164,142 @@
     <div>
         <div class="cont_galery_pu_modal cont_galery_pu carousel">
             <div class="gale_pu list-items" with-dots with-buttons countitem-mob="1" countitem-desk="1" infinite="1">
-           {% if items|length > 0  %}
-            {% for item in items %}
+                {% if items|length > 0 %}
+                {% for item in items %}
                 <li class="item-note">
                     <figure class="vyt">
-                        <iframe class="video-iframe" src="{{ item['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="video-iframe" src="{{ item['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
                     </figure>
                 </li>
-          
-                 {% endfor %}
-        {% endif %}
+
+                {% endfor %}
+                {% endif %}
 
             </div>
             <div class="custom-dots-container">
                 <ul class="custom-dots dots100">
-            {% if items|length > 0  %}
-            {% for item in items %}
+                    {% if items|length > 0 %}
+                    {% for item in items %}
 
                     <li>
                         <figure class="vyt">
-                            <iframe class="video-iframe" src="{{ item['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe class="video-iframe" src="{{ item['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
                         </figure>
                     </li>
-                                   {% endfor %}
-        {% endif %}
+                    {% endfor %}
+                    {% endif %}
 
+                </ul>
+            </div>
+        </div>
+        <span class="cerrar"><a href=""> <img src="/themes/ulima/assets/img/png/cerrar.png" /></a></span>
+    </div>
+</div>
+{% else %}
+{% if settings['mode'] =='video_imagen' and settings['type'] =='galeria_ta' %}
+<!--section7-->
+<!--galeria-convenio-->
+<div class="galeria_ul tallers_ulima">
+    <div class="cont_galeria">
+        <h2>{{ settings['titulo1']|raw }}</h2>
+        <p>{{ settings['titulo2']|raw }}</p>
+        <div class="video_convenio vyt">
+            <iframe width="900" height="506" src="{{ items[0]['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+        <div class="carousel">
+            <div class="cont_galefotos">
+                <h3>Galeria de fotos</h3>
+                <ul class="list-items" with-buttons onlyone countitem-mob="2" countitem-desk="5">
+                    {% if items|length > 0 %}
+                    {% for item in items %}
+                    {% if loop.index0 == '0' %}
+                    {% else %}
+                    <li class="item-note"><a href=""> <img src="{{ item['url'] }}" /></a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_incrip msn_galery modal-img modal-img-talart">
+    <div class="layer_dark"></div>
+    <div>
+        <div class="cont_galery_pu_modal cont_galery_pu carousel">
+            <div class="gale_pu list-items" with-dots with-buttons countitem-mob="1" countitem-desk="1" infinite="1">
+                {% if items|length > 0 %}
+                {% for item in items %}
+                <li class="item-note"><a href=""> <img src="{{ item['url'] }}" /></a></li>
+                {% endfor %}
+                {% endif %}
+
+            </div>
+            <div class="custom-dots-container">
+                <ul class="custom-dots">
+                    {% if items|length > 0 %}
+                    {% for item in items %}
+                    <li class="item-note"><a href=""> <img src="{{ item['url'] }}" /></a></li>
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <span class="cerrar"><a href=""> <img src="/themes/ulima/assets/img/png/cerrar.png" /></a></span>
+    </div>
+</div>
+
+{% elseif settings['mode'] =='video_imagen' and settings['type'] =='galeria_td' %}
+<!--section7-->
+<!--galeria-convenio-->
+<div class="galeria_ul tallers_dep">
+    <div class="cont_galeria">
+        <h2>{{ settings['titulo1']|raw }}</h2>
+        <p>{{ settings['titulo2']|raw }}</p>
+        <div class="video_convenio vyt">
+            <iframe width="900" height="506" src="{{ items[0]['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+        <div class="carousel">
+            <div class="cont_galefotos">
+                <h3>Galeria de fotos</h3>
+                <ul class="list-items" with-buttons onlyone countitem-mob="2" countitem-desk="5">
+                    {% if items|length > 0 %}
+                    {% for item in items %}
+                    {% if loop.index0 == '0' %}
+                    {% else %}
+                    <li class="item-note"><a href=""> <img src="{{ item['url'] }}" /></a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_incrip msn_galery modal-img modal-img-taldep">
+    <div class="layer_dark"></div>
+    <div>
+        <div class="cont_galery_pu_modal cont_galery_pu carousel">
+            <div class="gale_pu list-items" with-dots with-buttons countitem-mob="1" countitem-desk="1" infinite="1">
+                {% if items|length > 0 %}
+                {% for item in items %}
+                <li class="item-note"><a href=""> <img src="{{ item['url'] }}" /></a></li>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="custom-dots-container">
+                <ul class="custom-dots">
+                    {% if items|length > 0 %}
+                    {% for item in items %}
+                    <li class="item-note"><a href=""> <img src="{{ item['url'] }}" /></a></li>
+                    {% endfor %}
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -207,224 +308,96 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-{% else %}
-{% if  settings['mode'] =='video_imagen' and settings['type'] =='galeria_ta' %}
+{% elseif settings['mode'] =='video_imagen' %}
 <!--section7-->
-       <!--galeria-convenio-->
-    <div class="galeria_ul tallers_ulima">
-        <div class="cont_galeria">
-                <h2>{{ settings['titulo1']|raw  }}</h2>
-                <p>{{ settings['titulo2']|raw }}</p>
-            <div class="video_convenio vyt">
-                <iframe  width="900" height="506" src="{{ items[0]['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="carousel">
-                <div class="cont_galefotos">
-                    <h3>Galería de fotos</h3>
-                    <ul class="list-items" with-buttons onlyone countitem-mob="2" countitem-desk="5">
-                    {% if items|length > 0  %}
-                        {% for item in items %}
-                         {% if loop.index0 == '0' %}
-                          {% else %}
-                            <li class="item-note"><a href=""> <img src="{{ item['url'] }}"/></a></li>
-                             {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                    </ul>
-                </div>
-            </div>
+<!--galeria-convenio-->
+<div class="galeria-convenio {% if settings['type'] =='galeria_color' %} tallers_ulima {% else %}galeria_ul {% endif %}">
+    <div class="cont_galeria">
+        <h2>{{ settings['titulo1']|raw }}</h2>
+        <p>{{ settings['titulo2']|raw }}</p>
+        <div class="video_convenio vyt">
+            <iframe width="900" height="506" src="{{ items[0]['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </div>
-    </div>
-    
-    <div class="modal_incrip msn_galery modal-img modal-img-talart">
-        <div class="layer_dark"></div>
-        <div>
-            <div class="cont_galery_pu_modal cont_galery_pu carousel">
-                <div class="gale_pu list-items" with-dots with-buttons countitem-mob="1" countitem-desk="1" infinite="1">
-                    {% if items|length > 0  %}
-                        {% for item in items %}
-                            <li class="item-note"><a href=""> <img src="{{ item['url'] }}"/></a></li>
-                        {% endfor %}
+        <div class="carousel">
+            <div class="cont_galefotos">
+                <h3>Galeria de fotos</h3>
+                <ul class="list-items" with-buttons onlyone countitem-mob="2" countitem-desk="5">
+                    {% if items|length > 0 %}
+                    {% for item in items %}
+                    {% if loop.index0 == '0' %}
+                    {% else %}
+                    <li class="item-note"><a href=""> <img src="{{ item['url'] }}" /></a></li>
                     {% endif %}
-
-                </div>
-                <div class="custom-dots-container">
-                    <ul class="custom-dots">
-                        {% if items|length > 0  %}
-                            {% for item in items %}
-                                <li class="item-note"><a href=""> <img src="{{ item['url'] }}"/></a></li>
-                            {% endfor %}
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-            <span class="cerrar"><a href=""> <img src="/themes/ulima/assets/img/png/cerrar.png" /></a></span>
-        </div>
-    </div>
-
-{% elseif  settings['mode'] =='video_imagen' and settings['type'] =='galeria_td' %}
-<!--section7-->
-       <!--galeria-convenio-->
-    <div class="galeria_ul tallers_dep">
-        <div class="cont_galeria">
-                <h2>{{ settings['titulo1']|raw  }}</h2>
-                <p>{{ settings['titulo2']|raw }}</p>
-            <div class="video_convenio vyt">
-                <iframe  width="900" height="506" src="{{ items[0]['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="carousel">
-                <div class="cont_galefotos">
-                    <h3>Galeria de fotos</h3>
-                    <ul class="list-items" with-buttons onlyone countitem-mob="2" countitem-desk="5">
-                    {% if items|length > 0  %}
-                        {% for item in items %}
-                         {% if loop.index0 == '0' %}
-                          {% else %}
-                            <li class="item-note"><a href=""> <img src="{{ item['url'] }}"/></a></li>
-                             {% endif %}
-                        {% endfor %}
+                    {% endfor %}
                     {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="modal_incrip msn_galery modal-img modal-img-taldep">
-        <div class="layer_dark"></div>
-        <div>
-            <div class="cont_galery_pu_modal cont_galery_pu carousel">
-                <div class="gale_pu list-items" with-dots with-buttons countitem-mob="1" countitem-desk="1" infinite="1">
-                    {% if items|length > 0  %}
-                        {% for item in items %}
-                            <li class="item-note"><a href=""> <img src="{{ item['url'] }}"/></a></li>
-                        {% endfor %}
-                    {% endif %}
-
-                </div>
-                <div class="custom-dots-container">
-                    <ul class="custom-dots">
-                        {% if items|length > 0  %}
-                            {% for item in items %}
-                                <li class="item-note"><a href=""> <img src="{{ item['url'] }}"/></a></li>
-                            {% endfor %}
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-            <span class="cerrar"><a href=""> <img src="/themes/ulima/assets/img/png/cerrar.png" /></a></span>
-        </div>
-    </div>
-
-
-{% elseif  settings['mode'] =='video_imagen'  %}
-    <!--section7-->
-       <!--galeria-convenio-->
-    <div class="galeria-convenio {% if settings['type'] =='galeria_color' %} tallers_ulima {% else %}galeria_ul {% endif %}">
-        <div class="cont_galeria">
-                <h2>{{ settings['titulo1']|raw  }}</h2>
-                <p>{{ settings['titulo2']|raw }}</p>
-            <div class="video_convenio vyt">
-                <iframe  width="900" height="506" src="{{ items[0]['video'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="carousel">
-                <div class="cont_galefotos">
-                    <h3>Galeria de fotos</h3>
-                    <ul class="list-items" with-buttons onlyone countitem-mob="2" countitem-desk="5">
-                    {% if items|length > 0  %}
-                        {% for item in items %}
-                         {% if loop.index0 == '0' %}
-                          {% else %}
-                            <li class="item-note"><a href=""> <img src="{{ item['url'] }}"/></a></li>
-                             {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="modal_incrip msn_convenio ">
-        <div class="layer_dark"></div>
-        <div>
-            <div class="cont_inscrip  ">
-                <h2>Alemania</h2>
-                <ul>
-                    <li><a href="">Hochschule Bremen - University of Applied Sciences  </a></li>
-                    <li><a href="">Universidad de Alemania </a></li>
-                    <li><a href="">Universidad de Alemania </a></li>
-                    <li><a href="">Universidad de Alemania </a></li>
-                    <li><a href="">Universidad de Alemania </a></li>
-                    <li><a href="">Universidad de Alemania </a></li>
                 </ul>
             </div>
-            <span class="cerrar"><a href="#"> <img src="/themes/ulima/assets/img/png/cerrar.png"/> </a></span>
         </div>
     </div>
-    <div class="modal_incrip msn_galery modal-img modal-img-conv">
-        <div class="layer_dark"></div>
-        <div>
-            <div class="cont_galery_pu_modal cont_galery_pu carousel">
-                <div class="gale_pu list-items" with-dots with-buttons countitem-mob="1" countitem-desk="1" infinite="1">
-                    {% if items|length > 0  %}
-                        {% for item in items %}
-                            <li class="item-note"><a href=""> <img src="{{ item['url'] }}"/></a></li>
-                        {% endfor %}
-                    {% endif %}
+</div>
 
-                </div>
-                <div class="custom-dots-container">
-                    <ul class="custom-dots">
-                        {% if items|length > 0  %}
-                            {% for item in items %}
-                                <li class="item-note"><a href=""> <img src="{{ item['url'] }}"/></a></li>
-                            {% endfor %}
-                        {% endif %}
-                    </ul>
-                </div>
+
+<div class="modal_incrip msn_convenio ">
+    <div class="layer_dark"></div>
+    <div>
+        <div class="cont_inscrip  ">
+            <h2>Alemania</h2>
+            <ul>
+                <li><a href="">Hochschule Bremen - University of Applied Sciences </a></li>
+                <li><a href="">Universidad de Alemania </a></li>
+                <li><a href="">Universidad de Alemania </a></li>
+                <li><a href="">Universidad de Alemania </a></li>
+                <li><a href="">Universidad de Alemania </a></li>
+                <li><a href="">Universidad de Alemania </a></li>
+            </ul>
+        </div>
+        <span class="cerrar"><a href="#"> <img src="/themes/ulima/assets/img/png/cerrar.png" /> </a></span>
+    </div>
+</div>
+<div class="modal_incrip msn_galery modal-img modal-img-conv">
+    <div class="layer_dark"></div>
+    <div>
+        <div class="cont_galery_pu_modal cont_galery_pu carousel">
+            <div class="gale_pu list-items" with-dots with-buttons countitem-mob="1" countitem-desk="1" infinite="1">
+                {% if items|length > 0 %}
+                {% for item in items %}
+                <li class="item-note"><a href=""> <img src="{{ item['url'] }}" /></a></li>
+                {% endfor %}
+                {% endif %}
+
             </div>
-            <span class="cerrar"><a href=""> <img src="/themes/ulima/assets/img/png/cerrar.png" /></a></span>
+            <div class="custom-dots-container">
+                <ul class="custom-dots">
+                    {% if items|length > 0 %}
+                    {% for item in items %}
+                    <li class="item-note"><a href=""> <img src="{{ item['url'] }}" /></a></li>
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
         </div>
+        <span class="cerrar"><a href=""> <img src="/themes/ulima/assets/img/png/cerrar.png" /></a></span>
     </div>
-
+</div>
 {% endif %}
 {% endif %}
 
-
-
-{% if  settings['mode'] =='horarios' %}
-    <!--section7-->
-    <div class="charlasxcarrera">
-
-        <div class="titu_charla">
-
-            <h2>Inscríbete en Charlas x Carrera</h2>
-
-            <p>Ven con tu familia y amigos y resuelve todas tus dudas sobre la carrera que quieres seguir.
-
-                Selecciona la(s) carrera(s) de tu interés. (Vacantes limitadas).
-
-            </p>
-
-        </div>
-   {% for item in items %}
+{% if settings['mode'] =='horarios' %}
+<!--section7-->
+<div class="charlasxcarrera">
+    <div class="titu_charla">
+        <h2>Inscríbete en Charlas x Carrera</h2>
+        <p>Ven con tu familia y amigos y resuelve todas tus dudas sobre la carrera que quieres seguir.
+            Selecciona la(s) carrera(s) de tu interés. (Vacantes limitadas).
+        </p>
+    </div>
+    {% for item in items %}
     <div class="itemdiacharla">
-       {% if loop.index0 == '1' %}
-        <h4>{{ settings['titulo1']|raw  }}</h4>
-       {% endif %}
-        <h2>{{ item['fecha']  }}</h2>
+        {% if loop.index0 == '1' %}
+        <h4>{{ settings['titulo1']|raw }}</h4>
+        {% endif %}
+        <h2>{{ item['fecha'] }}</h2>
         <div class="cont_itemcharla">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr class="headcha">
@@ -435,7 +408,7 @@
                 <tr>
                     <td class="cha3"> {{ itemc['nombre'] }} </td>
                     <td class="cha4">
-                        <div class="custom-select " >
+                        <div class="custom-select ">
                             <select class="select-horario" name="">
                                 <option value="Horario">Horario</option>
                                 {% for itemt in itemc['horarios'] %}
@@ -449,38 +422,32 @@
             </table>
         </div>
     </div>
-   {% endfor %}
-        <div class="message-error-carreras"></div>
-
-        <div class="btn_ir btn_ir_modal"> <span> <a id="btn_insCharla" href="">Inscríbete</a> </span> </div>
-
-    </div>
+    {% endfor %}
+    <div class="message-error-carreras"></div>
+    <div class="btn_ir btn_ir_modal"> <span> <a id="btn_insCharla" href="">Inscríbete</a> </span> </div>
+</div>
 {% endif %}
-
-
 {% if settings['mode'] =='texto_3_imagen' %}
-    <!--  seccion 7-->
-    <div class="alumnos_pro">
-        <div class="cont_alum_pro">
-            <h2>{{ settings['titulo1']|raw  }}</h2>
-            <div class="carousel">
-                <div class="list-items" with-buttons infinite countitem-mob="1" countitem-desk="3">
-                    {% if items|length > 0  %}
-                    {% for item in items %}
-                        <div class="item-note item_slide_ap">
-                            <figure>
-                                <img src="{{ item['url'] }}"/>
-                            </figure>
-                            <h2>{{ item['tituloh2']|raw }}</h2>
-                            <h3>{{ item['tituloh3']|raw }}</h3>
-                            <p> {{ item['tituloh4']|raw }} </p>
-                        </div>
-                        {% endfor %}
-                    {% endif %}
+<!--  seccion 7-->
+<div class="alumnos_pro">
+    <div class="cont_alum_pro">
+        <h2>{{ settings['titulo1']|raw }}</h2>
+        <div class="carousel">
+            <div class="list-items" with-buttons infinite countitem-mob="1" countitem-desk="3">
+                {% if items|length > 0 %}
+                {% for item in items %}
+                <div class="item-note item_slide_ap">
+                    <figure>
+                        <img src="{{ item['url'] }}" />
+                    </figure>
+                    <h2>{{ item['tituloh2']|raw }}</h2>
+                    <h3>{{ item['tituloh3']|raw }}</h3>
+                    <p> {{ item['tituloh4']|raw }} </p>
                 </div>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
-
-
+</div>
 {% endif %}
