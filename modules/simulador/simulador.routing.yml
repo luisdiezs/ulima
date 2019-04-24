@@ -1,0 +1,6 @@
+# Define a route for our event dispatching .
+simulador.description:
+  path: '/simulador'
+  defaults:
+    _controller: '\Drupal\simulador\Controller\HomeController::build'
+    _title: 'Simulador '

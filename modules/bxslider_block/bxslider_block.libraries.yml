@@ -1,0 +1,6 @@
+bxslider_block:
+  remote: https://github.com/stevenwanderski/bxslider-4
+  license:
+    name: The MIT License (MIT)
+    url: https://github.com/stevenwanderski/bxslider-4/blob/master/LICENSE.md
+    gpl-compatible: true

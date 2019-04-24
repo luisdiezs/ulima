@@ -1,0 +1,1 @@
+(function($){$('#bx-slider-slider_de_video_administracion_-block .bxslider').bxSlider({mode:'video',titulo1:'¿En qué podría trabajar un Administrador? ',titulo2:'¿Qué dicen nuestros egresados de la carrera?',startSlide:false,randomStart:false,minSlides:1,maxSlides:1,moveSlides:false,slideWidth:false,});})(jQuery, Drupal, drupalSettings);

@@ -1,0 +1,13 @@
+name: bxSlider Block
+type: module
+description: The Responsive jQuery Content Slider.
+package: Slider
+dependencies:
+  - image
+  #- libraries
+
+# Information added by Drupal.org packaging script on 2017-03-26
+version: '8.x-1.0-alpha2'
+core: '8.x'
+project: 'bxslider_block'
+datestamp: 1490529186

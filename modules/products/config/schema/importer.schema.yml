@@ -1,0 +1,49 @@
+products.importer.*:
+  type: config_entity
+  label: 'Importer config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    plugin:
+      type: string
+      label: Plugin ID
+    plugin_configuration:
+      type: products.importer.plugin.[%parent.plugin]
+    update_existing:
+      type: boolean
+      label: Whether to update existing products
+    source:
+      type: string
+      label: The source of the products
+    bundle:
+      type: string
+      label: The product bundle
+
+products.importer.plugin.*:
+  type: mapping
+  label: 'Plugin configuracion'
+
+products.importer.plugin.json:
+  type: mapping
+  label: CONFIGURACIÓN DE PLUGIN PARA json IMPORTADOR
+  mapping:
+    url:
+      type: uri
+      label: Uri
+
+products.importer.plugin.csv:
+  type: mapping
+  label: CONFIGURACIÓN DE PLUGIN PARA CSV IMPORTADOR
+  mapping:
+    file:
+      type: sequence
+      label: File IDs
+      sequence:
+        type: integer
+        label: CSV File ID

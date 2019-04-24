@@ -1,0 +1,5 @@
+services:
+  contacto.twig.TwigExtension:
+    class: Drupal\contacto\TwigExtension
+    tags:
+      - {name: twig.extension}

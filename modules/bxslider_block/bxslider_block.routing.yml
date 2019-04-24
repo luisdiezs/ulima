@@ -1,0 +1,67 @@
+bxslider_block.admin:
+  path: '/admin/structure/bxslider'
+  defaults:
+    _title: 'Lista de Slider'
+    _controller: '\Drupal\bxslider_block\Controller\BXSliderController::listbxSlider'
+  requirements:
+    _permission: 'administer bxslider block'
+bxslider_block.admin.add:
+  path: '/admin/structure/bxslider/add'
+  defaults:
+    _title: 'Agregar Nuevo Slider'
+    _form: '\Drupal\bxslider_block\Form\BXSliderAddForm'
+  requirements:
+    _permission: 'administer bxslider block'
+bxslider_block.admin.configure:
+  path: '/admin/structure/bxslider/{machine_name}'
+  defaults:
+    _form: 'Drupal\bxslider_block\Form\BXSliderAddForm'
+    _title: 'Config Slider'
+  requirements:
+    _permission: 'administer bxslider block'
+
+bxslider_block.admin.edit:
+  path: '/admin/structure/bxslider/{slider}/edit'
+  defaults:
+    _title: 'Edit Slider'
+    _controller: '\Drupal\bxslider_block\Controller\BXSliderController::editbxSlider'
+  requirements:
+    _permission: 'administer md slider'
+bxslider_block.admin.delete:
+  path: '/admin/structure/bxslider/{slider}/delete'
+  defaults:
+    _title: 'Delete Slider'
+    _form: '\Drupal\bxslider_block\Form\BXSliderDeleteForm'
+  requirements:
+    _permission: 'administer bxslider block'
+bxslider_block.admin.clone:
+  path: '/admin/structure/bxslider/{slider}/clone'
+  defaults:
+    _title: 'Delete Slider'
+    _form: '\Drupal\bxslider_block\Form\MDSliderCloneForm'
+  requirements:
+    _permission: 'administer bxslider block'
+
+bxslider_block.admin.image:
+  path: '/bxslider/image'
+  defaults:
+    _form: '\Drupal\bxslider_block\Form\MDSliderImageForm'
+    _title: 'Add Image'
+  options:
+    _theme: ajax_base_page
+  requirements:
+    _permission: 'administer bxslider block'
+bxslider_block.admin.export:
+  path: '/admin/structure/bxslider/export'
+  defaults:
+    _form: '\Drupal\bxslider_block\Form\MDSliderExportForm'
+    _title: 'Export Slider'
+  requirements:
+    _permission: 'administer bxslider block'
+bxslider_block.admin.import:
+  path: '/admin/structure/bxslider/import'
+  defaults:
+    _form: '\Drupal\bxslider_block\Form\MDSliderImportForm'
+    _title: 'Export Slider'
+  requirements:
+    _permission: 'administer bxslider block'

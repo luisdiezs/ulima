@@ -1,0 +1,5 @@
+# Custom permisions.
+suscribete access:
+  title: 'suscribete access'
+  description: 'Gran access to the suscribete page.'
+  restrict access: false

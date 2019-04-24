@@ -1,0 +1,1 @@
+(function($){$('#bx-slider-slider_de_egresados_notables-block .bxslider').bxSlider({mode:'imagen_texto',titulo1:false,titulo2:false,startSlide:false,randomStart:false,minSlides:1,maxSlides:1,moveSlides:false,slideWidth:false,});})(jQuery, Drupal, drupalSettings);

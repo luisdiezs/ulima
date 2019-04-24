@@ -1,0 +1,5 @@
+# Custom permisions.
+contacto access:
+  title: 'Contacto'
+  description: 'Accesos a la pagina.'
+  restrict access: true

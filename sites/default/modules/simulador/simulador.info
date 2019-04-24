@@ -1,9 +1,0 @@
-name = Simulador de Pensiones
-description = <strong><em>Simulador</em></strong>
-core = 7.x
-package = WEB crissanis
-
-version = 7.1
-
-
-

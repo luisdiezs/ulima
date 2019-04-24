@@ -1,0 +1,1 @@
+(function($){$('#bx-slider-campo_de_futbol-block .bxslider').bxSlider({mode:'imagen',titulo1:'Campo de fútbol',titulo2:false,type:'slider_popup',horarios:false,carreras:false,});})(jQuery, Drupal, drupalSettings);

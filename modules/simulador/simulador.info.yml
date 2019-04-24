@@ -1,0 +1,5 @@
+name: Simulador
+type: module
+description: "Tercer ejemplo Permisos y templates. Objetivos: Entender el sistema de permisos, hooks y templates."
+package: Simulador
+core: 8.x

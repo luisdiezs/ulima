@@ -1,0 +1,1 @@
+(function($){$('#bx-slider-ddd-block .bxslider').bxSlider({mode:'video',speed:500,slideMargin:false,startSlide:false,randomStart:false,});})(jQuery, Drupal, drupalSettings);

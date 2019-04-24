@@ -1,0 +1,7 @@
+contacto_ulima.content:
+    path: '/admin/config/modulo-de-pruebas'
+    defaults:
+        _controller: '\Drupal\contacto_ulima\Controller\ContactoController::content'
+        _title: 'Modulo de pruebas'
+    requirements:
+        _permission: 'access content'

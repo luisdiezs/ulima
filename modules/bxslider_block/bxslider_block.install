@@ -1,0 +1,99 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update functions for bx slider.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function bxslider_block_schema() {
+  $schema['bxslider_blocks'] = [
+    'description' => 'Slideshows table',
+    'fields' => [
+      'bxid' => [
+        'description' => 'Primary key for identify a slideshow.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'title' => [
+        'type' => 'text',
+        'description' => 'The name of slider.',
+        'size' => 'big',
+        'not null' => TRUE,
+      ],
+      'machine_name' => [
+        'description' => 'The machine name of slideshow. The uniquied values.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'description' => [
+        'type' => 'varchar',
+        'length' => 1000,
+        'description' => 'Description.',
+      ],
+      'settings' => [
+        'description' => 'A serialized array settings for slideshow.',
+        'type' => 'blob',
+        'size' => 'big',
+        'not null' => TRUE,
+      ],
+      'slide_items' => [
+        'type' => 'varchar',
+        'type' => 'blob',
+        'size' => 'big',
+
+      ],
+
+    ],
+    'primary key' => ['bxid'],
+  ];
+
+  $schema['bxslider_images'] = [
+    'description' => 'Slides images table',
+    'fields' => [
+      'sid' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary key for identify a slide.',
+      ],
+      'bxid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => "Slideshow id contain this slide.",
+      ],
+      'position' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Order of slide in slideshow.',
+      ],
+      'type' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'description' => 'Type of slide in slideshow.images,text, url',
+      ],
+      'fid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Content of slide in slideshow.',
+      ],
+    ],
+    'foreign keys' => [
+      'bxslider_blocks' => [
+        'table' => 'bxslider_blocks',
+        'columns' => ['bxid' => 'bxid'],
+      ],
+    ],
+    'primary key' => ['sid'],
+  ];
+
+  return $schema;
+}

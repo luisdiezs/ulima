@@ -1,0 +1,5 @@
+name: suscribete
+type: module
+description: "suscribete."
+package: suscribete
+core: 8.x

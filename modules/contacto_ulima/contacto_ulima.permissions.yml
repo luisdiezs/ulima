@@ -1,0 +1,5 @@
+# Custom permisions.
+contacto_ulima access:
+  title: 'Contacto 3 Access'
+  description: 'Gran access to the example page.'
+  restrict access: true

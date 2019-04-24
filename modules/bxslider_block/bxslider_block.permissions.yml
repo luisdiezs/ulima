@@ -1,0 +1,4 @@
+administer bxslider block:
+  title: 'Administer bxslider block'
+  description: 'Allow to configure, edit and delete bxslider block.'
+  restrict access: TRUE

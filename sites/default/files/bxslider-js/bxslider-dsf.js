@@ -1,0 +1,1 @@
+(function($){$('#bx-slider-dsf-block .bxslider').bxSlider({mode:'imagen',speed:500,slideMargin:false,startSlide:false,randomStart:false,minSlides:1,maxSlides:1,moveSlides:false,slideWidth:false,});})(jQuery, Drupal, drupalSettings);

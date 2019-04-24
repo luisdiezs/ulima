@@ -1,0 +1,1 @@
+(function($){$('#bx-slider-piscina_semiolimpica-block .bxslider').bxSlider({mode:'imagen',titulo1:'Piscina Semiolímpica',titulo2:false,type:'slider_popup',horarios:false,carreras:false,});})(jQuery, Drupal, drupalSettings);

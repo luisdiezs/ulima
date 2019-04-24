@@ -1,0 +1,1 @@
+(function($){$('#bx-slider-slider_de_alumnos_valientes_a_profesionales_destacados-block .bxslider').bxSlider({mode:'texto_3_imagen',titulo1:'De alumnos valientes a profesionales destacados',titulo2:false,type:'galeria_default',horarios:false,carreras:false,});})(jQuery, Drupal, drupalSettings);

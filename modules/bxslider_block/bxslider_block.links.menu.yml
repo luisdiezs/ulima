@@ -1,0 +1,20 @@
+bxslider_block.admin:
+  title: 'Slider (Video Galeria, Contenido)'
+  description: 'Lista de slider'
+  parent: system.admin_structure
+  route_name: bxslider_block.admin
+bxslider_block.add:
+  title: 'Agregar un Slider'
+  description: 'Agregar nuevo Slider'
+  parent: bxslider_block.admin
+  route_name: bxslider_block.admin.add
+bxslider_block.import:
+  title: 'Import bxSlider'
+  description: 'Import bxSlider from file zip'
+  parent: bxslider_block.admin
+  route_name: bxslider_block.admin.import
+bxslider_block.export:
+  title: 'Export bxSlider'
+  description: 'Export bxSlider to file zip to store'
+  parent: bxslider_block.admin
+  route_name: bxslider_block.admin.export

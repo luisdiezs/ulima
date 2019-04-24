@@ -1,0 +1,13 @@
+name: BxSlider
+type: module
+description: Integration BxSlider with Field Formaters.
+# core: 8.x
+package: Other
+dependencies:
+  - drupal:image
+
+# Information added by Drupal.org packaging script on 2018-07-29
+version: '8.x-1.0-alpha7'
+core: '8.x'
+project: 'bxslider'
+datestamp: 1532905985

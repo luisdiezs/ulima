@@ -1,0 +1,5 @@
+# Required to validate default theme settings.
+
+ulima.settings:
+  type: theme_settings
+  label: 'Ulima settings'

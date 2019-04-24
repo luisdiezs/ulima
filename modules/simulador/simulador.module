@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains simulador.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function simulador_theme($existing, $type, $theme, $path) {
+  return [
+    'simulador' => [
+      'variables' => [
+        'test_var' => NULL,
+      ],
+    ],
+  ];
+}

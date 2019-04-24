@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains suscribete.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function suscribete_theme($existing, $type, $theme, $path) {
+  return [
+    'suscribete' => [
+      'variables' => [
+        'test_var' => NULL,
+      ],
+    ],
+  ];
+}

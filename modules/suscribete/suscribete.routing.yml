@@ -1,0 +1,40 @@
+# Define a route for our event dispatching suscribete.
+suscribete.description:
+  path: 'suscribete'
+  defaults:
+    _controller: '\Drupal\suscribete\Controller\SuscribeteController::build'
+    _title: 'suscribete hello'
+  requirements:
+    _permission: 'suscribete access'
+
+contacto.api:
+  path: '/api/suscribete'
+  defaults:
+    _controller: '\Drupal\suscribete\Controller\SuscribeteController::build'
+    _title: 'Contacto'
+  requirements:
+    _permission: 'sccess content'
+
+contacto.admin:
+  path: '/admin/structure/suscribete'
+  defaults:
+    _controller: '\Drupal\suscribete\SuscribeteBuilder'
+    _title: 'Contacto'
+  requirements:
+    _permission: 'access suscribete'
+
+contacto.admin.newsletter:
+  path: '/admin/structure/newsletter'
+  defaults:
+    _title: 'Lista newsletter'
+    _controller: '\Drupal\suscribete\Controller\SuscribeteController::newsletter'
+  requirements:
+    _permission: 'administer suscribete'
+
+contacto.admin.exportarnewsletter:
+  path: '/admin/structure/newsletter/exportar'
+  defaults:
+    _title: 'Eliminar'
+    _controller: '\Drupal\suscribete\Controller\SuscribeteController::exportarnews'
+  requirements:
+    _permission: 'administer newsletter block'

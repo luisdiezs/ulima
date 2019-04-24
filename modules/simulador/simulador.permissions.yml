@@ -1,0 +1,5 @@
+# Custom permisions.
+simulador access:
+  title: 'Simulador'
+  description: 'Simulador'
+  restrict access: true

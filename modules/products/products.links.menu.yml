@@ -1,0 +1,23 @@
+# Product entity menu items
+entity.product.collection:
+  title: 'Lista de Colegios'
+  route_name: entity.product.collection
+  description: 'Lista de Colegios'
+  parent: system.admin_structure
+  weight: 100
+
+# Importer entity menu items
+entity.importer.collection:
+  title: 'Importar Colegios'
+  route_name: entity.importer.collection
+  description: 'Lista de Colegios'
+  parent: system.admin_structure
+  weight: 99
+
+entity.product_type.collection:
+  title: 'Tipo'
+  route_name: entity.product_type.collection
+  description: 'Lista de Colegios'
+  parent: system.admin_structure
+  weight: 99
+

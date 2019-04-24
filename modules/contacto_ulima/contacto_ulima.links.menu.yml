@@ -1,0 +1,5 @@
+contacto_ulima.homepage:
+  title: Modulo de pruebas
+  description: 'Configurar el modulo de pruebas'
+  parent: system.admin_config_ui
+  route_name: contacto_ulima.content
