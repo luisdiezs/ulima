@@ -1,0 +1,20 @@
+{
+    "name": "Aulas Magnas",
+    "data": [{
+            "image": "img/img_slider/gale1.jpg"
+        }, {
+            "image": "img/img_slider/gale1.jpg"
+        },
+        {
+            "image": "img/img_slider/gale1.jpg"
+        },
+        {
+            "image": "img/img_slider/gale1.jpg"
+        }, {
+            "image": "img/img_slider/gale1.jpg"
+        }, {
+            "image": "img/img_slider/gale1.jpg"
+        }
+
+    ]
+}

@@ -9,7 +9,7 @@ use Drupal\Core\Controller\ControllerBase;
 
 use Drupal\bxslider_block\BXSliderModel;
 use Drupal\file\Entity\File;
-
+use Camcima\Soap\Client;
 /**
  * An example controller.
  */
@@ -19,6 +19,7 @@ class JsonController extends ControllerBase {
      * {@inheritdoc}
      */
     public function api() {
+
         $request= new Request($_GET);
         $string = $request->get('term');
         $matches = array();
@@ -81,15 +82,15 @@ class JsonController extends ControllerBase {
         if (is_array($slideItems)) {
             foreach ($slideItems as &$value) {
                 
-                $value['name'] = $value['tituloh2'];
-                 $value['url'] = $value['tituloh3'];
+                $value['name'] = $value['tituloh3'];
+                 $value['url'] = $value['tituloh2'];
                 unset($value['actions']);
                 unset($value['tituloh3']);
                 unset($value['tituloh2']);
 
             }
         }
-        $temp['name']= $settings['titulo1'];
+        $temp['titulo']= $settings['titulo1'];
         $temp['data']= $slideItems;
 
         return $this->crearJsonResponse($temp);
@@ -129,5 +130,42 @@ class JsonController extends ControllerBase {
         $temp['data']= $slideItems;
 
         return $this->crearJsonResponse($temp);
+    }
+
+    public function service(){
+
+        $client = new \SimpleXMLElement("/var/www/ulima/data/colegio.xml");
+   
+print_r($client);
+exit;
+     /*   $wsdl = "/var/www/ulima/data/simulacion.wsdl";
+//$clientOptions = array(‘login’ => ’nuestroUser’, ‘password‘ => ‘nuestraContr’);
+$client = new SoapClient($wsdl, $clientOptions);
+$result = $client->webservice($parameters);
+print_r($result);
+exit;*/
+        //$soapclient = new SoapClient('http://www.webservicex.net/globalweather.asmx?WSDL');
+        $soapclient  = new Client('/var/www/ulima/data/simulacion.wsdl', array(''));
+print_r($soapclient);
+
+$soapClient = new Client($wsdlUrl);
+$soapResult = $soapClient->GetCityForecastByZIP($getForecastByZip);
+$resultClassmap = array(
+    'GetCityForecastByZIPResult' => '\Camcima\Soap\Test\Fixtures\GetCityForecastByZIPResult',
+    'ForecastResult' => '\Camcima\Soap\Test\Fixtures\ForecastResult',
+    'array|Forecast' => '\Camcima\Soap\Test\Fixtures\ForecastEntry',
+    'Temperatures' => '\Camcima\Soap\Test\Fixtures\Temperatures',
+    'ProbabilityOfPrecipiation' => '\Camcima\Soap\Test\Fixtures\ProbabilityOfPrecipiation'
+);
+$getCityForecastByZIPResult = $soapClient->mapSoapResult($soapResult, 'GetCityForecastByZIPResult', $resultClassmap, true);
+
+
+        //Use the functions of the client, the params of the function are in 
+        //the associative array
+        $params = array('CountryName' => 'Spain', 'CityName' => 'Alicante');
+        $response = $soapclient->getWeather($params);
+
+        print_r( $response);
+         
     }
 }

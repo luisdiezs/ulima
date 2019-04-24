@@ -1,0 +1,1 @@
+(function($){$('#bx-slider-argentina-block .bxslider').bxSlider({mode:'texto',titulo1:'Argentina',titulo2:false,type:'paises',horarios:false,carreras:false,});})(jQuery, Drupal, drupalSettings);

@@ -102,24 +102,11 @@ class MultiStepForm extends ConfigFormBase
                 '#type' => 'textarea',
                 '#name' => $this->t('textarea'),
                 '#maxlength' => 255,
-                '#attributes' => array('class' =>  array('input_form form-control'), 'placeholder' => t('Mensaje'),),
+                '#attributes' => array('class' =>  array('input_area form-control'), 'placeholder' => t('Mensaje'),),
                 //  '#required' => TRUE,
             );
         }else{
-            $form['colegio'] = array(
-                '#type' => 'textfield',
-                '#name' => $this->t('colegio'),
-                '#maxlength' => 255,
-                '#attributes' => array('class' =>  array('input_form form-control'), 'placeholder' => t('Colegio'),),
-                //  '#required' => TRUE,
-            );
-            $form['grado'] = array(
-                '#type' => 'textfield',
-                '#name' => $this->t('grado'),
-                '#maxlength' => 255,
-                '#attributes' => array('class' =>  array('input_form form-control'), 'placeholder' => t('Grado/Egresado'),),
-                //  '#required' => TRUE,
-            );
+
         }
         $form['enviar'] = array(
             '#type' => 'submit',
@@ -156,9 +143,7 @@ class MultiStepForm extends ConfigFormBase
           $form_state->setRebuild();
           $this->step++;
           //$form['#theme'] = 'contacto_ok';
-          print_r($form_state->getValue('horarios'));
-          print_r($form['horarios']);
-         // exit;
+
          // $form['step'] = array(0 => $this->step);
           $form_state->setRebuild();
           $emails = $form_state->getValue('correo');
@@ -199,7 +184,14 @@ class MultiStepForm extends ConfigFormBase
           }else{
             $tipo = 1;
             $fields['grado_egresado'] = $form_state->getValue('grado');
-            $fields['horarios'] = $form_state->getValue('horarios');
+            $arrayHorarios = array();
+            foreach ($_POST['horarios'] as $key => $value) {
+              if($value !='Horario'){
+                $arrayHorarios['horarios'][] = $value;
+              }
+              # code...
+            }
+            $fields['horarios'] = json_encode($arrayHorarios);
             $fields['colegio'] = $form_state->getValue('colegio');
           }
 
@@ -208,6 +200,7 @@ class MultiStepForm extends ConfigFormBase
           $fields['dni'] = $form_state->getValue('numdoc');
           $fields['correo'] = $form_state->getValue('email');
           $fields['telefono'] = $form_state->getValue('telefono');
+          //$fields['telefono'] = $form_state->getValue('horarios');
           $fields['mensaje'] = $form_state->getValue('textarea');
 
           $fields['fecha'] = time();

@@ -38,9 +38,9 @@
     {% endif %}
     {% for item in items %}
       {% if menu_level == 0 and item.is_expanded %}
-         <li{{ item.attributes.addClass( ' admi ' ) }} data-uk-dropdown>
+         <li{{ item.attributes.addClass( ' admi ' ) }}  data-uk-dropdown>
        {% else %}
-         <li>
+         <li class="1 {% if loop.last  %} last {% endif %}" >
        {% endif %}
         {{ link(item.title, item.url) }}
         {% if item.below %}

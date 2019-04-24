@@ -1,33 +1,79 @@
 {#
 /**
- * @file
- * Default theme implementation for a breadcrumb trail.
- *
- * Available variables:
- * - breadcrumb: Breadcrumb trail items.
- *
- * @ingroup themeable
- */
+* @file
+* Default theme implementation for a breadcrumb trail.
+*
+* Available variables:
+* - breadcrumb: Breadcrumb trail items.
+*
+* @ingroup themeable
+*/
 #}
 {% if breadcrumb %}
 <!--section2-->
-<div class="cont-bc">
-    <div class="parent-container">
-        <div class="container-breadcream">
-            <ul class="breadcream  ">
-          {% for item in breadcrumb %}
-            <li>
-              {% if loop.last %}
-                {{ item.text }}
-              {% else %}
-                <a href="{{ item.url }}">{{ item.text }}</a>
-                <span> / </span>
-              {% endif %}
-            </li>
-          {% endfor %}
-            </ul>
-        </div>
+{% if validarUrl() %}
+<div class="r_busqueda r_b2">
+  <div class="cont_rbusqueda">
+    <div class="search_r">
+      <input class="srch_btn" name="" type="button">
+      <input type="text" class="srch_input" value="¿Qué estás buscando?">
+      <div class="result_b">
+        Se han encontrado 31 resultados para “Modalidades”
+      </div>
     </div>
+  </div>
+</div>
+{% else %}
+<div class="cont-bc">
+  <div class="parent-container">
+    <div class="container-breadcream">
+      <ul class="breadcream {% if phatUrl(2) == 'administracion' or phatUrl(1) == 'contacto'  %}nborder{% endif %} ">
+        {% if phatUrl(2) == 'open-ulima' %}
+        <li><a href="/">Inicio </a> <span> / </span> </li>
+        <li><a href="/carreras">Carreras</a> <span> / </span> </li>
+        <li> Open Ulima</li> 
+        {% elseif phatUrl(1) == 'contacto' %}
+        <li><a href="/">Inicio </a> <span> / </span> </li>
+        <li> Contacto</li> 
+        {% elseif phatUrl(3) == 'plan-de-estudios' %}
+        <li><a href="/">Inicio </a> <span> / </span> </li>
+        <li><a href="/carreras">Carreras</a> <span> / </span> </li>
+        <li><a href="/carreras/administracion">Administración</a> <span> / </span> </li>
+        <li> Plan de estudios</li>
+        {% elseif phatUrl(2) == 'examen-de-admisión' %}
+        <li><a href="/">Inicio </a> <span> / </span> </li>
+        <li><a href="/admision">Admisión</a> <span> / </span> </li>
+        <li><a href="/admision/examen-de-admisión"> Modalidades de Admisión </a> <span> / </span> </li>
+        <li> Examen de Admisión</li>
+        {% elseif phatUrl(2) == 'colegio-acreditado-por-la-Ulima' %}
+        <li><a href="">Inicio </a> <span> / </span> </li>
+        <li><a href="/"> Admisión </a> <span> / </span> </li>
+        <li><a href="/admision">Modalidades de Admisión </a> <span> / </span> </li>
+        <li> Colegio Acreditado por la Ulima</li>
+        {% elseif phatUrl(1) == 'admision' %}
+          <li><a href="/">Inicio </a> <span> / </span> </li>
+          <li><a href="/admision">Admisión</a> <span> / </span> </li>
+          <li> Modalidades de Admisión</li>
+        {% elseif phatUrl(2) == 'examen-de-admisión' %}
+        <li><a href="/">Inicio </a> <span> / </span> </li>
+        <li><a href="/admision">Admisión</a> <span> / </span> </li>
+        <li> Modalidades de Admisión</li>
+        {% else %}
+        {% for item in breadcrumb %}
+        <li>
+          {% if loop.last %}
+          {{ item.text }}
+          {% else %}
+          <a href="{{ item.url }}">{{ item.text }}</a>
+          <span> / </span>
+          {% endif %}
+        </li>
+        {% endfor %}
+        {% endif %}
+
+      </ul>
+    </div>
+  </div>
 </div>
 {% endif %}
-
+{% endif %}

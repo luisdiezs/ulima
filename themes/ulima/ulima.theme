@@ -176,3 +176,38 @@ $node = $content['#object'];
 
 }
 
+
+function ulima_js_alter(&$javascript) {
+  
+  $route = \Drupal::routeMatch()->getRouteObject();
+
+  $is_admin = FALSE;
+  if (!empty($route)) {
+    $is_admin_route = \Drupal::service('router.admin_context')->isAdminRoute($route);
+    $has_node_operation_option = $route->getOption('_node_operation_route');
+    $is_admin = ($is_admin_route || $has_node_operation_option);
+  }
+  else {
+    $current_path = \Drupal::service('path.current')->getPath();
+    if(preg_match('/node\/(\d+)\/edit/', $current_path, $matches)) {
+      $is_admin = TRUE;
+    }
+    elseif(preg_match('/taxonomy\/term\/(\d+)\/edit/', $current_path, $matches)) {
+      $is_admin = TRUE;
+    }
+  }
+  if(!$is_admin){
+    unset($javascript['core/assets/vendor/domready/ready.min.js']);
+    unset($javascript['core/assets/vendor/jquery/jquery.min.js']);
+    unset($javascript['core/assets/vendor/jquery-once/jquery.once.min.js']);
+    unset($javascript['core/misc/drupalSettingsLoader.js']);
+    unset($javascript['sites/default/files/languages/es_K-8Zy0ChDxz8uOjIS80rqw3MV9QNSTGBlnX8FIq6Eew.js']);
+    unset($javascript['core/misc/drupal.js']);
+    unset($javascript['core/misc/drupal.init.js']);
+    //unset($javascript['themes/ulima/assets/js/main.bundle.js']);
+    unset($javascript['core/misc/progress.js']);
+    unset($javascript['core/misc/ajax.js']);
+    unset($javascript['core/modules/big_pipe/js/big_pipe.js']);
+}
+    unset($javascript['core/assets/vendor/html5shiv/html5shiv.min.js']);
+}

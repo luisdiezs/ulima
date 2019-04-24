@@ -1,0 +1,1 @@
+(function($){$('#bx-slider-brasil-block .bxslider').bxSlider({mode:'texto',titulo1:'Brasil',titulo2:false,type:'paises',horarios:false,carreras:false,});})(jQuery, Drupal, drupalSettings);

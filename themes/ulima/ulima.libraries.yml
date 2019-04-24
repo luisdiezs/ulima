@@ -4,7 +4,9 @@ global-css:
       assets/css/style.css: {}
       assets/css/styles-dev.css: {}
       assets/css/slick.css: {}
+      assets/css/steps_extra.css: {}
       assets/css/tiny-slider.css: {}
+
 
 
 global-js:

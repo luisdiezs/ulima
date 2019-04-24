@@ -5,6 +5,8 @@ namespace Drupal\contacto\Controller;
 use Drupal\contacto\ContactoModel;
 use Drupal\Core\Url;
 use Drupal\Core\Controller\ControllerBase;
+use Symfony\Component\Yaml\Yaml;
+use Drupal\bxslider_block\BXSliderModel;
 
 /**
  * Class ContactoController.
@@ -18,22 +20,39 @@ class ContactoController extends ControllerBase {
    */
   public function lista() {
     $suscribeteAray = ContactoModel::getAll();
-
     $header = [
       'name' => $this->t('ID'),
       'apellido' => $this->t('Nombre y Apellido'),
       'correo' => $this->t('Correo'),
       'telefono' => $this->t('Telefono'),
       'fecha' => $this->t('Fecha'),
+      'horarios' => $this->t('Horarios'),
      // 'operation' => $this->t('Operacion'),
     ];
     $rows = [];
+    $entry = [
+            'machine_name' => 'slider_inscribete_en_charlas_x_carrera_horarios_',
+        ];
+
+        $slider = BXSliderModel::load($entry);
+
+        if (!$slider) {
+            return [
+                '#markup' => "<h3>" . $this->t("This Slider doesn\'t exit") . "</h3>",
+            ];
+        }
+
+        $settings = unserialize($slider['settings']);
+
+  
+
     foreach ($suscribeteAray as $index => $suscribete) {
       $rows[$index]['name'] = $suscribete->id;
       $rows[$index]['apellido'] = $suscribete->nombre . ' '. $suscribete->apellidos;
       $rows[$index]['correo'] = $suscribete->correo;
       $rows[$index]['telefono'] = $suscribete->telefono;
       $rows[$index]['fecha'] = date('Y-m-d',$suscribete->fecha);
+      $rows[$index]['horarios'] = $this->horarios($suscribete, $settings);
       $operations = [
         '#type' => 'operations',
         '#links' => [
@@ -60,6 +79,26 @@ class ContactoController extends ControllerBase {
     ];
   }
 
+
+  public function horarios($value, $settings) {
+        $horarios = Yaml::parse($settings['horarios']);
+    $carreras = Yaml::parse($settings['carreras']);
+
+    if($value->horarios){
+      $horariosx = json_decode($value->horarios);
+      foreach ($horariosx->horarios as $key => $value) {
+        $arrayResul = explode('|', $value);
+        $result[$arrayResul[0]][] =  $carreras[$arrayResul[1]] . '  Hora: ' . $horarios[$arrayResul[2]] ;
+      }
+      foreach ($result as $keyc => $valuec) {
+        $arrayResul = explode('|', $value);
+        $resultx .=  " Fecha: ".$keyc ." Cursos: ". implode(", ", $valuec) .' || ';
+      }
+    }
+    
+    return $resultx;
+  }
+
   /**
    * Edit bx slider.
    */
@@ -77,7 +116,19 @@ class ContactoController extends ControllerBase {
     public function delete($slider) {
         ini_set('display_errors',1);
         $suscribeteAray = ContactoModel::getAll();
+        $entry = [
+            'machine_name' => 'slider_inscribete_en_charlas_x_carrera_horarios_',
+        ];
 
+        $slider = BXSliderModel::load($entry);
+
+        if (!$slider) {
+            return [
+                '#markup' => "<h3>" . $this->t("This Slider doesn\'t exit") . "</h3>",
+            ];
+        }
+
+        $settings = unserialize($slider['settings']);
 
         $rows = [];
 
@@ -89,10 +140,11 @@ class ContactoController extends ControllerBase {
             $f = fopen('php://memory', 'w');
 
             //set column headers
-            $fields = array('ID', 'Name', 'Email', 'Phone', 'Created', 'Status');
+            $fields = array('ID', 'Name', 'Email', 'Telefono', 'Fecha', "Grado", 'Horario');
             fputcsv($f, $fields, $delimiter);
         foreach ($suscribeteAray as $index => $suscribete) {
-                $lineData = array($suscribete->id, $suscribete->nombre, $suscribete->apellidos, $suscribete->correo, $suscribete->telefono, $suscribete->fecha );
+            $horarios = $this->horarios($suscribete, $settings);
+                $lineData = array($suscribete->id, $suscribete->nombre.' '. $suscribete->apellidos, $suscribete->correo, $suscribete->telefono, $suscribete->fecha, $suscribete->grado, $horarios );
                 fputcsv($f, $lineData, $delimiter);
             }
 

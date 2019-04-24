@@ -1,237 +1,244 @@
 {#
 /**
- * @file
- * Theme override to display a node.
- *
- * Available variables:
- * - node: The node entity with limited access to object properties and methods.
-     Only "getter" methods (method names starting with "get", "has", or "is")
-     and a few common methods such as "id" and "label" are available. Calling
-     other methods (such as node.delete) will result in an exception.
- * - label: The title of the node.
- * - content: All node items. Use {{ content }} to print them all,
- *   or print a subset such as {{ content.field_example }}. Use
- *   {{ content|without('field_example') }} to temporarily suppress the printing
- *   of a given child element.
- * - author_picture: The node author user entity, rendered using the "compact"
- *   view mode.
- * - metadata: Metadata for this node.
- * - date: Themed creation date field.
- * - author_name: Themed author name field.
- * - url: Direct URL of the current node.
- * - display_submitted: Whether submission information should be displayed.
- * - attributes: HTML attributes for the containing element.
- *   The attributes.class element may contain one or more of the following
- *   classes:
- *   - node: The current template type (also known as a "theming hook").
- *   - node--type-[type]: The current node type. For example, if the node is an
- *     "Article" it would result in "node--type-article". Note that the machine
- *     name will often be in a short form of the human readable label.
- *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
- *     teaser would result in: "node--view-mode-teaser", and
- *     full: "node--view-mode-full".
- *   The following are controlled through the node publishing options.
- *   - node--promoted: Appears on nodes promoted to the front page.
- *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
- *     teaser listings.
- *   - node--unpublished: Appears on unpublished nodes visible only to site
- *     admins.
- * - title_attributes: Same as attributes, except applied to the main title
- *   tag that appears in the template.
- * - content_attributes: Same as attributes, except applied to the main
- *   content tag that appears in the template.
- * - author_attributes: Same as attributes, except applied to the author of
- *   the node tag that appears in the template.
- * - title_prefix: Additional output populated by modules, intended to be
- *   displayed in front of the main title tag that appears in the template.
- * - title_suffix: Additional output populated by modules, intended to be
- *   displayed after the main title tag that appears in the template.
- * - view_mode: View mode; for example, "teaser" or "full".
- * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
- * - page: Flag for the full page state. Will be true if view_mode is 'full'.
- * - readmore: Flag for more state. Will be true if the teaser content of the
- *   node cannot hold the main body content.
- * - logged_in: Flag for authenticated user status. Will be true when the
- *   current user is a logged-in member.
- * - is_admin: Flag for admin user status. Will be true when the current user
- *   is an administrator.
- *
- * @see template_preprocess_node()
- *
- * @todo Remove the id attribute (or make it a class), because if that gets
- *   rendered twice on a page this is invalid CSS for example: two lists
- *   in different view modes.
- */
+* @file
+* Theme override to display a node.
+*
+* Available variables:
+* - node: The node entity with limited access to object properties and methods.
+Only "getter" methods (method names starting with "get", "has", or "is")
+and a few common methods such as "id" and "label" are available. Calling
+other methods (such as node.delete) will result in an exception.
+* - label: The title of the node.
+* - content: All node items. Use {{ content }} to print them all,
+* or print a subset such as {{ content.field_example }}. Use
+* {{ content|without('field_example') }} to temporarily suppress the printing
+* of a given child element.
+* - author_picture: The node author user entity, rendered using the "compact"
+* view mode.
+* - metadata: Metadata for this node.
+* - date: Themed creation date field.
+* - author_name: Themed author name field.
+* - url: Direct URL of the current node.
+* - display_submitted: Whether submission information should be displayed.
+* - attributes: HTML attributes for the containing element.
+* The attributes.class element may contain one or more of the following
+* classes:
+* - node: The current template type (also known as a "theming hook").
+* - node--type-[type]: The current node type. For example, if the node is an
+* "Article" it would result in "node--type-article". Note that the machine
+* name will often be in a short form of the human readable label.
+* - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+* teaser would result in: "node--view-mode-teaser", and
+* full: "node--view-mode-full".
+* The following are controlled through the node publishing options.
+* - node--promoted: Appears on nodes promoted to the front page.
+* - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+* teaser listings.
+* - node--unpublished: Appears on unpublished nodes visible only to site
+* admins.
+* - title_attributes: Same as attributes, except applied to the main title
+* tag that appears in the template.
+* - content_attributes: Same as attributes, except applied to the main
+* content tag that appears in the template.
+* - author_attributes: Same as attributes, except applied to the author of
+* the node tag that appears in the template.
+* - title_prefix: Additional output populated by modules, intended to be
+* displayed in front of the main title tag that appears in the template.
+* - title_suffix: Additional output populated by modules, intended to be
+* displayed after the main title tag that appears in the template.
+* - view_mode: View mode; for example, "teaser" or "full".
+* - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+* - page: Flag for the full page state. Will be true if view_mode is 'full'.
+* - readmore: Flag for more state. Will be true if the teaser content of the
+* node cannot hold the main body content.
+* - logged_in: Flag for authenticated user status. Will be true when the
+* current user is a logged-in member.
+* - is_admin: Flag for admin user status. Will be true when the current user
+* is an administrator.
+*
+* @see template_preprocess_node()
+*
+* @todo Remove the id attribute (or make it a class), because if that gets
+* rendered twice on a page this is invalid CSS for example: two lists
+* in different view modes.
+*/
 #}
 {%
-  set classes = [
-    'node',
-    'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'clearfix',
-  ]
+set classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'clearfix',
+]
 %}
 <article {{ attributes.addClass(classes) }}>
   {##{ title_prefix }#}
   {#% if not page %}
-    <h2{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h2>
+  <h2 {{ title_attributes }}>
+    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+  </h2>
   {% endif %#}
   {#{ title_suffix }#}
   {% if node.bundle =='carreras' %}
-    {% if content.body[0] %}
-      <div class="cont_carrera_tipo">
-        <div class="ncarreras">
-          <div class="cont_carreras">
-          {{ getbloques(content.body[0]) }}
-          </div>
-        </div>
+  {% if content.body[0] %}
+  <div class="cont_carrera_tipo">
+    <div class="ncarreras">
+      <div class="cont_carreras">
+        {{ getbloques(content.body[0]) }}
       </div>
-    {% endif %}
-    {% if content.field_bloque_2[0] %}
-      <div class="somosulima xq_lima">
-        <div class="cont_slima xqul">
-          {{ getbloques(content.field_bloque_2[0]) }}
-        </div>
+    </div>
+  </div>
+  {% endif %}
+  {% if content.field_bloque_2[0] %}
+  <div class="somosulima xq_lima">
+    <div class="cont_slima xqul">
+      {{ getbloques(content.field_bloque_2[0]) }}
+    </div>
+  </div>
+  {% endif %}
+  {% if content.field_bloque_3[0] %}
+  <div class="ncarreras diplomas_e">
+    <div class="cont_carreras">
+      <h2>{{ getbloques(content.field_titulo_bloque_2[0]) }}</h2>
+      <div class="cont_diplomas carousel">
+        {{ getImageAlt(content.field_bloque_3[0]) }}
       </div>
-    {% endif %}
-    {% if content.field_bloque_3[0] %}
-      <div class="ncarreras diplomas_e">
-        <div class="cont_carreras">
-          <h2>{{ getbloques(content.field_titulo_bloque_2[0]) }}</h2>
-          <div class="cont_diplomas carousel">
-              {{ getImageAlt(content.field_bloque_3[0]) }}
-          </div>
-        </div>
-      </div>
-    {% endif %}
-    {% elseif  node.bundle =='infraestructura' and classes[5] =='node--view-mode-full'  %}
-    {% set items = getInfraestructura() %}
-  <div{{ content_attributes }}>
-        {{ content }}
+    </div>
+  </div>
+  {% endif %}
+  {% elseif node.bundle =='infraestructura' and classes[5] =='node--view-mode-full' %}
+  {% set items = getInfraestructura() %}
+  <div {{ content_attributes }}>
+    {{ content }}
   </div>
 
 
 
-      <!--section4-->
-      <div id="areas_ul" class="areas_ul carousel">
-        <div class="cont_areas_ul list-items" with-dots countitem-mob="1" countitem-desk="3">
-          <div class="item-note">
-            <h2>Áreas Comunes</h2>
-            <figure>
-              <img src="/themes/ulima/assets/img/infra/local1.jpg"/>
-              <ul>
-                <li><a href="">Auditorios</a></li>
-                <li><a href="">Aulas Magnas</a></li>
-                <li><a href="">Sala Ventana Indiscreta</a></li>
-                <li><a href="">Campus</a></li>
-                <li><a href="">Cafeterías</a></li>
-                <li><a href="">Estacionamiento</a></li>
-              </ul>
-            </figure>
+  <!--section4-->
+  <div id="areas_ul" class="areas_ul carousel">
+    <div class="cont_areas_ul list-items" with-dots countitem-mob="1" countitem-desk="3">
+      <div class="item-note">
+        <h2>Áreas Comunes</h2>
+        <figure>
+          <img src="/themes/ulima/assets/img/infra/local1.jpg" />
+          <ul>
+            <li><a class="remote-gallery-modal" data-term="auditorios" href="">Auditorios</a></li>
+            <li><a class="remote-gallery-modal" data-term="aulas_magnas" href="">Aulas Magnas</a></li>
+            <li><a class="remote-gallery-modal" data-term="sala_ventana_indiscreta" href="">Sala Ventana Indiscreta</a></li>
+            <li><a class="remote-gallery-modal" data-term="campus" href="">Campus</a></li>
+            <li><a class="remote-gallery-modal" data-term="cafeterias" href="">Cafeterías</a></li>
+            <li><a class="remote-gallery-modal" data-term="estacionamiento" href="">Estacionamiento</a></li>
+          </ul>
+          </ul>
+        </figure>
+      </div>
+      <div class="item-note fr">
+        <h2>Espacios Académicos</h2>
+        <figure>
+          <img src="/themes/ulima/assets/img/infra/local2.jpg" />
+          <ul>
+            <li><a class="remote-gallery-modal" data-term="laboratorios" href="">Laboratorios</a></li>
+            <li><a class="remote-gallery-modal" data-term="biblioteca"href="">Biblioteca</a></li>
+            <li><a class="remote-gallery-modal" data-term="aulas_de_computo"href="">Aulas de Cómputo</a></li>
+            <li><a class="remote-gallery-modal" data-term="salas_de_estudio"href="">Salas de Estudio</a></li>
+          </ul>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <!--section5-->
+  <div class="ningreso prelima_c local_infra">
+    <div class="cont_ingreso">
+      <h2>Torres cincuentenario</h2>
+      <h4>Líder en diseño y energía ambiental</h4>
+      <div class="cont_tingreso options-desk">
+        <div class="t_ingreso t1">
+          <figure> </figure>
+          <h4>Parqueo de bicicletas</h4>
+          <p>105 estacionamientos. </p>
+        </div>
+        <div class="t_ingreso t2">
+          <figure> </figure>
+          <h4>Parqueo para vehículos eficientes y de bajas emisiones de CO2</h4>
+          <p>21 estacionamientos.</p>
+        </div>
+        <div class="t_ingreso t3">
+          <figure> </figure>
+          <h4>Protección y restauración del hábitat </h4>
+          <p>Amplias áreas de vegetación con especies variadas que promueven la restauración de la flora y fauna en el
+            terreno. </p>
+        </div>
+        <div class="t_ingreso t4">
+          <figure> </figure>
+          <h4>Eficiencia y ahorro </h4>
+          <p>Nuestro sistema de iluminación y climatización ahorra 38.9% de energía con respecto a un edificio
+            educativo convencional.</p>
+        </div>
+        <div class="t_ingreso t5">
+          <figure> </figure>
+          <h4>Apoyo a la energía renovable </h4>
+          <p>Hemos comprado Certificados de Energía Renovable (RECs) por un monto equivalente al 35% del consumo anual
+          </p>
+        </div>
+        <div class="t_ingreso t6">
+          <figure> </figure>
+          <h4>Reciclaje y reutilización </h4>
+          <p>Más del 75% de los residuos de la construcción fueron reciclados o reutilizados.</p>
+        </div>
+      </div>
+      <div class="carousel carousel-opt options-mob">
+        <div class="cont_tingreso list-items" with-dots dotstop countitem-mob="1">
+          <div class="item-note t_ingreso t1">
+            <figure> </figure>
+            <h4>Parqueo de bicicletas</h4>
+            <p>105 estacionamientos. </p>
           </div>
-          <div class="item-note fr">
-            <h2>Espacios Académicos</h2>
-            <figure>
-              <img src="/themes/ulima/assets/img/infra/local2.jpg"/>
-              <ul>
-                <li><a href="">Laboratorios</a></li>
-                <li><a href="">Biblioteca</a></li>
-                <li><a href="">Aulas de Cómputo</a></li>
-                <li><a href="">Salas de Estudio</a></li>
-              </ul>
-            </figure>
+          <div class="item-note t_ingreso t2">
+            <figure> </figure>
+            <h4>Parqueo para vehículos eficientes y de bajas emisiones </h4>
+            <p>21 estacionamientos.</p>
+          </div>
+          <div class="item-note t_ingreso t3">
+            <figure> </figure>
+            <h4>Protección y restauración del hábitat </h4>
+            <p>Amplias áreas de vegetación con especies variadas que promueven la restauración de la flora y fauna en
+              el terreno. </p>
+          </div>
+          <div class="item-note t_ingreso t4">
+            <figure> </figure>
+            <h4>Eficiencia y ahorro </h4>
+            <p>Nuestro sistema de iluminación y climatización ahorra 38.9% de energía con respecto a un edificio
+              educativo convencional.</p>
+          </div>
+          <div class="item-note t_ingreso t5">
+            <figure> </figure>
+            <h4>Apoyo a la energía renovable </h4>
+            <p>Hemos comprado Certificados de Energía Renovable (RECs) por un monto equivalente al 35% del consumo
+              anual </p>
+          </div>
+          <div class="item-note t_ingreso t6">
+            <figure> </figure>
+            <h4>Reciclaje y reutilización </h4>
+            <p>Más del 75% de los residuos de la construcción fueron reciclados o reutilizados.</p>
           </div>
         </div>
       </div>
-      <!--section5-->
-      <div class="ningreso prelima_c local_infra">
-        <div class="cont_ingreso">
-          <h2>Torres cincuentenario</h2>
-          <h4>Líder en diseño y energía ambiental</h4>
-          <div class="cont_tingreso options-desk">
-            <div class="t_ingreso t1">
-              <figure> </figure>
-              <h4>Parqueo de bicicletas</h4>
-              <p>105 estacionamientos. </p>
-            </div>
-            <div class="t_ingreso t2">
-              <figure> </figure>
-              <h4>Parqueo para vehículos eficientes y de bajas emisiones de CO2</h4>
-              <p>21 estacionamientos.</p>
-            </div>
-            <div class="t_ingreso t3">
-              <figure> </figure>
-              <h4>Protección y restauración del hábitat </h4>
-              <p>Amplias áreas de vegetación con especies variadas que promueven la restauración de la flora y fauna en el terreno. </p>
-            </div>
-            <div class="t_ingreso t4">
-              <figure> </figure>
-              <h4>Eficiencia y ahorro </h4>
-              <p>Nuestro sistema de iluminación y climatización ahorra 38.9% de energía con respecto a un edificio educativo convencional.</p>
-            </div>
-            <div class="t_ingreso t5">
-              <figure> </figure>
-              <h4>Apoyo a la energía renovable </h4>
-              <p>Hemos comprado Certificados de Energía Renovable (RECs) por un monto equivalente al 35% del consumo anual </p>
-            </div>
-            <div class="t_ingreso t6">
-              <figure> </figure>
-              <h4>Reciclaje y reutilización </h4>
-              <p>Más del 75% de los residuos de la construcción fueron reciclados o reutilizados.</p>
-            </div>
-          </div>
-          <div class="carousel carousel-opt options-mob">
-            <div class="cont_tingreso list-items" with-dots dotstop countitem-mob="1">
-              <div class="item-note t_ingreso t1">
-                <figure> </figure>
-                <h4>Parqueo de bicicletas</h4>
-                <p>105 estacionamientos. </p>
-              </div>
-              <div class="item-note t_ingreso t2">
-                <figure> </figure>
-                <h4>Parqueo para vehículos eficientes y de bajas emisiones </h4>
-                <p>21 estacionamientos.</p>
-              </div>
-              <div class="item-note t_ingreso t3">
-                <figure> </figure>
-                <h4>Protección y restauración del hábitat </h4>
-                <p>Amplias áreas de vegetación con especies variadas que promueven la restauración de la flora y fauna en el terreno. </p>
-              </div>
-              <div class="item-note t_ingreso t4">
-                <figure> </figure>
-                <h4>Eficiencia y ahorro </h4>
-                <p>Nuestro sistema de iluminación y climatización ahorra 38.9% de energía con respecto a un edificio educativo convencional.</p>
-              </div>
-              <div class="item-note t_ingreso t5">
-                <figure> </figure>
-                <h4>Apoyo a la energía renovable </h4>
-                <p>Hemos comprado Certificados de Energía Renovable (RECs) por un monto equivalente al 35% del consumo anual </p>
-              </div>
-              <div class="item-note t_ingreso t6">
-                <figure> </figure>
-                <h4>Reciclaje y reutilización </h4>
-                <p>Más del 75% de los residuos de la construcción fueron reciclados o reutilizados.</p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel carousel-infra-pic">
-            <ul class="locales_ul list-items" with-buttons with-dots dotstop countitem-mob="1" countitem-desk="3">
-              <li class="item-note">
-                <figure><a href=""><img src="/themes/ulima/assets/img/infra/local3_m.jpg"/></a>  </figure>
-              </li>
-              <li class="item-note">
-                <figure><a href=""><img src="/themes/ulima/assets/img/infra/local4_m.jpg"/></a>  </figure>
-              </li>
-              <li class="item-note">
-                <figure> <a href=""><img src="/themes/ulima/assets/img/infra/local5_m.jpg"/></a> </figure>
-              </li>
-            </ul>
-            <!--<div class="container-buttons-controls">
+      <div class="carousel carousel-infra-pic">
+        <ul class="locales_ul list-items" with-buttons with-dots dotstop countitem-mob="1" countitem-desk="3">
+          <li class="item-note">
+            <figure><a href=""><img src="/themes/ulima/assets/img/infra/local3_m.jpg" /></a> </figure>
+          </li>
+          <li class="item-note">
+            <figure><a href=""><img src="/themes/ulima/assets/img/infra/local4_m.jpg" /></a> </figure>
+          </li>
+          <li class="item-note">
+            <figure> <a href=""><img src="/themes/ulima/assets/img/infra/local5_m.jpg" /></a> </figure>
+          </li>
+        </ul>
+        <!--<div class="container-buttons-controls">
                <div class="left">
                   <a href="#">&#8735;</a>
                </div>
@@ -239,115 +246,171 @@
                   <a href="#">&#8735;</a>
                </div>
             </div>-->
-          </div>
-        </div>
       </div>
+    </div>
+  </div>
 
 
 
-      <!--section6 ============ -->
-      <div class="areas_ul">
-        <div class="cont_areas_ul">
-          <div class="cont_sedes">
-            <h2>Sede deportiva</h2>
-            <p>Ubicada en la urbanización Mayorazgo en el distrito de Ate, al final de la Av. Los Constructores.</p>
-          </div>
-          {% if items|length > 0  %}
-            {% for key, item in items.items %}
-              {% if getClassVideoLista(loop.index0) == 'vl3' %}
-              <div class="campusdeportivos options-desk">
-                {% endif %}
-                <div class="area_ul1 {% if getClassVideoLista(loop.index0) != 'vl3' %} fr{% endif %}">
-                  <figure>
-                    <img width="458" height="460" src="{{ item[key]['url'] }}"/>
-                    <ul>
-                      <li>{{ items.settings[key].titulo1 }}</li>
-                      {% if items.settings[key].titulo2 %}
-                      <li>{{ items.settings[key].titulo2 }}</li>
-                      {% endif %}
-                    </ul>
-                  </figure>
-                </div>
-
-                {% if getClassVideoLista(loop.index0) != 'vl3' %}
-                  </div>
-                {% endif %}
-            {% endfor %}
-          {% endif %}
-
-
-          <!--section6 fin ============ -->
-
-
-          <div class="carousel carrusel_infra_m">
-            <div class="list-items" with-buttons countitem-mob="1">
-              {% if items|length > 0  %}
-                {% for key, item in items.items %}
-                   <div class="item-note">
-                    <figure>
-                      <img width="458" height="460"  src="{{ item[key]['url'] }}"/>
-                      <ul>
-                        <li>{{ items.settings[key].titulo1 }}</li>
-                        {% if items.settings[key].titulo2 %}
-                        <li>{{ items.settings[key].titulo2 }}</li>
-                        {% endif %}
-                      </ul>
-                    </figure>
-                  </div>
-                {% endfor %}
-              {% endif %}
-            </div>
-          </div>
-        </div>
+  <!--section6 ============ -->
+  <div class="areas_ul">
+    <div class="cont_areas_ul">
+      <div class="cont_sedes">
+        <h2>Sede deportiva</h2>
+        <p>Ubicada en la urbanización Mayorazgo en el distrito de Ate, al final de la Av. Los Constructores.</p>
       </div>
-
-
-
-
-      <div class="modal_incrip msn_galery ">
-        <div class="layer_dark"></div>
-        <div>
-          <div class="cont_galery_pu carousel">
-            <div class="gale_pu list-items" infinite with-dots with-buttons countitem-mob="1" countitem-desk="1">
-              {% if items|length > 0  %}
-                {% for key, item in items.items[0] %}
-                  <div class="item-note">
-                    <img src="{{ item['url'] }}" style="width: 100%"/>
-                  </div>
-                {% endfor %}
-              {% endif %}
-            </div>
-            <div class="custom-dots-container">
-              <ul class="custom-dots">
-                {% if items|length > 0  %}
-                  {% for key, item in items.items[0] %}
-                    <li>
-                      <img src="{{ item['url'] }}"/>
-                    </li>
-                  {% endfor %}
-                {% endif %}
-
-              </ul>
-            </div>
-          </div>
-          <span class="cerrar"><a href=""> <img src="/themes/ulima/assets/img/png/cerrar.png"/></a></span>
-        </div>
-      </div>
-      <div class="modal_incrip modal-img">
-        <div class="layer_dark"></div>
-        <div>
+      {% if items|length > 0 %}
+      {% for key, item in items.items %}
+      {% if getClassVideoLista(loop.index0) == 'vl3' %}
+      <div class="campusdeportivos options-desk">
+        {% endif %}
+        <div class="area_ul1 {% if getClassVideoLista(loop.index0) != 'vl3' %} fr{% endif %}">
           <figure>
-            <img id="img-box" src="" alt="" style="width:100%">
+            <img width="458" height="460" src="{{ item[key]['url'] }}" />
+            <ul>
+              <li>{{ items.settings[key].titulo1 }}</li>
+              {% if items.settings[key].titulo2 %}
+              <li>{{ items.settings[key].titulo2 }}</li>
+              {% endif %}
+            </ul>
           </figure>
-          <span class="cerrar"><a href=""> <img src="/themes/ulima/assets/img/png/cerrar.png"/></a></span>
+        </div>
+
+        {% if getClassVideoLista(loop.index0) != 'vl3' %}
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <!--section6 fin ============ -->
+
+
+      <div class="carousel carrusel_infra_m">
+        <div class="list-items" with-buttons countitem-mob="1">
+          {% if items|length > 0 %}
+          {% for key, item in items.items %}
+          <div class="item-note">
+            <figure>
+              <img width="458" height="460" src="{{ item[key]['url'] }}" />
+              <ul>
+                <li>{{ items.settings[key].titulo1 }}</li>
+                {% if items.settings[key].titulo2 %}
+                <li>{{ items.settings[key].titulo2 }}</li>
+                {% endif %}
+              </ul>
+            </figure>
+          </div>
+          {% endfor %}
+          {% endif %}
         </div>
       </div>
+    </div>
+  </div>
+
+
+   <div class="modal_incrip msn_galery  modal-img-infra">
+        <div class="layer_dark"></div>
+
+ 
+    <div>
+      <div class="cont_galery_pu carousel">
+        <div class="gale_pu list-items" infinite with-dots with-buttons countitem-mob="1" countitem-desk="1">
+          {% if items|length > 0 %}
+          {% for key, item in items.items[0] %}
+          <div class="item-note">
+            <img src="{{ item['url'] }}" style="width: 100%" />
+          </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+        <div class="custom-dots-container">
+          <ul class="custom-dots">
+            {% if items|length > 0 %}
+            {% for key, item in items.items[0] %}
+            <li>
+              <img src="{{ item['url'] }}" />
+            </li>
+            {% endfor %}
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+      <span class="cerrar"><a href=""> <img src="/themes/ulima/assets/img/png/cerrar.png" /></a></span>
+    </div>
+  </div>
+   
+
+  <div class="modal_incrip msn_galery modal-img modal-img-infra3">
+        <div class="layer_dark"></div>
+   </div>
+   
+
+    <div class="modal_incrip msn_galery modal-img modal-img-infra3">
+        <div class="layer_dark"></div>
+        <div>
+            <!--<figure>
+               <img id="img-box" src="" alt="" style="width:100%">
+            </figure>-->
+            <div class="cont_galery_pu carousel">
+                <div class="gale_pu list-items" with-dots with-buttons countitem-mob="1" countitem-desk="1" infinite="1">
+                    <li class="item-note">
+                        <figure>
+                            <a href=""><img src="/themes/ulima/assets/img/infra/local3_m.jpg" /></a>
+                        </figure>
+                    </li>
+                    <li class="item-note">
+                        <figure>
+                            <a href=""><img src="/themes/ulima/assets/img/infra/local4_m.jpg" /></a>
+                        </figure>
+                    </li>
+                    <li class="item-note">
+                        <figure>
+                            <a href=""><img src="/themes/ulima/assets/img/infra/local5_m.jpg" /></a>
+                        </figure>
+                    </li>
+                </div>
+                <div class="custom-dots-container">
+                    <ul class="custom-dots dots100">
+                        <li class="item-note">
+                            <figure>
+                                <a href=""><img src="/themes/ulima/assets/img/infra/local3_m.jpg" /></a>
+                            </figure>
+                        </li>
+                        <li class="item-note">
+                            <figure>
+                                <a href=""><img src="/themes/ulima/assets/img/infra/local4_m.jpg" /></a>
+                            </figure>
+                        </li>
+                        <li class="item-note">
+                            <figure>
+                                <a href=""><img src="/themes/ulima/assets/img/infra/local5_m.jpg" /></a>
+                            </figure>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <span class="cerrar"><a href=""> <img src="/themes/ulima/assets/img/png/cerrar.png"/></a></span>
+        </div>
+    </div>
+    
+
+  <div class="modal_incrip modal-img">
+    <div class="layer_dark"></div>
+    <div>
+      <figure>
+        <img id="img-box" src="" alt="" style="width:100%">
+      </figure>
+      <span class="cerrar"><a href=""> <img src="/themes/ulima/assets/img/png/cerrar.png" /></a></span>
+    </div>
+  </div>
 
 
 
 
-    {% else %}
-  <div{{ content_attributes }}>
+  {% else %}
+  <div {{ content_attributes }}>
     {{ content }}
   </div>
   {% endif %}
