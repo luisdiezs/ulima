@@ -374,7 +374,7 @@
 				<div class="btn_ir"> <span> <a href="">CONOCE MÁS</a> </span> </div>
 			</div>
 		</div>
-		<!--section 6-->
+		<!--section6-->
 		<div class="n_cat_simu">
 			<div class="cont_c_s">
 				<div class="cat_pago">
