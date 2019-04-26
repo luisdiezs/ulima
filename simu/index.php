@@ -491,11 +491,8 @@
 						<?php // getCiclos()
 						//$ciclos = array('20191' => '20191', '20192' => '20192'); ?>
 
-						<select name="cicloscbo">
+						<select name="cicloscbo" id="cicloscbo">
 							<option value="Elegir Ciclo">Elegir Ciclo</option>
-							<?php foreach ( $ciclos as $key => $ciclo ) { ?>
-								<option value="<?=$ciclo?>"><?=substr($ciclo, 0, 4) . '-' . substr($ciclo, -1)?></option>
-							<?php } ?>
 							</select>
 					</div>
 					<h3>¿Cuál es tu caso?</h3>
@@ -530,33 +527,23 @@
 						<div class="item_doble">
 							<div class="item_m2">
 								<h3>Departamento</h3>
-								<select name="dpto" class="tovalidate">
+								<select name="dpto" id='dpto-solo'>
 									<?php $departamentos = array('0' => 'Lima'); ?>
 									<option value="0">Seleccionar</option>
-									<?php foreach ($departamentos as $key => $departamento) { ?>
-										<option value="<?=$key?>"><?=$departamento?></option>
-									<?php } ?>
 								  </select>
 							</div>
 							<div class="item_m2 fright">
 								<h3>Provincia</h3>
-								<select name="prov" class="tovalidate">
-									<?php $provincias = array('0' => 'Lima', '1' => 'Huaura'); ?>
-									<option value="0">Seleccionar</option>
-									<?php foreach ($provincias as $key => $provincia) { ?>
-										<option value="<?=$key?>"><?=$provincia?></option>
-									<?php } ?>
+								<select name="prov" id="prov-solo">
+								<option value="0">Seleccionar</option>
 								  </select>
 							</div>
 						</div>
 						<div class="item_m1">
 							<h3>Distrito</h3>
-							<select name="dist" class="tovalidate">
+							<select name="dist" id="distrito-solo" >
 								<?php $distritos = array('0' => 'Cercado', '1' => 'San Miguel'); ?>
 							  <option value="0">Seleccionar</option>
-									<?php foreach ($distritos as $key => $distrito) { ?>
-										<option value="<?=$key?>"><?=$distrito?></option>
-									<?php } ?>
 							</select>
 						</div>
 					</div>
@@ -568,17 +555,16 @@
 							<!--<input class="autocompl tovalidate" type="text" onkeypress="ajaxColegios()" placeholder="Selecciona">-->
 							<!--<input class="autocompl tovalidate" type="text" placeholder="Selecciona">-->
 							<div class="control-group">
-								<select class="demo-default select-searchable" placeholder="Selecionar">
+								<select class="demo-default select-searchable" id="colegio-solo" placeholder="Selecionar">
 									<option value="">Selecciona</option>
 								</select>
 							</div>
-							<input class="tovalidate hidden-me" type="text" value="">
 						</div>
 					</div>
 					<p>Los nombres de los colegios serán verificados por la Universidad de Lima al momento de su inscripción al concurso de admisión.</p>
 					<div class="cont_btncal">
 						<span class="back_cal"><a id="btn_step2_back" class="prev_step_button" href="#">Regresar</a></span>
-						<span class="next_cal"><a id="btn_step2_register"  class="next_step_button disabled_button" href="#">Siguiente</a></span>
+						<span class="next_cal"><a id="btn_step2_register"  class="next_step_button" href="#">Siguiente</a></span>
 					</div>
 				</div>
 				<div id="modal_step3" class="paso1_inv ps2 vcoles" style="display:none">
@@ -601,30 +587,21 @@
 						<div class="item_doble">
 							<div class="item_m2">
 								<h3>Departamento</h3>
-								<select class="tovalidate" name="">
-									<option value="Lima">Seleccionar</option>
-									<option value="Lima">Lima</option>
-									<option value="Lima">Junin</option>
-									<option value="Lima">Apurimac</option>
+								<select  id="dpto-quinto">
+									<option value="0">Seleccionar</option>
 								</select>
 							</div>
 							<div class="item_m2 fright">
 								<h3>Provincia</h3>
-								<select class="tovalidate" name="">
-									<option value="Lima">Seleccionar</option>
-									<option value="Lima">Lima</option>
-									<option value="Lima">Huarochiri</option>
-									<option value="Lima">Cañete</option>
+								<select  id="prov-quinto">
+									<option value="0">Seleccionar</option>
 								</select>
 							</div>
 						</div>
 						<div class="item_m1">
 							<h3>Distrito</h3>
-							<select class="tovalidate" name="">
-								<option value="Lima">Seleccionar</option>
-								<option value="Lince">Lince</option>
-								<option value="Lince">San Juan de Miraflores</option>
-								<option value="Lince">La Victoria</option>
+							<select  id="distrito-quinto">
+								<option value="0">Seleccionar</option>
 							</select>
 						</div>
 					</div>
@@ -634,11 +611,10 @@
 							<h3>Colegio</h3>
 							<!--<input class="autocompl tovalidate" type="text" placeholder="Selecciona">-->
 							<div class="control-group">
-								<select class="demo-default select-searchable" placeholder="Selecionar">
+								<select class="demo-default select-searchable" placeholder="Selecionar" id="colegio-quinto">
 									<option value="">Selecciona</option>
 								</select>
 							</div>
-							<input class="tovalidate hidden-me" type="text" value="">
 						</div>
 					</div>
 					<!--<div class="cont_seleccolegio">
@@ -658,7 +634,7 @@
 					<p>Los nombres de los colegios serán verificados por la Universidad de Lima al momento de su inscripción al concurso de admisión.</p>
 					<div class="cont_btncal">
 						<span class="back_cal"><a id="btn_step3_back" class="prev_step_button" href="#">Regresar</a></span>
-						<span class="next_cal"><a id="btn_step3_register" class="next_step_button disabled_button" href="#">Siguiente</a></span>
+						<span class="next_cal"><a id="btn_step3_register" class="next_step_button " href="#">Siguiente</a></span>
 					</div>
 				</div>
 				<div id="modal_step4" class="paso1_inv ps2 vcoles" style="display:none">
@@ -681,30 +657,21 @@
 						<div class="item_doble">
 							<div class="item_m2">
 								<h3>Departamento</h3>
-								<select class="tovalidate" name="">
-									<option value="Lima">Seleccionar</option>
-									<option value="Lima">Lima</option>
-									<option value="Lima">Junin</option>
-									<option value="Lima">Apurimac</option>
+								<select  id="dpto-cuarto">
+									<option value="0">Seleccionar</option>
 								</select>
 							</div>
 							<div class="item_m2 fright">
 								<h3>Provincia</h3>
-								<select class="tovalidate" name="">
-									<option value="Lima">Seleccionar</option>
-									<option value="Lima">Lima</option>
-									<option value="Lima">Huarochiri</option>
-									<option value="Lima">Cañete</option>
+								<select id="prov-cuarto">
+									<option value="0">Seleccionar</option>
 								</select>
 							</div>
 						</div>
 						<div class="item_m1">
 							<h3>Distrito</h3>
-							<select class="tovalidate" name="">
-								<option value="Lima">Seleccionar</option>
-								<option value="Lince">Lince</option>
-								<option value="Lince">San Juan de Miraflores</option>
-								<option value="Lince">La Victoria</option>
+							<select  id="distrito-cuarto">
+								<option value="0">Seleccionar</option>
 							</select>
 						</div>
 					</div>
@@ -714,11 +681,10 @@
 							<h3>Colegio</h3>
 							<!--<input class="autocompl tovalidate" type="text" placeholder="Selecciona">-->
 							<div class="control-group">
-								<select class="demo-default select-searchable" placeholder="Selecionar">
-									<option value="">Seleciona</option>
+								<select class="demo-default select-searchable" id="colegio-cuarto" placeholder="Selecionar">
+									<option value="0">Seleciona</option>
 								</select>
 							</div>
-							<input class="tovalidate hidden-me" type="text" value="">
 						</div>
 					</div>
 					<!--<div class="cont_seleccolegio">
@@ -742,7 +708,7 @@
 							<a id="btn_step3_back" class="prev_step_button" href="#">Regresar</a>
 						</span>
 						<span class="next_cal">
-							<a id="btn_step3_register" class="next_step_button disabled_button" href="#">Siguiente</a>
+							<a id="btn_step3_register" class="next_step_button" href="#">Siguiente</a>
 						</span>
 					</div>
 				</div>
@@ -766,30 +732,21 @@
 						<div class="item_doble">
 							<div class="item_m2">
 								<h3>Departamento</h3>
-								<select class="tovalidate" name="">
-									<option value="Lima">Seleccionar</option>
-									<option value="Lima">Lima</option>
-									<option value="Lima">Junin</option>
-									<option value="Lima">Apurimac</option>
+								<select id="dpto-tercero">
+									<option value="0">Seleccionar</option>
 								</select>
 							</div>
 							<div class="item_m2 fright">
 								<h3>Provincia</h3>
-								<select class="tovalidate" name="">
-									<option value="Lima">Seleccionar</option>
-									<option value="Lima">Lima</option>
-									<option value="Lima">Huarochiri</option>
-									<option value="Lima">Cañete</option>
+								<select id="prov-tercero">
+									<option value="0">Seleccionar</option>
 								</select>
 							</div>
 						</div>
 						<div class="item_m1">
 							<h3>Distrito</h3>
-							<select class="tovalidate" name="">
-								<option value="Lima">Seleccionar</option>
-								<option value="Lince">Lince</option>
-								<option value="Lince">San Juan de Miraflores</option>
-								<option value="Lince">La Victoria</option>
+							<select id="distrito-tercero">
+								<option value="0">Seleccionar</option>
 							</select>
 						</div>
 					</div>
@@ -799,11 +756,10 @@
 							<h3>Colegio</h3>
 							<!--<input class="autocompl tovalidate" type="text" placeholder="Selecciona">-->
 							<div class="control-group">
-								<select class="demo-default select-searchable" placeholder="Selecionar">
+								<select class="demo-default select-searchable" id="colegio-tercero" placeholder="Selecionar">
 									<option value="">Selecciona</option>
 								</select>
 							</div>
-							<input class="tovalidate hidden-me" type="text" value="">
 						</div>
 					</div>
 					<!--<div class="cont_seleccolegio">
@@ -827,7 +783,7 @@
 							<a id="btn_step3_back" class="prev_step_button" href="#">Regresar</a>
 						</span>
 						<span class="next_cal">
-							<a id="btn_step3_register" class="next_step_button disabled_button" href="#">Siguiente</a>
+							<a id="btn_step3_register" class="next_step_button" href="#">Siguiente</a>
 						</span>
 					</div>
 				</div>
@@ -838,7 +794,7 @@
 						<div class="cont_categoria">
 							<div class="cat1">
 								<h3>CATEGORÍA</h3>
-								<h2>4</h2>
+								<h2 id="mostrar-categoria-colegio"></h2>
 							</div>
 							<div id="credit_value" class="cat2" data-credito="383">
 								<h3>VALOR DEL CRÉDITO</h3>
@@ -852,7 +808,7 @@
 								<span class="menos">
 							  <a href="#">-</a>
 						   </span>
-								<span class="num">20</span>
+								<span id="numcreditos" class="num">20</span>
 								<span class="mas">
 							  <a href="#">+</a>
 						   </span>
@@ -868,11 +824,11 @@
 							</div>
 							<div class="item_tasa">
 								<span>Derecho de matrícula</span>
-								<h4>S/ 240.00</h4>
+								<h4 class="derecho_matricula"><span>S/.</span><span class="matricula"></span></h4>
 							</div>
 							<div class="item_tasa">
 								<span>Subtotal</span>
-								<h4 id="derecho_matricula" data-matricula="240"><span>S/.</span><span id="matricula">240.00</span></h4>
+								<h4 class="derecho_matricula" data-matricula="240"><span>S/.</span><span class="matricula"></span></h4>
 							</div>
 							<div class="item_tasa t_total">
 								<span>Total ciclo</span>
@@ -904,38 +860,38 @@
 									<tr>
 										<td>1</td>
 										<!--<td>31/07/2019</td>-->
-										<td>07/08/2019</td>
-										<td class="fright">1,812.00</td>
+										<td><span class="fecha_vencimiento"></span></td>
+										<td class="fright"><span class="cuota-monto-uno"></span></td>
 									</tr>
 									<tr>
 										<td>2</td>
 										<!--<td>31/07/2019</td>-->
-										<td>07/08/2019</td>
-										<td class="fright">1,812.00</td>
+										<td><span class="fecha_vencimiento"></span></td>
+										<td class="fright"><span class="cuota-monto"></span></td>
 									</tr>
 									<tr>
 										<td>3</td>
 										<!--<td>31/07/2019</td>-->
-										<td>07/08/2019</td>
-										<td class="fright">1,812.00</td>
+										<td><span class="fecha_vencimiento"></span></td>
+										<td class="fright"><span class="cuota-monto"></span></td>
 									</tr>
 									<tr>
 										<td>4</td>
 										<!--<td>31/07/2019</td>-->
-										<td>07/08/2019</td>
-										<td class="fright">1,812.00</td>
+										<td><span class="fecha_vencimiento"></span></td>
+										<td class="fright"><span class="cuota-monto"></span></td>
 									</tr>
 									<tr>
 										<td>5</td>
 										<!--<td>31/07/2019</td>-->
-										<td>07/08/2019</td>
-										<td class="fright">1,812.00</td>
+										<td><span class="fecha_vencimiento"></span></td>
+										<td class="fright"><span class="cuota-monto"></span></td>
 									</tr>
 									<tr class="no_br">
 										<td>&nbsp;</td>
 										<td>&nbsp;</td>
 										<td class="bld">Total</td>
-										<td class="bld fright">8,100.000</td>
+										<td class="bld fright"><span class="monto_total"></span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -950,6 +906,8 @@
 			<span class="cerrar"><a href=""> <img src="img/png/cerrar.png"/> </a></span>
 		</div>
 	</div>
+
+
 	<script src="js/selectize.js"></script>
 		<style type="text/css">
 		.selectize-control::before {
@@ -1049,7 +1007,7 @@
 	</script>
 	<script>
 
-$('.select-searchable').each(function() {
+/*$('.select-searchable').each(function() {
 	var s =$( this );
 	s.selectize({
 			valueField: 'id',
@@ -1080,7 +1038,7 @@ $('.select-searchable').each(function() {
 				//$(".hidden-me").val(query).trigger("focus");
 			}
 	});
-});
+});*/
 
 	</script>
 </body>
