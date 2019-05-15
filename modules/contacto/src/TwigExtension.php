@@ -12,6 +12,7 @@ use Drupal\Core\Plugin\PluginDependencyTrait;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Yaml\Yaml;
 use Drupal\file\Entity\File;
+use Drupal\search\SearchPageInterface;
 
 /**
  * Class DefaultService.
@@ -42,6 +43,7 @@ class TwigExtension extends \Twig_Extension {
             new \Twig_SimpleFunction('getOpenUlima', array($this, 'getOpenUlima'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('validarUrl', array($this, 'validarUrl'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('phatUrl', array($this, 'phatUrl'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('search', array($this, 'search'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('getInfraestructura', array($this, 'getInfraestructura'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('depure', array($this, 'depure'), array('is_safe' => array('html'))),
         );
@@ -206,7 +208,7 @@ class TwigExtension extends \Twig_Extension {
 
     protected function fechaCastellano($fecha) {
         $fecha = substr($fecha, 0, 10);
-        $numeroDia = str_replace(0,'', date('d', strtotime($fecha)));
+        $numeroDia = date('d', strtotime($fecha));
         $dia = date('l', strtotime($fecha));
         $mes = date('F', strtotime($fecha));
         $anio = date('Y', strtotime($fecha));
@@ -215,7 +217,7 @@ class TwigExtension extends \Twig_Extension {
         $nombredia = str_replace($dias_EN, $dias_ES, $dia);
         $meses_ES = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
         $meses_EN = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-        $nombreMes = strtolower(str_replace($meses_EN, $meses_ES, $mes));
+        $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
         return $nombredia." ".$numeroDia." de ".$nombreMes; //." de "; //.$anio;
     }
 
@@ -375,5 +377,44 @@ public function sluggify($url)
         $url = trim($url, '-');
 
         return $url;
+    }
+
+/**
+   * Creates a render array for the search page.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The request object.
+   * @param \Drupal\search\SearchPageInterface $entity
+   *   The search page entity.
+   *
+   * @return array
+   *   The search form and search results build array.
+   */
+
+    public function search(  $keys) {
+        $entity = new SearchPageInterface(); 
+        $build = [];
+        $plugin = $entity->getPlugin();
+
+        // Build the form first, because it may redirect during the submit,
+        // and we don't want to build the results based on last time's request.
+        $build['#cache']['contexts'][] = 'url.query_args:keys';
+     
+          $keys = trim($keys);
+          $plugin->setSearch($keys, '', '');
+
+        $build['#title'] = $plugin->suggestedTitle();
+        $build['search_form'] = $this->formBuilder()->getForm(SearchPageForm::class, $entity);
+
+        // Build search results, if keywords or other search parameters are in the
+        // GET parameters. Note that we need to try the search if 'keys' is in
+        // there at all, vs. being empty, due to advanced search.
+        $results = [];
+       
+            $results = $plugin->buildResults();
+
+            echo count(results);
+       
+
     }
 }

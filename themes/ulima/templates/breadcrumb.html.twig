@@ -14,13 +14,17 @@
 {% if validarUrl() %}
 <div class="r_busqueda r_b2">
   <div class="cont_rbusqueda">
+  <form class="cont_rbusqueda" action="/search/node">
     <div class="search_r">
       <input class="srch_btn" name="" type="button">
-      <input type="text" class="srch_input" value="¿Qué estás buscando?">
+      <input type="text" name="keys" class="srch_input" placeholder="¿Qué estás buscando?" value="{{ app.request.query.get('keys') }}">
       <div class="result_b">
-        Se han encontrado 31 resultados para “Modalidades”
+
+        Se han encontrado 31 resultados para “{{ app.request.query.get('keys') }}”
       </div>
     </div>
+    </form>
+
   </div>
 </div>
 {% else %}

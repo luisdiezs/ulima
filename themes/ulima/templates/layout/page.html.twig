@@ -10,7 +10,7 @@
   
       <div class="search_r">
         <input class="srch_btn" name="" type="button">|
-        <input type="text" name="keys" class="srch_input" value="¿Qué estás buscando?">
+        <input type="text" name="keys" class="srch_input" placeholder="¿Qué estás buscando?" value=''>
       </div>
     </form>
   </div>
@@ -267,11 +267,10 @@
               href="http://laboral.ulima.edu.pe"> laboral.ulima.edu.pe </a></span></div>
         <div class="contsocial">
           <ul>
-            <li><a href=""> </a></li>
-            <li class="s2"><a href=""> </a></li>
-            <li class="s3"><a href=""> </a></li>
-            <li class="s4"><a href=""> </a></li>
-            <li class="s5"><a href=""> </a></li>
+            <li><a href="https://www.facebook.com/admisionulima" target="_blank"> </a></li>
+            <li class="s2"><a href="https://twitter.com/udelima" target="_blank"> </a></li>
+            <li class="s3"><a href="https://www.youtube.com/user/ulimaoficial" target="_blank"> </a></li>
+            <li class="s4"><a href="https://www.instagram.com/ulimaoficial/" target="_blank" > </a></li>
           </ul>
         </div>
       </div>
@@ -364,6 +363,8 @@ if( document.getElementsByClassName('toolbar')[0]){
   document.addEventListener("click", closeAllSelect);
 if(document.getElementsByClassName('is-active')[0]){
   document.getElementsByClassName('is-active')[0].parentElement.classList.add("active");
+  document.getElementsByClassName('active')[0].parentElement.classList.add("activex");
+  document.getElementsByClassName('activex')[0].parentElement.classList.add("active");
 }
 if(document.getElementsByClassName('is-active')[1]){
   document.getElementsByClassName('is-active')[1].parentElement.classList.add("active");

@@ -3051,7 +3051,7 @@ input[type=text] {
     width: 40%;
     padding: 30px 35px;
     z-index: 5;
-    top: 51px;
+    top: 35px;
     display: none
 }
 
@@ -5316,7 +5316,7 @@ max-width: 1000px;
     position: absolute;
     width: 100%;
     z-index: 100;
-    top: 100px;
+    top: 80px;
 }
 .cont_rbusqueda {
     max-width: 940px;
@@ -5383,6 +5383,19 @@ max-width: 1000px;
     padding-bottom: 30px;
     border-bottom: 1px solid #e5e5e5;
 }
+
+li.pager__item.is-active a {
+    color: #ff0000;
+}
+
+li.pager__item {
+       float: left;
+    margin-right: 9px;
+    font-size: 15px;
+    background-color: #EEE;
+    padding: 1px 5px;
+}
+
 .item_rbusqueda h2 {
     font-size: 16px;
     font-weight: bold;
