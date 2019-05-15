@@ -112,7 +112,7 @@ class MultiStepForm extends ConfigFormBase
             '#type' => 'submit',
             '#value' => $this->t('Enviar'),
             //'#title' => $this->t('Nombres'),$button_label = $this->t('Next');
-            '#attributes' => array('class' => array('input_btn btn-disabled')),
+            '#attributes' => array('class' => array('btn-disabled')),
             //  '#required' => TRUE,
         );
       }else{
@@ -146,7 +146,7 @@ class MultiStepForm extends ConfigFormBase
 
          // $form['step'] = array(0 => $this->step);
           $form_state->setRebuild();
-          $emails = $form_state->getValue('correo');
+          //$emails = $form_state->getValue('correo');
           $reply_to = $form_state->getValue('mail');
           $params['message'] = '';
           $params['nombres'] .= '<br/>Message: ' . $form_state->getValue('nombres');
@@ -159,7 +159,7 @@ class MultiStepForm extends ConfigFormBase
           // Send the e-mail to the recipients.
           $mailManager = \Drupal::service('plugin.manager.mail');
 
-          $to = ($emails)? implode(', ', $emails) : '';
+          $to = 'admision@ulima.edu.pe';
           $module = 'email_contact';
           $key = 'contact';
           $langcode = \Drupal::currentUser()->getPreferredLangcode();

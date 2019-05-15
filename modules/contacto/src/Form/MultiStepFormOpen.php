@@ -145,7 +145,7 @@ class MultiStepFormOpen extends ConfigFormBase
 
          // $form['step'] = array(0 => $this->step);
           $form_state->setRebuild();
-          $emails = $form_state->getValue('correo');
+         // $emails = $form_state->getValue('correo');
 
 
           $reply_to = $form_state->getValue('mail');
@@ -161,7 +161,7 @@ class MultiStepFormOpen extends ConfigFormBase
           // Send the e-mail to the recipients.
           $mailManager = \Drupal::service('plugin.manager.mail');
 
-          $to = ($emails)? implode(', ', $emails) : '';
+          $to = 'admision@ulima.edu.pe';
           $module = 'email_contact';
           $key = 'contact';
           $langcode = \Drupal::currentUser()->getPreferredLangcode();
