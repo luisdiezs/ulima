@@ -7479,8 +7479,11 @@ li.pager__item {
     
     .sliderprelima .cont_msj_s {
         left: 0;
-        width: 96%;
-        padding: 120px 2% 0;
+        /*width: 96%;
+        padding: 120px 2% 0;*/
+        margin-top: 119px;
+        padding-top: 1px;
+        margin-left: 21px;
     }
     
     .prelima_bread {

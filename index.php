@@ -37,6 +37,7 @@ if($request->getRequestUri() == '/contacto'){
     $content = str_replace(" form-text", "", $content);
 }else{
     $content = str_replace("form-item js-form-type-textfield", "item_inscrip form-group", $content);
+    $content = str_replace("js-form-item form-item js-form-type-", "item_inscrip form-group", $content);
 }
 
 $content = str_replace("js-form-item", "", $content);
