@@ -149,12 +149,12 @@ class MultiStepForm extends ConfigFormBase
           //$emails = $form_state->getValue('correo');
           $reply_to = $form_state->getValue('mail');
           $params['message'] = '';
-          $params['nombres'] .= '<br/>Message: ' . $form_state->getValue('nombres');
-          $params['apellidos'] .= '<br/>Message: ' . $form_state->getValue('apellidos');
-          $params['numdoc'] .= '<br/>Message: ' . $form_state->getValue('numdoc');
-          $params['telefono'] .= '<br/>Message: ' . $form_state->getValue('telefono');
-          $params['correo'] .= '<br/>Message: ' . $form_state->getValue('correo');
-          $params['message'] .= '<br/>Message: ' . $form_state->getValue('textarea');
+          $params['nombres'] .= '<br/>Nombres: ' . $form_state->getValue('nombres');
+          $params['apellidos'] .= '<br/>Apellidos: ' . $form_state->getValue('apellidos');
+          $params['numdoc'] .= '<br/>DNI: ' . $form_state->getValue('numdoc');
+          $params['telefono'] .= '<br/>Teléfono: ' . $form_state->getValue('telefono');
+          $params['correo'] .= '<br/>Correo: ' . $form_state->getValue('correo');
+          $params['message'] .= '<br/>Mensaje: ' . $form_state->getValue('textarea');
 
           // Send the e-mail to the recipients.
           $mailManager = \Drupal::service('plugin.manager.mail');
@@ -206,7 +206,7 @@ class MultiStepForm extends ConfigFormBase
           $fields['fecha'] = time();
           $fields['tipo'] = $tipo;
 
-          $response = ContactoModel::insert($fields);
+         // $response = ContactoModel::insert($fields);
           $temp['data'] = $response;
           return $this->crearJsonResponse($temp);
 

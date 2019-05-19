@@ -15,6 +15,10 @@ use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+use Drupal\Core\Controller\ControllerBase;
+use Symfony\Component\Yaml\Yaml;
+use Drupal\bxslider_block\BXSliderModel;
+
 class MultiStepFormOpen extends ConfigFormBase
  {
 
@@ -155,20 +159,45 @@ class MultiStepFormOpen extends ConfigFormBase
           $form_state->setRebuild();
          // $emails = $form_state->getValue('correo');
 
+    $arrayHorarios = array();
+            foreach ($_POST['horarios'] as $key => $value) {
+              if($value !='Horario'){
+                $arrayHorarios['horarios'][] = $value;
+              }
+              # code...
+            }
 
-          $reply_to = $form_state->getValue('mail');
-          $params['message'] = '';
-          $params['nombres'] .= '<br/>Message: ' . $form_state->getValue('nombres');
-          $params['apellidos'] .= '<br/>Message: ' . $form_state->getValue('apellidos');
-          $params['numdoc'] .= '<br/>Message: ' . $form_state->getValue('numdoc');
-          $params['telefono'] .= '<br/>Message: ' . $form_state->getValue('telefono');
-          $params['correo'] .= '<br/>Message: ' . $form_state->getValue('correo');
-          $params['colegios'] .= '<br/>Message: ' . $form_state->getValue('colegios');
- $params['otros'] .= '<br/>Message: ' . $form_state->getValue('otros');
+          $reply_to = $form_state->getValue('email');
+          $params['message'] = '¡Gracias por registrarte a nuestro Open Ulima 2019!';
+          $params[':'] = 'Te esperamos en nuestro campus';
+          $params['Datos:'] = 'Datos de Carreras:';
 
+
+          $entry = [
+            'machine_name' => 'slider_inscribete_en_charlas_x_carrera_horarios_',
+            ];
+          
+          $slider = BXSliderModel::load($entry);
+          $settings = unserialize($slider['settings']);
+          $result = json_encode($arrayHorarios);
+
+         $params['horarios'] = $this->horarios(json_decode($result ), $settings);
+
+          $params['nombres'] .= '<br/>Nombre: ' . $form_state->getValue('nombres');
+          $params['apellidos'] .= '<br/>Apellido: ' . $form_state->getValue('apellidos');
+          $params['numdoc'] .= '<br/>DNI: ' . $form_state->getValue('numdoc');
+          $params['telefono'] .= '<br/>Telefono: ' . $form_state->getValue('telefono');
+          $params['correo'] .= '<br/>Correo: ' . $form_state->getValue('email');
+          $params['colegios'] .= '<br/>Colegio: ' . $form_state->getValue('colegios');
+          $params['otros'] .= '<br/>Otros: ' . $form_state->getValue('otros');
+          $params['destalle'] .= '<br/>*Vacantes Limitadas
+          <br/>Atentamente,
+          <br/>Universidad de lima 
+          <br/> Avenida Javier Prado Este N.° 4600, Urbanización Fundo Monterrico Chico.
+          <br/> Distrito de Santiago de Surco. Provincia y departamento de Lima.
+          ' ;
           // Send the e-mail to the recipients.
           $mailManager = \Drupal::service('plugin.manager.mail');
-
           $to = 'admision@ulima.edu.pe';
           $module = 'email_contact';
           $key = 'contact';
@@ -179,7 +208,7 @@ class MultiStepFormOpen extends ConfigFormBase
               drupal_set_message($this->t('There was a problem sending your message and it was not sent.'), 'error');
           } else {
               drupal_set_message($this->t('Your message has been sent.'));
-              $msg = 'Email sent from: @replyto to: @to about: "@subject" containing: "@message"';
+              $msg = '¡Gracias por registrarte a nuestro Open Ulima 2019! from: @replyto to: @to about: "@subject" containing: "@message"';
               $this->logger('email_contact')->notice($msg, [
                   '@name' => $params['name'],
                   '@replyto' => $reply_to,
@@ -212,13 +241,13 @@ class MultiStepFormOpen extends ConfigFormBase
           $fields['telefono'] = $form_state->getValue('telefono');
           $fields['otros'] = $form_state->getValue('otros');
           //$fields['telefono'] = $form_state->getValue('horarios');
-          $fields['colegios'] = $form_state->getValue('colegios');
+          $fields['colegio'] = $form_state->getValue('colegios');
 
           $fields['fecha'] = time();
           $fields['tipo'] = $tipo;
-
           $response = ContactoModel::insert($fields);
           $temp['data'] = $response;
+          exit;
           return $this->crearJsonResponse($temp);
 
       }
@@ -234,5 +263,22 @@ class MultiStepFormOpen extends ConfigFormBase
         return $response;
     }
 
+
+ public function horarios($value, $settings) {
+        $horarios = Yaml::parse($settings['horarios']);
+    $carreras = Yaml::parse($settings['carreras']);
+    if($value->horarios){
+        foreach ($value->horarios as $key => $value) {
+          $arrayResul = explode('|', $value);
+          $result[$arrayResul[0]][] =  $carreras[$arrayResul[1]] . '  Hora: ' . $horarios[$arrayResul[2]] ;
+        }
+        foreach ($result as $keyc => $valuec) {
+          $arrayResul = explode('|', $value);
+          $resultx .=  " Fecha: ".$keyc ." Cursos: ". implode(", ", $valuec) .' <br/> ';
+        }
+    }
+    
+    return $resultx;
+  }
 
 }

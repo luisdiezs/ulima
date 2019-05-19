@@ -6,6 +6,7 @@
     <div class="form_contacto">
         <div class="cont_form_c">
             <div class="cont_inputs">
+ {% if form.apellidos is not empty %}            
                 <h2>escríbenos</h2>
                 <h3>Nos contactaremos contigo a la brevedad.</h3>
 
@@ -16,6 +17,7 @@
                 {{ form.telefono }}
                 {{ form.correo }}
                 {{ form.mensaje }}
+
                 <div class="cont_capcha">
                     <div class="terminos">
                         <span><input name="terminos" type="checkbox" value=""></span>
@@ -31,10 +33,10 @@
 
 
                 </div>
-
+ 
                 {{ form.enviar }}
 
-
+ {% endif %}
 
                 {#
                 <div class="form-group">
@@ -55,6 +57,7 @@
                 <input class="input_btn" type="submit" value="Enviar">
                 </form>#}
             </div>
+
             {% if form.apellidos is empty %}
             <div class="cont_contfirmacion" style="">
                 <h3>¡Gracias por contactarnos!</h3>
