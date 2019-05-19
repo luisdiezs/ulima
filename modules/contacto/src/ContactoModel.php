@@ -26,7 +26,7 @@ class ContactoModel {
   /**
    * {@inheritdoc}
    */
-  public static function getAll($entry = [], $sort = []) {
+  public static function getAll($entry = [], $sort = [], $limit = 50) {
     $select = db_select(self::$table, 'table_alias');
     $select->fields('table_alias');
     if (count($entry) > 0) {
@@ -39,6 +39,8 @@ class ContactoModel {
         $select->orderBy($field, $value);
       }
     }
+    
+    $select->range(0,$limit);
 
     return $select->execute()->fetchAll();
   }

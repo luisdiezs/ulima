@@ -21,3 +21,16 @@ entity.product_type.collection:
   parent: system.admin_structure
   weight: 99
 
+entity.newsletter.collection:
+  title: 'Exportar Newsletter'
+  route_name: contacto.admin.newsletter
+  description: 'Lista de Suscrítos en a #SomosUlima'
+  parent: system.admin_structure
+  weight: 98
+
+contacto.admin.contactos:
+  title: 'Exportar Inscripciones de Open Lima'
+  route_name: contacto.admin.contactos
+  description: 'Lista de Inscripciones #OpenLima'
+  parent: system.admin_structure
+  weight: 97

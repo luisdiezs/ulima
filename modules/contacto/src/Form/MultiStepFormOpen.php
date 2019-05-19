@@ -82,6 +82,14 @@ class MultiStepFormOpen extends ConfigFormBase
             '#attributes' => array('class' =>  array('item_inscrip form-group'), 'placeholder' => t('DNI'),),
             //  '#required' => TRUE,
         );
+        $form['email'] = array(
+            '#type' => 'textfield',
+            //'#title' => $this->t('Nombres'),
+            '#name' => $this->t('email'),
+            '#maxlength' => 255,
+            '#attributes' => array('class' =>  array('item_inscrip form-group'), 'placeholder' => t('Correo Electrónico'),),
+            //  '#required' => TRUE,
+        );
         $form['telefono'] = array(
             '#type' => 'textfield',
             '#name' => $this->t('telefono'),

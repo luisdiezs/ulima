@@ -19,7 +19,7 @@ class ContactoController extends ControllerBase {
    * List bx slider.
    */
   public function lista() {
-    $suscribeteAray = ContactoModel::getAll();
+    $suscribeteAray = ContactoModel::getAll('',array('id'=>'DESC'));
     $header = [
       'name' => $this->t('ID'),
       'apellido' => $this->t('Nombre y Apellido'),
@@ -86,13 +86,15 @@ class ContactoController extends ControllerBase {
 
     if($value->horarios){
       $horariosx = json_decode($value->horarios);
-      foreach ($horariosx->horarios as $key => $value) {
-        $arrayResul = explode('|', $value);
-        $result[$arrayResul[0]][] =  $carreras[$arrayResul[1]] . '  Hora: ' . $horarios[$arrayResul[2]] ;
-      }
-      foreach ($result as $keyc => $valuec) {
-        $arrayResul = explode('|', $value);
-        $resultx .=  " Fecha: ".$keyc ." Cursos: ". implode(", ", $valuec) .' || ';
+      if($horariosx){
+        foreach ($horariosx->horarios as $key => $value) {
+          $arrayResul = explode('|', $value);
+          $result[$arrayResul[0]][] =  $carreras[$arrayResul[1]] . '  Hora: ' . $horarios[$arrayResul[2]] ;
+        }
+        foreach ($result as $keyc => $valuec) {
+          $arrayResul = explode('|', $value);
+          $resultx .=  " Fecha: ".$keyc ." Cursos: ". implode(", ", $valuec) .' || ';
+        }
       }
     }
     
@@ -115,7 +117,7 @@ class ContactoController extends ControllerBase {
      */
     public function delete($slider) {
         ini_set('display_errors',1);
-        $suscribeteAray = ContactoModel::getAll();
+        $suscribeteAray = ContactoModel::getAll('','',100000000);
         $entry = [
             'machine_name' => 'slider_inscribete_en_charlas_x_carrera_horarios_',
         ];

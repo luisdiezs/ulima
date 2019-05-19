@@ -67,7 +67,7 @@ class SuscribeteController extends ControllerBase {
     }
 
  public function newsletter() {
-    $suscribeteAray = SuscribeteModel::getAll();
+    $suscribeteAray = SuscribeteModel::getAll('',array('id'=>'DESC'));
 
     $header = [
       'id' => $this->t('ID'),
@@ -111,7 +111,7 @@ class SuscribeteController extends ControllerBase {
      */
     public function exportarnews() {
         ini_set('display_errors',1);
-        $suscribeteAray = SuscribeteModel::getAll();
+        $suscribeteAray = SuscribeteModel::getAll('','',100000000);
 
 
         $rows = [];

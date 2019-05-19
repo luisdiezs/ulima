@@ -170,6 +170,14 @@
                             <div class="message-error validate-field-error-message" id="invalid-apellidos" data-field-error>
                             </div>
                         </fieldset>
+                            <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="email" class="form-control input_inscrip" data-jsv-message-target="invalid-email" placeholder="Correo Electrónico" data-jsv-validators="require, email" 
+                                    data-jsv-field-error-email='*Ingrese Correo.' data-jsv-field-error-require='*Asegurese de ingresar los datos solicitados.'>
+                            </div>
+                            <div class="message-error validate-field-error-message" id="invalid-email" data-field-error>
+                            </div>
+                        </fieldset>
                         <fieldset class="line-form">
                             <div class="item_inscrip form-group" data-field-holder>
                                 <input type="text" name="numdoc" class="form-control input_inscrip" data-jsv-message-target="invalid-numdoc" placeholder="DNI" data-jsv-validators="require, number, exact" data-jsv-exact="8" data-jsv-field-error-exact='*Deben ser 8 números' data-jsv-field-error-number='*Solo numeros.'
@@ -186,6 +194,9 @@
                             <div class="message-error validate-field-error-message" id="invalid-telefono" data-field-error>
                             </div>
                         </fieldset>
+
+        
+
                         <fieldset class="line-form">
                             <div class="item_inscrip form-group">
                                 <input type="text" name="colegios" class="form-control input_inscrip" placeholder="Colegio">
