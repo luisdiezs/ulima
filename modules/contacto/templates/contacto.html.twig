@@ -80,64 +80,63 @@
 {% else %}
 
 
-<div class="  cc  charlas">
+<div class="  cc  charlas ">
     <div class="ncarreras ">
+        {% set result = getOpenUlima() %}
         <div class="charlasxcarrera">
-            {% set result = getOpenUlima() %}
-            <div class="charlasxcarrera">
 
-                <div class="titu_charla">
+            <div class="titu_charla">
 
-                    <h2>Inscríbete en Charlas x Carrera</h2>
+                <h2>Inscríbete en Charlas x Carrera</h2>
 
-                    <p>Ven con tu familia y amigos y resuelve todas tus dudas sobre la carrera que quieres seguir.
+                <p>Ven con tu familia y amigos y resuelve todas tus dudas sobre la carrera que quieres seguir.
 
-                        Selecciona la(s) carrera(s) de tu interés. (Vacantes limitadas).
+                    Selecciona la(s) carrera(s) de tu interés. (Vacantes limitadas).
 
-                    </p>
-
-                </div>
-                {% for item in result['items'] %}
-                <div class="itemdiacharla">
-                    {% if loop.index0 == '0' %}
-                    <h4>{{ result['settings']['titulo1']|raw }}</h4>
-                    {% endif %}
-                    <h2>{{ item['fecha'] }}</h2>
-                    <div class="cont_itemcharla">
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr class="headcha">
-                                <td class="cha1">CHARLAS X CARRERA</td>
-                                <td class="cha2">HORARIOS</td>
-                            </tr>
-                            {% for itemc in item['carreras'] %}
-                            <tr>
-                                <td class="cha3"> {{ itemc['nombre'] }} </td>
-                                <td class="cha4">
-                                    <div class="custom-select ">
-                                        <select class="select-horario" name="horarios[]" id="horarios">
-                                            <option >Horario</option>
-                                            {% for key, itemt in itemc['horarios'] %}
-                                            <option value="{{ key }}"> {{ itemt }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                </div>
-                {% endfor %}
-
-
-
-
-                <div class="message-error-carreras"></div>
-
-                <div class="btn_ir btn_ir_modal"> <span> <a id="btn_insCharla" href="">Inscríbete</a> </span> </div>
+                </p>
 
             </div>
+            {% for item in result['items'] %}
+            <div class="itemdiacharla">
+                {% if loop.index0 == '0' %}
+                <h4>{{ result['settings']['titulo1']|raw }}</h4>
+                {% endif %}
+                <h2>{{ item['fecha'] }}</h2>
+                <div class="cont_itemcharla">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr class="headcha">
+                            <td class="cha1">CHARLAS X CARRERA</td>
+                            <td class="cha2">HORARIOS</td>
+                        </tr>
+                        {% for itemc in item['carreras'] %}
+                        <tr>
+                            <td class="cha3"> {{ itemc['nombre'] }} </td>
+                            <td class="cha4">
+                                <div class="custom-select">
+                                    <select class="select-horario" name="horarios[]" id="horarios">
+                                        <option >Horario</option>
+                                        {% for key, itemt in itemc['horarios'] %}
+                                        <option value="{{ itemt.item }}"> {{ itemt.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+
+            <div class="message-error-carreras"></div>
+
+            <div class="btn_ir btn_ir_modal"> <span> <a id="btn_insCharla" href="">Inscríbete</a> </span> </div>
+
         </div>
+    
     </div>
 </div>
 
@@ -155,7 +154,7 @@
 
 
 
-
+{#
 
 
 <fieldset class="line-form">
@@ -202,7 +201,7 @@
 
                         <fieldset class="line-form">
                             <div class="item_inscrip form-group">
-                                <input type="text" name="colegios" class="form-control input_inscrip" placeholder="Colegio">
+                               <input type="text" name="colegios" id="colegios-list" class="ui-autocomplete-input form-control input_inscrip colegios-list" placeholder="Colegio">
                             </div>
                             <div class="item_inscrip form-group sublevel">
                                 <h4>Si no encuentras tu colegio ingresar aquí:</h4>
@@ -244,8 +243,7 @@
                         </fieldset>
 
 
-
-
+#}
 
 
 
@@ -282,7 +280,8 @@
                             </div>
 </fieldset>
 <fieldset class="line-form">
-            {{ form.colegio }}
+                                            <input type="text" name="colegios" id="colegios-list" class="ui-autocomplete-input form-control input_inscrip colegios-list" placeholder="Colegio">
+
 </fieldset>
 <fieldset class="line-form">
             {{ form.otro }}
@@ -305,12 +304,91 @@
                             </div>
                             <div class="message-error validate-field-error-message" id="invalid-terminos" data-field-error=""></div>
 
-                        </fieldset> #}
-            {{ form.enviar }}
+                        </fieldset> 
+            <input class="btn_enviar btn-sender-meeting" type="button" id="Enviar" value="Enviar">
+
+#}
+
+
+
+                     <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="nombres" class="form-control input_inscrip" placeholder="Nombres">
+                            </div>
+
+
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="apellidos" class="form-control input_inscrip" placeholder="Apellidos">
+                            </div>
+                        </fieldset>
+
+                                 <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="email" class="form-control input_inscrip" data-jsv-message-target="invalid-email" placeholder="Correo Electrónico" data-jsv-validators="require, email" 
+                                    data-jsv-field-error-email='*Ingrese Correo.' data-jsv-field-error-require='*Asegurese de ingresar los datos solicitados.'>
+                            </div>
+                            <div class="message-error validate-field-error-message" id="invalid-email" data-field-error>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="numdoc" class="form-control input_inscrip" placeholder="DNI">
+                            </div>
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="telefono" class="form-control input_inscrip" placeholder="Telefono/Celular">
+                            </div>
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group">
+                                <input type="text" name="colegios" id="colegios-list" class="ui-autocomplete-input form-control input_inscrip colegios-list" placeholder="Colegio">
+                            </div>
+                            <div class="item_inscrip form-group sublevel">
+                                <h4>Si no encuentras tu colegio ingresar aquí:</h4>
+                                <span class="cont_otros_inscrip">
+                                    <span>Otros (especificar)</span>
+                                <input type="text" name="Otros" class="form-control input_inscrip " placeholder="">
+                                </span>
+                            </div>
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group">
+                                <select name="grado" class="form-control input_inscrip">
+                                    <option value="">Grado/Egresado</option>
+                                    <option value="0">1</option>
+                                    <option value="1">2</option>
+                                    <option value="2">3</option>
+                                    <option value="3">4</option>
+                                    <option value="4">5</option>
+                                    <option value="egresado">egresado</option>
+                                    <option value="bachillerato">bachillerato</option>
+                                </select>
+                            </div>
+
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip declaracion ">
+                                <span data-field-holder>
+                                    <input class="form-control input_inscrip" name="terminos" type="checkbox" />
+                                </span>
+                                <h4>
+                                    Declaro haber leído la
+                                    <a href="">política de protección de datos personales de la Universidad de Lima</a> y doy mi consentimiento para el tratamiento de mis datos personales de acuerdo a los términos de esta.
+                                </h4>
+                            </div>
+                        </fieldset>
+                        <input class="btn_enviar btn-sender-meeting" type="button" id="Enviar" value="Enviar">
+
 
 
         </div>
-
+            <div class="thanks">
+                    <h4>¡Gracias por inscribirte!</h4>
+            </div>
         <span class="cerrar"><a href="#"> {{ form.form_build_id }}
                 {{ form.form_token }}
                 {{ form.form_id }} <img src="/themes/ulima/assets/img/png/cerrar.png" /> </a></span>
@@ -320,6 +398,8 @@
 
 </div>
 
-
+<script>
+document.getElementsByClassName('easy-autocomplete')[0].style.width='100%'
+</script>
 
 {% endif %}

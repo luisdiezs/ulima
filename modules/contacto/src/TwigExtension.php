@@ -198,7 +198,8 @@ class TwigExtension extends \Twig_Extension {
                 $resulArray[$key]['carreras'][$key1]['nombre'] = $carreras[$key1];
                 foreach ($value1 as $key2 => $value2){
                     $keyarrary = $key.'|'.$key1.'|'.$key2;
-                    $resulArray[$key]['carreras'][$key1]['horarios'][$keyarrary] = $horarios[$key2];
+                     $keyarrarykey = $key1 . '|'. $key.'|'.$key2;
+                    $resulArray[$key]['carreras'][$key1]['horarios'][$keyarrary] = array('name'=>$horarios[$key2], 'item' => $keyarrarykey );
                 }
             }
         }

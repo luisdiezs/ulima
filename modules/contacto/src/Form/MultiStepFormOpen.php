@@ -54,7 +54,10 @@ class MultiStepFormOpen extends ConfigFormBase
   public function buildForm(array $form, FormStateInterface $form_state) {
     //$form = parent::buildForm($form, $form_state);
  //  $config = $this->config('contacto.contacto_form_config');
+if($_POST){
+  $this->envioPost();
 
+}
       $request= new Request($_SERVER);
       $theme = str_replace(array('/','-'),array('',''), $request->get('REQUEST_URI'));
       $form['form_theme'][0] = $theme;
@@ -106,7 +109,7 @@ class MultiStepFormOpen extends ConfigFormBase
                 '#type' => 'textfield',
                 '#name' => $this->t('colegio'),
                 '#maxlength' => 255,
-                '#attributes' => array('class' =>  array('item_inscrip form-group'), 'placeholder' => t('Colegio'),),
+                '#attributes' => array('class' =>  array('ui-autocomplete-input form-control input_inscrip colegios-list'), 'id' =>  array('colegios-list'), 'placeholder' => t('Colegio'),),
             );
             $form['otros'] = array(
                 '#type' => 'textfield',
@@ -148,16 +151,19 @@ class MultiStepFormOpen extends ConfigFormBase
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
 
-      if($this->step < 3) {
-          $form_state->setRebuild();
-          $this->step++;
+  public function envioPost( ) {
+
+      if($_POST) {
+         // $form_state->setRebuild();
+         
           //$form['#theme'] = 'contacto_ok';
 
          // $form['step'] = array(0 => $this->step);
-          $form_state->setRebuild();
-         // $emails = $form_state->getValue('correo');
+        //  $form_state->setRebuild();
+         // $emails = $_POST['correo');
+
+print_r($_POST['horarios']);
 
     $arrayHorarios = array();
             foreach ($_POST['horarios'] as $key => $value) {
@@ -167,7 +173,7 @@ class MultiStepFormOpen extends ConfigFormBase
               # code...
             }
 
-          $reply_to = $form_state->getValue('email');
+          $reply_to = $_POST['email'];
           $params['message'] = '¡Gracias por registrarte a nuestro Open Ulima 2019!';
           $params[':'] = 'Te esperamos en nuestro campus';
           $params['Datos:'] = 'Datos de Carreras:';
@@ -183,13 +189,13 @@ class MultiStepFormOpen extends ConfigFormBase
 
          $params['horarios'] = $this->horarios(json_decode($result ), $settings);
 
-          $params['nombres'] .= '<br/>Nombre: ' . $form_state->getValue('nombres');
-          $params['apellidos'] .= '<br/>Apellido: ' . $form_state->getValue('apellidos');
-          $params['numdoc'] .= '<br/>DNI: ' . $form_state->getValue('numdoc');
-          $params['telefono'] .= '<br/>Telefono: ' . $form_state->getValue('telefono');
-          $params['correo'] .= '<br/>Correo: ' . $form_state->getValue('email');
-          $params['colegios'] .= '<br/>Colegio: ' . $form_state->getValue('colegios');
-          $params['otros'] .= '<br/>Otros: ' . $form_state->getValue('otros');
+          $params['nombres'] .= '<br/>Nombre: ' . $_POST['nombres'];
+          $params['apellidos'] .= '<br/>Apellido: ' . $_POST['apellidos'];
+          $params['numdoc'] .= '<br/>DNI: ' . $_POST['numdoc'];
+          $params['telefono'] .= '<br/>Telefono: ' . $_POST['telefono'];
+          $params['correo'] .= '<br/>Correo: ' . $_POST['email'];
+          $params['colegios'] .= '<br/>Colegio: ' . $_POST['colegios'];
+          $params['otros'] .= '<br/>Otros: ' . $_POST['otros'];
           $params['destalle'] .= '<br/>*Vacantes Limitadas
           <br/>Atentamente,
           <br/>Universidad de lima 
@@ -203,7 +209,7 @@ class MultiStepFormOpen extends ConfigFormBase
           $key = 'contact';
           $langcode = \Drupal::currentUser()->getPreferredLangcode();
           $send = true;
-          $result = $mailManager->mail($module, $key, $to, $langcode, $params, $reply_to, $send);
+        //  $result = $mailManager->mail($module, $key, $to, $langcode, $params, $reply_to, $send);
           if ($result['result'] !== true) {
               drupal_set_message($this->t('There was a problem sending your message and it was not sent.'), 'error');
           } else {
@@ -218,11 +224,9 @@ class MultiStepFormOpen extends ConfigFormBase
               ]);
           }
 
-          if($form['form_theme'] == 'contacto'){
-            $tipo = 2;
-          }else{
+      
             $tipo = 1;
-            $fields['grado_egresado'] = $form_state->getValue('grado');
+            $fields['grado_egresado'] = $_POST['grado'];
             $arrayHorarios = array();
             foreach ($_POST['horarios'] as $key => $value) {
               if($value !='Horario'){
@@ -231,27 +235,29 @@ class MultiStepFormOpen extends ConfigFormBase
               # code...
             }
             $fields['horarios'] = json_encode($arrayHorarios);
-            $fields['colegio'] = $form_state->getValue('colegio');
-          }
+            $fields['colegio'] = $_POST['colegio'];
 
-          $fields['nombres'] = $form_state->getValue('nombres');
-          $fields['apellidos'] = $form_state->getValue('apellidos');
-          $fields['dni'] = $form_state->getValue('numdoc');
-          $fields['correo'] = $form_state->getValue('email');
-          $fields['telefono'] = $form_state->getValue('telefono');
-          $fields['otros'] = $form_state->getValue('otros');
-          //$fields['telefono'] = $form_state->getValue('horarios');
-          $fields['colegio'] = $form_state->getValue('colegios');
+          $fields['nombres'] = $_POST['nombres'];
+          $fields['apellidos'] = $_POST['apellidos'];
+          $fields['dni'] = $_POST['numdoc'];
+          $fields['correo'] = $_POST['email'];
+          $fields['telefono'] = $_POST['telefono'];
+          $fields['otros'] = $_POST['otros'];
+          //$fields['telefono'] = $_POST['horarios'];
+          $fields['colegio'] = $_POST['colegios'];
 
           $fields['fecha'] = time();
           $fields['tipo'] = $tipo;
           $response = ContactoModel::insert($fields);
           $temp['data'] = $response;
-          exit;
+          
           return $this->crearJsonResponse($temp);
+          exit;
 
       }
   }
+
+
 
       protected function crearJsonResponse($data)
     {

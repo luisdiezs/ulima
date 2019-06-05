@@ -79,6 +79,9 @@ class ContactoController extends ControllerBase {
     ];
   }
 
+  public function data() {
+echo 'sd'; exit;
+  }
 
   public function horarios($value, $settings) {
         $horarios = Yaml::parse($settings['horarios']);

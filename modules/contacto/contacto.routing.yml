@@ -30,6 +30,14 @@ openulima.openulima:
   requirements:
     _permission: 'contacto access'
 
+contacto.api.data:
+  path: '/carreras/open-ulima/data'
+  defaults:
+    _controller: '\Drupal\contacto\Controller\JsonController::data'
+    _title: 'convenio'
+  requirements:
+    _permission: 'access content'    
+
 contacto.admin.contactos:
   path: '/admin/structure/suscribet'
   defaults:
@@ -37,6 +45,7 @@ contacto.admin.contactos:
     _controller: '\Drupal\contacto\Controller\ContactoController::lista'
   requirements:
     _permission: 'administer contacro'
+
 
 
 contacto.admin.edit:

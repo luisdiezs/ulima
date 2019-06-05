@@ -6,10 +6,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Drupal\Core\Controller\ControllerBase;
-
+use Drupal\contacto\ContactoModel;
 use Drupal\bxslider_block\BXSliderModel;
 use Drupal\file\Entity\File;
 use Camcima\Soap\Client;
+use Symfony\Component\Yaml\Yaml;
 /**
  * An example controller.
  */
@@ -18,6 +19,130 @@ class JsonController extends ControllerBase {
     /**
      * {@inheritdoc}
      */
+
+     public function data() {
+
+      if($_POST) {
+         // $form_state->setRebuild();
+         
+          //$form['#theme'] = 'contacto_ok';
+
+         // $form['step'] = array(0 => $this->step);
+        //  $form_state->setRebuild();
+         // $emails = $_POST['correo');
+
+
+            $arrayHorarios = array();
+            foreach ($_POST['horarios'] as $key => $value) {
+              if($value !='Horario'){
+                $data = explode('|', $value);
+                $arrayHorarios['horarios'][] =  $data[1].'|'.$data[0].'|'.$data[2];
+              }
+              # code...
+            }
+
+          $reply_to = $_POST['email'];
+          $params['message'] = '¡Gracias por registrarte a nuestro Open Ulima 2019!';
+          $params[':'] = 'Te esperamos en nuestro campus';
+          $params['Datos:'] = 'Datos de Carreras:';
+
+
+          $entry = [
+            'machine_name' => 'slider_inscribete_en_charlas_x_carrera_horarios_',
+            ];
+          
+          $slider = BXSliderModel::load($entry);
+          $settings = unserialize($slider['settings']);
+          $result = json_encode($arrayHorarios);
+
+         $params['horarios'] = $this->horarios(json_decode($result ), $settings);
+
+          $params['nombres'] .= '<br/>Nombre: ' . $_POST['nombres'];
+          $params['apellidos'] .= '<br/>Apellido: ' . $_POST['apellidos'];
+          $params['numdoc'] .= '<br/>DNI: ' . $_POST['numdoc'];
+          $params['telefono'] .= '<br/>Telefono: ' . $_POST['telefono'];
+          $params['correo'] .= '<br/>Correo: ' . $_POST['email'];
+          $params['colegios'] .= '<br/>Colegio: ' . $_POST['colegios'];
+          $params['otros'] .= '<br/>Otros: ' . $_POST['otros'];
+          $params['destalle'] .= '<br/>*Vacantes Limitadas
+          <br/>Atentamente,
+          <br/>Universidad de lima 
+          <br/> Avenida Javier Prado Este N.° 4600, Urbanización Fundo Monterrico Chico.
+          <br/> Distrito de Santiago de Surco. Provincia y departamento de Lima.
+          ' ;
+          // Send the e-mail to the recipients.
+          $mailManager = \Drupal::service('plugin.manager.mail');
+          $to = 'admision@ulima.edu.pe';
+          $module = 'email_contact';
+          $key = 'contact';
+          $langcode = \Drupal::currentUser()->getPreferredLangcode();
+          $send = true;
+        //  $result = $mailManager->mail($module, $key, $to, $langcode, $params, $reply_to, $send);
+          if ($result['result'] !== true) {
+              drupal_set_message($this->t('There was a problem sending your message and it was not sent.'), 'error');
+          } else {
+              drupal_set_message($this->t('Your message has been sent.'));
+              $msg = '¡Gracias por registrarte a nuestro Open Ulima 2019! from: @replyto to: @to about: "@subject" containing: "@message"';
+              $this->logger('email_contact')->notice($msg, [
+                  '@name' => $params['name'],
+                  '@replyto' => $reply_to,
+                  '@to' => $to,
+                  '@subject' => $params['subject'],
+                  '@message' => $params['message']
+              ]);
+          }
+
+      
+            $tipo = 1;
+            $fields['grado_egresado'] = $_POST['grado'];
+            $arrayHorarios = array();
+            foreach ($_POST['horarios'] as $key => $value) {
+              if($value !='Horario'){
+                $arrayHorarios['horarios'][] = $value;
+              }
+              # code...
+            }
+            $fields['horarios'] = json_encode($arrayHorarios);
+            $fields['colegio'] = $_POST['colegio'];
+
+          $fields['nombres'] = $_POST['nombres'];
+          $fields['apellidos'] = $_POST['apellidos'];
+          $fields['dni'] = $_POST['numdoc'];
+          $fields['correo'] = $_POST['email'];
+          $fields['telefono'] = $_POST['telefono'];
+          $fields['otros'] = $_POST['otros'];
+          //$fields['telefono'] = $_POST['horarios'];
+          $fields['colegio'] = $_POST['colegios'];
+
+          $fields['fecha'] = time();
+          $fields['tipo'] = $tipo;
+          $response = ContactoModel::insert($fields);
+          $temp['data'] = $response;
+         
+          return $this->crearJsonResponse($temp);
+
+      }
+      echo 'asdasd';
+      exit;
+  
+  }
+
+ public function horarios($value, $settings) {
+        $horarios = Yaml::parse($settings['horarios']);
+    $carreras = Yaml::parse($settings['carreras']);
+    if($value->horarios){
+        foreach ($value->horarios as $key => $value) {
+          $arrayResul = explode('|', $value);
+          $result[$arrayResul[0]][] =  $carreras[$arrayResul[1]] . '  Hora: ' . $horarios[$arrayResul[2]] ;
+        }
+        foreach ($result as $keyc => $valuec) {
+          $arrayResul = explode('|', $value);
+          $resultx .=  " Fecha: ".$keyc ." Cursos: ". implode(", ", $valuec) .' <br/> ';
+        }
+    }
+    
+    return $resultx;
+  }
     public function api() {
 
         $request= new Request($_GET);
@@ -27,8 +152,8 @@ class JsonController extends ControllerBase {
         if ($string) {
             $result =  db_select('product', 'n')
                 ->fields('n', array('number', 'name','type'))
-                ->condition('n.name', '%' . db_like($string) . '%', 'LIKE')
-                ->range(0, 10)
+           //     ->condition('n.name', '%' . db_like($string) . '%', 'LIKE')
+                ->range(0, 10000)
                 ->execute()
                 ->fetchAll();
             foreach ($result as $node) {
@@ -37,8 +162,8 @@ class JsonController extends ControllerBase {
         }
 
 
-        $temp['data']= $matches;
-        return $this->crearJsonResponse($temp);
+       // $temp['data']= $matches;
+        return $this->crearJsonResponse($matches);
     }
 
     protected function crearJsonResponse($data)
