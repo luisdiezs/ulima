@@ -77,7 +77,7 @@ class JsonController extends ControllerBase {
           $key = 'contact';
           $langcode = \Drupal::currentUser()->getPreferredLangcode();
           $send = true;
-        //  $result = $mailManager->mail($module, $key, $to, $langcode, $params, $reply_to, $send);
+          $result = $mailManager->mail($module, $key, $to, $langcode, $params, $reply_to, $send);
           if ($result['result'] !== true) {
               drupal_set_message($this->t('There was a problem sending your message and it was not sent.'), 'error');
           } else {
