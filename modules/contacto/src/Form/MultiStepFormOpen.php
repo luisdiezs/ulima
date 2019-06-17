@@ -60,11 +60,10 @@ if($_POST){
 }
       $request= new Request($_SERVER);
       $theme = str_replace(array('/','-'),array('',''), $request->get('REQUEST_URI'));
-      $form['form_theme'][0] = $theme;
+     // $form['form_theme'][0] = $theme;
       //$form['#ok'] = @$request->get('slug');
-      if($this->step == 1) {
 
-        $form['actions']['submit'] = array('');
+        //$form['actions']['submit'] = array('');
         $form['nombres'] = array(
             '#type' => 'textfield',
             //'#title' => $this->t('Nombres'),
@@ -122,17 +121,14 @@ if($_POST){
             $form['grado'] = array(
                 '#type' => 'select',
                 '#options' => isset($grado) ? $grado: '',
-                '#weight' => 0,
-'#attributes' => array('class' =>  array('item_inscrip form-group'), 'placeholder' => t('Otros (especificar)'),),
+                 '#attributes' => array('class' =>  array('item_inscrip form-group'), 'placeholder' => t('Otros (especificar)'),),
             );
         $form['enviar'] = array(
             '#type' => 'submit',
             '#value' => $this->t('Enviar'),
             '#attributes' => array('class' => array('input_btn btn-disabled')),
         );
-      }else{
-          $form['#theme'] = 'contacto_ok';
-      }
+  
 
       $form['#theme'] = 'contacto' ;
 
