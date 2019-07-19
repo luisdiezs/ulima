@@ -60,13 +60,23 @@ if(reset(explode('?',$request->getRequestUri())) == '/contacto'){
 
 
 if(reset(explode('?',$request->getRequestUri())) == '/carreras/open-ulima'){
-	$content = str_replace('<script src="/themes/ulima/assets/js/main.bundle.js', '<link href="https://kraaden.github.io/autocomplete/autocomplete.css" rel="stylesheet" type="text/css"><script src="https://kraaden.github.io/autocomplete/autocomplete.js"></script><script src="/themes/ulima/assets/js/main.bundle-fusion.js', $content);
+	$content = str_replace('<script src="/themes/ulima/assets/js/main.bundle.js?', '
+
+         <script src="https://kraaden.github.io/autocomplete/autocomplete.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://kraaden.github.io/autocomplete/autocomplete.css">
+    <script src="/themes/ulima/assets/js/main.bundle.js"></script>
+
+   <script src="/themes/ulima/assets/js/jquery.min.js"></script>
+    <script src="/themes/ulima/assets/js/jquery.easy-autocomplete.min.js"></script>
+    <link rel="stylesheet" href="/themes/ulima/assets/css/easy-autocomplete.min.css">
+    <script src="/themes/ulima/assets/js/jquery.validate.min.js"></script>
+    <script src="/themes/ulima/assets/js/form-meetings-days.js" ', $content);
 	
 	$content = str_replace('class="form-vanillajs-validate" data-jsv-form="true"  data-drupal-selector="form-vanillajs-validate"', "", $content);
 
  	$content = str_replace('id="form-vanillajs-validate" accept-charset="UTF-8"', "", $content);
 
- 	$content = str_replace('action="big_pipe_nojs_placeholder_attribute_safe:form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM" method="post"', 'method="get" data-service-autocomplete="'.$url.'/colegio?term=a" data-service-submit="'.$url.'/carreras/open-ulima/data" class="form-meetings-days" novalidate="novalidate" _lpchecked="1" ', $content);
+ 	$content = str_replace('action="/carreras/open-ulima" method="post"', 'method="get" data-service-autocomplete="'.$url.'/colegio?term=a" data-service-submit="'.$url.'/carreras/open-ulima/data" class="form-meetings-days" novalidate="novalidate" _lpchecked="1" ', $content);
 
 }
 

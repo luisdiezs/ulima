@@ -1,321 +1,318 @@
+<div class="  xxcc  charlas ">
+    <div class="ncarreras ">
+        {% set result = getOpenUlima() %}
+        <div class="charlasxcarrera">
+
+            <div class="titu_charla">
+
+                <h2>Inscríbete en Charlas x Carrera</h2>
+
+                <p>Ven con tu familia y amigos y resuelve todas tus dudas sobre la carrera que quieres seguir.
+
+                    Selecciona la(s) carrera(s) de tu interés. (Vacantes limitadas).
+
+                </p>
+
+            </div>
+            {% for item in result['items'] %}
+            <div class="itemdiacharla">
+                {% if loop.index0 == '0' %}
+                <h4>{{ result['settings']['titulo1']|raw }}</h4>
+                {% endif %}
+                <h2>{{ item['fecha'] }}</h2>
+                <div class="cont_itemcharla">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr class="headcha">
+                            <td class="cha1">CHARLAS X CARRERA</td>
+                            <td class="cha2">HORARIOS</td>
+                        </tr>
+                        {% for itemc in item['carreras'] %}
+                        <tr>
+                            <td class="cha3"> {{ itemc['nombre'] }} </td>
+                            <td class="cha4">
+                                <div class="custom-select">
+                                    <select class="select-horario" name="horarios[]" id="horarios">
+                                        <option value='Horario' >Horario</option>
+                                        {% for key, itemt in itemc['horarios'] %}
+                                        <option value="{{ itemt.item }}"> {{ itemt.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            {% endfor %}
 
 
 
 
+            <div class="message-error-carreras"></div>
 
-<div class="charlasxcarrera">
-
-    <div class="titu_charla">
-
-        <h2>Inscríbete en Charlas x Carrera</h2>
-
-        <p>Ven con tu familia y amigos y resuelve todas tus dudas sobre la carrera que quieres seguir.
-
-            Selecciona la(s) carrera(s) de tu interés. (Vacantes limitadas).
-
-        </p>
-
-    </div>
-
-    <div class="itemdiacharla">
-
-        <h4>Puedes inscribirte a una o más charlas</h4>
-
-        <h2>Día 1 - Martes 5 de febrero</h2>
-
-        <div class="cont_itemcharla">
-
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-                <tr class="headcha">
-
-                    <td class="cha1">CHARLAS X CARRERA</td>
-
-                    <td class="cha2">HORARIOS</td>
-
-                </tr>
-
-                <tr>
-
-                    <td class="cha3"> Administración </td>
-
-                    <td class="cha4">
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                            </select>
-                        </div>
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td class="cha3">Contabilidad</td>
-
-                    <td class="cha4">
-
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                            </select>
-                        </div>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td class="cha3">Ingeniería Civil</td>
-
-                    <td class="cha4">
-
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                            </select>
-                        </div>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td class="cha3">Psicología</td>
-
-                    <td class="cha4">
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                            </select>
-                        </div>
-
-                    </td>
-
-                </tr>
-
-            </table>
+            <div class="btn_ir btn_ir_modal"> <span> <a id="btn_insCharla" href="">Inscríbete</a> </span> </div>
 
         </div>
-
+    
     </div>
+</div>
 
-    <div class="itemdiacharla">
+<div class="modal_incrip">
+    <div class="layer_dark"></div>
+    <div>
+        <div class="cont_inscrip">
 
-        <h2>Día 2 - Miércoles 6 de febrero</h2>
+            <h2>Inscripción</h2>
 
-        <div class="cont_itemcharla">
+            <h4>Ingresa tus datos para inscribirteal Open Ulima</h4>
 
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
-                <tr class="headcha">
 
-                    <td class="cha1">CHARLAS X CARRERA</td>
 
-                    <td class="cha2">HORARIOS</td>
 
-                </tr>
 
-                <tr>
+{#
 
-                    <td class="cha3">Ingenieria Industrial</td>
 
-                    <td class="cha4">
+<fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="nombres" class="form-control input_inscrip" data-jsv-message-target="invalid-nombres" placeholder="Nombres" data-jsv-validators="require" data-jsv-field-error-require='*Asegurese de ingresar los datos solicitados.'>
+                            </div>
 
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
+                            <div class="message-error validate-field-error-message" id="invalid-nombres" data-field-error>
+                            </div>
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="apellidos" class="form-control input_inscrip" data-jsv-message-target="invalid-apellidos" placeholder="Apellidos" data-jsv-validators="require" data-jsv-field-error-require='*Asegurese de ingresar los datos solicitados.'>
+                            </div>
+                            <div class="message-error validate-field-error-message" id="invalid-apellidos" data-field-error>
+                            </div>
+                        </fieldset>
+                            <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="email" class="form-control input_inscrip" data-jsv-message-target="invalid-email" placeholder="Correo Electrónico" data-jsv-validators="require, email" 
+                                    data-jsv-field-error-email='*Ingrese Correo.' data-jsv-field-error-require='*Asegurese de ingresar los datos solicitados.'>
+                            </div>
+                            <div class="message-error validate-field-error-message" id="invalid-email" data-field-error>
+                            </div>
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="numdoc" class="form-control input_inscrip" data-jsv-message-target="invalid-numdoc" placeholder="DNI" data-jsv-validators="require, number, exact" data-jsv-exact="8" data-jsv-field-error-exact='*Deben ser 8 números' data-jsv-field-error-number='*Solo numeros.'
+                                    data-jsv-field-error-require='*Asegurese de ingresar los datos solicitados.'>
+                            </div>
+                            <div class="message-error validate-field-error-message" id="invalid-numdoc" data-field-error>
+                            </div>
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="telefono" class="form-control input_inscrip" data-jsv-message-target="invalid-telefono" placeholder="Telefono/Celular" data-jsv-validators="require, number, length" data-jsv-field-error-length='*Son requeridos de 7 a 9 números.'
+                                    data-jsv-field-error-number='*Solo numeros.' data-jsv-min="7" data-jsv-max="9" data-jsv-field-error-require='*Asegurese de ingresar los datos solicitados.'>
+                            </div>
+                            <div class="message-error validate-field-error-message" id="invalid-telefono" data-field-error>
+                            </div>
+                        </fieldset>
+
+        
+
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group">
+                               <input type="text" name="colegios" id="colegios-list" class="ui-autocomplete-input form-control input_inscrip colegios-list" placeholder="Colegio">
+                            </div>
+                            <div class="item_inscrip form-group sublevel">
+                                <h4>Si no encuentras tu colegio ingresar aquí:</h4>
+                                <span class="cont_otros_inscrip">
+                                <span>Otros (especificar)</span>
+                                <input type="text" name="Otros" class="form-control input_inscrip" placeholder="">
+                                </span>
+                            </div>
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group">
+                                <select name="grado" class="form-control input_inscrip" data-jsv-message-target="invalid-grado" data-jsv-validators="require" data-jsv-field-error-require='*Asegurese de ingresar los datos solicitados.'>
+                                <option value="">Grado/Egresado</option>
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="2">3</option>
+                                <option value="3">4</option>
+                                <option value="4">5</option>
+                                <option value="egresado">egresado</option>
+                                <option value="bachillerato">bachillerato</option>
                             </select>
-                        </div>
+                            </div>
+                            <div class="message-error  validate-field-error-message" id="invalid-grado" data-field-error></div>
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip declaracion ">
+                                <span data-field-holder>
+                                <input class="form-control input_inscrip" name="terminos" data-jsv-message-target="invalid-terminos" type="checkbox" data-jsv-validators="require"
+                                    data-jsv-field-error-require='*Asegurese de ingresar los datos solicitados.'>
+                        
+                            </span>
+                                <h4>
+                                    Declaro haber leído la
+                                    <a href="">política de protección de datos personales de la Universidad de Lima</a> y doy mi consentimiento para el tratamiento de mis datos personales de acuerdo a los términos de esta.
+                                </h4>
+                            </div>
+                            <div class="message-error validate-field-error-message" id="invalid-terminos" data-field-error></div>
 
-                    </td>
+                        </fieldset>
 
-                </tr>
 
-                <tr>
+#}
 
-                    <td class="cha3">Derecho</td>
 
-                    <td class="cha4">
 
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                            </select>
-                        </div>
 
-                    </td>
 
-                </tr>
 
-                <tr>
 
-                    <td class="cha3">Marketing</td>
 
-                    <td class="cha4">
 
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                            </select>
-                        </div>
 
-                    </td>
 
-                </tr>
 
-                <tr>
 
-                    <td class="cha3">Economía</td>
 
-                    <td class="cha4">
+{#
+<fieldset class="line-form">
+            {{ form.nombres }}
+<div class="message-error validate-field-error-message" id="invalid-nombres" data-field-error>
+                            </div>
+</fieldset>
+<fieldset class="line-form">
+            {{ form.apellidos }}
+<div class="message-error validate-field-error-message" id="invalid-apellidos" data-field-error>
+                            </div>
+</fieldset>
+<fieldset class="line-form">
+           {{ form.dni }}
+<div class="message-error validate-field-error-message" id="invalid-numdoc" data-field-error>
+                            </div>
+</fieldset>
+<fieldset class="line-form">
+            {{ form.telefono }}
+<div class="message-error validate-field-error-message" id="invalid-telefono" data-field-error>
+                            </div>
+</fieldset>
+<fieldset class="line-form">
+                                            <input type="text" name="colegios" id="colegios-list" class="ui-autocomplete-input form-control input_inscrip colegios-list" placeholder="Colegio">
 
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                            </select>
-                        </div>
+</fieldset>
+<fieldset class="line-form">
+            {{ form.otro }}
+</fieldset>
+<fieldset class="line-form">
+            {{ form.grado }}
+                            <div class="message-error  validate-field-error-message" id="invalid-grado" data-field-error></div>
 
-                    </td>
+</fieldset>
+<fieldset class="line-form">
+                            <div class="item_inscrip declaracion ">
+                                <span data-field-holder="">
+                                <input class="form-control input_inscrip" name="terminos" data-jsv-message-target="invalid-terminos" type="checkbox" data-jsv-validators="require" data-jsv-field-error-require="*Asegurese de ingresar los datos solicitados." data-jsv-base-id="cw3g5pho">
+                        
+                            </span>
+                                <h4>
+                                    Declaro haber leído la
+                                    <a href="">política de protección de datos personales de la Universidad de Lima</a> y doy mi consentimiento para el tratamiento de mis datos personales de acuerdo a los términos de esta.
+                                </h4>
+                            </div>
+                            <div class="message-error validate-field-error-message" id="invalid-terminos" data-field-error=""></div>
 
-                </tr>
+                        </fieldset> 
+            <input class="btn_enviar btn-sender-meeting" type="button" id="Enviar" value="Enviar">
 
-            </table>
+#}
+
+
+
+                     <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="nombres" class="form-control input_inscrip" placeholder="Nombres">
+                            </div>
+
+
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="apellidos" class="form-control input_inscrip" placeholder="Apellidos">
+                            </div>
+                        </fieldset>
+
+                                 <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="email" class="form-control input_inscrip" data-jsv-message-target="invalid-email" placeholder="Correo Electrónico" data-jsv-validators="require, email" 
+                                    data-jsv-field-error-email='*Ingrese Correo.' data-jsv-field-error-require='*Asegurese de ingresar los datos solicitados.'>
+                            </div>
+                            <div class="message-error validate-field-error-message" id="invalid-email" data-field-error>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="numdoc" class="form-control input_inscrip" placeholder="DNI">
+                            </div>
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group" data-field-holder>
+                                <input type="text" name="telefono" class="form-control input_inscrip" placeholder="Telefono/Celular">
+                            </div>
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group">
+                                <input type="text" name="colegios" id="colegios-list" class="ui-autocomplete-input form-control input_inscrip colegios-list" placeholder="Colegio">
+                            </div>
+                            <div class="item_inscrip form-group sublevel">
+                                <h4>Si no encuentras tu colegio ingresar aquí:</h4>
+                                <span class="cont_otros_inscrip">
+                                    <span>Otros (especificar)</span>
+                                <input type="text" name="Otros" class="form-control input_inscrip " placeholder="">
+                                </span>
+                            </div>
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip form-group">
+                                <select name="grado" class="form-control input_inscrip">
+                                    <option value="">Grado/Egresado</option>
+                                    <option value="0">1</option>
+                                    <option value="1">2</option>
+                                    <option value="2">3</option>
+                                    <option value="3">4</option>
+                                    <option value="4">5</option>
+                                    <option value="egresado">egresado</option>
+                                    <option value="bachillerato">bachillerato</option>
+                                </select>
+                            </div>
+
+                        </fieldset>
+                        <fieldset class="line-form">
+                            <div class="item_inscrip declaracion ">
+                                <span data-field-holder>
+                                    <input class="form-control input_inscrip" name="terminos" type="checkbox" />
+                                </span>
+                                <h4>
+                                    Declaro haber leído la
+                                    <a href="">política de protección de datos personales de la Universidad de Lima</a> y doy mi consentimiento para el tratamiento de mis datos personales de acuerdo a los términos de esta.
+                                </h4>
+                            </div>
+                        </fieldset>
+                        <input class="btn_enviar btn-sender-meeting" type="button" id="Enviar" value="Enviar">
+
+
 
         </div>
+            <div class="thanks">
+                    <h4>¡Gracias por inscribirte!</h4>
+            </div>
+        <span class="cerrar"><a href="#"> {{ form.form_build_id }}
+                {{ form.form_token }}
+                {{ form.form_id }} <img src="/themes/ulima/assets/img/png/cerrar.png" /> </a></span>
 
     </div>
 
-    <div class="itemdiacharla">
-
-        <h2>Día 3 - Jueves 7 de febrero</h2>
-
-        <div class="cont_itemcharla">
-
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-                <tr class="headcha">
-
-                    <td class="cha1">CHARLAS X CARRERA</td>
-
-                    <td class="cha2">HORARIOS</td>
-
-                </tr>
-
-                <tr>
-
-                    <td class="cha3">Comunicación</td>
-
-                    <td class="cha4">
-
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                            </select>
-                        </div>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td class="cha3">Ingeniería de Sistemas</td>
-
-                    <td class="cha4">
-
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                            </select>
-                        </div>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td class="cha3">Arquitectura</td>
-
-                    <td class="cha4">
-
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                            </select>
-                        </div>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td class="cha3">Negocios Internacionales</td>
-
-                    <td class="cha4">
-
-                        <div class="custom-select " >
-                            <select class="select-horario" name="">
-                                <option value="Horario">Horario</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                                <option value="16:30 a 17:15 horas"> 16:30 a 17:15 horas</option>
-                            </select>
-                        </div>
-
-                    </td>
-
-                </tr>
-
-            </table>
-
-        </div>
-
-    </div>
-
-    <div class="message-error-carreras"></div>
-
-    <div class="btn_ir btn_ir_modal"> <span> <a id="btn_insCharla" href="">Inscríbete</a> </span> </div>
 
 </div>
 
-</div>
-
-</div>

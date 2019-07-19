@@ -277,8 +277,6 @@ input[type=text] {
 .cont_nav figure {
     float: left;
     width: 170px;
-	    position: relative;
-    top: 5px;
 }
 
 .cont_nav figure.logo img {
@@ -1172,7 +1170,7 @@ input[type=text] {
     max-width: 183px;
     width: 100%;
     position: relative;
-    top: 11px;
+    top: -6px;
 }
 
 .footer1 figure a {}
@@ -3051,7 +3049,7 @@ input[type=text] {
     width: 40%;
     padding: 30px 35px;
     z-index: 5;
-    top: 35px;
+    top:26px;
     display: none
 }
 
@@ -5316,7 +5314,7 @@ max-width: 1000px;
     position: absolute;
     width: 100%;
     z-index: 100;
-    top: 80px;
+    top: 100px;
 }
 .cont_rbusqueda {
     max-width: 940px;
@@ -5383,19 +5381,6 @@ max-width: 1000px;
     padding-bottom: 30px;
     border-bottom: 1px solid #e5e5e5;
 }
-
-li.pager__item.is-active a {
-    color: #ff0000;
-}
-
-li.pager__item {
-       float: left;
-    margin-right: 9px;
-    font-size: 15px;
-    background-color: #EEE;
-    padding: 1px 5px;
-}
-
 .item_rbusqueda h2 {
     font-size: 16px;
     font-weight: bold;
@@ -5831,6 +5816,8 @@ li.pager__item {
         text-transform: capitalize;
         font-weight: 100;
         text-align: left;
+		padding-bottom: 10px;
+   		margin-bottom: 10px;
     }
     
     .cont_nav nav.menu_on ul li ul.sub_menu {
@@ -5844,7 +5831,7 @@ li.pager__item {
     .menu_on .sub_menu span {
         left: 50%;
         margin-left: -12px;
-        top: -55px;
+        top: -51px;
     }
     
     .slider_section,
@@ -7479,11 +7466,8 @@ li.pager__item {
     
     .sliderprelima .cont_msj_s {
         left: 0;
-        /*width: 96%;
-        padding: 120px 2% 0;*/
-        margin-top: 119px;
-        padding-top: 1px;
-        margin-left: 21px;
+        width: 96%;
+        padding: 120px 2% 0;
     }
     
     .prelima_bread {
@@ -7928,4 +7912,59 @@ li.pager__item {
 }
 .form-vanillajs-validate .validate-input.form-field-invalid-focusout::after {
     content: "";
+}
+.form-meetings-days .thanks h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 15px;
+    font-family: 'ralewayblack';
+}
+.cont_inscrip .thanks {
+    margin: 0 auto;
+    max-width: 370px;
+    color: #fff;
+    display: table;
+    min-height: 300px;
+    display: none;
+}
+.cont_inscrip .thanks h4 {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 300px;
+    width: 100%;
+    float: left;
+}
+.form-meetings-days label.error {
+    width: 100%;
+    display: block;
+    color: #ff0000;
+    font: normal 12px Helvetica, Arial, sans-serif;
+    padding: 4px 0px;
+    float: left;
+}
+.form-meetings-days input.error,
+.form-meetings-days textarea.error,
+.form-meetings-days select.error {
+    border: 1px solid #ff0000;
+}
+.form-meetings-days .easy-autocomplete-container {
+    width: 100% !important;
+    color: #000;
+    box-sizing: border-box;
+}
+.form-meetings-days .easy-autocomplete input {
+    width: 100% !important;
+    border-color: #ccc;
+    border-radius: 0px;
+    box-sizing: border-box;
+    padding: 15px 5%;
+}
+.form-meetings-days .easy-autocomplete {
+    position: relative;
+    width: 100% !important;
+    box-sizing: border-box;
 }
