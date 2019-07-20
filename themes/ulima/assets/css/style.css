@@ -3049,7 +3049,7 @@ input[type=text] {
     width: 40%;
     padding: 30px 35px;
     z-index: 5;
-    top:26px;
+    top: 51px;
     display: none
 }
 
@@ -4265,7 +4265,7 @@ max-width: 1000px;
 	
 	
 	
-	InversiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n
+	InversiÃƒÆ’Ã‚Â³n
 	
 	
 	
@@ -5816,8 +5816,6 @@ max-width: 1000px;
         text-transform: capitalize;
         font-weight: 100;
         text-align: left;
-		padding-bottom: 10px;
-   		margin-bottom: 10px;
     }
     
     .cont_nav nav.menu_on ul li ul.sub_menu {
@@ -5831,7 +5829,7 @@ max-width: 1000px;
     .menu_on .sub_menu span {
         left: 50%;
         margin-left: -12px;
-        top: -51px;
+        top: -55px;
     }
     
     .slider_section,
@@ -7913,14 +7911,17 @@ max-width: 1000px;
 .form-vanillajs-validate .validate-input.form-field-invalid-focusout::after {
     content: "";
 }
-.form-meetings-days .thanks h2 {
+.form-meetings-days .thanks h2,
+.form-meetings-days .thanks h3,
+.form-meetings-days .thanks h4,
+{
     text-align: center;
     font-weight: bold;
     font-size: 40px;
     margin-bottom: 15px;
     font-family: 'ralewayblack';
 }
-.cont_inscrip .thanks {
+.modal_incrip .thanks {
     margin: 0 auto;
     max-width: 370px;
     color: #fff;
@@ -7928,7 +7929,7 @@ max-width: 1000px;
     min-height: 300px;
     display: none;
 }
-.cont_inscrip .thanks h4 {
+.modal_incrip .thanks h4 {
     text-align: center;
     font-size: 16px;
     margin-bottom: 20px;
