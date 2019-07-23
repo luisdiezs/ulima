@@ -29,7 +29,7 @@ class ContactoModel {
   public static function getAll($entry = [], $sort = [], $limit = 50) {
     $select = db_select(self::$table, 'table_alias');
     $select->fields('table_alias');
-    if (count($entry) > 0) {
+    if (!empty($entry) && count($entry) > 0) {
       foreach ($entry as $field => $value) {
         $select->condition($field, $value);
       }

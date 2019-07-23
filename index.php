@@ -68,19 +68,20 @@ if(reset(explode('?',$request->getRequestUri())) == '/carreras/open-ulima' || re
 
            $content = preg_replace('/<form(.*)action="big_pipe_nojs_placeholder_attribute_safe(.+)?"(.+)?>/', '<form method="get" data-service-autocomplete="'.$url.'/colegio?term=a" data-service-submit="'.$url.'/carreras/open-ulima/data" class="form-meetings-days" novalidate="novalidate" _lpchecked="1" ', $content);
 
+     preg_match('/main.bundle.js?(.*?)"/', $content , $variable);
 	$content = str_replace('<script src="/themes/ulima/assets/js/main.bundle.js?', '
 
          <script src="https://kraaden.github.io/autocomplete/autocomplete.js"></script>
     <link rel="stylesheet" type="text/css" href="https://kraaden.github.io/autocomplete/autocomplete.css">
-    <script src="/themes/ulima/assets/js/main.bundle.js"></script>
+    <script src="/themes/ulima/assets/js/main.bundle.js?v1111"></script>
 
-   <script src="/themes/ulima/assets/js/jquery.min.js"></script>
-    <script src="/themes/ulima/assets/js/jquery.easy-autocomplete.min.js"></script>
-    <link rel="stylesheet" href="/themes/ulima/assets/css/easy-autocomplete.min.css">
-    <script src="/themes/ulima/assets/js/jquery.validate.min.js"></script>
-    <script src="/themes/ulima/assets/js/form-meetings-days.js" ', $content);
+   <script src="/themes/ulima/assets/js/jquery.min.js?v1111"></script>
+    <script src="/themes/ulima/assets/js/jquery.easy-autocomplete.min.js?v1111"></script>
+    <link rel="stylesheet" href="/themes/ulima/assets/css/easy-autocomplete.min.css?v1111">
+    <script src="/themes/ulima/assets/js/jquery.validate.min.js?v1111"></script>
+    <script src="/themes/ulima/assets/js/form-meetings-days.js?v1111" ', $content);
 	
-
+   $content = str_replace('?v1111', $variable[1], $content);
 
  	$content = str_replace('action="/carreras/open-ulima" method="post"', 'method="get" data-service-autocomplete="'.$url.'/colegio?term=a" data-service-submit="'.$url.'/carreras/open-ulima/data" class="form-meetings-days" novalidate="novalidate" _lpchecked="1" ', $content);
     

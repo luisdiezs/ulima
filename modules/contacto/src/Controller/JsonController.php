@@ -83,13 +83,13 @@ class JsonController extends ControllerBase {
           } else {
               drupal_set_message($this->t('Your message has been sent.'));
               $msg = '¡Gracias por registrarte a nuestro Open Ulima 2019! from: @replyto to: @to about: "@subject" containing: "@message"';
-              $this->logger('email_contact')->notice($msg, [
+             /* $this->logger('email_contact')->notice($msg, [
                   '@name' => $params['name'],
                   '@replyto' => $reply_to,
                   '@to' => $to,
                   '@subject' => $params['subject'],
                   '@message' => $params['message']
-              ]);
+              ]);*/
           }
 
       

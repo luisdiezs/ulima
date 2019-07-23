@@ -44,11 +44,10 @@ class ContactoController extends ControllerBase {
 
         $settings = unserialize($slider['settings']);
 
-  
 
     foreach ($suscribeteAray as $index => $suscribete) {
       $rows[$index]['name'] = $suscribete->id;
-      $rows[$index]['apellido'] = $suscribete->nombre . ' '. $suscribete->apellidos;
+      $rows[$index]['apellido'] = $suscribete->nombres . ' '. $suscribete->apellidos;
       $rows[$index]['correo'] = $suscribete->correo;
       $rows[$index]['telefono'] = $suscribete->telefono;
       $rows[$index]['fecha'] = date('Y-m-d',$suscribete->fecha);
@@ -71,7 +70,14 @@ class ContactoController extends ControllerBase {
     return [
       '#theme' => 'table',
      //   '#render' => array('drupal_pre_render_links'),
-        '#caption' => $this->t('<div class="dropbutton-widget"><ul class="dropbutton"><li class="delete dropbutton-action secondary-action"><a href="/admin/structure/suscribete/1/delete">Exportar</a></li></ul></div>'),
+        '#caption' => $this->t('<div class="dropbutton-widget"><ul class="dropbutton"><li class="delete dropbutton-action secondary-action"><a href="/admin/structure/suscribete/1/delete" style="
+       background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+    font-size: initial;
+    padding: 9px 2px 9px 8px;
+    margin: 4px 4px 4px 0px;
+" >Exportar</a></li></ul></div>'),
       '#header' => $header,
       '#rows' => $rows,
        // '#href' => "admin/config/mymodule/add",
