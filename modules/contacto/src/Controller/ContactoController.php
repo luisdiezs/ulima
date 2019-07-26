@@ -155,7 +155,7 @@ echo 'sd'; exit;
             fputcsv($f, $fields, $delimiter);
         foreach ($suscribeteAray as $index => $suscribete) {
             $horarios = $this->horarios($suscribete, $settings);
-                $lineData = array($suscribete->id, $suscribete->nombre.' '. $suscribete->apellidos, $suscribete->correo, $suscribete->telefono, $suscribete->fecha, $suscribete->grado, $horarios );
+                $lineData = array($suscribete->id, $suscribete->nombres.' '. $suscribete->apellidos, $suscribete->correo, $suscribete->telefono, $suscribete->fecha, $suscribete->grado, $horarios );
                 fputcsv($f, $lineData, $delimiter);
             }
 

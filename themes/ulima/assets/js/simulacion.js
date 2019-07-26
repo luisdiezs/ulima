@@ -6,6 +6,7 @@ var departamentos = '';
 var provincias = [];
 var distritos = [];
 var colegios = [];
+var categoriaColegioWS = null;
 
 listarPeriodos();
 
@@ -13,6 +14,30 @@ document.getElementById("dpto-solo").addEventListener("change", function() {
     listarProvincias(document.getElementById("dpto-solo"), document.getElementById("prov-solo"));
 })
 
+
+function sortSelect(selElem,textoSeleccione) {
+    var tmpAry = new Array();
+    tmpAry[0] = new Array();
+    tmpAry[0][0] = '';
+    tmpAry[0][1] = '';
+    for (var i=1;i<selElem.options.length;i++) {
+        tmpAry[i] = new Array();
+        tmpAry[i][0] = selElem.options[i].text;
+        tmpAry[i][1] = selElem.options[i].value;
+    }
+    tmpAry.sort();
+    while (selElem.options.length > 0) {
+        selElem.options[0] = null;
+    }
+    tmpAry[0] = new Array();
+    tmpAry[0][0] = textoSeleccione;
+    tmpAry[0][1] = '';
+    for (var i=0;i<tmpAry.length;i++) {
+        var op = new Option(tmpAry[i][0], tmpAry[i][1]);
+        selElem.options[i] = op;
+    }
+    return;
+}
 
 function listarColegios(selectorColegio, selectorDepartamento, selectorProv, selectorDistrito) {
     selectorColegio.options.length = 0;
@@ -41,6 +66,7 @@ function listarColegios(selectorColegio, selectorDepartamento, selectorProv, sel
         }
 
     });
+    sortSelect(selectorColegio,'Seleccione');
     //selectorColegio.select2();
 }
 
@@ -49,6 +75,9 @@ function BuscarCategoriaColegio(id, elementoDOM) {
     id = parseInt(id);
     colegios.forEach(function(element, index) {
         if (id == element.id) {
+            /* se agrego esta linea */
+            categoriaColegioWS = element.categoriaPS;
+            /* se agrego esta linea */
             elementoDOM.innerHTML = element.categoria;
         }
     });
@@ -58,13 +87,15 @@ function BuscarCategoriaColegio(id, elementoDOM) {
 
 function listarPeriodos() {
 
+    var cicloscbo = document.getElementById("cicloscbo");
     periodos.forEach(function(element, index) {
-        var cicloscbo = document.getElementById("cicloscbo");
         var option = document.createElement("option");
         option.text = element;
         option.value = periodosCod[index];
         cicloscbo.add(option);
     });
+    sortSelect(cicloscbo,'Elegir Ciclo');
+
 
 }
 
@@ -79,6 +110,8 @@ function listarDptos(selector) {
             selector.add(option);
         }
     });
+    sortSelect(selector,'Seleccione');
+
 }
 
 function listarDistritos(departamentoCombo, provinciaCombo, distritoCombo) {
@@ -98,7 +131,7 @@ function listarDistritos(departamentoCombo, provinciaCombo, distritoCombo) {
             distritoCombo.add(option);
         }
     });
-
+    sortSelect(distritoCombo,'Seleccione');
 }
 
 function listarProvincias(selectorDpto, selectorProv) {
@@ -119,6 +152,8 @@ function listarProvincias(selectorDpto, selectorProv) {
             selectorProv.add(option);
         }
     });
+    sortSelect(selectorProv,'Seleccione');
+
 }
 
 document.getElementById("dpto-solo").addEventListener("change", function() {
@@ -203,7 +238,8 @@ document.getElementById("mas").addEventListener("click", function() {
 var getInfoPensiones = function() {
     var JSONURL = urlBase + 'pensiones';
     var numcreditos = parseInt(document.getElementById('numcreditos').innerHTML);
-    var categoriaColegio = document.getElementById("mostrar-categoria-colegio").innerHTML;
+    //var categoriaColegio = document.getElementById("mostrar-categoria-colegio").innerHTML;
+    var categoriaColegio = categoriaColegioWS;
     var codigoCiclo = document.getElementById("cicloscbo").value;
 
     var data = new FormData();
@@ -212,7 +248,7 @@ var getInfoPensiones = function() {
     data.append('ciclo', codigoCiclo);
 
     var envioz = 'numcreditos:' + numcreditos + ' categoria:' + categoriaColegio + ' ciclo:' + codigoCiclo;
-    alert("Envio de " + envioz);
+    console.log("Envio de " + envioz);
 
     let sss = new XMLHttpRequest();
     sss.open('POST', JSONURL, true);
@@ -229,7 +265,7 @@ var getInfoPensiones = function() {
 }
 
 var setdatosPensiones = function(res) {
-    alert("Respuesta" + res);
+    console.log("Respuesta" + res);
     res = JSON.parse(res);
 
 
@@ -273,27 +309,20 @@ var setdatosPensiones = function(res) {
 
 var getInfoSimulador = function() {
  var JSONURL = urlBase + 'colegios';
-    let dataResult = localStorage.getItem('dataSimulacion');
-    if (dataResult) {
-
-
-        return setdatosSimulacion(dataResult);
-    } else {
+   
 
         let xhr = new XMLHttpRequest();
-        xhr.open(post, JSONURL);
+        xhr.open('GET', JSONURL);
         xhr.send();
         xhr.onload = function() {
             if (xhr.status != 200) { // analyze HTTP status of the response
                 console.log('error no data')
             } else { // show the result
-                localStorage.setItem('dataSimulacion', xhr.response)
                 return setdatosSimulacion(xhr.response);
             }
             console.log(xhr);
         };
 
-    }
 }
 
 var setdatosSimulacion = function(res) {
@@ -319,3 +348,4 @@ var setdatosSimulacion = function(res) {
     listarColegios(document.getElementById('colegio-tercero'), document.getElementById('dpto-tercero'), document.getElementById('prov-tercero'), document.getElementById('distrito-tercero'));
 }
 getInfoSimulador();
+

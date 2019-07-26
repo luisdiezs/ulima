@@ -1,8 +1,10 @@
+/* render form meetings days */
 $(document).ready(function() {
     var form = $(".form-meetings-days");
     var form_block = $(".cont_inscrip");
     var thanks_block = $(".thanks");
     form.validate({
+        ignore: ".ignore",
         rules: {
             nombres: {
                 required: true,
@@ -52,11 +54,16 @@ $(document).ready(function() {
     var deployform = function() {
         form_block.hide();
         thanks_block.show();
+        setTimeout(function() {
+            $(".cerrar").trigger("click");
+            $(".modal_incrip").removeClass("modal_active");
+        }, 5000);
         form[0].reset();
     };
 
-    $(".btn-sender-meeting").click(function() {
+    $(".btn-sender-meeting").click(function(event) {
 
+        var t = $(this);
         if (form.valid()) {
             console.log("valid form meeting");
             var url = form.attr("data-service-submit");
@@ -86,17 +93,14 @@ $(document).ready(function() {
 
 
     var options = {
-
         url: url_autocomplete,
-
         getValue: "name",
-
-        list: {
+        minLength: 0,
+        /*list: {
             match: {
                 enabled: true
             }
-        },
-
+        },*/
         theme: "square"
     };
 
@@ -128,4 +132,15 @@ $(document).ready(function() {
         return /^\d*$/.test(value);
     });
     console.log("dark");
+
+    form.on('keyup blur', function() {
+        if (form.valid()) {
+            console.log("fkg valid¡¡¡");
+            $('.btn-sender-meeting').removeClass("btn-disabled");
+        } else {
+            console.log("fkg invalid!!!");
+            $('.btn-sender-meeting').addClass("btn-disabled");
+        }
+    });
+
 });
