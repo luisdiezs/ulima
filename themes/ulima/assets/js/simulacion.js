@@ -221,10 +221,10 @@ document.getElementById("btn_step3_register").addEventListener("click", function
 })
 
 document.getElementById("menos").addEventListener("click", function() {
-    var subtotal = parseInt(document.getElementById("matricula").text());
-    var creditos = parseInt(document.getElementById("numcreditos").text()) - 1;
+    var subtotal = parseInt(document.getElementById("matricula").innerHTML);
+    var creditos = parseInt(document.getElementById("numcreditos").innerHTML) - 1;
 
-    document.getElementById("numcreditos").text(creditos);
+    document.getElementById("numcreditos").innerHTML = creditos;
     getInfoPensiones()
 })
 
@@ -273,25 +273,29 @@ var setdatosPensiones = function(res) {
     var derecho_ensenanza = parseInt(res['derecho_ensenanza']);
     var valor_credito = derecho_ensenanza / numcreditos;
     document.getElementById('categoriaval').innerHTML = valor_credito.toFixed(2);
-    document.getElementById('cuota-monto-uno').innerHTML = res['cuota_uno'].toFixed(2);
+    console.log(res)
+        console.log(res['cuota_uno'])
+            console.log(res['cuota_uno'])
+  //  document.getElementById('cuota-monto-uno').innerHTML = res['cuota_uno'];
     //   $('.cuota-monto').html(res['cuota_otros'].toFixed(2));
     //   $('.fecha_vencimiento').html(res['fecha_vencimiento']);
     var calcularCuotaUno = parseFloat(res['cuota_uno']);
     var calcularOtrasCuotas = 4 * parseFloat(res['cuota_otros']);
     var totalCuotas = calcularCuotaUno + calcularOtrasCuotas;
-    var calcularDerechoEnsenanza = derecho_ensenanza + res['derecho_matricula'];
+    var calcularDerechoEnsenanza = derecho_ensenanza + parseFloat(res['derecho_matricula']);
     document.getElementById('calcAmount').innerHTML = 'S/' + derecho_ensenanza.toFixed(2);
     document.getElementById('totalAmount').innerHTML = 'S/' + calcularDerechoEnsenanza.toFixed(2);
-    document.getElementById('matricula').innerHTML = res['derecho_matricula'].toFixed(2);
-    document.getElementById('monto_total').innerHTML = totalCuotas.toFixed(2);
+    document.getElementById('matricula').innerHTML = 'S/' + parseFloat(res['derecho_matricula']).toFixed(2);
+   // document.getElementById('monto_total').innerHTML = totalCuotas.toFixed(2);
     periodos = res.periodos;
     periodosCod = res.periodosCod;
     departamentos = res.departamentos;
-    provincias = res.provincias;
+  /*  provincias = res.provincias;
     distritos = res.distritos;
     colegios = res.colegios;
+    */
     //console.table(distritos);
-    listarPeriodos();
+   // listarPeriodos();
 
     listarDptos(document.getElementById('dpto-solo'));
     listarDptos(document.getElementById('dpto-quinto'));

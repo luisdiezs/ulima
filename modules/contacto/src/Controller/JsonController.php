@@ -77,19 +77,19 @@ class JsonController extends ControllerBase {
           $key = 'contact';
           $langcode = \Drupal::currentUser()->getPreferredLangcode();
           $send = true;
-          $result = $mailManager->mail($module, $key, $to, $langcode, $params, $reply_to, $send);
+        //  $result = $mailManager->mail($module, $key, $to, $langcode, $params, $reply_to, $send);
           if ($result['result'] !== true) {
               drupal_set_message($this->t('There was a problem sending your message and it was not sent.'), 'error');
           } else {
               drupal_set_message($this->t('Your message has been sent.'));
               $msg = '¡Gracias por registrarte a nuestro Open Ulima 2019! from: @replyto to: @to about: "@subject" containing: "@message"';
-             /* $this->logger('email_contact')->notice($msg, [
+              $this->logger('email_contact')->notice($msg, [
                   '@name' => $params['name'],
                   '@replyto' => $reply_to,
                   '@to' => $to,
                   '@subject' => $params['subject'],
                   '@message' => $params['message']
-              ]);*/
+              ]);
           }
 
       
@@ -152,8 +152,8 @@ class JsonController extends ControllerBase {
         if ($string) {
             $result =  db_select('product', 'n')
                 ->fields('n', array('number', 'name','type'))
-           //     ->condition('n.name', '%' . db_like($string) . '%', 'LIKE')
-                ->range(0, 10000)
+                ->condition('n.name', '%' . db_like($string) . '%', 'LIKE')
+                ->range(0, 1000000)
                 ->execute()
                 ->fetchAll();
             foreach ($result as $node) {
