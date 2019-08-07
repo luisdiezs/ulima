@@ -96,11 +96,11 @@ $(document).ready(function() {
         url: url_autocomplete,
         getValue: "name",
         minLength: 0,
-        /*list: {
+        list: {
             match: {
                 enabled: true
             }
-        },*/
+        },
         theme: "square"
     };
 
@@ -133,7 +133,7 @@ $(document).ready(function() {
     });
     console.log("dark");
 
-    form.on('keyup blur', function() {
+    form.on('keyup blur change', function() {
         if (form.valid()) {
             console.log("fkg valid¡¡¡");
             $('.btn-sender-meeting').removeClass("btn-disabled");
