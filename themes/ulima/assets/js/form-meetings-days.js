@@ -1,3 +1,4 @@
+
 /* render form meetings days */
 $(document).ready(function() {
     var form = $(".form-meetings-days");
@@ -36,15 +37,15 @@ $(document).ready(function() {
             apellidos: "Este campo es requerido",
             numdoc: {
                 required: "Este campo es requerido",
-                number: "Solo números",
-                minlength: "Mínimo 8 dígitos",
-                maxlength: "Máximo 8 dígitos"
+                number: "Solo nÃºmeros",
+                minlength: "MÃ­nimo 8 dÃ­gitos",
+                maxlength: "MÃ¡ximo 8 dÃ­gitos"
             },
             telefono: {
                 required: "Este campo es requerido",
-                number: "Solo números",
-                minlength: "Mínimo 7 dígitos",
-                maxlength: "Máximo 9 dígitos"
+                number: "Solo nÃºmeros",
+                minlength: "MÃ­nimo 7 dÃ­gitos",
+                maxlength: "MÃ¡ximo 9 dÃ­gitos"
             },
             grado: "Este campo es requerido",
             terminos: "Este campo es requerido"
@@ -135,7 +136,7 @@ $(document).ready(function() {
 
     form.on('keyup blur change', function() {
         if (form.valid()) {
-            console.log("fkg valid¡¡¡");
+            console.log("fkg validÂ¡Â¡Â¡");
             $('.btn-sender-meeting').removeClass("btn-disabled");
         } else {
             console.log("fkg invalid!!!");
