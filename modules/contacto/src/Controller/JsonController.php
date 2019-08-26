@@ -151,13 +151,13 @@ class JsonController extends ControllerBase {
         $precioArray= array('P'=>'850', 'Q'=>'675', 'R'=> '549', 'S'=>'468','T'=>'468');
         if ($string) {
             $result =  db_select('product', 'n')
-                ->fields('n', array('number', 'name','type'))
+                ->fields('n', array('number', 'name','type','remote_id'))
                 ->condition('n.name', '%' . db_like($string) . '%', 'LIKE')
                 ->range(0, 1000000)
                 ->execute()
                 ->fetchAll();
             foreach ($result as $node) {
-                $matches[] = array('name' => $node->name, 'type' => $node->type, 'id' => $node->number , 'precio' => $precioArray[$node->type] );
+                $matches[] = array('name' => $node->name.' - '.$node->remote_id, 'type' => $node->type, 'id' => $node->number , 'precio' => $precioArray[$node->type] );
             }
         }
 
