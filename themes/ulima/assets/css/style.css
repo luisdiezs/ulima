@@ -7977,3 +7977,10 @@ max-width: 1000px;
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
 }
+.form-meetings-days .line-form .declaracion {
+    position: relative;
+}
+.form-meetings-days .line-form .declaracion label.error {
+    position: absolute;
+    bottom: -20px;
+}
