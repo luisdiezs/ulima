@@ -233,7 +233,7 @@ document.getElementById("menos").addEventListener("click", function() {
 
 document.getElementById("mas").addEventListener("click", function() {
     var creditos = parseInt(document.getElementById("numcreditos").innerHTML) + 1;
-    if (creditos >= 23) { //maximo de creditos
+    if (creditos >= 0) { //maximo de creditos
         document.getElementById("numcreditos").innerHTML = creditos;
     }
     getInfoPensiones();
